@@ -12,7 +12,7 @@ bug-reports:    https://github.com/githubuser/reddit-emacs-tips-n-tricks/issues
 author:         Author name here
 maintainer:     example@example.com
 copyright:      2022 Author name here
-license:        BSD3
+license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
