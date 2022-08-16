@@ -6,7 +6,7 @@ cabal-version: 1.12
 
 name:           reddit-emacs-tips-n-tricks
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/reddit-emacs-tips-n-tricks#readme>
+description:    Please see the README on GitHub at <https://github.com/laurencewarne/reddit-emacs-tips-n-tricks#readme>
 homepage:       https://github.com/githubuser/reddit-emacs-tips-n-tricks#readme
 bug-reports:    https://github.com/githubuser/reddit-emacs-tips-n-tricks/issues
 author:         Laurence Warne

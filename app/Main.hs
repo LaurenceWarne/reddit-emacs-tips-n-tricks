@@ -2,14 +2,12 @@
 {-# LANGUAGE LambdaCase #-}
 module Main (main) where
 
-import Lib
 import Reddit
 import Reddit.Types.Post hiding (score)
-import Reddit.Types.Subreddit as R
 import Control.Monad.IO.Class
-import Reddit.Types.SearchOptions (Order(Relevance))
+import Reddit.Types.SearchOptions (Order(Top))
 import Data.Either
-import Data.Maybe (listToMaybe, mapMaybe, fromMaybe)
+import Data.Maybe (mapMaybe, fromMaybe)
 import Reddit.Types.Comment
 import qualified Data.Text as T
 import Data.Text.IO (writeFile)
@@ -17,33 +15,42 @@ import Data.List (sortOn)
 import Prelude hiding (writeFile)
 
 
+searchLimit :: Int
+searchLimit = 100
+
 data CommentInfo = CommentInfo { user :: T.Text
                                , upvotes :: Integer
                                , comment :: T.Text
                                , id :: CommentID} deriving Show
 
 fromComment :: Comment -> CommentInfo
-fromComment comment =
-  CommentInfo commentAuthor commentScore (body comment) (commentID comment)
-                where
-                  Username commentAuthor = Reddit.Types.Comment.author comment
-                  commentScore = fromMaybe 0 (score comment)
+fromComment c = CommentInfo commentAuthor commentScore (body c) (commentID c)
+                  where
+                    Username commentAuthor = Reddit.Types.Comment.author c
+                    commentScore = fromMaybe 0 (score c)
 
 commentFilter :: Comment -> Bool
-commentFilter comment = any (>= 10) (score comment)
+commentFilter c = any (>= 10) (score c)
 
 getTopWeeklyComments :: MonadIO m => m (Either (APIError RedditError) [CommentInfo])
 getTopWeeklyComments = runRedditAnon $ do
-  let options = Options Nothing (Just 1000)
+  let options = Options Nothing (Just searchLimit)
   let s = "Weekly Tips"
-  Listing _ _ posts <- search (Just $ R "emacs") options Relevance s
+  Listing _ _ posts <- search (Just $ R "emacs") options Top s
   comments <- traverse (getComments . postID) posts
   let allComments = mapMaybe (\case
-                      Actual comment -> if commentFilter comment then
-                                          Just $ fromComment comment
-                                        else Nothing
+                      Actual c -> if commentFilter c then Just $ fromComment c
+                                  else Nothing
                       _ -> Nothing) (mconcat comments)
   return allComments
+
+commentInfoToMd :: CommentInfo -> T.Text
+commentInfoToMd c =
+  let raw = "## u/" <> user c <> "\n**Votes:** " <>
+        T.pack (show (upvotes c)) <> "\n\n" <> comment c
+      split = T.splitOn "```\n" raw
+      in mconcat (zipWith (<>) (init split) (cycle ["```elisp\n", "```\n"]) ++ [last split])
+-- commentInfoToMd $ CommentInfo (T.pack "User") 10 (T.pack "``` foobar```  ```barfoo```") (CommentID (T.pack "id"))
 
 main :: IO ()
 main = do
@@ -51,6 +58,6 @@ main = do
   let comments = sortOn (negate . upvotes) (fromRight [] commentsOrErr)
 
   print ("No comments: " <> show (length comments))
-  writeFile "out.md"  (foldMap (\c -> "## u/" <> user c <> "\n*Votes:* " <> (T.pack (show (upvotes c))) <> "\n" <> comment c <> "\n\n") comments)
-  
-  print $ take 20 comments
+  writeFile "out.md"  (foldMap ((<> "\n\n") . commentInfoToMd) comments)
+
+  --print $ take 10 comments
