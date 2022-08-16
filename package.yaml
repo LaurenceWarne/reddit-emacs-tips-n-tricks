@@ -2,13 +2,12 @@ name:                reddit-emacs-tips-n-tricks
 version:             0.1.0.0
 github:              "githubuser/reddit-emacs-tips-n-tricks"
 license:             MIT
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2022 Author name here"
+author:              "Laurence Warne"
+maintainer:          "laurencewarne@gmail.com"
+copyright:           "2022 Laurence Warne"
 
 extra-source-files:
 - README.md
-- CHANGELOG.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
