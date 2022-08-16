@@ -30,7 +30,7 @@ fromComment c = CommentInfo commentAuthor commentScore (body c) (commentID c)
                     commentScore = fromMaybe 0 (score c)
 
 commentFilter :: Comment -> Bool
-commentFilter c = any (>= 10) (score c)
+commentFilter c = any (>= 8) (score c)
 
 getTopWeeklyComments :: MonadIO m => m (Either (APIError RedditError) [CommentInfo])
 getTopWeeklyComments = runRedditAnon $ do
