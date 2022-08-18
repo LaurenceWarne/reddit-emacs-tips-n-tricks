@@ -1,7 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE LambdaCase #-}
 module Lib
-    ( CommentInfo(..), commentInfoToMd, fromComment, searchLimit, getTopWeeklyComments
+    ( CommentInfo(..), commentInfoToMd, fromComment, searchLimit,
+      getTopWeeklyComments, getRelevantPosts
     ) where
 import Reddit
 import Reddit.Types.Post hiding (score)
@@ -30,11 +31,15 @@ fromComment c = CommentInfo commentAuthor commentScore (body c) (commentID c)
 commentFilter :: Comment -> Bool
 commentFilter c = any (>= 8) (score c)
 
-getTopWeeklyComments :: MonadIO m => m (Either (APIError RedditError) [CommentInfo])
-getTopWeeklyComments = runRedditAnon $ do
+
+getRelevantPosts :: MonadIO m => T.Text -> m (Either (APIError RedditError) [Post])
+getRelevantPosts s = runRedditAnon $ do
   let options = Options Nothing (Just searchLimit)
-  let s = "Weekly Tips"
   Listing _ _ posts <- search (Just $ R "emacs") options Top s
+  return posts
+
+getTopWeeklyComments :: MonadIO m => [Post] -> m (Either (APIError RedditError) [CommentInfo])
+getTopWeeklyComments posts = runRedditAnon $ do
   comments <- traverse (getComments . postID) posts
   let allComments = mapMaybe (\case
                       Actual c -> if commentFilter c then Just $ fromComment c
