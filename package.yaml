@@ -22,6 +22,7 @@ dependencies:
 - base >= 4.7 && < 5
 - text
 - reddit
+- raw-strings-qq
 
 ghc-options:
 - -Wall
@@ -57,4 +58,6 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
+    - hspec
     - reddit-emacs-tips-n-tricks
+    - raw-strings-qq

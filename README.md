@@ -1,3 +1,3 @@
 # reddit-emacs-tips-n-tricks
 
-Cheack out the list [here](./out.md).
+Check out the list of the top comments [here](./out.md).
