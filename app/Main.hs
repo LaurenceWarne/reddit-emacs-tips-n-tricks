@@ -7,13 +7,12 @@ import Reddit.Types.Post hiding (score)
 import Control.Monad.IO.Class
 import Reddit.Types.SearchOptions (Order(Top))
 import Data.Either
-import Data.Maybe (mapMaybe, fromMaybe)
+import Data.Maybe (mapMaybe, fromMaybe, isJust)
 import Reddit.Types.Comment
 import qualified Data.Text as T
 import Data.Text.IO (writeFile)
 import Data.List (sortOn)
-import Prelude hiding (writeFile)
-
+import Prelude hiding (writeFile) 
 
 searchLimit :: Int
 searchLimit = 100
@@ -48,9 +47,15 @@ commentInfoToMd :: CommentInfo -> T.Text
 commentInfoToMd c =
   let raw = "## u/" <> user c <> "\n**Votes:** " <>
         T.pack (show (upvotes c)) <> "\n\n" <> comment c
-      split = T.splitOn "```\n" raw
-      in mconcat (zipWith (<>) (init split) (cycle ["```elisp\n", "```\n"]) ++ [last split])
--- commentInfoToMd $ CommentInfo (T.pack "User") 10 (T.pack "``` foobar```  ```barfoo```") (CommentID (T.pack "id"))
+      (codeNormalised, lastLineCode) = foldl (\ (s, codeLast) l ->
+                let stripped = T.stripPrefix "    " l
+                    code = isJust stripped || (T.empty == T.strip l && codeLast)
+                    prefix = if code && not codeLast || not code && codeLast
+                             then "```\n" else ""
+                in (s <> "\n" <> prefix <> fromMaybe l stripped, code))
+                ("", False) (T.lines raw)
+      split = T.splitOn "```\n" (codeNormalised <> if lastLineCode then "\n```" else "")
+      in mconcat (zipWith (<>) (init split) (cycle ["```elisp\n", "```\n"]) ++ [last split]) 
 
 main :: IO ()
 main = do
@@ -58,6 +63,7 @@ main = do
   let comments = sortOn (negate . upvotes) (fromRight [] commentsOrErr)
 
   print ("No comments: " <> show (length comments))
-  writeFile "out.md"  (foldMap ((<> "\n\n") . commentInfoToMd) comments)
+  let s = foldMap ((<> "\n\n") . commentInfoToMd) comments
+  writeFile "out.md" s
 
   --print $ take 10 comments
