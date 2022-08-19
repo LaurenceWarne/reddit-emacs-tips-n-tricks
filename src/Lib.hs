@@ -20,17 +20,19 @@ searchLimit = 100
 data CommentInfo = CommentInfo { user :: T.Text
                                , upvotes :: Integer
                                , comment :: T.Text
-                               , id :: CommentID} deriving Show
+                               , commentInfoID :: T.Text
+                               , parentID :: T.Text} deriving Show
 
 fromComment :: Comment -> CommentInfo
-fromComment c = CommentInfo commentAuthor commentScore (body c) (commentID c)
+fromComment c = CommentInfo auth upvotes (body c) id parentPostID
                   where
-                    Username commentAuthor = Reddit.Types.Comment.author c
-                    commentScore = fromMaybe 0 (score c)
+                    Username auth = Reddit.Types.Comment.author c
+                    upvotes = fromMaybe 0 (score c)
+                    CommentID id = commentID c
+                    PostID parentPostID = parentLink c
 
 commentFilter :: Comment -> Bool
 commentFilter c = any (>= 8) (score c)
-
 
 getRelevantPosts :: MonadIO m => T.Text -> m (Either (APIError RedditError) [Post])
 getRelevantPosts s = runRedditAnon $ do
@@ -49,7 +51,8 @@ getTopWeeklyComments posts = runRedditAnon $ do
 
 commentInfoToMd :: CommentInfo -> T.Text
 commentInfoToMd c =
-  let raw = "## u/" <> user c <> "\n**Votes:** " <>
+  let link = "[🔗](" <> "https://www.reddit.com/r/emacs/comments/" <> parentID c <> "/comment/" <> commentInfoID c <> ")"
+      raw = "## u/" <> user c <> " " <> link <> "\n**Votes:** " <>
         T.pack (show (upvotes c)) <> "\n\n" <> comment c
       (codeNormalised, lastLineCode) = foldl (\ (s, codeLast) l ->
                 let stripped = T.stripPrefix "    " l
