@@ -21,24 +21,27 @@ data CommentInfo = CommentInfo { user :: T.Text
                                , upvotes :: Integer
                                , comment :: T.Text
                                , commentInfoID :: T.Text
-                               , parentID :: T.Text} deriving Show
+                               , parentID :: T.Text} deriving (Eq, Show)
 
 fromComment :: Comment -> CommentInfo
-fromComment c = CommentInfo auth upvotes (body c) id parentPostID
+fromComment c = CommentInfo auth votes (body c) cID parentPostID
                   where
                     Username auth = Reddit.Types.Comment.author c
-                    upvotes = fromMaybe 0 (score c)
-                    CommentID id = commentID c
+                    votes = fromMaybe 0 (score c)
+                    CommentID cID = commentID c
                     PostID parentPostID = parentLink c
 
 commentFilter :: Comment -> Bool
-commentFilter c = any (>= 8) (score c)
+commentFilter c = any (>= 8) (score c) && not (isDeleted c)
 
-getRelevantPosts :: MonadIO m => T.Text -> m (Either (APIError RedditError) [Post])
-getRelevantPosts s = runRedditAnon $ do
-  let options = Options Nothing (Just searchLimit)
-  Listing _ _ posts <- search (Just $ R "emacs") options Top s
-  return posts
+getRelevantPosts :: MonadIO m => T.Text -> Maybe PostID -> m (Either (APIError RedditError) [Post])
+getRelevantPosts s maybePostID = runRedditAnon $ do
+  let options = Options (After <$> maybePostID) (Just searchLimit)
+  Listing _ maybeAfter posts <- search (Just $ R "emacs") options Top s
+  nextPage <- case (maybeAfter, posts) of
+    (maybeAfterID @ (Just _), _:_) -> getRelevantPosts s maybeAfterID
+    _ -> return $ Right []
+  return (posts ++ fromRight [] nextPage)
 
 getTopWeeklyComments :: MonadIO m => [Post] -> m (Either (APIError RedditError) [CommentInfo])
 getTopWeeklyComments posts = runRedditAnon $ do

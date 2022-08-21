@@ -3,8 +3,6 @@
 import Text.RawString.QQ
 import Test.Hspec
 import Lib(CommentInfo(..), commentInfoToMd)
-import Reddit (CommentID(CommentID))
-
 
 main :: IO ()
 main = hspec $ do
@@ -13,10 +11,10 @@ main = hspec $ do
       let commentInfo = CommentInfo "foo" 10 [r|Automatic `chmod +x` when you save a file that starts with a `#!` shebang:
 
     (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-|] (CommentID "abc")
+|] "commentID" "parentID"
 
       commentInfoToMd commentInfo `shouldBe` [r|
-## u/foo
+## u/foo [🔗](https://www.reddit.com/r/emacs/comments/parentID/comment/commentID)
 **Votes:** 10
 
 Automatic `chmod +x` when you save a file that starts with a `#!` shebang:

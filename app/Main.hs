@@ -3,16 +3,14 @@ module Main (main) where
 
 import Data.Either
 import Data.Text.IO (writeFile)
-import Data.List (sortOn)
+import Data.List (sortOn, nub)
 import Prelude hiding (writeFile) 
 import Lib (CommentInfo(..), commentInfoToMd, getTopWeeklyComments, getRelevantPosts)
-import Control.Monad
-import Control.Monad.IO.Class
 
 main :: IO ()
 main = do
-  postsOrErr <- getRelevantPosts "Weekly Tips"
-  let posts = fromRight [] postsOrErr
+  postsOrErr <- getRelevantPosts "Weekly Tips" Nothing
+  let posts = nub $ fromRight [] postsOrErr
   print ("No posts: " <> show (length posts))
   commentsOrErr <- getTopWeeklyComments posts
   let comments = sortOn (negate . upvotes) (fromRight [] commentsOrErr)
