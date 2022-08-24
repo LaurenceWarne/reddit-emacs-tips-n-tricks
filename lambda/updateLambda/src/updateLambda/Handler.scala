@@ -11,9 +11,9 @@ object Handler extends ZLambda[KinesisEvent, String] {
 
   override def apply(event: KinesisEvent, context: Context): Task[String] = {
     for {
-      _      <- printLine(event)
-      result <- Command("git", "status").run
-      _      <- printLine(result)
+      _    <- printLine(event)
+      proc <- Command("git", "status").run
+      _    <- printLine(proc)
     } yield "Handler ran successfully"
   }
 }

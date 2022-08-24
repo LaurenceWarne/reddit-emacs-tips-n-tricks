@@ -15,7 +15,7 @@ object updateLambda extends ScalaModule {
       ivy"dev.zio::zio-process:0.7.1"
     )
 
-  def buildBoostrap =
+  def buildBootstrap =
     T {
       val jar      = assembly()
       val fileName = artifactName() + "-native-image"
@@ -37,6 +37,6 @@ object updateLambda extends ScalaModule {
           |./$fileName""".stripMargin
       )
       val zipPath = T.dest / "reddit-tips-n-tricks.zip"
-      os.proc("zip", zipPath, bootstrapFilePath, outPath).call()
+      os.proc("zip", "-j", zipPath, bootstrapFilePath, outPath).call()
     }
 }
