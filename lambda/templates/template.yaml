@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+# aws cloudformation deploy --stack-name tips-n-tricks-lambda --template-file templates/template.yaml --capabilities CAPABILITY_IAM --parameter-overrides "BaseStackName=base" "CodeKey=tips-n-tricks-lambda.zip"
+Parameters:
+  BaseStackName:
+    Type: String
+    Description: Name of the base stack
+  CodeKey:
+    Type: String
+    Description: Name of the S3 key poiting to the lambda function code
+
+Resources:
+
+  LambdaFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement: 
+          - Effect: Allow
+            Principal: 
+              Service:
+                - 'lambda.amazonaws.com'
+            Action:
+              - 'sts:AssumeRole'
+
+  LambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Layers:
+        # https://github.com/lambci/git-lambda-layer
+        - arn:aws:lambda:us-east-1:553035198032:layer:git-lambda2:8
+      Role: !GetAtt LambdaFunctionRole.Arn
+      Runtime: provided  # Custom runtime
+      Handler: bootstrap
+      Timeout: 60
+      Code:
+        S3Bucket: !ImportValue
+          'Fn::Sub': '${BaseStackName}-MiscBucket'
+        S3Key: !Ref CodeKey
+
+  ScheduledRule: 
+    Type: AWS::Events::Rule
+    Properties: 
+      Description: "ScheduledRule"
+      ScheduleExpression: "rate(7 days)"
+      State: "ENABLED"
+      Targets: 
+        - Arn: !GetAtt LambdaFunction.Arn
+          Id: "TargetFunctionV1"
+
+  PermissionForEventsToInvokeLambda: 
+    Type: AWS::Lambda::Permission
+    Properties: 
+      FunctionName: !Ref LambdaFunction
+      Action: "lambda:InvokeFunction"
+      Principal: "events.amazonaws.com"
+      SourceArn: !GetAtt ScheduledRule.Arn
