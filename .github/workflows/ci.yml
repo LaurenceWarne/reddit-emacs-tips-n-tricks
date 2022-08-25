@@ -24,8 +24,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ${{ steps.build-exec.outputs.bin-path }}/bin/reddit-emacs-tips-n-tricks-exe
-          #files: .stack-work/dist/x86_64-linux/Cabal-${{ cabal-version }}/build/reddit-emacs-tips-n-tricks-exe/reddit-emacs-tips-n-tricks-exe
-            
+          files: ${{ steps.build-exec.outputs.bin-path }}/bin/reddit-emacs-tips-n-tricks-exe 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        

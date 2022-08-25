@@ -39,4 +39,10 @@ object updateLambda extends ScalaModule {
       val zipPath = T.dest / "reddit-tips-n-tricks.zip"
       os.proc("zip", "-j", zipPath, bootstrapFilePath, outPath).call()
     }
+
+  def zipParserExe =
+    T {
+      import scala.sys.process._
+      "mkdir -p /tmp/zip-crap/bin/ && cp $(stack path --local-install-root)/bin/reddit-emacs-tips-n-tricks-exe /tmp/zip-crap/bin/ && (cd /tmp/zip-crap && zip -r reddit-emacs-tips-n-tricks-exe.zip bin/) && cp /tmp/zip-crap/reddit-emacs-tips-n-tricks-exe.zip .".!
+    }
 }

@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-# aws cloudformation deploy --stack-name tips-n-tricks-lambda --template-file templates/template.yaml --capabilities CAPABILITY_IAM --parameter-overrides "BaseStackName=base" "CodeKey=tips-n-tricks-lambda.zip"
+# aws cloudformation deploy --stack-name tips-n-tricks-lambda --template-file templates/template.yaml --capabilities CAPABILITY_IAM --parameter-overrides "BaseStackName=base" "CodeKey=tips-n-tricks-lambda.zip" "LayerKey=tips-n-tricks-exe.zip"
 Parameters:
   BaseStackName:
     Type: String
@@ -7,6 +7,9 @@ Parameters:
   CodeKey:
     Type: String
     Description: Name of the S3 key poiting to the lambda function code
+  LayerKey:
+    Type: String
+    Description: Name of the S3 key poiting to the lambda layer containg the executable
 
 Resources:
 
@@ -22,12 +25,21 @@ Resources:
             Action:
               - 'sts:AssumeRole'
 
+  ExeLambdaLayer:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      Content:
+        S3Bucket: !ImportValue
+          'Fn::Sub': '${BaseStackName}-MiscBucket'
+        S3Key: !Ref LayerKey
+        
   LambdaFunction:
     Type: AWS::Lambda::Function
     Properties:
       Layers:
         # https://github.com/lambci/git-lambda-layer
         - arn:aws:lambda:us-east-1:553035198032:layer:git-lambda2:8
+        - !Ref ExeLambdaLayer
       Role: !GetAtt LambdaFunctionRole.Arn
       Runtime: provided  # Custom runtime
       Handler: bootstrap
