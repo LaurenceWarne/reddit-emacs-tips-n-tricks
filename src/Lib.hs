@@ -23,6 +23,9 @@ data CommentInfo = CommentInfo { user :: T.Text
                                , commentInfoID :: T.Text
                                , parentID :: T.Text} deriving (Eq, Show)
 
+runWithAgent :: MonadIO m => RedditT m a -> m (Either (APIError RedditError) a)
+runWithAgent r = runRedditWith (RedditOptions True Nothing Anonymous (Just "reddit-tips-n-tricks")) r
+
 fromComment :: Comment -> CommentInfo
 fromComment c = CommentInfo auth votes (body c) cID parentPostID
                   where
@@ -35,7 +38,7 @@ commentFilter :: Comment -> Bool
 commentFilter c = any (>= 8) (score c) && not (isDeleted c)
 
 getRelevantPosts :: MonadIO m => T.Text -> Maybe PostID -> m (Either (APIError RedditError) [Post])
-getRelevantPosts s maybePostID = runRedditAnon $ do
+getRelevantPosts s maybePostID = runWithAgent $ do
   let options = Options (After <$> maybePostID) (Just searchLimit)
   Listing _ maybeAfter posts <- search (Just $ R "emacs") options Top s
   nextPage <- case (maybeAfter, posts) of
@@ -44,7 +47,7 @@ getRelevantPosts s maybePostID = runRedditAnon $ do
   return (posts ++ fromRight [] nextPage)
 
 getTopWeeklyComments :: MonadIO m => [Post] -> m (Either (APIError RedditError) [CommentInfo])
-getTopWeeklyComments posts = runRedditAnon $ do
+getTopWeeklyComments posts = runWithAgent $ do
   comments <- traverse (getComments . postID) posts
   let allComments = mapMaybe (\case
                       Actual c -> if commentFilter c then Just $ fromComment c
