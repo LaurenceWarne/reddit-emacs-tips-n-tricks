@@ -43,7 +43,7 @@ Resources:
       Role: !GetAtt LambdaFunctionRole.Arn
       Runtime: provided  # Custom runtime
       Handler: bootstrap
-      Timeout: 60
+      Timeout: 120
       Code:
         S3Bucket: !ImportValue
           'Fn::Sub': '${BaseStackName}-MiscBucket'
