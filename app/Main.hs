@@ -18,5 +18,5 @@ main = do
   print ("No comments: " <> show (length comments))
   let s = foldMap ((<> "\n\n") . commentInfoToMd) comments
   writeFile "out.md" s
-
-  --print $ take 10 comments
+  --let s2 = foldMap ((<> "\n\n") . comment) comments
+  --writeFile "out2.md" s2
