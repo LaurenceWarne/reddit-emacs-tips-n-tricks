@@ -19,16 +19,17 @@ object Handler extends ZLambda[KinesisEvent, String] {
   override def apply(event: KinesisEvent, context: Context): Task[String] = {
     for {
       _        <- printLine(event)
-      _        <- initGitIdentity
       repoPath <- performClone
-
       wrkDir <-
         ZIO.attempt(Paths.get(repoPath.toString, repoName)).map(_.toFile)
+      _ <- initGitIdentity(wrkDir)
+
+      _ <- runCommandInDir(wrkDir, "ls", "-la").flatMap(printStdoutStderr)
       _ <- runCommandInDir(wrkDir, "git", "status").flatMap(printStdoutStderr)
       proc <-
         runCommandInDir(wrkDir, repoName + "-exe").flatMap(printStdoutStderr)
-      token <- ZIO.attempt(sys.env("GH_PAT"))
 
+      token <- ZIO.attempt(sys.env("GH_PAT"))
       msg = "Update from Lambda"
       proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", s"'$msg'")
         .flatMap(printStdoutStderr)
@@ -43,34 +44,35 @@ object Handler extends ZLambda[KinesisEvent, String] {
     } yield "Handler ran successfully"
   }
 
-  val initGitIdentity: Task[Unit] = for {
-    _ <-
-      Command("git", "config", "--global", "user.name", "updateLambda").run
+  def initGitIdentity(path: JFile): Task[Unit] =
+    for {
+      _ <- runCommandInDir(path, "git", "config", "user.name", "updateLambda")
         .flatMap(
           printStdoutStderr
         )
-    _ <-
-      Command(
+      _ <- runCommandInDir(
+        path,
         "git",
         "config",
-        "--global",
         "user.email",
         "updateLambda@users.noreply.github.com"
-      ).run
+      )
         .flatMap(
           printStdoutStderr
         )
-  } yield ()
+    } yield ()
 
   val performClone: Task[JPath] =
     for {
       path <- ZIO.attempt(Paths.get("/tmp"))
-      proc <- runCommandInDir(
+      _ <- runCommandInDir(
         path.toFile,
         "git",
         "clone",
         repoUri
-      )
+      ).flatMap(printStdoutStderr)
+      _ <-
+        runCommandInDir(path.toFile, "git", "pull").flatMap(printStdoutStderr)
     } yield path
 
   def printStdoutStderr(proc: Process): Task[Unit] =

@@ -47,6 +47,7 @@ Resources:
       Runtime: provided  # Custom runtime
       Handler: bootstrap
       Timeout: 120
+      MemorySize: 512
       Environment:
         Variables:
           GH_PAT: !Sub '{{resolve:secretsmanager:${PATSecretsKey}}}'
