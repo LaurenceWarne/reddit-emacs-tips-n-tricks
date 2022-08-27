@@ -2,7 +2,8 @@ package updateLambda
 
 import java.io.{File => JFile}
 import java.nio.file.{Path => JPath, Paths}
-import java.time.Instant
+import java.time.{Instant, ZoneId}
+import java.time.format.DateTimeFormatter
 
 import zio.Console._
 import zio._
@@ -25,6 +26,8 @@ object Handler extends ZLambda[ScheduledEvent, String] {
   val username   = "LaurenceWarne"
   val repoDomain = s"github.com/$username/$repoName"
   val repoUri    = "https://" ++ repoDomain
+  val formatter =
+    DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(ZoneId.of("UTC"))
 
   override def apply(event: ScheduledEvent, context: Context): Task[String] = {
     for {
@@ -41,7 +44,7 @@ object Handler extends ZLambda[ScheduledEvent, String] {
         runCommandInDir(wrkDir, repoName + "-exe").flatMap(printStdoutStderr)
 
       token <- ZIO.attempt(sys.env("GH_PAT"))
-      msg = s"Weekly update from ${event.time}"
+      msg = s"Weekly update from ${formatter.format(event.time)}"
       proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", msg)
         .flatMap(printStdoutStderr)
       _ <- runCommandInDir(
