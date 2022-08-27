@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-# aws cloudformation deploy --stack-name tips-n-tricks-lambda --template-file templates/template.yaml --capabilities CAPABILITY_IAM --parameter-overrides "BaseStackName=base" "CodeKey=tips-n-tricks-lambda.zip" "LayerKey=tips-n-tricks-exe.zip"
+# aws cloudformation deploy --stack-name tips-n-tricks-lambda --template-file templates/template.yaml --capabilities CAPABILITY_IAM --parameter-overrides "BaseStackName=base" "CodeKey=tips-n-tricks-lambda.zip" "LayerKey=tips-n-tricks-exe.zip" "PATSecretsKey=GH_PAT:SecretString:GH_PAT"
 Parameters:
   BaseStackName:
     Type: String
@@ -10,6 +10,9 @@ Parameters:
   LayerKey:
     Type: String
     Description: Name of the S3 key poiting to the lambda layer containg the executable
+  PATSecretsKey:
+    Type: String
+    Description: Name of the secrets key for the GH PAT token
 
 Resources:
 
@@ -44,6 +47,9 @@ Resources:
       Runtime: provided  # Custom runtime
       Handler: bootstrap
       Timeout: 120
+      Environment:
+        Variables:
+          GH_PAT: !Sub '{{resolve:secretsmanager:${PATSecretsKey}}}'
       Code:
         S3Bucket: !ImportValue
           'Fn::Sub': '${BaseStackName}-MiscBucket'
