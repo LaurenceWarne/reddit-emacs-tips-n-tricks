@@ -1,22 +1,32 @@
 package updateLambda
 
-import java.nio.file.{Path => JPath, Paths}
 import java.io.{File => JFile}
+import java.nio.file.{Path => JPath, Paths}
+import java.time.Instant
 
 import zio.Console._
 import zio._
+import zio.json.DeriveJsonDecoder
+import zio.json.JsonDecoder
 import zio.lambda._
-import zio.process._
 import zio.lambda.event._
+import zio.process._
 
-object Handler extends ZLambda[KinesisEvent, String] {
+case class ScheduledEvent(time: Instant)
+
+object ScheduledEvent {
+  implicit val decoder: JsonDecoder[ScheduledEvent] =
+    DeriveJsonDecoder.gen[ScheduledEvent]
+}
+
+object Handler extends ZLambda[ScheduledEvent, String] {
 
   val repoName   = "reddit-emacs-tips-n-tricks"
   val username   = "LaurenceWarne"
   val repoDomain = s"github.com/$username/$repoName"
   val repoUri    = "https://" ++ repoDomain
 
-  override def apply(event: KinesisEvent, context: Context): Task[String] = {
+  override def apply(event: ScheduledEvent, context: Context): Task[String] = {
     for {
       _      <- printLine(event)
       wrkDir <- ZIO.attempt(Paths.get("/tmp", repoName).toFile())
@@ -33,7 +43,7 @@ object Handler extends ZLambda[KinesisEvent, String] {
 
       token <- ZIO.attempt(sys.env("GH_PAT"))
       msg = "Update from Lambda"
-      proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", s"'$msg'")
+      proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", s"$msg")
         .flatMap(printStdoutStderr)
       _ <- runCommandInDir(
         wrkDir,
@@ -48,7 +58,7 @@ object Handler extends ZLambda[KinesisEvent, String] {
 
   def initGitIdentity(path: JFile): Task[Unit] =
     for {
-      _ <- runCommandInDir(path, "git", "config", "user.name", "updateLambda")
+      _ <- runCommandInDir(path, "git", "config", "user.name", "weeklyupdate")
         .flatMap(
           printStdoutStderr
         )
@@ -57,7 +67,7 @@ object Handler extends ZLambda[KinesisEvent, String] {
         "git",
         "config",
         "user.email",
-        "updateLambda@users.noreply.github.com"
+        "weeklyupdate@users.noreply.github.com"
       )
         .flatMap(
           printStdoutStderr
