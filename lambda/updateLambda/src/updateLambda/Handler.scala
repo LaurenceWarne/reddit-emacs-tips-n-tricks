@@ -18,14 +18,16 @@ object Handler extends ZLambda[KinesisEvent, String] {
 
   override def apply(event: KinesisEvent, context: Context): Task[String] = {
     for {
-      _        <- printLine(event)
-      repoPath <- performClone
-      wrkDir <-
-        ZIO.attempt(Paths.get(repoPath.toString, repoName)).map(_.toFile)
-      _ <- initGitIdentity(wrkDir)
+      _      <- printLine(event)
+      wrkDir <- ZIO.attempt(Paths.get("/tmp", repoName).toFile())
+      _ <- ZIO.unlessZIO(ZIO.attempt(wrkDir.exists())) {
+        for {
+          cloneDir <- ZIO.attempt(wrkDir.getParentFile())
+          repoPath <- performClone(cloneDir)
+          _        <- initGitIdentity(wrkDir)
+        } yield ()
+      }
 
-      _ <- runCommandInDir(wrkDir, "ls", "-la").flatMap(printStdoutStderr)
-      _ <- runCommandInDir(wrkDir, "git", "status").flatMap(printStdoutStderr)
       proc <-
         runCommandInDir(wrkDir, repoName + "-exe").flatMap(printStdoutStderr)
 
@@ -62,18 +64,16 @@ object Handler extends ZLambda[KinesisEvent, String] {
         )
     } yield ()
 
-  val performClone: Task[JPath] =
+  def performClone(path: JFile): Task[Unit] =
     for {
-      path <- ZIO.attempt(Paths.get("/tmp"))
       _ <- runCommandInDir(
-        path.toFile,
+        path,
         "git",
         "clone",
         repoUri
       ).flatMap(printStdoutStderr)
-      _ <-
-        runCommandInDir(path.toFile, "git", "pull").flatMap(printStdoutStderr)
-    } yield path
+      _ <- runCommandInDir(path, "git", "pull").flatMap(printStdoutStderr)
+    } yield ()
 
   def printStdoutStderr(proc: Process): Task[Unit] =
     proc.stdout.string.flatMap(s => printLine("standard output: " + s)) *>
