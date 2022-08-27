@@ -28,7 +28,6 @@ object Handler extends ZLambda[ScheduledEvent, String] {
 
   override def apply(event: ScheduledEvent, context: Context): Task[String] = {
     for {
-      _      <- printLine(event)
       wrkDir <- ZIO.attempt(Paths.get("/tmp", repoName).toFile())
       _ <- ZIO.unlessZIO(ZIO.attempt(wrkDir.exists())) {
         for {
@@ -42,8 +41,8 @@ object Handler extends ZLambda[ScheduledEvent, String] {
         runCommandInDir(wrkDir, repoName + "-exe").flatMap(printStdoutStderr)
 
       token <- ZIO.attempt(sys.env("GH_PAT"))
-      msg = "Update from Lambda"
-      proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", s"$msg")
+      msg = s"Weekly update from ${event.time}"
+      proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", msg)
         .flatMap(printStdoutStderr)
       _ <- runCommandInDir(
         wrkDir,
