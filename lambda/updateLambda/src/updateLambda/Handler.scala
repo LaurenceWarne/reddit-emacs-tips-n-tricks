@@ -5,6 +5,8 @@ import java.nio.file.{Path => JPath, Paths}
 import java.time.{Instant, ZoneId}
 import java.time.format.DateTimeFormatter
 
+import scala.util.matching.Regex
+
 import zio.Console._
 import zio._
 import zio.json.DeriveJsonDecoder
@@ -28,6 +30,7 @@ object Handler extends ZLambda[ScheduledEvent, String] {
   val repoUri    = "https://" ++ repoDomain
   val formatter =
     DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(ZoneId.of("UTC"))
+  val numberPattern: Regex = """^.*?(\d+).*\n.*?(\d+)[\s\S]*$""".r
 
   override def apply(event: ScheduledEvent, context: Context): Task[String] = {
     for {
@@ -40,20 +43,28 @@ object Handler extends ZLambda[ScheduledEvent, String] {
         } yield ()
       }
 
-      proc <-
-        runCommandInDir(wrkDir, repoName + "-exe").flatMap(printStdoutStderr)
+      procStdout <-
+        runCommandInDir(wrkDir, repoName + "-exe").flatMap(_.stdout.string)
 
-      token <- ZIO.attempt(sys.env("GH_PAT"))
-      msg = s"Weekly update from ${formatter.format(event.time)}"
-      proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", msg)
-        .flatMap(printStdoutStderr)
-      _ <- runCommandInDir(
-        wrkDir,
-        "git",
-        "push",
-        s"https://$username:$token@$repoDomain",
-        "HEAD:master"
-      ).flatMap(printStdoutStderr)
+      _ <- procStdout match {
+        case numberPattern(posts, comments)
+            if posts.toIntOption.exists(_ > 200) =>
+          for {
+            token <- ZIO.attempt(sys.env("GH_PAT"))
+            msg = s"Weekly update from ${formatter.format(event.time)}"
+            proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", msg)
+              .flatMap(printStdoutStderr)
+            _ <- runCommandInDir(
+              wrkDir,
+              "git",
+              "push",
+              s"https://$username:$token@$repoDomain",
+              "HEAD:master"
+            ).flatMap(printStdoutStderr)
+          } yield ()
+        case _ =>
+          printLine(s"Not enough comments found, proc stdout: '$procStdout'")
+      }
 
     } yield "Handler ran successfully"
   }
