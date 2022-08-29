@@ -1,22 +1,22 @@
 
-## u/gausby [🔗](https://www.reddit.com/r/emacs/comments/e5dzv6/comment/f9jp341)
-**Votes:** 36
-
-Shouldn't it be `/etc/tips/trick` ?
-
-(…I'll show myself out)
-
-
 ## u/TheDrownedKraken [🔗](https://www.reddit.com/r/emacs/comments/o68i0v/comment/h2rdkkz)
-**Votes:** 35
+**Votes:** 36
 
 Do you think it might be good to make this a little less frequently refreshed? There are usually some great tips that get lost to Reddit’s ephemerality pretty quickly.
 
 I think monthly would be better, given the modest size of this subreddit.
 
 
+## u/gausby [🔗](https://www.reddit.com/r/emacs/comments/e5dzv6/comment/f9jp341)
+**Votes:** 34
+
+Shouldn't it be `/etc/tips/trick` ?
+
+(…I'll show myself out)
+
+
 ## u/jalihal [🔗](https://www.reddit.com/r/emacs/comments/d8k4ce/comment/f1b3a2f)
-**Votes:** 35
+**Votes:** 34
 
 I just discovered calc mode. Oh my ...
 It does symbolic differentiation, solves linear equations, plots with gnuplot, and does matrix operations, all with a few key strokes!! How is this amazing tool not as popular as org mode or Magit?? I am so excited to explore it more, especially for the "display" options. I can see it taking my latex experience to the next level. 
@@ -24,7 +24,7 @@ Any tips on using calc mode?
 
 
 ## u/celeritasCelery [🔗](https://www.reddit.com/r/emacs/comments/gienra/comment/fqe6yop)
-**Votes:** 32
+**Votes:** 33
 
 > I had received the advice to not install anything and just start with plain emacs so I can learn emacs. ... it was miserable. 
 > Enter Doom Emacs. I decided to give Doom Emacs a try because it was also highly recommended in my initial RFC, especially since it is designed for Vim users. In short I love it.
@@ -33,7 +33,7 @@ This is why I disagree with the subreddits de facto advice to “learn vanilla f
 
 
 ## u/unbelievable_sc2 [🔗](https://www.reddit.com/r/emacs/comments/dyhkcd/comment/f81dslh)
-**Votes:** 28
+**Votes:** 29
 
 I often use the compile feature to compile and run my projects to see the results in the compilation buffer. This works well unless you are waiting for user input in your terminal. I recently found out that you can invoke the compile with an additional non nil value to start compilation in comint-mode which allows for user input! 
 The drawback is, that you then no longer can press q to close the window or g to recompile. Because of that I added a simple lambda, that switches to compilation-mode to the compilation-finish-functions. So I can give input while compiling and running, and after compilation I can close the window as usual with q.
@@ -66,7 +66,7 @@ Have fun!
 
 
 ## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeu5gyb)
-**Votes:** 23
+**Votes:** 22
 
 Ever had to fix your broken config in a bare bones Emacs? I adopted this from [abo-abo](https://github.com/abo-abo) and bound it to `C-x C-c`:
 
@@ -100,97 +100,8 @@ Ever had to fix your broken config in a bare bones Emacs? I adopted this from [a
 This makes sure I never exit when the config is broken, so I can fix it with my full featured Emacs setup. First `C-x C-c` will show if everything is right, second `C-x C-c` will exit.
 
 
-## u/meekale [🔗](https://www.reddit.com/r/emacs/comments/auwzjr/comment/ehdnzzd)
-**Votes:** 21
-
-Automatic `chmod +x` when you save a file that starts with a `#!` shebang:
-
-```elisp
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-```
-
-
-## u/Gangsir [🔗](https://www.reddit.com/r/emacs/comments/pxqvtm/comment/hepqmq1)
-**Votes:** 21
-
-back-to-indentation. Before I found this function I would always do some awkward triple key combo like C-a M-f M-b.
-
-It's just bound to M-m. Jumps you right to the first non-white space character on the line. What's even spicier is that it works in reverse too - if you're at the front of the line it jumps you forward, if you're at the end or middle it jumps backward.
-
-It still works even on lines that aren't indented, same as C-a in that case.
-
-So useful, especially for resetting point during macros that need to start at the first char on the line.
-
-
-## u/fogbugz [🔗](https://www.reddit.com/r/emacs/comments/9ajxqj/comment/e4w71hl)
-**Votes:** 20
-
-I do something similar. But for me a big epiphany was to realize all my organization files and all my wiki files should live in the same directory to allow for simple hyperlinks across them and a beautiful flat structure.
-
-The only difference is that I don't version control some of my organization files. E.g. my tasks. But that's a .gitignore detail.
-
-I prefer all my tasks to live inside a single org file, instead of letting my agenda view harvest them from multiple files. I keep a separate calendar file with fixed events and holidays.
-
-A second epiphany was to realize the best way to manage my tasks is not the much hyped GTD, but a JIT approach: a kanban board. I've set up my agenda view to mimic a kanban. GTD has some nice ideas: keeping a few or ideally one inbox and differentiating between tasks, tasks with deadlines, tasks with scheduled times and events.
-
-But it does have a big flaw, for my personal lifestyle and for many creative people. It doesn't control flow. It leads to creating way too many tasks, no prioritization, and task lists become outdated frequently. This requires a lot of wasteful updating.
-
-In my case, I split my life into a few key areas, and I limit the number of ongoing tasks for each area. I've also gotten rid of GTD contexts. I'm content with states: TODO, PROG (progress), WAIT (blocked) and DONE.
-
-Lastly, I do really believe organization systems are only half-baked if they don't integrate into a knowledge system. Why? Because some tasks are not actionable. They are just knowledge bits you want to store and reuse in the future. Here they explain it better than I do: https://praxis.fortelabs.co/gtd-x-pkm-8ff720ef6939/
-
-I believe in keeping stuff simple. And learning from Japanese production systems, which got lots of things right and which we seem to be reinventing in bad ways. 
-
-
-## u/thehaas [🔗](https://www.reddit.com/r/emacs/comments/e5dzv6/comment/f9k6yyf)
-**Votes:** 20
-
-After using Emacs for maybe 10 years I finally started using registers and I really should have started earlier. For those who don't know:
-
-&#x200B;
-
-* Highlight text and C-x r s <char> to save to register <char>
-* C-x r i <char> to put the contents of the register at the cursor point. The text is still there -- use it over and over again
-
-It seems like quite a few keystrokes but it's really not. Of course you can re-assign them to other keys if you don't like the defaults.
-
-
-## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/aoqcyl/comment/eg35bxe)
-**Votes:** 19
-
-This week someone asked to show commit messages along the file listing in dired, similar to the repo view on github. I hacked together a snippet which does this, if there is interest I will improve it further and make a package for it. Here is the [gist](https://gist.github.com/clemera/9c27bc8a003ef404182bf8d0f7bc00a0). After evaluating press ")" in a dired buffer of a git project to show the commit messages.
-
-
-## u/sugarbridalsentry [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eogn0xc)
-**Votes:** 19
-
-I'm sure this was widely known, but wow-- 
-
-So, I started seeing a "Vacuous Schema" message when loading a specific Org file, and couldn't figure out why. The message didn't give me much to go on, and the file is kind of huge, so going through possible solutions one at a time was slow and miserable.
-
-I wished I could debug the message -- or turn on some sort of verbose mode or something. And that's when I discovered the `debug-on-message` variable. 
-
-This variable lets you debug what happens to cause any message, using a regex to find the right message. 
-
-So, in my simple case I just eval'd:
-
-```elisp
-(setq debug-on-message "vacuous schema")
-
-```
-And re-opened the file, and lo-and-behold, it told me exactly what I needed to know to fix the screwed up source block. 
-
-It's just... awesome to be able to answer the age-old, "Huh, I wonder why it said that...?" situation so easily.
-
-
-## u/surelynotmymainacc [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efte8t7)
-**Votes:** 18
-
-Not much of as trick, but something helped me as a newbie, which must be very obvious to many. When you want to see how to correctly configure a package or use a function in elisp, and when documentation is not helping you, go to GitHub and search like "use-package package-name", switch over to the code tab and change language to Emacs lisp. This will give you hundreds of examples.
-
-
 ## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/eqrf693)
-**Votes:** 18
+**Votes:** 21
 
 Make C-j in Lisp Interaction mode produces this:
 
@@ -211,6 +122,111 @@ code:
       (forward-line 1)
       (insert ";; => "))))
 ```
+
+
+## u/meekale [🔗](https://www.reddit.com/r/emacs/comments/auwzjr/comment/ehdnzzd)
+**Votes:** 21
+
+Automatic `chmod +x` when you save a file that starts with a `#!` shebang:
+
+```elisp
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+```
+
+
+## u/thehaas [🔗](https://www.reddit.com/r/emacs/comments/e5dzv6/comment/f9k6yyf)
+**Votes:** 20
+
+After using Emacs for maybe 10 years I finally started using registers and I really should have started earlier. For those who don't know:
+
+&#x200B;
+
+* Highlight text and C-x r s <char> to save to register <char>
+* C-x r i <char> to put the contents of the register at the cursor point. The text is still there -- use it over and over again
+
+It seems like quite a few keystrokes but it's really not. Of course you can re-assign them to other keys if you don't like the defaults.
+
+
+## u/sugarbridalsentry [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eogn0xc)
+**Votes:** 20
+
+I'm sure this was widely known, but wow-- 
+
+So, I started seeing a "Vacuous Schema" message when loading a specific Org file, and couldn't figure out why. The message didn't give me much to go on, and the file is kind of huge, so going through possible solutions one at a time was slow and miserable.
+
+I wished I could debug the message -- or turn on some sort of verbose mode or something. And that's when I discovered the `debug-on-message` variable. 
+
+This variable lets you debug what happens to cause any message, using a regex to find the right message. 
+
+So, in my simple case I just eval'd:
+
+```elisp
+(setq debug-on-message "vacuous schema")
+
+```
+And re-opened the file, and lo-and-behold, it told me exactly what I needed to know to fix the screwed up source block. 
+
+It's just... awesome to be able to answer the age-old, "Huh, I wonder why it said that...?" situation so easily.
+
+
+## u/Gangsir [🔗](https://www.reddit.com/r/emacs/comments/pxqvtm/comment/hepqmq1)
+**Votes:** 20
+
+back-to-indentation. Before I found this function I would always do some awkward triple key combo like C-a M-f M-b.
+
+It's just bound to M-m. Jumps you right to the first non-white space character on the line. What's even spicier is that it works in reverse too - if you're at the front of the line it jumps you forward, if you're at the end or middle it jumps backward.
+
+It still works even on lines that aren't indented, same as C-a in that case.
+
+So useful, especially for resetting point during macros that need to start at the first char on the line.
+
+
+## u/fogbugz [🔗](https://www.reddit.com/r/emacs/comments/9ajxqj/comment/e4w71hl)
+**Votes:** 19
+
+I do something similar. But for me a big epiphany was to realize all my organization files and all my wiki files should live in the same directory to allow for simple hyperlinks across them and a beautiful flat structure.
+
+The only difference is that I don't version control some of my organization files. E.g. my tasks. But that's a .gitignore detail.
+
+I prefer all my tasks to live inside a single org file, instead of letting my agenda view harvest them from multiple files. I keep a separate calendar file with fixed events and holidays.
+
+A second epiphany was to realize the best way to manage my tasks is not the much hyped GTD, but a JIT approach: a kanban board. I've set up my agenda view to mimic a kanban. GTD has some nice ideas: keeping a few or ideally one inbox and differentiating between tasks, tasks with deadlines, tasks with scheduled times and events.
+
+But it does have a big flaw, for my personal lifestyle and for many creative people. It doesn't control flow. It leads to creating way too many tasks, no prioritization, and task lists become outdated frequently. This requires a lot of wasteful updating.
+
+In my case, I split my life into a few key areas, and I limit the number of ongoing tasks for each area. I've also gotten rid of GTD contexts. I'm content with states: TODO, PROG (progress), WAIT (blocked) and DONE.
+
+Lastly, I do really believe organization systems are only half-baked if they don't integrate into a knowledge system. Why? Because some tasks are not actionable. They are just knowledge bits you want to store and reuse in the future. Here they explain it better than I do: https://praxis.fortelabs.co/gtd-x-pkm-8ff720ef6939/
+
+I believe in keeping stuff simple. And learning from Japanese production systems, which got lots of things right and which we seem to be reinventing in bad ways. 
+
+
+## u/SamTheComputerSlayer [🔗](https://www.reddit.com/r/emacs/comments/sijcap/comment/hvbbnjq)
+**Votes:** 19
+
+Just figured this out, maybe a bit of a hack...
+
+In flyspell, I was annoyed I had to use mouse-2 when I wanted to correct a word, and I didn't want to sacrifice a major-mode keybinding to do it from the keyboard. But flyspell actually creates an overlay for misspelled words and attaches a keymap to it, which you can do I just realized- very cool. So I just bound `flyspell-correct-at-point` to "<return>" in the `flyspell-mouse-map`, and now return corrects words when my cursor is on a misspelled word!
+
+But the fact you can attach keymaps to overlays just seems so useful, will definitely use in the future.
+
+
+## u/surelynotmymainacc [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efte8t7)
+**Votes:** 18
+
+Not much of as trick, but something helped me as a newbie, which must be very obvious to many. When you want to see how to correctly configure a package or use a function in elisp, and when documentation is not helping you, go to GitHub and search like "use-package package-name", switch over to the code tab and change language to Emacs lisp. This will give you hundreds of examples.
+
+
+## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/aoqcyl/comment/eg35bxe)
+**Votes:** 18
+
+This week someone asked to show commit messages along the file listing in dired, similar to the repo view on github. I hacked together a snippet which does this, if there is interest I will improve it further and make a package for it. Here is the [gist](https://gist.github.com/clemera/9c27bc8a003ef404182bf8d0f7bc00a0). After evaluating press ")" in a dired buffer of a git project to show the commit messages.
+
+
+## u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/p6mwx2/comment/h9e6uqq)
+**Votes:** 18
+
+Here's a popular Emacs config I just rediscovered.  Some cool stuff here.  https://github.com/angrybacon/dotemacs
 
 
 ## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/cdu7cd/comment/eu29pqs)
@@ -246,12 +262,6 @@ OK, now for the good stuff: all of that functionality can be achieved using just
 The example given above becomes `C-1 <f3> Hello, # <f3> ! RET C-5 <f4>`, much smoother!
 
 
-## u/tryptych [🔗](https://www.reddit.com/r/emacs/comments/v2by7z/comment/iauyzbl)
-**Votes:** 18
-
-It's not worth a separate post, but after spending some pleasant yak-shaving time optimising my startup using use-package, I wrote a [post about it](https://blog.markhepburn.com/posts/understanding-use-package-optimisations/).  There's a few posts around suggesting features of `use-package` to optimise startup, but none of them really explained how they tied back to `autoload`, `eval-after-load`, etc so I was trying to encourage people to dig out `macroexpand` and find out.
-
-
 ## u/TeMPOraL_PL [🔗](https://www.reddit.com/r/emacs/comments/txh85s/comment/i3ov7vq)
 **Votes:** 18
 
@@ -283,52 +293,8 @@ After this, the `my-datetime` group will show as an option in `M-x shortdoc-disp
 The example used here is a cheatsheet I just started writing for myself, as I've been researching the built-in time functions. For additional instructions on use, see `define-short-documentation-group` macro. For use examples, jump to the source of `define-short-documentation-group` and scroll down a bit - the default shortdoc groups are defined there.
 
 
-## u/SamTheComputerSlayer [🔗](https://www.reddit.com/r/emacs/comments/sijcap/comment/hvbbnjq)
-**Votes:** 18
-
-Just figured this out, maybe a bit of a hack...
-
-In flyspell, I was annoyed I had to use mouse-2 when I wanted to correct a word, and I didn't want to sacrifice a major-mode keybinding to do it from the keyboard. But flyspell actually creates an overlay for misspelled words and attaches a keymap to it, which you can do I just realized- very cool. So I just bound `flyspell-correct-at-point` to "<return>" in the `flyspell-mouse-map`, and now return corrects words when my cursor is on a misspelled word!
-
-But the fact you can attach keymaps to overlays just seems so useful, will definitely use in the future.
-
-
-## u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/p6mwx2/comment/h9e6uqq)
-**Votes:** 17
-
-Here's a popular Emacs config I just rediscovered.  Some cool stuff here.  https://github.com/angrybacon/dotemacs
-
-
-## u/Ramin_HAL9001 [🔗](https://www.reddit.com/r/emacs/comments/cw1eky/comment/ey8i3z6)
-**Votes:** 17
-
-Here's a really old trick that I only just now started using: save window layouts to registers with `C-x r w <Letter>`, which saves it into a `Letter` key register. Switch between window layouts using the usual "register jump" `C-x r j`, that is `C-x r j <Letter>` to go back to the layout in that lettered register.
-
-If you use registers for storing text or other things, be careful to use a different set of letters for text and a different set for window layouts. Personally I never use registers for storing text (`M-y` to rotate through the kill-ring is all I need). But I have been using the window layout one quite often lately.
-
-It feels a little like having the multiple desktops feature common to many Linux desktop environments, but I can use it to switch between different projects I am working on within Emacs without needing multiple instances of Emacs.
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/vnals8/comment/ie7p6ja)
-**Votes:** 17
-
-I recently discovered `thing-at-point-looking-at`, which seems much easier to use on its own than to fully define a new kind of "thing."
-
-For a while I've been wanting to conveniently identify a Jira ticket identifier at point so I can browse to it.  Ticket IDs are basically a sequence of letters, a hyphen, and a sequence of digits.  First I tried using `symbol-at-point`, but that can include extraneous neighboring characters, like `/` when the ticket ID is part of a URL.  Eventually, while poring over the `thingatpt` source, I found `thing-at-point-looking-at`, which quickly led to:
-
-```elisp
-(defun browse-ticket-at-point ()
-  (interactive)
-  (if (thing-at-point-looking-at (rx (+ alpha) "-" (+ digit)))
-      (browse-url (format "https://jirahost/browse/%s" (match-string 0)))
-    (error "No ticket at point")))
-
-```
-Easy peasy!
-
-
 ## u/dakra [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeu2f6c)
-**Votes:** 16
+**Votes:** 17
 
 Sometimes I want to get info about my IP address (e.g. if VPN is
 connected or not) or some other IP.
@@ -362,7 +328,7 @@ packaged.
 
 
 ## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/o68i0v/comment/h2rizey)
-**Votes:** 16
+**Votes:** 17
 
 I have two org mode link tips:
 
@@ -410,23 +376,50 @@ I have two org mode link tips:
 
 
 ## u/TheDrownedKraken [🔗](https://www.reddit.com/r/emacs/comments/jn6m14/comment/gazzdyz)
-**Votes:** 16
+**Votes:** 17
 
 It would be good to archive the questions and tips put in here. I feel like I always find cool stuff in here, but then it becomes very hard to find it later.
 
 
-## u/Quasimoto3000 [🔗](https://www.reddit.com/r/emacs/comments/24l8f2/comment/ch88vym)
+## u/tryptych [🔗](https://www.reddit.com/r/emacs/comments/v2by7z/comment/iauyzbl)
+**Votes:** 17
+
+It's not worth a separate post, but after spending some pleasant yak-shaving time optimising my startup using use-package, I wrote a [post about it](https://blog.markhepburn.com/posts/understanding-use-package-optimisations/).  There's a few posts around suggesting features of `use-package` to optimise startup, but none of them really explained how they tied back to `autoload`, `eval-after-load`, etc so I was trying to encourage people to dig out `macroexpand` and find out.
+
+
+## u/ketoengineer89 [🔗](https://www.reddit.com/r/emacs/comments/hqxm5v/comment/fy1rq34)
 **Votes:** 16
 
-Dude look into Elpy. It's incredibly simple to set up and very powerful.
+Migrated to native compiled emacs branch this week. Some hiccups but everything seems to work out of box, including pdf-tools. Great performance improvement.
 
-I couldn't recommend it more.
 
-Edit: here's all the info you need.
+## u/laralex [🔗](https://www.reddit.com/r/emacs/comments/domrl6/comment/f5pgfu3)
+**Votes:** 16
 
-https://github.com/jorgenschaefer/elpy/wiki/Installation
+A small basic thing, but once I'd discovered it, I started using dired.
+```C-x C-j``` is most likely bound to ```dired-jump```, and this function opens dired for this window's file, without promting for directory (and this prompt was an issue for my workflow when using ```C-x d```). That makes finding and switching files just as convenient as in OS GUI. I've also bound a few keys when in dired mode (I find them decent):
 
-Let me know if you have any questions.
+```a``` - prompt a name and create empty file
+
+```d``` - prompt a name and create empty dir
+
+```u``` - go to parent dir (the key is a mnemonic to "go Up in directory tree)
+
+```j``` - if it's a dir go into it, otherwise find this file (key is near to 'u' so jumping up and down is not a big deal with one hand, also the 'j' is the easiest key for me as a touchtyper) 
+
+```n```/```p``` - move one entry down/up, which resembles ```C-n```/```C-p```
+
+
+## u/marcowahl [🔗](https://www.reddit.com/r/emacs/comments/c1zl0s/comment/ergqu5u)
+**Votes:** 16
+
+ `C-x s d` leads to a diff of the buffer with its file.
+
+
+## u/mogigoma [🔗](https://www.reddit.com/r/emacs/comments/8jaflq/comment/dyybwt5)
+**Votes:** 16
+
+Every time I see this package I think to myself "People exit Emacs?"
 
 
 ## u/c17g [🔗](https://www.reddit.com/r/emacs/comments/blo25q/comment/emskiq0)
@@ -435,8 +428,132 @@ Let me know if you have any questions.
 To avoid accidentally inserting text in invisible area (`...`) in Org files, set `org-catch-invisible-edits` to `error` or `show-and-error`. See docs.
 
 
-## u/cfraizer [🔗](https://www.reddit.com/r/emacs/comments/cmnumy/comment/ew3mpek)
+## u/AffectionateAd8985 [🔗](https://www.reddit.com/r/emacs/comments/sd10q9/comment/hu9xfed)
 **Votes:** 16
+
+`(add-hook 'org-mode-hook (lambda () (org-next-visible-heading 1)))`
+
+Move to first heading when open org files, with `org-use-speed-commands`, I can quick browse org file with only `n/p` keys.
+
+
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/vnals8/comment/ie7p6ja)
+**Votes:** 16
+
+I recently discovered `thing-at-point-looking-at`, which seems much easier to use on its own than to fully define a new kind of "thing."
+
+For a while I've been wanting to conveniently identify a Jira ticket identifier at point so I can browse to it.  Ticket IDs are basically a sequence of letters, a hyphen, and a sequence of digits.  First I tried using `symbol-at-point`, but that can include extraneous neighboring characters, like `/` when the ticket ID is part of a URL.  Eventually, while poring over the `thingatpt` source, I found `thing-at-point-looking-at`, which quickly led to:
+
+```elisp
+(defun browse-ticket-at-point ()
+  (interactive)
+  (if (thing-at-point-looking-at (rx (+ alpha) "-" (+ digit)))
+      (browse-url (format "https://jirahost/browse/%s" (match-string 0)))
+    (error "No ticket at point")))
+
+```
+Easy peasy!
+
+
+## u/gopar [🔗](https://www.reddit.com/r/emacs/comments/k4gv0x/comment/ge9det9)
+**Votes:** 16
+
+A very simple thing I've done is remap ";" (semicolon) to to "\_" (underscore) in almost all modes. Since I work with mainly Python, this is so much easier than always doing SHIFT-DASH every couple of keystrokes. And if I want a regular semicolon, I just do "C-u ;" and insert a semicolon
+
+I also set this in modes such as C/C++, etc. This works by automatically setting the last character (if it was an underscore) to a semicolon on enter. 
+
+eg. "|" is cursor
+
+int a = 10\*10\_|
+
+turns into
+
+int a = 10\*10;
+
+| (cursor on new line)
+
+&#x200B;
+
+Pretty simple time saver \\o/
+
+
+## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/er6dqx0)
+**Votes:** 15
+
+`C-l` `(recenter-top-bottom)` is a known command that "recenters" the window around point by scrolling to the top, center, bottom.
+
+But there's a no so well-known version, `C-M-l` `(reposition-window)`, that intelligently scrolls the buffer so that the function under point is fully visible, etc. It's very useful for programming languages modes.
+
+
+## u/Thaodan [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/eqs7osm)
+**Votes:** 15
+
+[Which-Key](https://github.com/justbur/emacs-which-key)
+Great to learn keybinds, especially for new emacs users:
+
+```elisp
+(use-package which-key
+  :config (which-key-mode 1))
+```
+
+
+## u/grabyourmotherskeys [🔗](https://www.reddit.com/r/emacs/comments/2wh9o0/comment/coqx6vl)
+**Votes:** 15
+
+I really love org mode. The way to use org mode in my opinion is to set up capture templates directing notes and tasks quickly to the right files (whichever you like).
+
+http://orgmode.org/manual/Capture-templates.html
+
+You can then use the agenda to view, sort, filter, and search your notes and tasks. 
+
+http://orgmode.org/manual/Agenda-commands.html
+
+Once you get used to adding things quickly and finding them quickly it all falls into place. You can even export your notes in various formats including ICS (calendar) files so you can view your appointments on your phone.
+
+One major advantage Evernote has is of course a Mobile app. I get around this by renting a very cheap vps and ssh'ing to it to use emacs (from my phone, my Chromebook, or workstation). I use the vps for other things, too.
+
+The other is the images. I really don't know how to handle that. Org mode has ways to link to files and other things but I haven't tried displaying them or otherwise wiring working with images.
+
+This works for me and I love using emacs for this purpose. I have tried a million other methods and this seems to work for me.
+
+Here is a great tutorial: http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
+
+
+## u/natarey [🔗](https://www.reddit.com/r/emacs/comments/m634qw/comment/gricy1m)
+**Votes:** 15
+
+For ages, I've had a custom function in my init that will add numbers to the front of a list -- transforming this:
+
+```elisp
+line 1
+line 2
+line 3
+
+```
+Into:
+
+```elisp
+1. line 1
+2. line 2
+3. line 3
+
+```
+But I just discovered this functionality is *built in*!
+
+To just add numbers, select a region and call `rectangle-number-lines` with `C-x r N`. 
+
+To customize things like what number to start at, or the format of the numbers (to add periods or parens after the numbers, for example) call it with the universal argument and it'll go through the options with you.
+
+Truly, the batteries are included with Emacs.
+
+
+## u/swhalemwo [🔗](https://www.reddit.com/r/emacs/comments/d8k4ce/comment/f1b7c7u)
+**Votes:** 15
+
+finally found an opportunity to use git-timemachine: I was optimizing a Python function when I realized I needed to be sure it returned the same results as before. jumped to previous commit, C-c C-y f and voila. made me feel like a code wizard.
+
+
+## u/cfraizer [🔗](https://www.reddit.com/r/emacs/comments/cmnumy/comment/ew3mpek)
+**Votes:** 15
 
 I learned something great today, thanks to [emacs.stackexchange.com](https://emacs.stackexchange.com) user `jue`.
 
@@ -502,126 +619,6 @@ It automatically opens up lines for the yanked rectangle.
 [Maybe the rest of the Emacs-using world already knew this, but it has bugged me—very slightly and very occasionally—for 20+ Emacs-using years.]
 
 
-## u/AffectionateAd8985 [🔗](https://www.reddit.com/r/emacs/comments/sd10q9/comment/hu9xfed)
-**Votes:** 16
-
-`(add-hook 'org-mode-hook (lambda () (org-next-visible-heading 1)))`
-
-Move to first heading when open org files, with `org-use-speed-commands`, I can quick browse org file with only `n/p` keys.
-
-
-## u/freesteph [🔗](https://www.reddit.com/r/emacs/comments/eoigxl/comment/fed40nx)
-**Votes:** 16
-
-If you needed more reasons to love Magit I've just found out can add the Git meta-fields in the commit message (`Co-authored-by`, `Signed-off-by`, etc, which I can never remember correctly) by typing `C-c TAB` which will interactively ask you for the field (`C-a` -> `Co-authored-by`) and then also interactively fill the relevant team member with their name and e-mail (probably from the repo's list of committers). Awesome!
-
-
-## u/TeMPOraL_PL [🔗](https://www.reddit.com/r/emacs/comments/rbmfwk/comment/hnx4z28)
-**Votes:** 16
-
-If you're like me, and your day ends way past midnight, handling those last few tasks in your Org Mode agenda gets tricky. Fortunately, it turns out Org Mode has what I call "25th hour mode".
-
-```elisp
-;; consider the current day to end at 3AM
-(setq org-extend-today-until 3) 
-
-;; make timestamp processing functions aware of this
-(setq org-use-effective-time t) 
-
-```
-Combined, this allows to extend the day past midnight, with things like agenda views, scheduling commands, repeaters, etc. thinking the current time is 23:59 up until the `org-extend-today-until` limit. With this enabled, if I have a task that has a repeater of  and complete it at 01:00, I no longer have to then manually reschedule the task back one day.
-
-
-## u/rucci99 [🔗](https://www.reddit.com/r/emacs/comments/r69w7i/comment/hmryv5o)
-**Votes:** 16
-
-I just found out that Magit can backup changes of uncommitted files automatically. Here's the link to online manual:
-[Magit Wip Modes](https://magit.vc/manual/magit/Wip-Modes.html#Wip-Modes).
-
-
-## u/globalcandyamnesia [🔗](https://www.reddit.com/r/emacs/comments/ooldn6/comment/h67qge6)
-**Votes:** 16
-
-I'm trying to feminize my voice and org mode has been invaluable.
-
-```elisp
-(org-babel-do-load-languages 'org-babel-load-lanuages
-  '((shell . t)))
-
-(setq org-capture-templates
-  `(("v" "Voice" entry
-    (file+olp+datetree ,(concat my-org-directory "voice/training.org"))
-    ,(concat
-      "* Record \n"
-      "\n"
-      "  #+begin_src sh\n"
-      "    rec %(format-time-string \"%Y-%m-%d-%H.%M.%S\").aiff\n"
-      "  #+end\_src\n"
-      "\n"
-      "* Play\n"
-      "  #+begin_src sh\n"
-      "    play %(format-time-string \"%Y-%m-%d-%H.%M.%S\").aiff\n"
-      "  #+end_src\n")
-    :immediate-finish t
-    :jump-to-captured t)))
-
-```
-This requires 'SoX' for linux. You can go into the record src block and press \`C-c C-c\` to start recording and \`C-g\` to end. To play back the recording, press \`C-c C-c\` within the play src block. I imagine this might be useful beyond the trans community for basic voice journaling.
-
-
-## u/rcoacci [🔗](https://www.reddit.com/r/emacs/comments/ad8gzq/comment/edeqcpa)
-**Votes:** 15
-
-Just one thing: which Spacemacs "style" did you choose? If you chose "vim" style you need to be careful when searching for emacs resources or documentation, because the "vim" style is quite different from the standard emacs way of doing things, and that's probably why you had so much problem in the beginning.
-
-
-## u/Thaodan [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/eqs7osm)
-**Votes:** 15
-
-[Which-Key](https://github.com/justbur/emacs-which-key)
-Great to learn keybinds, especially for new emacs users:
-
-```elisp
-(use-package which-key
-  :config (which-key-mode 1))
-```
-
-
-## u/laralex [🔗](https://www.reddit.com/r/emacs/comments/domrl6/comment/f5pgfu3)
-**Votes:** 15
-
-A small basic thing, but once I'd discovered it, I started using dired.
-```C-x C-j``` is most likely bound to ```dired-jump```, and this function opens dired for this window's file, without promting for directory (and this prompt was an issue for my workflow when using ```C-x d```). That makes finding and switching files just as convenient as in OS GUI. I've also bound a few keys when in dired mode (I find them decent):
-
-```a``` - prompt a name and create empty file
-
-```d``` - prompt a name and create empty dir
-
-```u``` - go to parent dir (the key is a mnemonic to "go Up in directory tree)
-
-```j``` - if it's a dir go into it, otherwise find this file (key is near to 'u' so jumping up and down is not a big deal with one hand, also the 'j' is the easiest key for me as a touchtyper) 
-
-```n```/```p``` - move one entry down/up, which resembles ```C-n```/```C-p```
-
-
-## u/marcowahl [🔗](https://www.reddit.com/r/emacs/comments/c1zl0s/comment/ergqu5u)
-**Votes:** 15
-
- `C-x s d` leads to a diff of the buffer with its file.
-
-
-## u/mogigoma [🔗](https://www.reddit.com/r/emacs/comments/8jaflq/comment/dyybwt5)
-**Votes:** 15
-
-Every time I see this package I think to myself "People exit Emacs?"
-
-
-## u/swhalemwo [🔗](https://www.reddit.com/r/emacs/comments/d8k4ce/comment/f1b7c7u)
-**Votes:** 15
-
-finally found an opportunity to use git-timemachine: I was optimizing a Python function when I realized I needed to be sure it returned the same results as before. jumped to previous commit, C-c C-y f and voila. made me feel like a code wizard.
-
-
 ## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/cmnumy/comment/ew3jyr5)
 **Votes:** 15
 
@@ -658,14 +655,14 @@ When you are in the middle of inputting some command in the minibuffer and reali
 ```
 
 
-## u/Bodertz [🔗](https://www.reddit.com/r/emacs/comments/cpq3ru/comment/ewr3jkm)
+## u/Ramin_HAL9001 [🔗](https://www.reddit.com/r/emacs/comments/cw1eky/comment/ey8i3z6)
 **Votes:** 15
 
-Small thing, but `C-x C-k C-f` runs `kmacro-set-format`, which you can use to change the format of the counter when they are inserted in a macro.
+Here's a really old trick that I only just now started using: save window layouts to registers with `C-x r w <Letter>`, which saves it into a `Letter` key register. Switch between window layouts using the usual "register jump" `C-x r j`, that is `C-x r j <Letter>` to go back to the layout in that lettered register.
 
-For example, `%x` for hexadecimal, or `%02d` to prefix the number with a zero if it is less than two digits.  The default is `%d`.
+If you use registers for storing text or other things, be careful to use a different set of letters for text and a different set for window layouts. Personally I never use registers for storing text (`M-y` to rotate through the kill-ring is all I need). But I have been using the window layout one quite often lately.
 
-If you set it while recording a macro, it will only use the format in that macro.  If you set it outside of a macro, it will change the default for subsequent macros.
+It feels a little like having the multiple desktops feature common to many Linux desktop environments, but I can use it to switch between different projects I am working on within Emacs without needing multiple instances of Emacs.
 
 
 ## u/FOSHavoc [🔗](https://www.reddit.com/r/emacs/comments/cgptj7/comment/eumg1fj)
@@ -687,26 +684,49 @@ Or within the collect buffer use `consult-line` to further filter.
 And even open the pdf.
 
 
-## u/gopar [🔗](https://www.reddit.com/r/emacs/comments/k4gv0x/comment/ge9det9)
+## u/TeMPOraL_PL [🔗](https://www.reddit.com/r/emacs/comments/rbmfwk/comment/hnx4z28)
 **Votes:** 15
 
-A very simple thing I've done is remap ";" (semicolon) to to "\_" (underscore) in almost all modes. Since I work with mainly Python, this is so much easier than always doing SHIFT-DASH every couple of keystrokes. And if I want a regular semicolon, I just do "C-u ;" and insert a semicolon
+If you're like me, and your day ends way past midnight, handling those last few tasks in your Org Mode agenda gets tricky. Fortunately, it turns out Org Mode has what I call "25th hour mode".
 
-I also set this in modes such as C/C++, etc. This works by automatically setting the last character (if it was an underscore) to a semicolon on enter. 
+```elisp
+;; consider the current day to end at 3AM
+(setq org-extend-today-until 3) 
 
-eg. "|" is cursor
+;; make timestamp processing functions aware of this
+(setq org-use-effective-time t) 
 
-int a = 10\*10\_|
+```
+Combined, this allows to extend the day past midnight, with things like agenda views, scheduling commands, repeaters, etc. thinking the current time is 23:59 up until the `org-extend-today-until` limit. With this enabled, if I have a task that has a repeater of  and complete it at 01:00, I no longer have to then manually reschedule the task back one day.
 
-turns into
 
-int a = 10\*10;
+## u/el_tuxo [🔗](https://www.reddit.com/r/emacs/comments/rbmfwk/comment/hnp5rhn)
+**Votes:** 15
 
-| (cursor on new line)
+Working on a remote server with Tramp in eshell it's so easy that I'm always worried that I could run by mistake a command on the wrong machine.
 
-&#x200B;
+So I implemented a small function that makes me aware that I'm in a Tramp session by changing the prompt color.
 
-Pretty simple time saver \\o/
+```elisp
+(require 'subr-x)  
+(defun tuxo/prompt-color-tramp ()  
+"Change prompt color if a tramp session is open"  
+  (if (file-remote-p default-directory)  
+      (set-face-foreground 'eshell-prompt "red")  
+      (set-face-foreground 'eshell-prompt "green")))
+
+(use-package eshell
+  :hook (eshell-post-command . tuxo/prompt-color-tramp))
+
+```
+Do you have any suggestions on how I could improve this issue?
+
+
+## u/rucci99 [🔗](https://www.reddit.com/r/emacs/comments/r69w7i/comment/hmryv5o)
+**Votes:** 15
+
+I just found out that Magit can backup changes of uncommitted files automatically. Here's the link to online manual:
+[Magit Wip Modes](https://magit.vc/manual/magit/Wip-Modes.html#Wip-Modes).
 
 
 ## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/ofen99/comment/h4dxjbz)
@@ -717,196 +737,66 @@ If you want to search and replace but with preview for the matches, don't use `q
 Note that there is also an `isearch-query-replace-regexp` command but you don't need it: `isearch-query-replace` will automatically detect if your isearch session was for regexps. The docstring for `isearch-query-replace` doesn't seem to mention this nice feature.
 
 
-## u/hxlr666 [🔗](https://www.reddit.com/r/emacs/comments/rvagin/comment/hr4bbl5)
+## u/globalcandyamnesia [🔗](https://www.reddit.com/r/emacs/comments/ooldn6/comment/h67qge6)
 **Votes:** 15
 
-Use org capture
-
-
-## u/shoutouttmud [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efi7pbj)
-**Votes:** 14
-
-This is for the evil users out there: 
-
-Usually evil text objects are powerful enough, but sometimes you can use the extra functionality that [expand-region](https://github.com/magnars/expand-region.el) provides. So, sometime in the last month I started using it, and I managed to find a (quite seamless in my opinion) way to integrate it with evil. 
-```elisp
-  
-(defhydra hydra-expand-region ()
-   "region: "
-   ("k" er/expand-region "expand")
-   ("j" er/contract-region "contract"))
-
-(evil-define-key 'visual 'global (kbd "v") #'hydra-expand-region/body)
- 
-```
-The above code should be pretty self-explanatory to anyone familiar with evil and hydra. By pressing v in visual state you "enter" the expand region hydra that lets you call expand and contract region by pressing j/k, effectively creating an additional evil state with a minimal amount of code
-
-
-## u/grabyourmotherskeys [🔗](https://www.reddit.com/r/emacs/comments/2wh9o0/comment/coqx6vl)
-**Votes:** 14
-
-I really love org mode. The way to use org mode in my opinion is to set up capture templates directing notes and tasks quickly to the right files (whichever you like).
-
-http://orgmode.org/manual/Capture-templates.html
-
-You can then use the agenda to view, sort, filter, and search your notes and tasks. 
-
-http://orgmode.org/manual/Agenda-commands.html
-
-Once you get used to adding things quickly and finding them quickly it all falls into place. You can even export your notes in various formats including ICS (calendar) files so you can view your appointments on your phone.
-
-One major advantage Evernote has is of course a Mobile app. I get around this by renting a very cheap vps and ssh'ing to it to use emacs (from my phone, my Chromebook, or workstation). I use the vps for other things, too.
-
-The other is the images. I really don't know how to handle that. Org mode has ways to link to files and other things but I haven't tried displaying them or otherwise wiring working with images.
-
-This works for me and I love using emacs for this purpose. I have tried a million other methods and this seems to work for me.
-
-Here is a great tutorial: http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
-
-
-## u/natarey [🔗](https://www.reddit.com/r/emacs/comments/m634qw/comment/gricy1m)
-**Votes:** 14
-
-For ages, I've had a custom function in my init that will add numbers to the front of a list -- transforming this:
+I'm trying to feminize my voice and org mode has been invaluable.
 
 ```elisp
-line 1
-line 2
-line 3
+(org-babel-do-load-languages 'org-babel-load-lanuages
+  '((shell . t)))
+
+(setq org-capture-templates
+  `(("v" "Voice" entry
+    (file+olp+datetree ,(concat my-org-directory "voice/training.org"))
+    ,(concat
+      "* Record \n"
+      "\n"
+      "  #+begin_src sh\n"
+      "    rec %(format-time-string \"%Y-%m-%d-%H.%M.%S\").aiff\n"
+      "  #+end\_src\n"
+      "\n"
+      "* Play\n"
+      "  #+begin_src sh\n"
+      "    play %(format-time-string \"%Y-%m-%d-%H.%M.%S\").aiff\n"
+      "  #+end_src\n")
+    :immediate-finish t
+    :jump-to-captured t)))
 
 ```
-Into:
-
-```elisp
-1. line 1
-2. line 2
-3. line 3
-
-```
-But I just discovered this functionality is *built in*!
-
-To just add numbers, select a region and call `rectangle-number-lines` with `C-x r N`. 
-
-To customize things like what number to start at, or the format of the numbers (to add periods or parens after the numbers, for example) call it with the universal argument and it'll go through the options with you.
-
-Truly, the batteries are included with Emacs.
+This requires 'SoX' for linux. You can go into the record src block and press \`C-c C-c\` to start recording and \`C-g\` to end. To play back the recording, press \`C-c C-c\` within the play src block. I imagine this might be useful beyond the trans community for basic voice journaling.
 
 
-## u/ketoengineer89 [🔗](https://www.reddit.com/r/emacs/comments/hqxm5v/comment/fy1rq34)
+## u/rcoacci [🔗](https://www.reddit.com/r/emacs/comments/ad8gzq/comment/edeqcpa)
 **Votes:** 14
 
-Migrated to native compiled emacs branch this week. Some hiccups but everything seems to work out of box, including pdf-tools. Great performance improvement.
+Just one thing: which Spacemacs "style" did you choose? If you chose "vim" style you need to be careful when searching for emacs resources or documentation, because the "vim" style is quite different from the standard emacs way of doing things, and that's probably why you had so much problem in the beginning.
 
 
-## u/vfclists [🔗](https://www.reddit.com/r/emacs/comments/bj0ti2/comment/em9h7wj)
+## u/olaeCh0thuiNiihu [🔗](https://www.reddit.com/r/emacs/comments/8xu2zt/comment/e26e1uc)
 **Votes:** 14
 
-Can this thread be numbered eg `Weekly tips/trick/etc/thread - 0xx` or `Weekly tips/trick/etc/thread - YYYY Week XX`?
+Meta advice: when taking notes, put the notes where you would go look for them.  If you're trying to find some notes, think about where you would try to look first.  If it's not there, remember where you looked and once you find the notes, make a link/copy to where you looked first.  The more you do this, the better you'll get at picking the right spot the first time.
 
-It becomes hard to remember which version you noted an interesting tip you want to return to.
+Try to keep things as flat as possible.  Your job is not to present a theses about the perfect taxonomy for your notes, it's just to find things again later.  Don't make lots of folders, directories, scattered Org files, deeply nested lists, etc.  Only start breaking things into groups once you find yourself looking for something and thinking, "All of this X related stuff should just go into a folder or something."  This combines with the first advice in that if everything is flat, there aren't very many places you will want to look for something.  If you come up with a huge tree that would make a biologist cry, you'll have a really hard time remembering where exactly you put something.
 
-I don't know if it is generated by a script it should but it should be simple. It can be made more search engine friendy prefixing or suffixing with `r/emacs` if other subreddits do something similar.
+This advice was shameless stolen/adapted from GTD.
 
 
-## u/mullikine [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fwbtnte)
+## u/thr33body [🔗](https://www.reddit.com/r/emacs/comments/wqjare/comment/ikqxn0r)
 **Votes:** 14
 
-## Use chrome DOM for eww
+I don’t have any specific tip but I just want to throw it out there that if you are tired of using spacemacs or doom it was much easier to set up my own install than I thought. It only took me a couple of days of active work and now diagnosing problems is so much simpler. Not to say that you should not use either one but I wanted to learn more about emacs and I’ve been really happy with the results.
 
-Basically, a lot of websites these days generate the DOM using javascript. You can dump the DOM from chrome and inject it into eww just before it renders.
 
-It's set to wait 3 seconds before dumping the DOM. This allows many pages to load.
+## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eohu0bg)
+**Votes:** 14
 
-Since I'm using the `unbuffer` program, this requires `expect` to be installed on your system. It creates a tty so that chrome doesn't crash when run in this way.
+Not very well-known, but Emacs has its own spreadsheet and file format (`.ses`) (`ses-mode`). It supports many advanced features, and formulas are written in Elisp.
 
-`dump-dom` shell script
+&#x200B;
 
-```elisp
-#!/bin/bash
-
-url="$1"
-test -n "$url" || exit 1
-
-0</dev/tty unbuffer bash -c "chrome --headless --disable-gpu --virtual-time-budget=3000 --dump-dom \"$url\" 2>/dev/null"
-
-```
-Make these modifications to `eww-display-html`.
-
-`eww-display-html`
-
-```elisp
-(defun eww-display-html (charset url &optional document point buffer encode)
-  (unless (fboundp 'libxml-parse-html-region)
-    (error "This function requires Emacs to be compiled with libxml2"))
-  (unless (buffer-live-p buffer)
-    (error "Buffer %s doesn't exist" buffer))
-  ;; There should be a better way to abort loading images
-  ;; asynchronously.
-  (setq url-queue nil)
-  ;; If document exists then the html is already parsed into a DOM
-  (let* ((html (shell-command-to-string (concat "dom-dump " (shell-quote-argument url))))
-         (document
-          (or nil ;; document
-              (list
-               'base (list (cons 'href url))
-               (progn
-                 (setq encode (or encode charset 'utf-8))
-                 (condition-case nil
-                     (decode-coding-region (point) (point-max) encode)
-                   (coding-system-error nil))
-                 (save-excursion
-                   ;; Remove CRLF before parsing.
-                   (while (re-search-forward "\r$" nil t)
-                     (replace-match "" t t)))
-                 (save-mark-and-excursion
-                   ;; Delete from here to the end. Replace with the new html
-                   (kill-region (point) (point-max))
-                   (insert (encode-coding-string html 'utf-8)))
-                 (libxml-parse-html-region (point) (point-max))))))
-         (source (and (null document)
-                      (buffer-substring (point) (point-max)))))
-    (with-current-buffer buffer
-      (setq bidi-paragraph-direction nil)
-      (plist-put eww-data :source html)
-      (plist-put eww-data :dom document)
-      (let ((inhibit-read-only t)
-            (inhibit-modification-hooks t)
-            (shr-target-id (url-target (url-generic-parse-url url)))
-            (shr-external-rendering-functions
-             (append
-              shr-external-rendering-functions
-              '((title . eww-tag-title)
-                (form . eww-tag-form)
-                (input . eww-tag-input)
-                (button . eww-form-submit)
-                (textarea . eww-tag-textarea)
-                (select . eww-tag-select)
-                (link . eww-tag-link)
-                (meta . eww-tag-meta)
-                (a . eww-tag-a)))))
-        (erase-buffer)
-        (shr-insert-document document)
-        (cond
-         (point
-          (goto-char point))
-         (shr-target-id
-          (goto-char (point-min))
-          (let ((point (next-single-property-change
-                        (point-min) 'shr-target-id)))
-            (when point
-              (goto-char point))))
-         (t
-          (goto-char (point-min))
-          ;; Don't leave point inside forms, because the normal eww
-          ;; commands aren't available there.
-          (while (and (not (eobp))
-                      (get-text-property (point) 'eww-form))
-            (forward-line 1)))))
-      (eww-size-text-inputs))))
-
-```
-Demonstration:
-https://asciinema.org/a/UAAVfp5O8SofJZvKBusTOP8QQ
+Just another alternative to Org tables.
 
 
 ## u/yousufinternet [🔗](https://www.reddit.com/r/emacs/comments/sd10q9/comment/hubjy3j)
@@ -935,6 +825,16 @@ Of course for the emojis to show up correctly I use this:
 
 ```
 I am sure a lot of you know about these, please share your customization
+
+
+## u/Bodertz [🔗](https://www.reddit.com/r/emacs/comments/cpq3ru/comment/ewr3jkm)
+**Votes:** 14
+
+Small thing, but `C-x C-k C-f` runs `kmacro-set-format`, which you can use to change the format of the counter when they are inserted in a macro.
+
+For example, `%x` for hexadecimal, or `%02d` to prefix the number with a zero if it is less than two digits.  The default is `%d`.
+
+If you set it while recording a macro, it will only use the format in that macro.  If you set it outside of a macro, it will change the default for subsequent macros.
 
 
 ## u/mrolivertaylor [🔗](https://www.reddit.com/r/emacs/comments/mujxm7/comment/gv8jxz5)
@@ -973,42 +873,10 @@ I use, and love, [transient](https://github.com/magit/transient). I have a ton o
 ```
 
 
-## u/el_tuxo [🔗](https://www.reddit.com/r/emacs/comments/rbmfwk/comment/hnp5rhn)
+## u/freesteph [🔗](https://www.reddit.com/r/emacs/comments/eoigxl/comment/fed40nx)
 **Votes:** 14
 
-Working on a remote server with Tramp in eshell it's so easy that I'm always worried that I could run by mistake a command on the wrong machine.
-
-So I implemented a small function that makes me aware that I'm in a Tramp session by changing the prompt color.
-
-```elisp
-(require 'subr-x)  
-(defun tuxo/prompt-color-tramp ()  
-"Change prompt color if a tramp session is open"  
-  (if (file-remote-p default-directory)  
-      (set-face-foreground 'eshell-prompt "red")  
-      (set-face-foreground 'eshell-prompt "green")))
-
-(use-package eshell
-  :hook (eshell-post-command . tuxo/prompt-color-tramp))
-
-```
-Do you have any suggestions on how I could improve this issue?
-
-
-## u/mullikine [🔗](https://www.reddit.com/r/emacs/comments/eeyhdz/comment/fc1u840)
-**Votes:** 14
-
-Making your own hooks using advice. So a hook doesn't exist where you'd like to be hooking into? You can use advice to create a hook.
-
-```elisp
-(defvar eww-restore-history-after-hook '())
-(defun eww-restore-history-after-advice (&rest args)
-  (run-hooks 'eww-restore-history-after-hook))
-(advice-add 'eww-restore-history :after 'eww-restore-history-after-advice)
-(add-hook 'eww-restore-history-after-hook (lambda ()
-                                        (interactive)
-                                        (rename-eww-buffer-unique)) t)
-```
+If you needed more reasons to love Magit I've just found out can add the Git meta-fields in the commit message (`Co-authored-by`, `Signed-off-by`, etc, which I can never remember correctly) by typing `C-c TAB` which will interactively ask you for the field (`C-a` -> `Co-authored-by`) and then also interactively fill the relevant team member with their name and e-mail (probably from the repo's list of committers). Awesome!
 
 
 ## u/CaptFuckflaps [🔗](https://www.reddit.com/r/emacs/comments/4arkmx/comment/d135rgq)
@@ -1019,20 +887,29 @@ I thought perhaps I was completely out of the loop, not knowing what on earth Mi
 Therefore, it would be worth including an explanation of exactly what it is, (some sort of Emacs-lite?), how it differs from Gnu Emacs, and most importantly, why it exists.
 
 
-## u/username223 [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeu7tyj)
+## u/hxlr666 [🔗](https://www.reddit.com/r/emacs/comments/rvagin/comment/hr4bbl5)
+**Votes:** 14
+
+Use org capture
+
+
+## u/shoutouttmud [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efi7pbj)
 **Votes:** 13
 
-`M-x quick-calc` (which I've bound to `C-=`).  Calc is insanely complex, but this lets you do simple calculations quickly.
+This is for the evil users out there: 
 
+Usually evil text objects are powerful enough, but sometimes you can use the extra functionality that [expand-region](https://github.com/magnars/expand-region.el) provides. So, sometime in the last month I started using it, and I managed to find a (quite seamless in my opinion) way to integrate it with evil. 
+```elisp
+  
+(defhydra hydra-expand-region ()
+   "region: "
+   ("k" er/expand-region "expand")
+   ("j" er/contract-region "contract"))
 
-## u/olaeCh0thuiNiihu [🔗](https://www.reddit.com/r/emacs/comments/8xu2zt/comment/e26e1uc)
-**Votes:** 13
-
-Meta advice: when taking notes, put the notes where you would go look for them.  If you're trying to find some notes, think about where you would try to look first.  If it's not there, remember where you looked and once you find the notes, make a link/copy to where you looked first.  The more you do this, the better you'll get at picking the right spot the first time.
-
-Try to keep things as flat as possible.  Your job is not to present a theses about the perfect taxonomy for your notes, it's just to find things again later.  Don't make lots of folders, directories, scattered Org files, deeply nested lists, etc.  Only start breaking things into groups once you find yourself looking for something and thinking, "All of this X related stuff should just go into a folder or something."  This combines with the first advice in that if everything is flat, there aren't very many places you will want to look for something.  If you come up with a huge tree that would make a biologist cry, you'll have a really hard time remembering where exactly you put something.
-
-This advice was shameless stolen/adapted from GTD.
+(evil-define-key 'visual 'global (kbd "v") #'hydra-expand-region/body)
+ 
+```
+The above code should be pretty self-explanatory to anyone familiar with evil and hydra. By pressing v in visual state you "enter" the expand region hydra that lets you call expand and contract region by pressing j/k, effectively creating an additional evil state with a minimal amount of code
 
 
 ## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/b5n1yh/comment/ejessje)
@@ -1155,6 +1032,33 @@ I quit Emacs, made an edit in my .git elsewhere, opened Emacs back up and jumped
 It's funny how excited I am to remove two keystrokes from the beginning of my day. Probably I am also excited that my random experiment worked. Obviously it's not so random as magit knew exactly what I wanted. Magit is life! </rant>
 
 
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el1avex)
+**Votes:** 13
+
+This seems almost too basic to mention, but it's handy:
+
+```elisp
+(defun add-to-hooks (func &rest hooks)
+  (dolist (hook hooks) (add-hook hook func)))
+
+```
+Then, for example:
+
+```elisp
+(add-to-hooks 'enable-paredit-mode
+  'emacs-lisp-mode-hook
+  'scheme-mode-hook
+  'lisp-mode-hook
+  'clojure-mode-hook
+  'eval-expression-minibuffer-setup-hook)
+
+(add-to-hooks (lambda () (setq show-trailing-whitespace t))
+  'prog-mode-hook
+  'org-mode-hook
+  'html-mode-hook)
+```
+
+
 ## u/b3n [🔗](https://www.reddit.com/r/emacs/comments/lvw44q/comment/gpeb8n3)
 **Votes:** 13
 
@@ -1170,10 +1074,18 @@ Here's a nice eshell command:
 It lets you use your normal completion framework to select an item from history. Suddenly fzf-like history!
 
 
-## u/thr33body [🔗](https://www.reddit.com/r/emacs/comments/wqjare/comment/ikqxn0r)
+## u/Quasimoto3000 [🔗](https://www.reddit.com/r/emacs/comments/24l8f2/comment/ch88vym)
 **Votes:** 13
 
-I don’t have any specific tip but I just want to throw it out there that if you are tired of using spacemacs or doom it was much easier to set up my own install than I thought. It only took me a couple of days of active work and now diagnosing problems is so much simpler. Not to say that you should not use either one but I wanted to learn more about emacs and I’ve been really happy with the results.
+Dude look into Elpy. It's incredibly simple to set up and very powerful.
+
+I couldn't recommend it more.
+
+Edit: here's all the info you need.
+
+https://github.com/jorgenschaefer/elpy/wiki/Installation
+
+Let me know if you have any questions.
 
 
 ## u/Tatrics [🔗](https://www.reddit.com/r/emacs/comments/n9q662/comment/gxpeh9v)
@@ -1245,10 +1157,65 @@ Emacs by default. Uses Fisher-Yates shuffle.
 ```
 
 
-## u/mrolivertaylor [🔗](https://www.reddit.com/r/emacs/comments/mg98ki/comment/gstteeo)
+## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/fo1fm3/comment/flcwsu4)
 **Votes:** 13
 
-I just discovered the [selected](https://github.com/Kungsgeten/selected.el) package, which is brilliant. It creates a keymap that becomes active any time you have an active region. I have bindings for next-line, previous-line, rectangle-mark-mode, end-of-line, upcase-dwim, exchange-point-and-mark, etc. It makes editing and acting on the active region super easy. Sort of like god-mode or Vim's visual mode.
+Happy Birthday from Emacs, let's assume March 24 is your birthday, put this to your init file, when you open Emacs on your birthday, you'll receive a birthday present from Emacs
+
+```elisp
+(when (string= "03-24" (format-time-string "%m-%d"))
+  (animate-birthday-present user-full-name))
+```
+
+
+## u/ProfessorSexyTime [🔗](https://www.reddit.com/r/emacs/comments/dlethf/comment/f4wdyaf)
+**Votes:** 13
+
+I feel like a lot of us average Emacs users miss out on a lot of functionality Emacs provides outside of the box. So some things you might find interesting:
+
+#### [Registers](https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html)
+
+Someone posted this in a weekly tips/trick/etc thread a few weeks ago, but I thought I'd mention it again.
+
+Registers just let you store *things* in them. This can be
+
+- Cursor positions in buffers (`C-x r SPC [name you want to give the register]`)
+- Text in a region (`C-x r s [name you want to give the register]`)
+- Rectangles (`C-x r r [name you want to give the register]`)
+- State of windows in frames (`C-x r w [name you want to give the register]`)
+- State of all frames and their windows (`C-x r f [name you want to give the register]`)
+- Numbers (`C-x r n [name you want to give the register]`) and you can increment those numbers (`C-x r + [name of register you want to increment`]
+- Whole file names (it's not bound, but you can do `M-: (set-register ?z '(file . "/some_file/somewhere/some_text.txt"))`)
+- Keyboard macros instead of saving them (` C-x C-k x  [name you want to give the register]`)
+
+You can insert text, registers, or numbers with `C-x r i [name of register with stuff to insert]`. You can also append or prepend stuff to registers with `append-to-register` or `prepend-to-register`.
+
+`C-x r j [name of register]` can jump to a point, restore a window or frame configuration, or visit a file with a specific name.
+
+You could always use [bookmarks](https://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html#Bookmarks).
+
+One thing I would like to do is automatically give registers names, say like a1, a2, et cetera then b1, b2 et cetera, and then A1, A2 and yaddah yaddah.
+
+I'm an idiot though and generating that sort of collection escapes me a bit.
+
+I'd rather not do just
+
+```elisp
+(loop n from 0 to 99
+    collect (concat "a" n))
+
+```
+for every alphabetical character. Then it'd be a matter of going through those collections for every register created and making sure they use different names. Was wondering if I could get some help.
+
+#### [Isearch](https://www.emacswiki.org/emacs/IncrementalSearch) and [Query Replace](https://www.gnu.org/software/emacs/manual/html_node/emacs/Query-Replace.html)
+
+Not much to say here, just that I might recommend that one go over the default keys for [isearch](https://www.emacswiki.org/emacs/IncrementalSearch#toc2) and query-replace.
+
+Also I would switch `C-s` and `C-r` to use `isearch-forward-regex` and `isearch-backward-regex`, and `M-%` to use `query-replace-regex` because you can disable the use of regex for both. You can even start a query-replace from isearch with `M-%` or `C-M-%`.
+
+#### `event-apply-*` Keys
+
+I don't really know what I can use these keys for, but with which-key you can press `C-x @` to see them. They allow you to apply control, shift, alt, meta, super, or hyper keys.
 
 
 ## u/andreyorst [🔗](https://www.reddit.com/r/emacs/comments/g11mp9/comment/fnd7zkx)
@@ -1257,14 +1224,117 @@ I just discovered the [selected](https://github.com/Kungsgeten/selected.el) pack
 If you're not using [`native-comp`](http://akrl.sdf.org/gccemacs.html) feature yet, I strongly recommend you to try it out! Have been using it for two weeks for now and everything seem to run pretty smooth and rock solid! The speed difference is quite noticeable in some interactive aspects like completion, although my machine is quite slow, so this may not be that noticeable on newer machines.
 
 
-## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eohu0bg)
+## u/mullikine [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fwbtnte)
 **Votes:** 13
 
-Not very well-known, but Emacs has its own spreadsheet and file format (`.ses`) (`ses-mode`). It supports many advanced features, and formulas are written in Elisp.
+## Use chrome DOM for eww
 
-&#x200B;
+Basically, a lot of websites these days generate the DOM using javascript. You can dump the DOM from chrome and inject it into eww just before it renders.
 
-Just another alternative to Org tables.
+It's set to wait 3 seconds before dumping the DOM. This allows many pages to load.
+
+Since I'm using the `unbuffer` program, this requires `expect` to be installed on your system. It creates a tty so that chrome doesn't crash when run in this way.
+
+`dump-dom` shell script
+
+```elisp
+#!/bin/bash
+
+url="$1"
+test -n "$url" || exit 1
+
+0</dev/tty unbuffer bash -c "chrome --headless --disable-gpu --virtual-time-budget=3000 --dump-dom \"$url\" 2>/dev/null"
+
+```
+Make these modifications to `eww-display-html`.
+
+`eww-display-html`
+
+```elisp
+(defun eww-display-html (charset url &optional document point buffer encode)
+  (unless (fboundp 'libxml-parse-html-region)
+    (error "This function requires Emacs to be compiled with libxml2"))
+  (unless (buffer-live-p buffer)
+    (error "Buffer %s doesn't exist" buffer))
+  ;; There should be a better way to abort loading images
+  ;; asynchronously.
+  (setq url-queue nil)
+  ;; If document exists then the html is already parsed into a DOM
+  (let* ((html (shell-command-to-string (concat "dom-dump " (shell-quote-argument url))))
+         (document
+          (or nil ;; document
+              (list
+               'base (list (cons 'href url))
+               (progn
+                 (setq encode (or encode charset 'utf-8))
+                 (condition-case nil
+                     (decode-coding-region (point) (point-max) encode)
+                   (coding-system-error nil))
+                 (save-excursion
+                   ;; Remove CRLF before parsing.
+                   (while (re-search-forward "\r$" nil t)
+                     (replace-match "" t t)))
+                 (save-mark-and-excursion
+                   ;; Delete from here to the end. Replace with the new html
+                   (kill-region (point) (point-max))
+                   (insert (encode-coding-string html 'utf-8)))
+                 (libxml-parse-html-region (point) (point-max))))))
+         (source (and (null document)
+                      (buffer-substring (point) (point-max)))))
+    (with-current-buffer buffer
+      (setq bidi-paragraph-direction nil)
+      (plist-put eww-data :source html)
+      (plist-put eww-data :dom document)
+      (let ((inhibit-read-only t)
+            (inhibit-modification-hooks t)
+            (shr-target-id (url-target (url-generic-parse-url url)))
+            (shr-external-rendering-functions
+             (append
+              shr-external-rendering-functions
+              '((title . eww-tag-title)
+                (form . eww-tag-form)
+                (input . eww-tag-input)
+                (button . eww-form-submit)
+                (textarea . eww-tag-textarea)
+                (select . eww-tag-select)
+                (link . eww-tag-link)
+                (meta . eww-tag-meta)
+                (a . eww-tag-a)))))
+        (erase-buffer)
+        (shr-insert-document document)
+        (cond
+         (point
+          (goto-char point))
+         (shr-target-id
+          (goto-char (point-min))
+          (let ((point (next-single-property-change
+                        (point-min) 'shr-target-id)))
+            (when point
+              (goto-char point))))
+         (t
+          (goto-char (point-min))
+          ;; Don't leave point inside forms, because the normal eww
+          ;; commands aren't available there.
+          (while (and (not (eobp))
+                      (get-text-property (point) 'eww-form))
+            (forward-line 1)))))
+      (eww-size-text-inputs))))
+
+```
+Demonstration:
+https://asciinema.org/a/UAAVfp5O8SofJZvKBusTOP8QQ
+
+
+## u/jimm [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fvqvedf)
+**Votes:** 13
+
+I can't say how often I use `dabbrev-expand` (`M-/`) to complete words. Saves me a ton of time.
+
+
+## u/vatai [🔗](https://www.reddit.com/r/emacs/comments/ojzv53/comment/h5584no)
+**Votes:** 13
+
+The emacs lisp tutorial is the real tutorial for emacs ;)
 
 
 ## u/Stefan-Kangas [🔗](https://www.reddit.com/r/emacs/comments/q76kok/comment/hgk3wik)
@@ -1294,6 +1364,42 @@ How to convert any function into a command, for example, `sleep-for`:
 ```elisp
 (put 'sleep-for 'interactive-form
  '(interactive "nSleep for: "))
+```
+
+
+## u/celeritasCelery [🔗](https://www.reddit.com/r/emacs/comments/gi70ye/comment/fqdnyhk)
+**Votes:** 13
+
+Shells in emacs like `shell-mode` and `eshell` can write multi line input using `comint-accumulate`. Normally bound to `C-c SPC`.
+
+
+## u/meain [🔗](https://www.reddit.com/r/emacs/comments/wwdpju/comment/ilotsc5)
+**Votes:** 13
+
+I use the following snippet to change background color of compilation buffer to a light red if the compilation failed. I use compilation buffer to run tests on a second monitor and this is pretty useful.
+
+```elisp
+(defun meain/compilation-colorcode (_buffer string)
+    "Change background color of compilation `_BUFFER' to red on failure."
+    (unless (string-prefix-p "finished" string) ; Having color for success was distracting
+    (face-remap-add-relative 'default 'diff-hl-delete)))
+(add-to-list 'compilation-finish-functions 'meain/compilation-colorcode)
+```
+
+
+## u/mullikine [🔗](https://www.reddit.com/r/emacs/comments/eeyhdz/comment/fc1u840)
+**Votes:** 13
+
+Making your own hooks using advice. So a hook doesn't exist where you'd like to be hooking into? You can use advice to create a hook.
+
+```elisp
+(defvar eww-restore-history-after-hook '())
+(defun eww-restore-history-after-advice (&rest args)
+  (run-hooks 'eww-restore-history-after-hook))
+(advice-add 'eww-restore-history :after 'eww-restore-history-after-advice)
+(add-hook 'eww-restore-history-after-hook (lambda ()
+                                        (interactive)
+                                        (rename-eww-buffer-unique)) t)
 ```
 
 
@@ -1341,46 +1447,71 @@ Here is how I bind it in `bibtex-mode` (plus my other bindings for good measure)
 ```
 
 
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/fs93hk/comment/fm1fw1x)
-**Votes:** 13
-
-For me, learning about `kill-whole-line` (control-shift-delete) was a revelation.  Compared to the "classic" Emacs method of deleting lines (C-a to go to the beginning of the line if not already there, C-k once to kill to the end of line, C-k again to kill the newline), it feels like a major speedup.
-
-I still use C-k frequently, but it's effectively just a kill-to-end-of-line command.
-
-
-## u/justinhj [🔗](https://www.reddit.com/r/emacs/comments/2awvj3/comment/cizlcox)
-**Votes:** 13
-
-This is familiar to me. I've been using emacs for 10 years but I felt as you do for perhaps as long as two months.
-
-If you take the approach of trying to make emacs be just like the environments you are used to then a) you will be disappointed and b) why bother?
-
-For me the joy of emacs comes from discovering its thoughtful and pragmatic design. The keys which initially seem hard actually involve lite hand movement. The help system is discoverable and well thought out once you can navigate it easily.
-
-Seek out emacs users and ask them how they do the most mundane things. As an example when I'm working in a project I often navigate it by using rgrep and choosing a buffer that way. The bookmarks system is very handy. Once you have a bunch of files open already switch between them using c-x b. various extensions make this better like iBuffer.
-
-Seek out cool extensions that help you with ruby. Discovering a cool new trick keeps you enthused and helps you through the helpless stage.
-
-Learning emacs is a journey and some of that journey is uphill. As long as you're enjoying yourself carry on. If you're not though, it's probably just not for you.
-
-
-## u/uptocode [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efgyvey)
+## u/username223 [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeu7tyj)
 **Votes:** 12
 
-Like Magit? Like writing TODOs in your source code? Check out: 
-
-https://github.com/alphapapa/magit-todos
-
-It uses simple programs like grep or rgrep to show the TODOs in your git repo.
+`M-x quick-calc` (which I've bound to `C-=`).  Calc is insanely complex, but this lets you do simple calculations quickly.
 
 
-## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/er6dqx0)
+## u/7890yuiop [🔗](https://www.reddit.com/r/emacs/comments/awyvpa/comment/ehqdrmr)
 **Votes:** 12
 
-`C-l` `(recenter-top-bottom)` is a known command that "recenters" the window around point by scrolling to the top, center, bottom.
+I find `M-\` preferable to a separate `hungry-delete` package (i.e. do it if that's what you mean to do, but not otherwise).
 
-But there's a no so well-known version, `C-M-l` `(reposition-window)`, that intelligently scrolls the buffer so that the function under point is fully visible, etc. It's very useful for programming languages modes.
+or `M-SPC` to call `just-one-space` if that's what you mean to do.
+
+or bind something to `cycle-spacing`.
+
+
+## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/eqrg07x)
+**Votes:** 12
+
+Run multiline code in comment, e.g.,
+
+```elisp
+;; (+ 1
+;;    2
+;;    3)
+
+```
+with the following advice you can use C-x C-e or C-j as usual:
+
+```elisp
+(define-advice elisp--preceding-sexp (:around (old-fun) multiline-comment)
+  "Support sexp in multiline comment."
+  (condition-case err
+      (funcall old-fun)
+    (scan-error
+     (if (nth 4 (syntax-ppss))
+         (let ((work-buffer (current-buffer))
+               (temp-buffer (generate-new-buffer " *temp*"))
+               found sexp error)
+           (with-current-buffer temp-buffer
+             (delay-mode-hooks (emacs-lisp-mode)))
+           (save-excursion
+             (comment-normalize-vars)
+             (while (and (comment-beginning)
+                         (not found))
+               (let ((code (buffer-substring-no-properties
+                            (point) (line-end-position))))
+                 (with-current-buffer temp-buffer
+                   (goto-char (point-min))
+                   (insert code ?\n)
+                   (goto-char (point-max))
+                   (condition-case err
+                       (setq sexp (funcall old-fun)
+                             found t)
+                     (scan-error (setq error err)))))
+               (when (= -1 (forward-line -1))
+                 (error "elisp--preceding-sexp@multiline-comment error"))
+               (goto-char (line-end-position))))
+           (cond (found sexp)
+                 (error (signal (car error) (cdr error)))
+                 (t (error "elisp--preceding-sexp@multiline-comment error"))))
+       (signal (car err) (cdr err))))))
+
+```
+(I already shared this on Emacs China last year, see https://emacs-china.org/t/c-x-c-e/7760)
 
 
 ## u/w0wt1p [🔗](https://www.reddit.com/r/emacs/comments/b5n1yh/comment/ejenls0)
@@ -1465,12 +1596,6 @@ to *actually* use scss-mode when editing, and then return to rjsx-mode when fini
 So now when I edit a styled component I just hit **, m s**, which narrows the region to whatever is enclosed by backticks (i.e. all the css) and actually treats it as a bona fide css buffer, with all my snippets, completion, etc. Then when I'm done I just got **, m s** again to widen back to the original (rjsx) buffer!
 
 
-## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/auwzjr/comment/ehdsutf)
-**Votes:** 12
-
-To replace a shell command with its output, select the command and type `C-u M-| sh`. It can work because bash supports read program via STDIN, Python and Ruby work as well.
-
-
 ## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/drw8i3/comment/f6ncyes)
 **Votes:** 12
 
@@ -1481,31 +1606,14 @@ emacs --batch -l cl-lib --eval "(cl-loop (print (eval (read))))"
 ```
 
 
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el1avex)
+## u/vfclists [🔗](https://www.reddit.com/r/emacs/comments/bj0ti2/comment/em9h7wj)
 **Votes:** 12
 
-This seems almost too basic to mention, but it's handy:
+Can this thread be numbered eg `Weekly tips/trick/etc/thread - 0xx` or `Weekly tips/trick/etc/thread - YYYY Week XX`?
 
-```elisp
-(defun add-to-hooks (func &rest hooks)
-  (dolist (hook hooks) (add-hook hook func)))
+It becomes hard to remember which version you noted an interesting tip you want to return to.
 
-```
-Then, for example:
-
-```elisp
-(add-to-hooks 'enable-paredit-mode
-  'emacs-lisp-mode-hook
-  'scheme-mode-hook
-  'lisp-mode-hook
-  'clojure-mode-hook
-  'eval-expression-minibuffer-setup-hook)
-
-(add-to-hooks (lambda () (setq show-trailing-whitespace t))
-  'prog-mode-hook
-  'org-mode-hook
-  'html-mode-hook)
-```
+I don't know if it is generated by a script it should but it should be simple. It can be made more search engine friendy prefixing or suffixing with `r/emacs` if other subreddits do something similar.
 
 
 ## u/ouroboroslisp [🔗](https://www.reddit.com/r/emacs/comments/bj0ti2/comment/em8cyvj)
@@ -1595,19 +1703,296 @@ A narrowing toggle that does what I need most of the time so a single key can do
 ```
 
 
-## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/fo1fm3/comment/flcwsu4)
+## u/mrolivertaylor [🔗](https://www.reddit.com/r/emacs/comments/mg98ki/comment/gstteeo)
 **Votes:** 12
 
-Happy Birthday from Emacs, let's assume March 24 is your birthday, put this to your init file, when you open Emacs on your birthday, you'll receive a birthday present from Emacs
+I just discovered the [selected](https://github.com/Kungsgeten/selected.el) package, which is brilliant. It creates a keymap that becomes active any time you have an active region. I have bindings for next-line, previous-line, rectangle-mark-mode, end-of-line, upcase-dwim, exchange-point-and-mark, etc. It makes editing and acting on the active region super easy. Sort of like god-mode or Vim's visual mode.
+
+
+## u/sshaw_ [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eobjxnw)
+**Votes:** 12
+
+### Highlighting
+
+Adds a background color to matched text in the buffer. You can have multiple overlays each with a different background color. Some bindings:
 
 ```elisp
-(when (string= "03-24" (format-time-string "%m-%d"))
-  (animate-birthday-present user-full-name))
+M-s h .         highlight-symbol-at-point
+M-s h l         highlight-lines-matching-regexp
+M-s h u         unhighlight-regexp
+```
+
+
+## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/fgahb2/comment/fk3in25)
+**Votes:** 12
+
+Most people probably know that `M-t` (`transpose-words`) when used between two words swaps them. But it has other a few other features that are useful:
+
+- You don't have to be between words to use it: if you are on a word, from the second character on, it will swap that word with the next.
+
+- If you are at the end of the buffer and use it you get an error message, "Don’t have two things to transpose", _but_ you additionally get placed at the beginning of the last word in the buffer. So `M-t M-t` used at the end of the buffer will swap the last two words!
+
+- You can use it to swap _non-adjacent_ words too! If you call it with a numeric argument of 0, it will swap the word at the start of the region with the next word after the end of the region. For example, say you want to swap "two" with "five" in the following line:
+
+```elisp
+  one five three four two six
+
+```
+  You can mark the words "five three four" (but don't mark "two") and then `M-0 M-t` will swap "five", the first word in the region, with "two" the first word _after_ the region.
+
+That last trick works with the other `transpose-` commands as well, not just words: `transpose-chars`, `transpose-lines`, `transpose-paragraphs`, `transpose-sentences`, and `transpose-sexps`. Of course, if that `C-0` trick can't be used with any of those commands to swap the two things you want, there is always `transpose-regions`.
+
+
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/bog1b5/comment/enhwf5s)
+**Votes:** 12
+
+For commands without default keybindings that I use frequently enough not to want to type out the full name every time, but infrequently enough not to want to dedicate a keybinding to them, I define short, shell-command-like aliases.  Here are some of my current ones:
+
+```elisp
+(defalias 'mb 'rename-buffer)
+(defalias 'ru 'rename-uniquely)
+(defalias 'ar 'align-regexp)
+(defalias 'rb 'revert-buffer)
+(defalias 'c 'calc)
+(defalias 'sh 'shell)
+(defalias 'wr 'write-region)
+(defalias 'tail 'auto-revert-tail-mode)
+(defalias 'pe 'proced)
+(defalias 'lp 'list-packages)
+(defalias 'mff 'magit-find-file)
+(defalias 'eb 'erase-buffer)
+(defalias 'cn 'column-number-mode)
+(defalias 'jpp 'json-pretty-print)
+(defalias 'mexp 'pp-macroexpand-last-sexp)
+```
+
+
+## u/shami1kemi1 [🔗](https://www.reddit.com/r/emacs/comments/d5dwkq/comment/f0mv6hi)
+**Votes:** 12
+
+Here are some things I've gathered while reading through the Emacs info pages.
+
+* In i-search, you can do `M-e` to edit the current search string, and search with the new string by using `C-s`  or `C-r` and whatnot. This may be common knowledge, but I at least didn't know of this until recently. I tended to try to press backspace to edit the search query, but that tends to first go back the found matches before allowing you to edit again.
+* If one wants to have a built-in completion thing for the minibuffer, I recommend giving `icomplete-mode` a try. Like `ido-mode`, `icomplete-mode` is built into Emacs, which gives it certain advantages when compared against things like `helm` and `ivy`.  
+  
+Now, unlike `ido`, `icomplete-mode` applies to everything by default, without the need for settings like `ido-everywhere`. This also means that `icomplete` works with `M-x` out of the box, instead of needing a thing like `smex`.
+
+Reading the Emacs manual is quite a nice thing. It can be quite long in some places, but one might discover something new, and maybe find out just what Emacs is capable of, even in a basic OOTB configuration.
+
+
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/fs93hk/comment/fm1fw1x)
+**Votes:** 12
+
+For me, learning about `kill-whole-line` (control-shift-delete) was a revelation.  Compared to the "classic" Emacs method of deleting lines (C-a to go to the beginning of the line if not already there, C-k once to kill to the end of line, C-k again to kill the newline), it feels like a major speedup.
+
+I still use C-k frequently, but it's effectively just a kill-to-end-of-line command.
+
+
+## u/justinhj [🔗](https://www.reddit.com/r/emacs/comments/2awvj3/comment/cizlcox)
+**Votes:** 12
+
+This is familiar to me. I've been using emacs for 10 years but I felt as you do for perhaps as long as two months.
+
+If you take the approach of trying to make emacs be just like the environments you are used to then a) you will be disappointed and b) why bother?
+
+For me the joy of emacs comes from discovering its thoughtful and pragmatic design. The keys which initially seem hard actually involve lite hand movement. The help system is discoverable and well thought out once you can navigate it easily.
+
+Seek out emacs users and ask them how they do the most mundane things. As an example when I'm working in a project I often navigate it by using rgrep and choosing a buffer that way. The bookmarks system is very handy. Once you have a bunch of files open already switch between them using c-x b. various extensions make this better like iBuffer.
+
+Seek out cool extensions that help you with ruby. Discovering a cool new trick keeps you enthused and helps you through the helpless stage.
+
+Learning emacs is a journey and some of that journey is uphill. As long as you're enjoying yourself carry on. If you're not though, it's probably just not for you.
+
+
+## u/jacmoe [🔗](https://www.reddit.com/r/emacs/comments/audffp/comment/eh7efpv)
+**Votes:** 11
+
+Very cool!
+
+I gave up on getting Emacs set up as a C++ IDE, but I am tempted now :)
+
+&#x200B;
+
+Great that we can have a llvm client/server within Emacs!
+
+
+## u/Adorable-Effort [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeuwps6)
+**Votes:** 11
+
+`image-mode` can be used to preview TTF and OTF fonts.
+
+Emacs already opens TTF fonts with `image-mode` automatically, but I also wanted it to do the same with OTF.
+
+```elisp
+(add-to-list 'auto-mode-alist '("\\.otf\\'" . image-mode))
+```
+
+
+## u/uptocode [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efgyvey)
+**Votes:** 11
+
+Like Magit? Like writing TODOs in your source code? Check out: 
+
+https://github.com/alphapapa/magit-todos
+
+It uses simple programs like grep or rgrep to show the TODOs in your git repo.
+
+
+## u/robotreader [🔗](https://www.reddit.com/r/emacs/comments/b058f8/comment/eicaf0h)
+**Votes:** 11
+
+Bit of code to flip the window split from horizontal to vertical or vice versa.  Been in my .emacs almost since the beginning, so unfortunately I don't know where I got it from.  I use it when I switch emacs from half screen to full screen.
+
+```elisp
+;;flips two windows from horizontal split to vertical split
+(defun rotate-windows ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
+    
+```
+
+
+## u/henry_flower [🔗](https://www.reddit.com/r/emacs/comments/b2uqdm/comment/eiv960e)
+**Votes:** 11
+
+A replacement for `C-x k RET`:
+
+```elisp
+(defun my-kill-buffer()
+  (interactive)
+  ;; a list of buffers we don't want to kill accidentally
+  (let ((my-holy-buffers '("*scratch*" "*Messages*")))
+
+    (if (member (buffer-name) my-holy-buffers)
+        (message "not so fast")
+      (kill-buffer (current-buffer))) ))
+
+(global-set-key [f8] 'my-kill-buffer)
+```
+
+
+## u/permafrosty [🔗](https://www.reddit.com/r/emacs/comments/2wh9o0/comment/coqw3ui)
+**Votes:** 11
+
+For quick note-taking, there is deft:
+
+http://jblevins.org/projects/deft/
+
+
+## u/jumpUpHigh [🔗](https://www.reddit.com/r/emacs/comments/kvmmq3/comment/gj33uht)
+**Votes:** 11
+
+AucTeX
+
+When you compile your TeX file and there are errors, the message asks you to see error messages using
+
+```elisp
+ C-c `
+
+```
+This leads to the last error which is sometimes incomprehensible and you are left to yourself to figure out what went wrong.
+
+Instead of getting the last error, you can get an overview of all the errors by setting below variable to `t`:
+
+```elisp
+ (setq TeX-error-overview-open-after-TeX-run t)
+
+```
+You can pop this up in a separate frame using:
+
+```elisp
+  (setq TeX-error-overview-setup 'separate-frame)
+
+```
+Related docs are [here](https://www.gnu.org/software/auctex/manual/auctex/Error-overview.html).
+
+This totally changes the way you can handle errors messages.
+
+
+## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/auwzjr/comment/ehdsutf)
+**Votes:** 11
+
+To replace a shell command with its output, select the command and type `C-u M-| sh`. It can work because bash supports read program via STDIN, Python and Ruby work as well.
+
+
+## u/Gollum999 [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el0hkx2)
+**Votes:** 11
+
+I just found out that the tables in `org-mode` support Excel-like calculations.  You can use functions from `calc` as well as arbitrary Elisp expressions!
+
+Only complaint is that it's not the most performant. I tested it on a table of ~1200 rows and it took around 8 seconds to update my calculated column. :/
+
+
+## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/c1zl0s/comment/erl5qsa)
+**Votes:** 11
+
+If you want to edit the commit that added/deleted a particular line of code, Magit offers `magit-edit-line-commit` that will do the interactive git rebase automatically for you.
+
+`magit-diff-edit-hunk-commit` does the same but from a Magit diff buffer.
+`
+
+
+## u/primitiveinds [🔗](https://www.reddit.com/r/emacs/comments/erro41/comment/ff90d5b)
+**Votes:** 11
+
+I just now figured out that you can interactively pass flags to commands like `counsel-rg` by putting the `--` separator between the flags and the search string, so something like `-g '*.txt' -- whatever` will search for `whatever` only in `txt` files. `counsel` uses a function called `counsel--split-command-args` to split the parts before and after the `--`.
+
+
+## u/rhmatthijs [🔗](https://www.reddit.com/r/emacs/comments/h9zoy9/comment/fuzucay)
+**Votes:** 11
+
+On a Mac: make Emacs detect if you have light or dark mode enabled system wide.
+
+If you have two themes, a light one and a dark one, and you want the dark theme by default unless you have light mode enabled, add this to your init.el:
+
+```elisp
+;; If we're on a Mac and the file "~/bin/get_dark.osascript" exists
+;; and it outputs "false", activate light mode. Otherwise activate
+;; dark mode.
+(cond ((and (file-exists-p "~/bin/get_dark.osascript")
+            (string> (shell-command-to-string "command -v osascript") "")
+            (equal "false\n"
+                   (shell-command-to-string "osascript ~/bin/get_dark.osascript")))
+       (mcj/theme-set-light))
+      (t (mcj/theme-set-dark)))
+
+```
+(mcj/theme-set-light and mcj/theme-set-light are functions that enable the light and the dark theme, respectively).
+
+~/bin/get_dark.osascript contains the following:
+
+```elisp
+tell application "System Events"
+	tell appearance preferences
+		get dark mode
+	end tell
+end tell
 ```
 
 
 ## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/cdu7cd/comment/etweom3)
-**Votes:** 12
+**Votes:** 11
 
 If you don't like the look of wave (under)lines in Emacs and prefer straight lines: 
 
@@ -1625,20 +2010,701 @@ If you don't like the look of wave (under)lines in Emacs and prefer straight lin
 ```
 
 
-## u/jimm [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fvqvedf)
-**Votes:** 12
+## u/spfft [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fvqq7ck)
+**Votes:** 11
 
-I can't say how often I use `dabbrev-expand` (`M-/`) to complete words. Saves me a ton of time.
+Undo-tree and kill-ring are two of the best features in Emacs / packages. Change your life today.
 
 
-## u/vatai [🔗](https://www.reddit.com/r/emacs/comments/ojzv53/comment/h5584no)
-**Votes:** 12
+## u/ainstr [🔗](https://www.reddit.com/r/emacs/comments/vcpk6u/comment/ichiccu)
+**Votes:** 11
 
-The emacs lisp tutorial is the real tutorial for emacs ;)
+The other day I discovered that you can access Spotify through dbus. Most of my use-case for spotify is hitting shuffle on ~20 of my playlists; not much searching, discovering, charts, etc. So, I didn't need any of the existing packages that require an auth token or extra local server.
+
+This basically wraps `completing-read` over the alist stored in spotify-playlists. You can probably translate the qdbus call to dbus-send or whatever.
+
+```elisp
+;; Inspired by sp.sh: https://gist.github.com/wandernauta/6800547
+;; Could use https://codeberg.org/jao/espotify, but don't need all the functionalities
+;; Potential Issues: https://community.spotify.com/t5/Desktop-Linux/DBus-OpenUri-issue/td-p/1376397
+
+;; Could just write a fn to extract the ID, and use that in spotify-playlists
+;; Current way with full uri allows for playlist vs artist, etc.
+;; but probably don't need flexiblity for my use case
+(defun spotify--clean-uri (raw-uri)
+  "Clean RAW-URI into a dbus-acceptable uri."
+  (let* ((url-fields (split-string
+		      raw-uri
+		      (rx (or "/" "?"))))
+	 (type (nth 3 url-fields))
+	 (id (nth 4 url-fields)))
+    (concat "spotify:" type ":" id)))
+
+(defvar spotify-playlists
+  '(("Artist" . "https://open.spotify.com/playlist/1v4UqI9mEEB4ry3a3uaorO?si=bc675402c7384080"))
+  "Alist of spotify playlists for spotify-playlists to select from.
+  RAW-URI is from right-click on playlist > Share > Copy Link to Playlist.")
+
+(defun spotify--open-uri (raw-uri)
+  "Open RAW-URI."
+  (let ((prefix "qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.OpenUri ")
+	(uri (spotify--clean-uri raw-uri)))
+    (shell-command (concat prefix uri))))
+
+(defun spotify--open-playlist ()
+  "Prompt to select and play a playlist from spotify-playlists."
+  (let* ((key (completing-read "Playlist: " spotify-playlists))
+	 (raw-uri (cdr (assoc key spotify-playlists))))
+    (spotify--open-uri raw-uri)
+    (message (format "Now Playing: %s" key))))
+
+(defun spotify-open-playlist ()
+  "Wrapper around `spotify--open-playlist`, to check if spotify is running."
+  (interactive)
+  (pcase
+      (shell-command "pgrep spotify")
+    (1 (message "Spotify not running."))
+    (0 (spotify--open-playlist))))
+```
+
+
+## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/c86mn9/comment/esz8l1y)
+**Votes:** 11
+
+The `table` package is very useful and not very popular in Emacs (it's included by default).
+
+Imagine that you have some text that is more or less structured like a table, but not quite. For example it may be some text where you applied a "table-like" layout manually by using a lot of spaces, but the structure is big and things are difficult to maintain. You can select the text, do `M-x table-capture`, and specify empty strings as separators. Emacs will create a pretty table with one cell containing your text. Now you can move the point to parts inside that cell and split around that point with `M-x split-cell`. Once a cell is split, you can navigate each cell with Tab and edit text independently! After you have finished creating a layout, just do `M-x table-release` and everything will be in plain text again, keeping your layout intact.
+
+`table` is a useful package to create complex layouts in code comments (for example, to explain a difficult concept).
+
+For more information, check "Editing Text-based Tables" in the Emacs manual.
+
+
+## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/c86mn9/comment/esy8p93)
+**Votes:** 11
+
+A bunch of useful built-in commands have no default keybinding. Here's a list that includes the binding I use as suggestion:
+
+- List editing commands:
+  - `up-list` (`C-M-o` --mnemonic: it gets you Out of a list)
+  - `kill-backward-up-list` (`<C-M-backspace>`)
+  - `raise-sexp` (`M-R`)
+  
+- Prose oriented commands:
+  - `kill-paragraph` (`M-K`)
+  - `mark-end-of-sentence` (`M-E`)
+  - `transpose-sentences` (`M-T`)
+  - `transpose-paragraphs` (`C-x t`)
+  
+- Miscellaneous:
+  - `browse-url-at-point` (`C-c b`) Of course, if you use `goto-address-mode`, you don't need a keybinding for this one.
+  - `info-apropos` (`C-h A`)
+  - `proced` (`C-x C-p`) It works on Windows too!
+
+Also, there are a bunch of default keybindings that I think could be better used for a very similar command:
+
+- `C-d`. It is usually bound to `delete-char`, but even the help for `delete-char` thinks this is a bad idea!:
+   
+   > The command ‘delete-forward-char’ is preferable for interactive use, e.g.
+   > because it respects values of ‘delete-active-region’ and ‘overwrite-mode’.
+
+  So I bind `C-d` to `delete-forward-char` and enjoy the `delete-active-region` goodness.
+  
+- `C-x k`. I use it for `kill-current-buffer` and use `C-x K` for `kill-buffer`.
+
+- `M-z`. It's normally bound to `zap-to-char` but I find `zap-up-to-char` useful more often, so I bind it to `M-z` and put `zap-to-char` on `M-Z`.
+
+- `M-c`, `M-l`, `M-u`. These are bound to `capitalize-word`, `downcase-word` and `upcase-word`, but I think `capitalize-dwim`, `downcase-dwim` and `upcase-dwim` are strictly better: they act like the `-word` versions when no region is active, and like the `-region` versions  when there is an active region.
+
+
+## u/Stefan-Kangas [🔗](https://www.reddit.com/r/emacs/comments/pxqvtm/comment/hf1gzs2)
+**Votes:** 11
+
+Read [SICP](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Preferably in Info, installable through MELPA or: [https://github.com/webframp/sicp-info](https://github.com/webframp/sicp-info)
+
+
+## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/eeyhdz/comment/fbxf389)
+**Votes:** 11
+
+Update your hosts file to block internet ads with this function:
+
+```elisp
+(defun update-hosts-file ()
+  (interactive)
+  ;; make a backup in case something goes wrong
+  (copy-file "/etc/hosts" "/tmp/" t)
+  (let ((coding-system-for-write 'raw-text-unix))
+    (with-temp-file  "/sudo:root@localhost:/etc/hosts"
+      (insert-file-contents "/etc/hosts")
+      (goto-char (point-min))
+      ;; This "if block" allows you to keep your custom entries untouched
+      (if (re-search-forward "^# This hosts file is" nil t)
+          (progn
+            (goto-char (line-beginning-position))
+            (delete-region (point)(point-max)))
+        (goto-char (point-max)))
+      ;; get the updated list
+      (insert
+       (with-current-buffer
+           (url-retrieve-synchronously "https://someonewhocares.org/hosts/hosts" t t)
+         (goto-char (point-min))
+         (re-search-forward "^$")
+         (delete-region (point) (point-min))
+         (buffer-string))))))
+```
+
+
+## u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/r69w7i/comment/hmst3ih)
+**Votes:** 11
+
+macros in emacs are like a secret, forgotten art, but I use them with regexp search, orgmode commands to tweak repeating events (or any number of other uses). Learn macros; they gave emacs its name! One usage here: https://orys.us/ug
+
+
+## u/andreyorst [🔗](https://www.reddit.com/r/emacs/comments/s21457/comment/hsgj7a6)
+**Votes:** 11
+
+Prevent horizontal scrolling from going too far left.
+
+I use Emacs on a laptop and quite often scroll with a touchpad. I also don't use line wrapping, as in code it usually looks misleading, so lines can sometimes exceed window width, either because of some long names or because the current window configuration is too narrow.
+
+However, when scrolling text sideways, there's a small annoyance that the scroll can go way too far to the left. E.g. if this is your window, and your text exceeds it:
+
+
+```elisp
+|Short line             |
+|Some really long line o|
+|Another short line     |
+
+```
+What I'd like to is to prevent scrolling any further than that:
+
+```elisp
+|line                   |
+|eally long line of text|
+|r short line           |
+
+```
+But Emacs actually allows to scroll as far as one would want to, like here:
+
+```elisp
+|                       |
+|t                      |
+|                       |
+
+```
+This doesn't make sense to me, as you can't see anything at all.
+Probably handy, when you write in really long lines, and you wish to have some buffer for adding more text without triggering scrolling, but I never needed that. So I wrote such predicate:
+
+```elisp
+(defun truncated-lines-p ()
+  "Non-nil if any line is longer than `window-width' + `window-hscroll'.
+
+Returns t if any line exceeds the right border of the window.
+Used for stopping scroll from going beyond the longest line.
+Based on `so-long-detected-long-line-p'."
+  (save-excursion
+    (goto-char (point-min))
+    (let* ((window-width
+            ;; this computes a more accurate width rather than `window-width', and respects
+            ;; `text-scale-mode' font width.
+            (/ (window-body-width nil t) (window-font-width)))
+           (hscroll-offset
+            ;; `window-hscroll' returns columns that are not affected by
+            ;; `text-scale-mode'.  Because of that, we have to recompute the correct
+            ;; `window-hscroll' by multiplying it with a non-scaled value and
+            ;; dividing it with a scaled width value, rounding it to the upper
+            ;; boundary.  Since there's no way to get unscaled value, we have to get
+            ;; a width of a face that is not scaled by `text-scale-mode', such as
+            ;; `window-divider' face.
+            (ceiling (/ (* (window-hscroll) (window-font-width nil 'window-divider))
+                        (float (window-font-width)))))
+           (line-number-width
+            ;; compensate line numbers width
+            (if (bound-and-true-p display-line-numbers-mode)
+                (- display-line-numbers-width)
+              0))
+           ;; subtracting 2 for extra space in case some calculations were imprecise
+           (threshold (+ window-width hscroll-offset line-number-width -2)))
+      (catch 'excessive
+        (while (not (eobp))
+          (let ((start (point)))
+            (save-restriction
+              (narrow-to-region start (min (+ start 1 threshold)
+                                           (point-max)))
+              (forward-line 1))
+            (unless (or (bolp)
+                        (and (eobp) (<= (- (point) start)
+                                        threshold)))
+              (throw 'excessive t))))))))
+
+```
+This function can calculate window width, and line width, and check if any line in the buffer exceeds the window width screen-wise. By screen-wise I mean that if you've scrolled text to the left, it will begin to return `nil` once all lines don't exceed the right border of the window, thus achieving the described behavior in the diagrams. I then define advice around the `scroll-left` function, and it works pretty good:
+
+```elisp
+(define-advice scroll-left (:around (foo &optional arg set-minimum))
+  (when (and truncate-lines
+             (not (memq major-mode '(vterm-mode term-mode)))
+             (truncated-lines-p))
+    (funcall foo arg set-minimum)))
+
+```
+Though it's not very accurate when using `text-scale-adjust`, as line width is not the same as before, the function, that reports how much the window was scrolled to the left still returns unscaled values. You can see my thoughts in the function's comments. Any suggestions on how to make it more accurate?
+
+
+## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/polxft/comment/hcxub77)
+**Votes:** 11
+
+If you write Lisp, there's a couple of old Emacs commands to help you write code while keeping parenthesis balanced: `M-(` (`insert-parenthesis`), and `M-)` (`move-past-close-and-reindent`). They used to be documented in old Emacs manuals, but presumably their description was removed to make room for other content.
+
+With a prefix argument, `M-(` wraps in parenthesis that number of sexps. For example with point represented as "*":
+
+*foo -> C-u 1 M-( -> (foo)
+
+There's more information in EmacsWiki: https://www.emacswiki.org/emacs/InsertPair
+
+
+## u/tungd [🔗](https://www.reddit.com/r/emacs/comments/2awvj3/comment/cizm4e7)
+**Votes:** 11
+
+You'll need to either adapt to the Emacs way of doing things, or make Emacs to adapt to your way of doing things. For the specific problem you described, if you want to adapt, install [Projectile](https://github.com/bbatsov/projectile), and you can open files quickly using `C-c p f` (hint: it is similar to ST's `Ctrp-P`. If you love NERDTree and doesn't want to switch to a new way and Speedbar doesn't work for you, install [Neotree](https://github.com/jaypei/emacs-neotree) instead.
+
+
+## u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/9ajxqj/comment/e4w2ych)
+**Votes:** 10
+
+Very nice post!  Although I certainly do not deserve to be named in the company of such pillars of the community as Sacha, John, and Nicolas.
+
+You should consider starting a "real" blog to host these more permanently (or more personally and visibly, at least).  I often find myself reading blog posts from a few years ago about Emacs/Org, but old Reddit posts like this are probably more likely to fade into obscurity.  Then you can write a blog post about blogging with Emacs/Org!  ;)  You could also then submit it to Planet Emacs for syndication.  Kaushal Modi has set up a beautiful blog with Org and Hugo, so you might use it as an example.
+
+Thanks for sharing your insights!
+
+
+## u/shoutouttmud [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eetvkas)
+**Votes:** 10
+
+Let me start this thread off: [Pragmatic emacs](http://pragmaticemacs.com/) is a great source of ideas. I recently came across this setting:
+```elisp
+    
+(setq wdired-allow-to-change-permissions t)
+
+```
+plus a simple function to replace kill-buffer so that it kill the current buffer without prompting me for what buffer I want to kill(the docstring is mine):
+
+```elisp
+(defun my-kill-this-buffer ()
+  "Kill the current buffer. This function is required because the
+`kill-this-buffer' included in Emacs is safe to use only
+from the menu bar"
+  (interactive)
+  (kill-buffer (current-buffer)))
+```
+
+
+## u/tareefdev [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efid3tn)
+**Votes:** 10
+
+Install [Wttrin](https://github.com/bcbcarl/emacs-wttrin) package, and then add the following to your `.emacs`:
+
+```elisp
+(require 'wttrin)
+(setq wttrin-default-cities '("XXXXX"))
+(setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
+(global-set-key (kbd "s-w") 'wttrin)
+
+```
+Put your city name instead of XXXXX and change the key binding to whatever you want. Now you can check the weather condition without leaving Emacs :)
+
+
+## u/ShyGuy32 [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efhx7vs)
+**Votes:** 10
+
+Inspired by the venerable Twitch [Stay Healthy Bot](https://www.twitch.tv/stayhealthybot), I decided to do up a similar reminder feature from my local Emacs. It's more or less just a timer mixed with alert.el. There's still some work do be done here (mostly in regards to resetting the timer, as my usual workflow is to close out Emacs at the end of the workday), but I've found it pretty useful during the workday to keep me hydrated and moving around.
+
+```elisp
+(use-package alert
+  :config
+  ;; OS-dependent
+  (setq alert-default-style 'osx-notifier)
+
+  ;; Reminder to stay healthy!
+  (defvar stay-healthy--start nil)
+  (defvar stay-healthy--timer nil)
+  (defun stay-healthy--alert (start-time)
+    "Alert the user to stay healthy"
+    (let* ((now (time-to-seconds (current-time)))
+           (seconds (- now start-time))
+           (hours (format-seconds "%h" seconds)))
+      (unless (string= hours "0")
+        (alert
+         (format "You've been working for %s hour(s)! Have you been drinking your water? It might also be a good time to get up and stretch, refill your water, grab something to eat, or maybe take a bathroom break! Stay Healthy!"
+                 hours)
+         :title "Stay Healthy!"
+         ))))
+
+  (defun stay-healthy-start-timer ()
+    "Start a timer to keep you healthy"
+    (interactive)
+    (unless stay-healthy--start
+      (setq stay-healthy--start (time-to-seconds (current-time))))
+    (setq stay-healthy--timer (run-with-timer 0 (* 60 60) #'stay-healthy--alert stay-healthy--start)))
+
+  (defun stay-healthy-stop-timer ()
+    "End the healthy timer"
+    (interactive)
+    (when stay-healthy--timer
+      (cancel-timer stay-healthy--timer)))
+
+  (stay-healthy-start-timer))
+
+```
+&#x200B;
+
+
+## u/shoutouttmud [🔗](https://www.reddit.com/r/emacs/comments/aoqcyl/comment/eg2ujqe)
+**Votes:** 10
+
+Evil related:
+
+An interesting thing I read in the past week was this [blog post](http://vimcasts.org/blog/2014/02/follow-my-leader/). What I got out of it is that, although vi keybinds cover almost all keys, leaving you with few free keys to change, a significant amount of combinations of keys are invalid (for example c followed by x doesn't do anything) and thus you can bind them to whatever you want. 
+
+I have not integrated this idea to my evil workflow yet, but it sounds quite promising, and I think I'll start using it at some point. 
+
+(One thing to consider though is that with evil there are packages that add additional text objects. If you added a text object that is represented by x then c followed by x would become a valid combination and thus would clash with your keybinding, forcing you to change it to something else)
+
+
+## u/1-05457 [🔗](https://www.reddit.com/r/emacs/comments/ad8gzq/comment/edf3z02)
+**Votes:** 10
+
+If you're using the default VIM mode keybindings, it sounds like you've really fallen for the VIM-style modal workflow.
+
+Also, if you find Spacemacs slow (particularly at startup), try DOOM Emacs.
+
+
+## u/gusbrs [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/eqrgff3)
+**Votes:** 10
+
+Simple, but I think it counts as a tip: [minions](https://github.com/tarsius/minions) by [u/tarsius_](https://www.reddit.com/user/tarsius_). It allows one to invert the usual logic of managing minor modes lighters in the mode-line. While the default behaviour is "show everything by default, unless you diminish/delight it", `minions` goes in the opposite direction and hides all of them, unless you explicitly tell it to show them. Besides, the minor modes are still available, alongside some other common ones which thus become more easily accessible, in a menu which aggregates minor modes in the mode-line. Pretty neat.
+
+
+## u/marcowahl [🔗](https://www.reddit.com/r/emacs/comments/b058f8/comment/eicbkxv)
+**Votes:** 10
+
+In the spirit of `incf` this is an abstraction to toggle a truth value without having to write the place twice.
+
+E.g. write `(togglef foo)` instead of `(setf foo (not foo))`.
+
+```elisp
+(defmacro togglef (place)
+  "Toggle PLACE.  non-nil becomes nil, nil becomes t.
+PLACE may be a symbol, or any generalized variable allowed by ‘setf’.
+The return value is the new value of PLACE."
+  `(setf ,place (not ,place)))
+
+```
+&#x200B;
+
+
+## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/hqxm5v/comment/fy0xduj)
+**Votes:** 10
+
+Hippie-expand google search suggestions. Completely inspired from [shell-parse.el](https://github.com/malloc47/shell-parse.el/blob/master/shell-parse.el).
+
+I've added `try-expand-google-completion` to the bottom of my `hippie-expand-try-functions-list`
+
+```elisp
+(defun google-suggest--request (query)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       (format "http://suggestqueries.google.com/complete/search?client=firefox&q=%s" query) t t 1)
+    (goto-char (point-min))
+    (re-search-forward "^$")
+    (delete-region (point)(point-min))(buffer-string)))
+
+(defun google-suggest--list (result)
+  (let* ((q (progn
+              (string-match ",\\[\\(.*?\\)\\]" result)
+              (match-string 1 result)))
+         (r (replace-regexp-in-string "\\\"" "" q))
+         (l (split-string r "," t)))
+    (when (> (length (car (cdr l))) 0)
+      (remove
+       (car l)
+       (cdr l)))))
+
+(defun try-expand-google-completion (old)
+  (unless old
+    (he-init-string (hippie-word-bg) (point))
+    (setq he-expand-list (sort
+                          (all-completions
+                           he-search-string
+                           (lambda (s y n) (google-suggest--list (google-suggest--request s))))
+                          'string-lessp)))
+  (if (null he-expand-list)
+      (progn
+        (when old (he-reset-string))
+        ())
+    (he-substitute-string (car he-expand-list) t)
+    (setq he-tried-table (cons (car he-expand-list) (cdr he-tried-table)))
+    (setq he-expand-list (cdr he-expand-list))
+    t))
+```
+
+
+## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/dyhkcd/comment/f848ctb)
+**Votes:** 10
+
+A simple ivy function to play soma.fm with mpv in emacs:
+
+```elisp
+(defun launcher-somafm ()
+  (interactive)
+  (let ((stations
+	 '(("BAGeL Radio: What alternative rock radio should sound like. [explicit]"
+	    . "http://somafm.com/bagel32.pls")
+	   ("Beat Blender: A late night blend of deep-house and downtempo chill."
+	    . "http://somafm.com/beatblender32.pls")
+	   ("Black Rock FM: From the Playa to the world, for the annual Burning Man festival."
+	    . "http://somafm.com/brfm32.pls")
+	   ("Boot Liquor: Americana Roots music for Cowhands, Cowpokes and Cowtippers"
+	    . "http://somafm.com/bootliquor32.pls")
+	   ("Christmas Lounge: Chilled holiday grooves and classic winter lounge tracks. (Kid and Parent safe!)"
+	    . "http://somafm.com/christmas32.pls")
+	   ("Christmas Rocks!: Have your self an indie/alternative holiday season!"
+	    . "http://somafm.com/xmasrocks32.pls")
+	   ("Cliqhop idm: Blips'n'beeps backed mostly w/beats. Intelligent Dance Music."
+	    . "http://somafm.com/cliqhop32.pls")
+	   ("Covers: Just covers. Songs you know by artists you don't. We've got you covered."
+	    . "http://somafm.com/covers32.pls")
+	   ("DEF CON Radio: Music for Hacking. The DEF CON Year-Round Channel."
+	    . "http://somafm.com/defcon32.pls")
+	   ("Deep Space One: Deep ambient electronic, experimental and space music. For inner and outer space exploration."
+	    . "http://somafm.com/deepspaceone32.pls")
+	   ("Digitalis: Digitally affected analog rock to calm the agitated heart."
+	    . "http://somafm.com/digitalis32.pls")
+	   ("Doomed (Special): For Halloween: Dark industrial/ambient music for tortured souls."
+	    . "http://somafm.com/specials32.pls")
+	   ("Drone Zone: Served best chilled, safe with most medications. Atmospheric textures with minimal beats."
+	    . "http://somafm.com/dronezone32.pls")
+	   ("Dub Step Beyond: Dubstep, Dub and Deep Bass. May damage speakers at high volume."
+	    . "http://somafm.com/dubstep32.pls")
+	   ("Fluid: Drown in the electronic sound of instrumental hiphop, future soul and liquid trap."
+	    . "http://somafm.com/fluid32.pls")
+	   ("Folk Forward: Indie Folk, Alt-folk and the occasional folk classics."
+	    . "http://somafm.com/folkfwd32.pls")
+	   ("Groove Salad: A nicely chilled plate of ambient/downtempo beats and grooves."
+	    . "http://somafm.com/groovesalad32.pls")
+	   ("Groove Salad Classic: The classic (early 2000s) version of Groove Salad"
+	    . "http://somafm.com/gsclassic32.pls")
+	   ("Illinois Street Lounge: Classic bachelor pad, playful exotica and vintage music of tomorrow."
+	    . "http://somafm.com/illstreet32.pls")
+	   ("Indie Pop Rocks!: New and classic favorite indie pop tracks."
+	    . "http://somafm.com/indiepop32.pls")
+	   ("Jolly Ol' Soul: Where we cut right to the soul of the season."
+	    . "http://somafm.com/jollysoul32.pls")
+	   ("Left Coast 70s: Mellow album rock from the Seventies. Yacht not required."
+	    . "http://somafm.com/seventies32.pls")
+	   ("Lush: Sensuous and mellow vocals, mostly female, with an electronic influence."
+	    . "http://somafm.com/lush32.pls")
+	   ("Metal Detector: From black to doom, prog to sludge, thrash to post, stoner to crossover, punk to industrial."
+	    . "http://somafm.com/metal32.pls")
+	   ("Mission Control: Celebrating NASA and Space Explorers everywhere."
+	    . "http://somafm.com/missioncontrol32.pls")
+	   ("PopTron: Electropop and indie dance rock with sparkle and pop."
+	    . "http://somafm.com/poptron32.pls")
+	   ("Secret Agent: The soundtrack for your stylish, mysterious, dangerous life. For Spies and PIs too!"
+	    . "http://somafm.com/secretagent32.pls")
+	   ("Seven Inch Soul: Vintage soul tracks from the original 45 RPM vinyl."
+	    . "http://somafm.com/7soul32.pls")
+	   ("SF 10-33: Ambient music mixed with the sounds of San Francisco public safety radio traffic."
+	    . "http://somafm.com/sf103332.pls")
+	   ("Sonic Universe: Transcending the world of jazz with eclectic, avant-garde takes on tradition."
+	    . "http://somafm.com/sonicuniverse32.pls")
+	   ("Space Station Soma: Tune in, turn on, space out. Spaced-out ambient and mid-tempo electronica."
+	    . "http://somafm.com/spacestation32.pls")
+	   ("Suburbs of Goa: Desi-influenced Asian world beats and beyond."
+	    . "http://somafm.com/suburbsofgoa32.pls")
+	   ("The Trip: Progressive house / trance. Tip top tunes."
+	    . "http://somafm.com/thetrip32.pls")
+	   ("ThistleRadio: Exploring music from Celtic roots and branches"
+	    . "http://somafm.com/thistle32.pls")
+	   ("Underground 80s: Early 80s UK Synthpop and a bit of New Wave."
+	    . "http://somafm.com/u80s32.pls")
+	   ("Xmas in Frisko: SomaFM's wacky and eclectic holiday mix. Not for the easily offended."
+	    . "http://somafm.com/xmasinfrisko32.pls"))))
+    (ivy-read "soma.fm " (mapcar 'car stations)
+	      :re-builder #'regexp-quote
+	      :action (lambda (x) (save-window-excursion
+				    (async-shell-command (concat "mpv " (cdr (assoc x stations)))
+							 "*soma.fm*"))))))
+
+(defun kill-soma ()
+  (interactive)
+  (kill-process "*soma.fm*")
+  (sleep-for 2)
+  (kill-buffer "*soma.fm*"))
+```
+
+
+## u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/kvmmq3/comment/gj9ioly)
+**Votes:** 10
+
+Just a cool concept: if you have a keypad on your keyboard which you rarely use, bind its nums to something useful. The results are numlock-sensitive and are NOT the same keycodes as regular numbers, so they're just free keys. For example, `(define-key map (kbd "<kp-1>") 'winum-select-window-1)`
+
+
+## u/ahk-_- [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el0glnh)
+**Votes:** 10
+
+I think the best productivity package for emacs is by far nyan-mode. I cannot live without it!
+
+Life is too depressing to code without nyan-mode. Best productivity tool in the world!
+
+
+## u/11fdriver [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el0a1dw)
+**Votes:** 10
+
+Moving, marking & killing by paragraph.
+
+I've been using these for a while as a customisation of Xah-Fly-Keys, but I was surprised to learn that many Emacs users don't know this functionality.
+
+I find that moving by paragraph is a good middle ground between moving vertically by line and moving vertically by page, it's a very natural hierarchy.
+
+I move the page to display the correct section of the buffer, then I move to the right paragraph, then to the right line within that paragraph.
+
+The default bindings for movement are annoying, `M-{`/`M-}`, but it's simple enough to rebind them to `M-[`/`M-]`.
+
+You can mark the current paragraph with `M-h`.
+
+
+## u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/wqjare/comment/ikrx30z)
+**Votes:** 10
+
+I've parsed and prettified some of the comments (I think I'm missing some, but hopefully should be fixed soonish) from past weekly tips and tricks thread here: [https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md](https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md)
+
+If you fancy procrastinating for a bit today...
+
+
+## u/Krautoni [🔗](https://www.reddit.com/r/emacs/comments/ja97xs/comment/g8pgyy1)
+**Votes:** 10
+
+Since I find myself pair programming quite a bit, I made a small helper:
+
+```elisp
+(defvar pair-programming--pair-programmer
+  nil
+  "The current pair programmer as (name email)")
+
+(defun enable-pair-programming-mode ()
+  "Sets visuals for pair programming mode and prompt for your buddy."
+  (global-display-line-numbers-mode 1)
+  (let ((pair-programmer (git-commit-read-ident nil)))
+(setq pair-programming--pair-programmer pair-programmer)
+(message (concat "Pair programming with " (car pair-programmer)))))
+
+(defun disable-pair-programming-mode ()
+  "Disable pair programming visuals and settings."
+  (setq pair-programming--pair-programmer nil)
+  (global-display-line-numbers-mode -1)
+  (message "PP mode disabled"))
+
+(define-minor-mode pair-programming-mode ()
+  "Toggle Pair Programming Mode.
+
+This prompts for a pair programmer from your current git commit history.
+When you commit with (ma)git, the pair programmer is inserted as a co-author.
+Additionally, line number mode is enabled."
+  :global t
+  :lighter " PP"
+  (if pair-programming-mode
+  (enable-pair-programming-mode)
+(disable-pair-programming-mode)))
+
+(defun insert-pair-programmer-as-coauthor ()
+  "Insert your pair programer into the current git commit."
+  (when (and pair-programming-mode git-commit-mode)
+(pcase pair-programming--pair-programmer
+  (`(,name ,email) (git-commit-insert-header "Co-authed-by" name email))
+  (_ (error "No pair programmer found or wrong content")))))
+
+(add-hook 'git-commit-setup-hook 'insert-pair-programmer-as-coauthor)
+```
+
+It sets up a co-authored-by for git commits, and enables line numbers.
+
+
+## u/char1zard4 [🔗](https://www.reddit.com/r/emacs/comments/v2by7z/comment/iarzi1s)
+**Votes:** 10
+
+This week I learned that:
+
+-	You can redefine all yes/no prompts to y/n:
+`(defalias ‘yes-or-no-p ‘y-or-n-p)`
+
+-	`C-c C-c` in LaTeX-mode buffers will allow you to compile/view output (I’ve used LaTeX-preview-pane for the last couple of years)
+
+-	Tab-stops in yas-snippet are very handy for filling out multiple parts of a template, didn’t even know these existed:
+https://joaotavora.github.io/yasnippet/snippet-development.html#org41a4ac7
+
+
+## u/c17g [🔗](https://www.reddit.com/r/emacs/comments/bb5c1w/comment/ekgnfnv)
+**Votes:** 10
+
+If you:
+
+1. Develop code on remote machine;
+2. Use SSH to access remote; and
+3. Annoyed by `flycheck` not working properly over TRAMP
+
+Then consider using [`sshfs`](https://github.com/libfuse/sshfs) to mount your remote filesystem to local. This way, `flycheck` will regard your files just as a local one, and works properly. Neat trick discovered today when debugging flycheck-flake8 with my colleague (are you reading? :P)
+
+
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fvrlu40)
+**Votes:** 10
+
+I've been using `M-|` (`shell-command-on-region`) frequently for years, and I only just stumbled on the fact that the region need not be active to use it.  If it isn't, the command operates on the text from point to the end of the buffer.  That's very reasonable and in line with various other commands, but the documentation doesn't mention it and so I never thought to try it.
+
+That saves me a call to `C-x h` (`mark-whole-buffer`) whenever I want to process the entire buffer, which is most of the time.  Also, it's a minor distraction for the entire buffer to be highlighted when I'm composing my shell command, so it's nice to avoid that.
+
+Edited to add:  Sorry folks, this doesn't work like I thought it did.  See the coments below for details.
+
+
+## u/Ramin_HAL9001 [🔗](https://www.reddit.com/r/emacs/comments/d8k4ce/comment/f1blal2)
+**Votes:** 10
+
+I'm on Emacs 26.1, I just tried the [`M-x butterfly`]( https://www.xkcd.com/378/ ) command to see what would happen.
+
+Wouldn't you know it, it actually does something that isn't an error message!
+
+
+## u/Desmesura [🔗](https://www.reddit.com/r/emacs/comments/d8k4ce/comment/f1ayv4c)
+**Votes:** 10
+
+I've found that if you press `C-f`, the cursor goes right.
+
+
+## u/ragoneio [🔗](https://www.reddit.com/r/emacs/comments/blo25q/comment/emq00pa)
+**Votes:** 10
+
+Not sure if it will be helpful to anyone else - but working on legacy code, I often need to review code in large files with hundreds of errors and warnings. So I wrote a package which runs Flycheck on all the files in a diff and filters the output to only the lines which was modified or added! https://github.com/ragone/magit-diff-flycheck. I hope you like it - it’s currently in review to get published on MELPA.
+
+
+## u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/ojzv53/comment/h55vkl6)
+**Votes:** 10
+
+I often find myself wanting to be able to switch between `master` and a feature branch in magit quickly:
+
+```elisp
+(defun lw-magit-checkout-last (&optional start-point)
+    (interactive)
+    (magit-branch-checkout "-" start-point))
+(transient-append-suffix 'magit-branch "w"
+  '("-" "last branch" lw-magit-checkout-last))
+
+```
+So that `C-x g b -` switches to the last branch I was on, similar to `cd -`.
 
 
 ## u/wasamasa [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eocpxxy)
-**Votes:** 12
+**Votes:** 10
 
 Last night I wrote some code to improve syntax highlighting for CHICKEN Scheme files. Normally regular `scheme-mode` is sufficient, unfortunately it doesn't handle the non-standard heredoc and `#> ... <#` syntax:
 
@@ -1710,157 +2776,341 @@ Last night I wrote some code to improve syntax highlighting for CHICKEN Scheme f
 ```
 
 
-## u/sshaw_ [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eobjxnw)
-**Votes:** 12
+## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/g5bat3/comment/fo362s8)
+**Votes:** 10
 
-### Highlighting
+`rx` isn't just an (extensible!) sexp syntax for regexps, it's an optimizing compiler!
 
-Adds a background color to matched text in the buffer. You can have multiple overlays each with a different background color. Some bindings:
+Examples:
+
+-   `(rx (or "dude@home.org" "dude@work.com"))` produces
+```elisp
+`"\\(?:dude@\\(?:home\\.org\\|work\\.com\\)\\)"`
+```
+-   `(rx (intersection (any (?g . ?z)) (any (?a . ?p))))` produces  `"[g-p]"`
+
+And from Lisp code it's easy to plug in computed portions, using `eval`.
+For example I recently used this in some silly code to count mentions
+of animals in the bible :P:
 
 ```elisp
-M-s h .         highlight-symbol-at-point
-M-s h l         highlight-lines-matching-regexp
-M-s h u         unhighlight-regexp
+(defun plural (word)
+  (pcase word
+    ("mouse" "mice")
+    ("wolf" "wolves")
+    ("fish" "fishes")
+    (word (concat word "s"))))
+
+(defun bible-count (word)
+  "Count number of times WORD or its plural appears in the bible."
+  (with-current-buffer "king-james-bible.txt"
+    (count-matches
+      (rx-to-string `(word-start (or ,word ,(plural word)) word-end)))))
+
+```
+Which I used to make an Org mode table with an Emacs Lisp column formula:
+
+```elisp
+#+TBLFM: $2='(bible-count $1)
+
+```
+**EDIT**:  A previous version of the `bible-count` function used the `rx` macro and the `eval` construct:
+
+```elisp
+(defun bible-count (word)
+  "Count number of times WORD or its plural appears in the bible."
+  (with-current-buffer "king-james-bible.txt"
+    (count-matches (rx word-start
+                       (or (eval word) (eval (plural word)))
+                       word-end))))
+
+```
+This version is incorrect: `eval` is meant to be used only for value known at compile time. It's actual [behavior is very complicated](https://www.reddit.com/r/emacs/comments/g5bat3/weekly_tipstricketc_thread/fo7qdas) and depends on plenty of seemingly extraneous circumstances.
+
+
+## u/tryptych [🔗](https://www.reddit.com/r/emacs/comments/w3gx6o/comment/ih6ievs)
+**Votes:** 10
+
+Emacs has better long-lines support now??
+
+I just noticed while looking at the latest additions in the NEWS:
+
+>\*\* Emacs is now capable of editing files with arbitrarily long lines. The display of long lines has been optimized, and Emacs no longer chokes when a buffer on display contains long lines.  If you still experience slowdowns while editing files with long lines, this is either due to font locking, which you can turn off with M-x font-lock-mode or C-u C-x x f, or to the current major mode or one of the enabled minor modes, in which case you should open the the file with M-x find-file-literally instead of C-x C-f.  The variable 'long-line-threshold' controls whether and when these display optimizations are used.
+
+That sounds like great news!  Does anyone know what went into it?
+
+(edit to add: this was added some time this week.  I rebuild from master weekly, and check out the NEWS diff each time)
+
+
+## u/yogsototh [🔗](https://www.reddit.com/r/emacs/comments/qgrpte/comment/hi8crmc)
+**Votes:** 10
+
+I just made this nice combination of emacs packages and personal theme to achieve the cool effect of iAWriter
+
+See here: https://her.esy.fun/posts/0021-ia-writer-clone-within-doom-emacs/index.html
+
+
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/cgptj7/comment/eulon9b)
+**Votes:** 10
+
+Recently I started getting annoyed by a new phenomenon: Messages sent to the echo area would only persist for a second or less before disappearing.
+
+I tracked the problem down to the Slack package, where a timer callback was doing `(message "")` regularly.  The context suggested this was meant to erase transient messages like "so-and-so is typing...", but it was happening all the time.  I didn't see any clear way to prevent that timer callback from sending an empty message, so...
+
+```elisp
+(defun empty-slack-message-p (format &rest args)
+  (and (string= format "")
+       (catch 'slack
+         (mapbacktrace
+          (lambda (_ f _ _)
+            (when (and (symbolp f) (string-match-p "slack-" (symbol-name f)))
+              (throw 'slack t)))))))
+
+(advice-add 'message :before-until #'empty-slack-message-p)
+
+```
+I hadn't known about `mapbacktrace` before.  Handy!
+
+
+## u/hale314 [🔗](https://www.reddit.com/r/emacs/comments/gi70ye/comment/fqg7qys)
+**Votes:** 10
+
+I tend to have a lot of function that is defined solely to be added to a hook. Turns out I can customize `defun-declarations-alist` to define a new `hook` property in the `declare` form. Now I can specify the hook that the function is intended for right inside the function definition.
+
+```elisp
+;; Need to be done during compilation as well if your functions are getting compiled
+(eval-and-compile
+  (setf (alist-get 'hook defun-declarations-alist)
+        (list (lambda (fun _args hook &optional depth)
+                `(add-hook ',hook #',fun ,@(when depth (list depth)))))))
+
+(defun ask-about-scratch-buffer ()
+  "Confirm that user want to discard the content of the scratch buffer."
+  (declare (hook kill-emacs-query-functions))
+  (let ((scratch (get-buffer "*scratch*")))
+    (or (zerop (buffer-size scratch))
+        (progn (pop-to-buffer scratch)
+               (y-or-n-p "Scratch buffer is not empty, discard?")))))
+;; no longer needed
+;; (add-hook 'kill-emacs-query-functions #'ask-about-scratch-buffer)
 ```
 
 
-## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/fgahb2/comment/fk3in25)
-**Votes:** 12
+## u/yyoncho [🔗](https://www.reddit.com/r/emacs/comments/dbq80r/comment/f2fneae)
+**Votes:** 10
 
-Most people probably know that `M-t` (`transpose-words`) when used between two words swaps them. But it has other a few other features that are useful:
-
-- You don't have to be between words to use it: if you are on a word, from the second character on, it will swap that word with the next.
-
-- If you are at the end of the buffer and use it you get an error message, "Don’t have two things to transpose", _but_ you additionally get placed at the beginning of the last word in the buffer. So `M-t M-t` used at the end of the buffer will swap the last two words!
-
-- You can use it to swap _non-adjacent_ words too! If you call it with a numeric argument of 0, it will swap the word at the start of the region with the next word after the end of the region. For example, say you want to swap "two" with "five" in the following line:
+evil-mode trick: you could use elisp in the `ex` when using substitute command using `\,`, for example: 
 
 ```elisp
-  one five three four two six
-
+%s/.*/\,(line-number-at-pos) \0 \,(length \0)
 ```
-  You can mark the words "five three four" (but don't mark "two") and then `M-0 M-t` will swap "five", the first word in the region, with "two" the first word _after_ the region.
 
-That last trick works with the other `transpose-` commands as well, not just words: `transpose-chars`, `transpose-lines`, `transpose-paragraphs`, `transpose-sentences`, and `transpose-sexps`. Of course, if that `C-0` trick can't be used with any of those commands to swap the two things you want, there is always `transpose-regions`.
-
-
-## u/celeritasCelery [🔗](https://www.reddit.com/r/emacs/comments/gi70ye/comment/fqdnyhk)
-**Votes:** 12
-
-Shells in emacs like `shell-mode` and `eshell` can write multi line input using `comint-accumulate`. Normally bound to `C-c SPC`.
+This will add line number at the beginning of the line and the line length in the end.
 
 
-## u/meain [🔗](https://www.reddit.com/r/emacs/comments/wwdpju/comment/ilotsc5)
-**Votes:** 12
+## u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/q2g1gq/comment/hfldw8n)
+**Votes:** 10
 
-I use the following snippet to change background color of compilation buffer to a light red if the compilation failed. I use compilation buffer to run tests on a second monitor and this is pretty useful.
+One of the most useful bindings for me:
 
 ```elisp
-(defun meain/compilation-colorcode (_buffer string)
-    "Change background color of compilation `_BUFFER' to red on failure."
-    (unless (string-prefix-p "finished" string) ; Having color for success was distracting
-    (face-remap-add-relative 'default 'diff-hl-delete)))
-(add-to-list 'compilation-finish-functions 'meain/compilation-colorcode)
+(use-package avy
+  :bind* (("C-j" . avy-goto-char-timer)))
 ```
 
 
-## u/shami1kemi1 [🔗](https://www.reddit.com/r/emacs/comments/d5dwkq/comment/f0mv6hi)
-**Votes:** 12
+## u/blankspruce [🔗](https://www.reddit.com/r/emacs/comments/rbmfwk/comment/hnrdt9x)
+**Votes:** 10
 
-Here are some things I've gathered while reading through the Emacs info pages.
+Is there a package similar to wdired or wgrep that would work on magit diffs? 
 
-* In i-search, you can do `M-e` to edit the current search string, and search with the new string by using `C-s`  or `C-r` and whatnot. This may be common knowledge, but I at least didn't know of this until recently. I tended to try to press backspace to edit the search query, but that tends to first go back the found matches before allowing you to edit again.
-* If one wants to have a built-in completion thing for the minibuffer, I recommend giving `icomplete-mode` a try. Like `ido-mode`, `icomplete-mode` is built into Emacs, which gives it certain advantages when compared against things like `helm` and `ivy`.  
-  
-Now, unlike `ido`, `icomplete-mode` applies to everything by default, without the need for settings like `ido-everywhere`. This also means that `icomplete` works with `M-x` out of the box, instead of needing a thing like `smex`.
+Particular use cases I have in mind are:
 
-Reading the Emacs manual is quite a nice thing. It can be quite long in some places, but one might discover something new, and maybe find out just what Emacs is capable of, even in a basic OOTB configuration.
-
-
-## u/jacmoe [🔗](https://www.reddit.com/r/emacs/comments/audffp/comment/eh7efpv)
-**Votes:** 11
-
-Very cool!
-
-I gave up on getting Emacs set up as a C++ IDE, but I am tempted now :)
-
-&#x200B;
-
-Great that we can have a llvm client/server within Emacs!
+1. You've prepared a commit for pull request and during review someone spotted a mistake that's present in multiple files of that commit. Usually I grep the mistake and edit only affected files with wgrep (there might be some arbitrary reason to not fix similar issue in files not present in the commit).
+2. In C++ it happens sometimes that you want to separate declaration and definition and in your commit you forgot to move some definitions to .cpp.
+Usually I switch to `foobar.hpp`, kill the necessary part, switch to `foobar.cpp`, yank that part.
 
 
-## u/7890yuiop [🔗](https://www.reddit.com/r/emacs/comments/awyvpa/comment/ehqdrmr)
-**Votes:** 11
+## u/Bodertz [🔗](https://www.reddit.com/r/emacs/comments/lfww57/comment/gmtk79e)
+**Votes:** 10
 
-I find `M-\` preferable to a separate `hungry-delete` package (i.e. do it if that's what you mean to do, but not otherwise).
+From the mailing list, I've just learned of `generic-x.el`, which provides syntax highlighting for `/etc/fstab` or `/etc/passwd` and the like.  I appreciated that vim provided that out of the box and I was surprised that emacs also does, but it's just disabled.
 
-or `M-SPC` to call `just-one-space` if that's what you mean to do.
-
-or bind something to `cycle-spacing`.
+`(require 'generic-x)` to enable it.
 
 
-## u/gusbrs [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/eqrgff3)
-**Votes:** 11
+## u/bgcartman [🔗](https://www.reddit.com/r/emacs/comments/us7zae/comment/i92mn8w)
+**Votes:** 10
 
-Simple, but I think it counts as a tip: [minions](https://github.com/tarsius/minions) by [u/tarsius_](https://www.reddit.com/user/tarsius_). It allows one to invert the usual logic of managing minor modes lighters in the mode-line. While the default behaviour is "show everything by default, unless you diminish/delight it", `minions` goes in the opposite direction and hides all of them, unless you explicitly tell it to show them. Besides, the minor modes are still available, alongside some other common ones which thus become more easily accessible, in a menu which aggregates minor modes in the mode-line. Pretty neat.
+I little advice I use in org-mode to auto load org-babel modules only when needed.
+```elisp
+  (defadvice org-babel-execute-src-block (around load-language nil activate)
+  "Load ob-{language} only when needed."
+  (let ((lang (org-element-property :language (org-element-at-point))))
+(when (or (string= lang "bash") (string= lang "sh")) (setq lang "shell"))
+(unless (cdr (assoc (intern lang) org-babel-load-languages))
+  (add-to-list 'org-babel-load-languages (cons (intern lang) t))
+  (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
+ad-do-it))
+
+```
+
+Saves me some time and speeds up loading org-mode as a nice bonus.
+
+P.S. Speaking of speeding up the loading of org-mode I found out that setting this before loading it helps a lot. Obviously one should modify it to include used modules/back-ends:
+```elisp
+(setq org-modules nil
+  org-export-backends '(html)))
+```
 
 
-## u/robotreader [🔗](https://www.reddit.com/r/emacs/comments/b058f8/comment/eicaf0h)
-**Votes:** 11
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/d5dwkq/comment/f0mf4g0)
+**Votes:** 10
 
-Bit of code to flip the window split from horizontal to vertical or vice versa.  Been in my .emacs almost since the beginning, so unfortunately I don't know where I got it from.  I use it when I switch emacs from half screen to full screen.
+I frequently want to copy a long, one-line JSON expression into a fresh buffer and pretty-print it there, and I recently got tired of performing all the steps myself.  Now I can just put the cursor on the first character of the string, and run this command:
 
 ```elisp
-;;flips two windows from horizontal split to vertical split
-(defun rotate-windows ()
+(defun view-pretty-json (begin)
+  (interactive "d")
+  (let ((buffer (current-buffer))
+        (end (save-excursion (forward-sexp) (point))))
+    (switch-to-buffer (generate-new-buffer "*json*"))
+    (insert-buffer-substring buffer begin end)
+    (json-pretty-print (point-min) (point-max))
+    (goto-char (point-min))))
+```
+
+
+## u/kastauyra [🔗](https://www.reddit.com/r/emacs/comments/ibwzcu/comment/g1zlh2t)
+**Votes:** 10
+
+# 27.1 do GC if no frame has focus
+
+I am porting my [config](https://github.com/laurynas-biveinis/dotfiles) from 26.3 to 27.1, which had the tweak to do GC whenever a frame loses focus, originally from [MatthewZMD's config](https://github.com/MatthewZMD/.emacs.d) I think:
+```elisp
+(add-hook 'focus-out-hook #'garbage-collect)
+```elisp
+27.1 NEWS say more generic (and more correct) `after-focus-change-function` should be used instead. Which pointed out that I do not want to GC on just any frame going out of focus, if another frame is being focused instead. It might be a better idea to GC if no frames at all are focused. Somewhat surprisingly I was not able to find any public dotfiles repo implementing this to copy paste from, so I tried to write my own:
+```elisp
+(defun dotfiles--gc-on-last-frame-out-of-focus ()
+  "GC if all frames are inactive."
+  (if (seq-every-p #'null (mapcar #'frame-focus-state (frame-list)))
+  (garbage-collect)))
+
+(add-function :after after-focus-change-function
+          #'dotfiles--gc-on-last-frame-out-of-focus)
+```
+
+
+## u/takethecannoli4 [🔗](https://www.reddit.com/r/emacs/comments/audffp/comment/eh7lrj3)
+**Votes:** 9
+
+May I suggest you post this to the Emacs Wiki?
+
+
+## u/ieure [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eewn8ex)
+**Votes:** 9
+
+Maybe you already know about `occur`, which shows matching lines in the current buffer -- like grep, but the buffer doesn't need to be backed by a file.
+
+Emacs also has `multi-occur` which does the same thing across multiple buffers (you have to specify each one); and `multi-occur-in-matching-buffers`, which matches lines across buffers whose name matches a regexp'.
+
+Most of the time, I want to search *all* open buffers, so I wrote:
+
+```elisp
+(defun multi-occur-global (regexp &optional nlines)
+  "Do a `multi-occur' across all buffers."
+  (interactive (occur-read-primary-args))
+  (thread-first
+  ;; Don't occur in *Occur* buffers
+  (lambda (buffer) (eq (buffer-local-value 'major-mode buffer) 'occur-mode))
+(cl-remove-if (buffer-list))
+(multi-occur regexp)))
+```
+
+This is great if you have IRC chats or emails open in Emacs and need to quickly find a previous conversation.  And of course `occur` works properly with `next-error` / `previous-error` just like the `grep` commands do.
+
+
+## u/DasEwigeLicht [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeutpz1)
+**Votes:** 9
+
+Get info about installed Arch packages, with auto completion:
+
+```elisp
+(defun std::pacman-pkg-info ()
   (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-             (next-win-buffer (window-buffer (next-window)))
-             (this-win-edges (window-edges (selected-window)))
-             (next-win-edges (window-edges (next-window)))
-             (this-win-2nd (not (and (<= (car this-win-edges)
-                                         (car next-win-edges))
-                                     (<= (cadr this-win-edges)
-                                         (cadr next-win-edges)))))
-             (splitter
-              (if (= (car this-win-edges)
-                     (car (window-edges (next-window))))
-                  'split-window-horizontally
-                'split-window-vertically)))
-        (delete-other-windows)
-        (let ((first-win (selected-window)))
-          (funcall splitter)
-          (if this-win-2nd (other-window 1))
-          (set-window-buffer (selected-window) this-win-buffer)
-          (set-window-buffer (next-window) next-win-buffer)
-          (select-window first-win)
-          (if this-win-2nd (other-window 1))))))
-    
+  (let* ((completions (->> "pacman -Q"
+                           (shell-command-to-string)
+                           (s-trim)
+                           (s-lines)
+                           (--map (car (s-split " " it :no-nulls)))))
+         (name (completing-read "Package: " completions)))
+    (switch-to-buffer (get-buffer-create "*Package Info*"))
+    (erase-buffer)
+    (-> (format "pacman -Qi %s" name)
+        (shell-command-to-string)
+        (s-trim)
+        (insert))
+    (goto-char 0)
+    (conf-mode)))
 ```
 
 
-## u/henry_flower [🔗](https://www.reddit.com/r/emacs/comments/b2uqdm/comment/eiv960e)
-**Votes:** 11
+## u/c17g [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeu6tim)
+**Votes:** 9
 
-A replacement for `C-x k RET`:
+```emacs-lisp
+(setq org-odt-preferred-output-format "doc")
+```elisp
+
+Default Org to export ODT in Word format (.doc). I discovered it tonight right before I get off from work and send it to my manager, very convenient for exporting docs for business colleagues for editing. See [manual](https://orgmode.org/manual/Extending-ODT-export.html) for more options. 
+
+
+## u/thehaas [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeujw0a)
+**Votes:** 9
+
+Replace a string in a bunch of files in a directory. I got this from https://emacs.stackexchange.com/a/13719
+
+ - run  `helm-ag` and search for a string
+ - on the results, do `C-c C-e` to get it into an editable buffer
+ - make the changes
+ - `C-c C-c` to commit all the changes
+
+
+## u/agumonkey [🔗](https://www.reddit.com/r/emacs/comments/910pga/comment/e2urd08)
+**Votes:** 9
+
+Thanks, I like seeing workflow of others so I can steal because I'm a great artist.
+
+
+## u/zreeon [🔗](https://www.reddit.com/r/emacs/comments/98nkt6/comment/e4hrsja)
+**Votes:** 9
+
+This is basically my setup as well. Seems to work well. 
+
+I set up a little raspberry pi that runs syncthing so that I can sync my phone and computers more easily. Also serves as a nice backup. 
+
+
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/b2uqdm/comment/eivtuo4)
+**Votes:** 9
+
+If I have a file that I'd like to live in a Git repo, but I don't want to have to bother telling Git to ignore it, I'll just create it elsewhere but then put a line at the top like:
 
 ```elisp
-(defun my-kill-buffer()
-  (interactive)
-  ;; a list of buffers we don't want to kill accidentally
-  (let ((my-holy-buffers '("*scratch*" "*Messages*")))
+# -*- default-directory: "/path/to/repo/"; -*-
 
-    (if (member (buffer-name) my-holy-buffers)
-        (message "not so fast")
-      (kill-buffer (current-buffer))) ))
-
-(global-set-key [f8] 'my-kill-buffer)
 ```
+The file then lives in the repo for nearly all intents and purposes, despite being stored elsewhere.  For example, if I run a shell command while visiting the file, the shell is run in the repo directory; Projectile commands can be run in the repo while visiting the file; etc.  Very handy!
+
+
+## u/Vurpius [🔗](https://www.reddit.com/r/emacs/comments/b5n1yh/comment/ejjcd82)
+**Votes:** 9
+
+I just learned that savehist is a thing. It makes minibuffer history persist across sessions. Enable it with `(savehist-mode 1)`.
 
 
 ## u/Rotatop [🔗](https://www.reddit.com/r/emacs/comments/hij4ga/comment/fwi4ikt)
-**Votes:** 11
+**Votes:** 9
 
 I've made it !
 
@@ -1939,503 +3189,204 @@ After 6 month of emacs, I m able to open a side buffer when I m on ivy without u
 Emacs is good
 
 
-## u/Gollum999 [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el0hkx2)
-**Votes:** 11
+## u/itistheblurstoftimes [🔗](https://www.reddit.com/r/emacs/comments/dyhkcd/comment/f8978oj)
+**Votes:** 9
 
-I just found out that the tables in `org-mode` support Excel-like calculations.  You can use functions from `calc` as well as arbitrary Elisp expressions!
+I just started using mu4e and wanted to have some visual indication of which account was associated with each email. Did this quickly but it seems to work well. This is akin to what K9 mail does on android.
 
-Only complaint is that it's not the most performant. I tested it on a table of ~1200 rows and it took around 8 seconds to update my calculated column. :/
+The names "account1" refer to the folders in your Maildir for each account, i.e., \~/Maildir/account1
 
-
-## u/ahk-_- [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el0glnh)
-**Votes:** 11
-
-I think the best productivity package for emacs is by far nyan-mode. I cannot live without it!
-
-Life is too depressing to code without nyan-mode. Best productivity tool in the world!
-
-
-## u/Krautoni [🔗](https://www.reddit.com/r/emacs/comments/ja97xs/comment/g8pgyy1)
-**Votes:** 11
-
-Since I find myself pair programming quite a bit, I made a small helper:
-
-```elisp
-(defvar pair-programming--pair-programmer
-  nil
-  "The current pair programmer as (name email)")
-
-(defun enable-pair-programming-mode ()
-  "Sets visuals for pair programming mode and prompt for your buddy."
-  (global-display-line-numbers-mode 1)
-  (let ((pair-programmer (git-commit-read-ident nil)))
-(setq pair-programming--pair-programmer pair-programmer)
-(message (concat "Pair programming with " (car pair-programmer)))))
-
-(defun disable-pair-programming-mode ()
-  "Disable pair programming visuals and settings."
-  (setq pair-programming--pair-programmer nil)
-  (global-display-line-numbers-mode -1)
-  (message "PP mode disabled"))
-
-(define-minor-mode pair-programming-mode ()
-  "Toggle Pair Programming Mode.
-
-This prompts for a pair programmer from your current git commit history.
-When you commit with (ma)git, the pair programmer is inserted as a co-author.
-Additionally, line number mode is enabled."
-  :global t
-  :lighter " PP"
-  (if pair-programming-mode
-  (enable-pair-programming-mode)
-(disable-pair-programming-mode)))
-
-(defun insert-pair-programmer-as-coauthor ()
-  "Insert your pair programer into the current git commit."
-  (when (and pair-programming-mode git-commit-mode)
-(pcase pair-programming--pair-programmer
-  (`(,name ,email) (git-commit-insert-header "Co-authed-by" name email))
-  (_ (error "No pair programmer found or wrong content")))))
-
-(add-hook 'git-commit-setup-hook 'insert-pair-programmer-as-coauthor)
-```
-
-It sets up a co-authored-by for git commits, and enables line numbers.
-
-
-## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/c1zl0s/comment/erl5qsa)
-**Votes:** 11
-
-If you want to edit the commit that added/deleted a particular line of code, Magit offers `magit-edit-line-commit` that will do the interactive git rebase automatically for you.
-
-`magit-diff-edit-hunk-commit` does the same but from a Magit diff buffer.
-`
-
-
-## u/ProfessorSexyTime [🔗](https://www.reddit.com/r/emacs/comments/dlethf/comment/f4wdyaf)
-**Votes:** 11
-
-I feel like a lot of us average Emacs users miss out on a lot of functionality Emacs provides outside of the box. So some things you might find interesting:
-
-#### [Registers](https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html)
-
-Someone posted this in a weekly tips/trick/etc thread a few weeks ago, but I thought I'd mention it again.
-
-Registers just let you store *things* in them. This can be
-
-- Cursor positions in buffers (`C-x r SPC [name you want to give the register]`)
-- Text in a region (`C-x r s [name you want to give the register]`)
-- Rectangles (`C-x r r [name you want to give the register]`)
-- State of windows in frames (`C-x r w [name you want to give the register]`)
-- State of all frames and their windows (`C-x r f [name you want to give the register]`)
-- Numbers (`C-x r n [name you want to give the register]`) and you can increment those numbers (`C-x r + [name of register you want to increment`]
-- Whole file names (it's not bound, but you can do `M-: (set-register ?z '(file . "/some_file/somewhere/some_text.txt"))`)
-- Keyboard macros instead of saving them (` C-x C-k x  [name you want to give the register]`)
-
-You can insert text, registers, or numbers with `C-x r i [name of register with stuff to insert]`. You can also append or prepend stuff to registers with `append-to-register` or `prepend-to-register`.
-
-`C-x r j [name of register]` can jump to a point, restore a window or frame configuration, or visit a file with a specific name.
-
-You could always use [bookmarks](https://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html#Bookmarks).
-
-One thing I would like to do is automatically give registers names, say like a1, a2, et cetera then b1, b2 et cetera, and then A1, A2 and yaddah yaddah.
-
-I'm an idiot though and generating that sort of collection escapes me a bit.
-
-I'd rather not do just
-
-```elisp
-(loop n from 0 to 99
-    collect (concat "a" n))
-
-```
-for every alphabetical character. Then it'd be a matter of going through those collections for every register created and making sure they use different names. Was wondering if I could get some help.
-
-#### [Isearch](https://www.emacswiki.org/emacs/IncrementalSearch) and [Query Replace](https://www.gnu.org/software/emacs/manual/html_node/emacs/Query-Replace.html)
-
-Not much to say here, just that I might recommend that one go over the default keys for [isearch](https://www.emacswiki.org/emacs/IncrementalSearch#toc2) and query-replace.
-
-Also I would switch `C-s` and `C-r` to use `isearch-forward-regex` and `isearch-backward-regex`, and `M-%` to use `query-replace-regex` because you can disable the use of regex for both. You can even start a query-replace from isearch with `M-%` or `C-M-%`.
-
-#### `event-apply-*` Keys
-
-I don't really know what I can use these keys for, but with which-key you can press `C-x @` to see them. They allow you to apply control, shift, alt, meta, super, or hyper keys.
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fvrlu40)
-**Votes:** 11
-
-I've been using `M-|` (`shell-command-on-region`) frequently for years, and I only just stumbled on the fact that the region need not be active to use it.  If it isn't, the command operates on the text from point to the end of the buffer.  That's very reasonable and in line with various other commands, but the documentation doesn't mention it and so I never thought to try it.
-
-That saves me a call to `C-x h` (`mark-whole-buffer`) whenever I want to process the entire buffer, which is most of the time.  Also, it's a minor distraction for the entire buffer to be highlighted when I'm composing my shell command, so it's nice to avoid that.
-
-Edited to add:  Sorry folks, this doesn't work like I thought it did.  See the coments below for details.
-
-
-## u/tryptych [🔗](https://www.reddit.com/r/emacs/comments/w3gx6o/comment/ih6ievs)
-**Votes:** 11
-
-Emacs has better long-lines support now??
-
-I just noticed while looking at the latest additions in the NEWS:
-
->\*\* Emacs is now capable of editing files with arbitrarily long lines. The display of long lines has been optimized, and Emacs no longer chokes when a buffer on display contains long lines.  If you still experience slowdowns while editing files with long lines, this is either due to font locking, which you can turn off with M-x font-lock-mode or C-u C-x x f, or to the current major mode or one of the enabled minor modes, in which case you should open the the file with M-x find-file-literally instead of C-x C-f.  The variable 'long-line-threshold' controls whether and when these display optimizations are used.
-
-That sounds like great news!  Does anyone know what went into it?
-
-(edit to add: this was added some time this week.  I rebuild from master weekly, and check out the NEWS diff each time)
-
-
-## u/yogsototh [🔗](https://www.reddit.com/r/emacs/comments/qgrpte/comment/hi8crmc)
-**Votes:** 11
-
-I just made this nice combination of emacs packages and personal theme to achieve the cool effect of iAWriter
-
-See here: https://her.esy.fun/posts/0021-ia-writer-clone-within-doom-emacs/index.html
-
-
-## u/shitterwithaclitter [🔗](https://www.reddit.com/r/emacs/comments/s7lac1/comment/htnz373)
-**Votes:** 11
-
-I recently had the idea to start emacs in org-mode but have a src block at the top so I can still write elisp snippets easily. Here's the code for anyone interested:
-
-```elisp
-;; start in org-mode with a source block for lisp evaluation
-(setq initial-major-mode #'org-mode
-      initial-scratch-message "#+begin_src emacs-lisp\n;; This block is for text that is not saved, and for Lisp evaluation.\n;; To create a file, visit it with \\[find-file] and enter text in its buffer.\n\n#+end_src\n\n")
-```
-
-
-## u/ainstr [🔗](https://www.reddit.com/r/emacs/comments/vcpk6u/comment/ichiccu)
-**Votes:** 11
-
-The other day I discovered that you can access Spotify through dbus. Most of my use-case for spotify is hitting shuffle on ~20 of my playlists; not much searching, discovering, charts, etc. So, I didn't need any of the existing packages that require an auth token or extra local server.
-
-This basically wraps `completing-read` over the alist stored in spotify-playlists. You can probably translate the qdbus call to dbus-send or whatever.
-
-```elisp
-;; Inspired by sp.sh: https://gist.github.com/wandernauta/6800547
-;; Could use https://codeberg.org/jao/espotify, but don't need all the functionalities
-;; Potential Issues: https://community.spotify.com/t5/Desktop-Linux/DBus-OpenUri-issue/td-p/1376397
-
-;; Could just write a fn to extract the ID, and use that in spotify-playlists
-;; Current way with full uri allows for playlist vs artist, etc.
-;; but probably don't need flexiblity for my use case
-(defun spotify--clean-uri (raw-uri)
-  "Clean RAW-URI into a dbus-acceptable uri."
-  (let* ((url-fields (split-string
-		      raw-uri
-		      (rx (or "/" "?"))))
-	 (type (nth 3 url-fields))
-	 (id (nth 4 url-fields)))
-    (concat "spotify:" type ":" id)))
-
-(defvar spotify-playlists
-  '(("Artist" . "https://open.spotify.com/playlist/1v4UqI9mEEB4ry3a3uaorO?si=bc675402c7384080"))
-  "Alist of spotify playlists for spotify-playlists to select from.
-  RAW-URI is from right-click on playlist > Share > Copy Link to Playlist.")
-
-(defun spotify--open-uri (raw-uri)
-  "Open RAW-URI."
-  (let ((prefix "qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.OpenUri ")
-	(uri (spotify--clean-uri raw-uri)))
-    (shell-command (concat prefix uri))))
-
-(defun spotify--open-playlist ()
-  "Prompt to select and play a playlist from spotify-playlists."
-  (let* ((key (completing-read "Playlist: " spotify-playlists))
-	 (raw-uri (cdr (assoc key spotify-playlists))))
-    (spotify--open-uri raw-uri)
-    (message (format "Now Playing: %s" key))))
-
-(defun spotify-open-playlist ()
-  "Wrapper around `spotify--open-playlist`, to check if spotify is running."
-  (interactive)
-  (pcase
-      (shell-command "pgrep spotify")
-    (1 (message "Spotify not running."))
-    (0 (spotify--open-playlist))))
-```
-
-
-## u/yyoncho [🔗](https://www.reddit.com/r/emacs/comments/dbq80r/comment/f2fneae)
-**Votes:** 11
-
-evil-mode trick: you could use elisp in the `ex` when using substitute command using `\,`, for example: 
-
-```elisp
-%s/.*/\,(line-number-at-pos) \0 \,(length \0)
-```
-
-This will add line number at the beginning of the line and the line length in the end.
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/bog1b5/comment/enhwf5s)
-**Votes:** 11
-
-For commands without default keybindings that I use frequently enough not to want to type out the full name every time, but infrequently enough not to want to dedicate a keybinding to them, I define short, shell-command-like aliases.  Here are some of my current ones:
-
-```elisp
-(defalias 'mb 'rename-buffer)
-(defalias 'ru 'rename-uniquely)
-(defalias 'ar 'align-regexp)
-(defalias 'rb 'revert-buffer)
-(defalias 'c 'calc)
-(defalias 'sh 'shell)
-(defalias 'wr 'write-region)
-(defalias 'tail 'auto-revert-tail-mode)
-(defalias 'pe 'proced)
-(defalias 'lp 'list-packages)
-(defalias 'mff 'magit-find-file)
-(defalias 'eb 'erase-buffer)
-(defalias 'cn 'column-number-mode)
-(defalias 'jpp 'json-pretty-print)
-(defalias 'mexp 'pp-macroexpand-last-sexp)
-```
-
-
-## u/Stefan-Kangas [🔗](https://www.reddit.com/r/emacs/comments/pxqvtm/comment/hexdfiq)
-**Votes:** 11
-
-Replace the binding for `count-words-region` with `count-words`. The latter has better semantics: it only shows words in region if the region is active.
-
-`(global-set-key (kbd "M-=") #'count-words)`
-
-
-## u/SamTheComputerSlayer [🔗](https://www.reddit.com/r/emacs/comments/qbvyza/comment/hhinrm4)
-**Votes:** 11
-
-I use a lot of toggles in my config. I used to do it ad-hoc every time, but the pattern ends up the same so I made this macro:
-```elisp
-(defun deftoggle-var-doc (name)
-  (concat "Non-nil if " name " is enabled.\n\n"
-      "See " name
-      " command for a description of this toggle."))
-(defun deftoggle-fun-doc (name doc)
-  (concat "Toggle " name " on or off.\n\n" doc))
-(defmacro deftoggle (name doc enabler disabler)
-  `(progn
- (defvar ,name nil ,(deftoggle-var-doc (symbol-name name)))
- (defun ,name (&optional enable)
-   ,(deftoggle-fun-doc (symbol-name name) doc)
-   (interactive)
-   (if (called-interactively-p 'interactive)
-       (progn
-         (if ,name
-             ,disabler
-           ,enabler)
-         (setq ,name (not ,name)))
-     (progn
-       (if enable
-           ,enabler
-         ,disabler)
-       (setq ,name enable))))))
-```
-
-It's very similar to define-minor-mode, but with all the hooks, keymaps, and lighters stripped out, so it's less verbose. Here I use it to toggle my theme for example:
-```elisp
-(deftoggle sam-toggle-theme
-  "Toggle theme between light and dark."
-  (progn (disable-theme 'dracula)
-     (load-theme 'spacemacs-light t))
-  (progn (disable-theme 'spacemacs-light)
-     (load-theme 'dracula t)))
-```
-
-
-## u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/r69w7i/comment/hmst3ih)
-**Votes:** 11
-
-macros in emacs are like a secret, forgotten art, but I use them with regexp search, orgmode commands to tweak repeating events (or any number of other uses). Learn macros; they gave emacs its name! One usage here: https://orys.us/ug
-
-
-## u/Adorable-Effort [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeuwps6)
-**Votes:** 10
-
-`image-mode` can be used to preview TTF and OTF fonts.
-
-Emacs already opens TTF fonts with `image-mode` automatically, but I also wanted it to do the same with OTF.
-
-```elisp
-(add-to-list 'auto-mode-alist '("\\.otf\\'" . image-mode))
-```
-
-
-## u/DasEwigeLicht [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeutpz1)
-**Votes:** 10
-
-Get info about installed Arch packages, with auto completion:
-
-```elisp
-(defun std::pacman-pkg-info ()
-  (interactive)
-  (let* ((completions (->> "pacman -Q"
-                           (shell-command-to-string)
-                           (s-trim)
-                           (s-lines)
-                           (--map (car (s-split " " it :no-nulls)))))
-         (name (completing-read "Package: " completions)))
-    (switch-to-buffer (get-buffer-create "*Package Info*"))
-    (erase-buffer)
-    (-> (format "pacman -Qi %s" name)
-        (shell-command-to-string)
-        (s-trim)
-        (insert))
-    (goto-char 0)
-    (conf-mode)))
-```
-
-
-## u/ShyGuy32 [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efhx7vs)
-**Votes:** 10
-
-Inspired by the venerable Twitch [Stay Healthy Bot](https://www.twitch.tv/stayhealthybot), I decided to do up a similar reminder feature from my local Emacs. It's more or less just a timer mixed with alert.el. There's still some work do be done here (mostly in regards to resetting the timer, as my usual workflow is to close out Emacs at the end of the workday), but I've found it pretty useful during the workday to keep me hydrated and moving around.
-
-```elisp
-(use-package alert
-  :config
-  ;; OS-dependent
-  (setq alert-default-style 'osx-notifier)
-
-  ;; Reminder to stay healthy!
-  (defvar stay-healthy--start nil)
-  (defvar stay-healthy--timer nil)
-  (defun stay-healthy--alert (start-time)
-    "Alert the user to stay healthy"
-    (let* ((now (time-to-seconds (current-time)))
-           (seconds (- now start-time))
-           (hours (format-seconds "%h" seconds)))
-      (unless (string= hours "0")
-        (alert
-         (format "You've been working for %s hour(s)! Have you been drinking your water? It might also be a good time to get up and stretch, refill your water, grab something to eat, or maybe take a bathroom break! Stay Healthy!"
-                 hours)
-         :title "Stay Healthy!"
-         ))))
-
-  (defun stay-healthy-start-timer ()
-    "Start a timer to keep you healthy"
-    (interactive)
-    (unless stay-healthy--start
-      (setq stay-healthy--start (time-to-seconds (current-time))))
-    (setq stay-healthy--timer (run-with-timer 0 (* 60 60) #'stay-healthy--alert stay-healthy--start)))
-
-  (defun stay-healthy-stop-timer ()
-    "End the healthy timer"
-    (interactive)
-    (when stay-healthy--timer
-      (cancel-timer stay-healthy--timer)))
-
-  (stay-healthy-start-timer))
-
-```
 &#x200B;
 
+```elisp
+(setq x-mu4e-account-colors '(("account1" . "orange")
+			      ("account2" . "red")
+			      ("account3" . "blue")))
 
-## u/1-05457 [🔗](https://www.reddit.com/r/emacs/comments/ad8gzq/comment/edf3z02)
-**Votes:** 10
+(setq x-mu4e-account-colors-prefix "    ")
 
-If you're using the default VIM mode keybindings, it sounds like you've really fallen for the VIM-style modal workflow.
+(defun x-mu4e-header-colors (msg line)
+  "Add a small color block to headers view indicating the account for each email"
+  (let* ((maildir (nth 1 (s-split "/" (plist-get msg :maildir))))
+         (color (cdr (assoc maildir x-mu4e-account-colors))))
+    (setq line (concat x-mu4e-account-colors-prefix line))
+    (put-text-property 0 (- (length x-mu4e-account-colors-prefix) 2) 'face `(:background ,color) line)
+    line))
 
-Also, if you find Spacemacs slow (particularly at startup), try DOOM Emacs.
+(add-to-list 'mu4e~headers-line-handler-functions 'x-mu4e-header-colors t)
+```
 
 
-## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/bz9rxn/comment/eqrg07x)
-**Votes:** 10
+## u/c17g [🔗](https://www.reddit.com/r/emacs/comments/domrl6/comment/f65iky4)
+**Votes:** 9
 
-Run multiline code in comment, e.g.,
+I just found out the great variable `org-extend-today-until`. Basically it defines when your day really ends. If you sleep late, check it out.
+
+Goodbye to the days using `M-x org-todo-yesterday` at midnight, clocking off items before sleep..
+
+
+## u/sugarbridalsentry [🔗](https://www.reddit.com/r/emacs/comments/domrl6/comment/f5qf3jw)
+**Votes:** 9
+
+This is a classic "Wow, Emacs does that?" situation: I discovered `imenu` by accident this week.
+
+On the one hand, it's a great tool for finding definitions in code -- but because my main use of Emacs is for writing and PIM, the thing that really excited me was `imenu-add-menubar-index`. 
+
+In org files, it treats each heading as a part of the index -- so by adding `imenu` to the menu bar, I have fly-out navigation for large org files. (I know people hate the menu bar, but I've found it handy). 
+
+That's all well and good, but now add in the `imenu-list`package, and you have a little pop-up outline of your org file just one keypress away: it's like the bookmarks in a PDF, and has been really helpful already in getting around. Light, clean, easy.
+
+Customizing `org-imenu-depth` sets how deep into a nested hierarchy to index for either `imenu-list` or the menubar index.
+
+
+## u/primitiveinds [🔗](https://www.reddit.com/r/emacs/comments/domrl6/comment/f5oz3bp)
+**Votes:** 9
+
+This is one of the things that I'm sure exists somewhere but I can't find it so I wrote a few lines. I work in a big monorepo and depend on `projectile` for navigation by adding `.projectile` files here and there, in subdirectories that I consider "projects". However there are some directories that e.g. contain libraries. If I want to work on all of them for e.g. refactoring, going into a project then locks me in that (I mean `projectile-find-file`) and I have to manually go into another project. Also I flood my projectile cache with little things that I might not use a lot. What I did was add some logic to create temporary root directories for projects, where I can then use `counsel-file-jump` and `counsel-ag`. I have some keybindings and with a prefix argument I am prompted to change the temp root. Here's the code:
+```elisp
+(defvar my/temp-project-root nil)
+
+(defun my/get-or-set-temp-root (reset)
+  (let* ((reset-root (if reset my/temp-project-root nil))
+     (root
+      (if (or reset
+              (null my/temp-project-root)
+              (not (file-directory-p my/temp-project-root)))
+          (read-directory-name "Temp root dir: " reset-root)
+        my/temp-project-root)))
+(setq my/temp-project-root root)))
+
+(defun my/counsel-file-jump-temp-root (reset)
+  (interactive "P")
+  (my/get-or-set-temp-root reset)
+  (let ((current-prefix-arg nil))
+(counsel-file-jump nil my/temp-project-root)))
+
+(defun my/counsel-ag-temp-root (reset)
+  (interactive "P")
+  (my/get-or-set-temp-root reset)
+  (let ((current-prefix-arg nil))
+(counsel-ag "" my/temp-project-root)))
+```
+Also `counsel-file-jump` is so good
+
+
+## u/andrmuel [🔗](https://www.reddit.com/r/emacs/comments/jn6m14/comment/gb502ps)
+**Votes:** 9
+
+This is something I'm not actively using anymore, but it was one of my I-love-emacs moments, so I wanted to share this for a while.
+
+At work, I used to have an org-mode journal where I would take meeting notes. After the meeting, I exported the subtree for the current meeting to a PDF (via ODT) and sent it to the participants via mail.
+
+After a while I extended org-export to get a shortcut (`C-e C-s o M`) to automatically
+
+* export to PDF via ODT
+   * using a proper corporate design & logo via ODT\_STYLES\_FILE header
+* rename the file to include the current date
+* open thunderbird, starting a new message with
+   * subject taken from document title (if exporting all) or subtree heading (if exporting subtree
+   * pre-filled text
+   * the exported PDF already attached
+
+&#8203;
 
 ```elisp
-;; (+ 1
-;;    2
-;;    3)
+;;
+;; export and send to mail
+;;
+(defun org-foo-export-to-foo-and-sendto-mail (org-export-function &optional async subtreep visible-only ext-plist)
+  (interactive)
+  (when (or (string-equal (file-name-extension (buffer-file-name)) "gpg")
+            (string-equal (file-name-extension (buffer-file-name)) "asc"))
+    (unless (yes-or-no-p "Really export GPG encrypted file and send via mail? ")
+      (throw 'abort-export-mail-gpg "export aborted by user")))
+  (unless subtreep
+    (unless (yes-or-no-p "Really export everything and send via mail? ")
+      (throw 'abort-export-mail-everything "export aborted by user")))
+  (let* ((title (if subtreep
+                    ;; subtree -> use subtree heading as title
+                    (nth 4 (org-heading-components))
+                    ;; whole document -> use document title
+                    (org-element-map
+                        (org-element-parse-buffer)
+                        'keyword
+                      (lambda (e)
+                        (when (string= "TITLE" (org-element-property :key e))
+                          (org-element-property :value e)))
+                      nil
+                      t)))
+         (file (file-name-nondirectory (funcall org-export-function async subtreep visible-only ext-plist))) ; note: odt export includes directory in output file name, html export includes no directory
+         (newfile (format "%s_%s" (format-time-string "%Y%m%d") file))
+         (directory (file-name-directory (buffer-file-name))))
+    (rename-file (concat directory file) (concat directory newfile) 1)
+    (my/thunderbird-compose-mail
+     ""
+     (format "Notes: %s" title)
+     "Please find attached my notes ...\n\nBest regards, Andreas"
+     (format "file://%s%s"
+             directory newfile))))
 
+(defun org-odt-export-to-odt-and-sendto-mail (&optional async subtreep visible-only ext-plist)
+  (interactive)
+  (org-foo-export-to-foo-and-sendto-mail 'org-odt-export-to-odt async subtreep visible-only ext-plist))
+
+(defun org-odt-export-to-pdf-and-sendto-mail (&optional async subtreep visible-only ext-plist)
+  (interactive)
+  (let ((org-odt-preferred-output-format "pdf"))
+    (org-odt-export-to-odt-and-sendto-mail async subtreep visible-only ext-plist)))
+
+(defun org-html-export-to-html-and-sendto-mail (&optional async subtreep visible-only ext-plist)
+  (interactive)
+  (org-foo-export-to-foo-and-sendto-mail 'org-html-export-to-html async subtreep visible-only ext-plist))
+
+(eval-after-load 'org
+ '(progn
+    (org-export-define-derived-backend 'odt-mail 'odt
+      :menu-entry
+      '(?o "Export to ODT"
+           ((?m "As ODT file and send mail" org-odt-export-to-odt-and-sendto-mail)
+            (?M "As PDF file and send mail" org-odt-export-to-pdf-and-sendto-mail))))
+
+    (org-export-define-derived-backend 'html-mail 'html
+      :menu-entry
+      '(?h "Export to HTML"
+           ((?m "As HTML file and send mail" org-html-export-to-html-and-sendto-mail))))))
+           
+(defun my/thunderbird-compose-mail (&optional recipient subject body attachment)
+  (interactive)
+  (call-process "thunderbird" nil 0 nil "-compose" (format "to='%s',subject='%s',body='%s',attachment='%s'" recipient subject body attachment)))
 ```
-with the following advice you can use C-x C-e or C-j as usual:
+
+
+## u/fabiopapa [🔗](https://www.reddit.com/r/emacs/comments/f972tf/comment/firc94m)
+**Votes:** 9
+
+This may be common knowledge, but I’m always surprised at how few people know about this.
+
+If you have an `ALTERNATE_EDITOR=''`environment variable, and start emacsclient with no emacs server running, it will start an emacs server and try starting emacsclient again. Also works with a `-a` flag on emacsclient command.
+
+
+## u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/f972tf/comment/fipuizk)
+**Votes:** 9
+
+An early WIP of a perspective-like buffer grouper/switcher based on automatically grouping buffers by recursive grouping rules written by the user: https://github.com/alphapapa/buffer-groups.el  Defining the grouping rules looks like this:
 
 ```elisp
-(define-advice elisp--preceding-sexp (:around (old-fun) multiline-comment)
-  "Support sexp in multiline comment."
-  (condition-case err
-      (funcall old-fun)
-    (scan-error
-     (if (nth 4 (syntax-ppss))
-         (let ((work-buffer (current-buffer))
-               (temp-buffer (generate-new-buffer " *temp*"))
-               found sexp error)
-           (with-current-buffer temp-buffer
-             (delay-mode-hooks (emacs-lisp-mode)))
-           (save-excursion
-             (comment-normalize-vars)
-             (while (and (comment-beginning)
-                         (not found))
-               (let ((code (buffer-substring-no-properties
-                            (point) (line-end-position))))
-                 (with-current-buffer temp-buffer
-                   (goto-char (point-min))
-                   (insert code ?\n)
-                   (goto-char (point-max))
-                   (condition-case err
-                       (setq sexp (funcall old-fun)
-                             found t)
-                     (scan-error (setq error err)))))
-               (when (= -1 (forward-line -1))
-                 (error "elisp--preceding-sexp@multiline-comment error"))
-               (goto-char (line-end-position))))
-           (cond (found sexp)
-                 (error (signal (car error) (cdr error)))
-                 (t (error "elisp--preceding-sexp@multiline-comment error"))))
-       (signal (car err) (cdr err))))))
+(setf buffer-groups-groups
+      (buffer-groups-defgroups
+        (group (dir "~/org")
+               (auto-indirect))
+        (group (dir buffer-groups-emacs-source-directory))
+        (group (auto-special))
+        (group (mode-match "*Helm*" (rx bos "helm-")))
+        (auto-project)))
 
 ```
-(I already shared this on Emacs China last year, see https://emacs-china.org/t/c-x-c-e/7760)
-
-
-## u/eeeickythump [🔗](https://www.reddit.com/r/emacs/comments/2wh9o0/comment/coqx59d)
-**Votes:** 10
-
-I've used orgmode a lot, Evernote only a little. Orgmode works best when your notes are stored as "children" within a single large outline (or a small number of outlines, e.g. one per large topic). Storing hundreds of individual files doesn't work so well.
-
-It is possible for orgmode to display images inline by default - there is a variable that controls that (org-startup-with-inline-images) or you can put this line in your orgmode file:
-
-```elisp
-#+STARTUP: inlineimages
-
-```
-You can apply multiple tags to items in orgmode files, although the tags are crowded onto the end of the item's headline so it can get cumbersome and ugly if an item has more than a handful of tags.
-
-Adding notes can be done very efficiently in orgmode using the "capture" functionality. You can add notes based on different predefined templates by associating each template with a hotkey. You can even set up a bookmark in your web browser that will add highlighted text as a new orgmode note when you click it (see "org-protocol" in the manual).
-
-The main problem with orgmode is that it is completely dependent on Emacs. Essentially no other program understands the orgmode format, beyond the fact that it is based on plain text. There is a mobile app ([MobileOrg](http://mobileorg.ncogni.to/)) but it seems to be seldom updated and I have not found it useful. There are also modules that attempt to integrate orgmode with [Toodledo](http://toodledoo.com) and [Trello](http://trello.com). However, if you rely on orgmode then you should be aware that it will be difficult for you to interact with your notes database when you are not sitting in front of a computer running Emacs.
-
-For notes, I use [SimpleNote](http://simplenote.com) (free, available for most platforms + web client, syncs your notes, plain text but also allows tagging of notes). For task management, orgmode is the most powerful piece of software available -- no contest -- but because of its mobile-unfriendliness I have ended up using OmniFocus instead (Mac/iOS only).
-
-Another alternative to consider is Microsoft OneNote, which is free and is available on a lot of platforms. I don't think MS will be disappearing any time soon.
-
-
-## u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/kvmmq3/comment/gj9ioly)
-**Votes:** 10
-
-Just a cool concept: if you have a keypad on your keyboard which you rarely use, bind its nums to something useful. The results are numlock-sensitive and are NOT the same keycodes as regular numbers, so they're just free keys. For example, `(define-key map (kbd "<kp-1>") 'winum-select-window-1)`
-
-
-## u/11fdriver [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el0a1dw)
-**Votes:** 10
-
-Moving, marking & killing by paragraph.
-
-I've been using these for a while as a customisation of Xah-Fly-Keys, but I was surprised to learn that many Emacs users don't know this functionality.
-
-I find that moving by paragraph is a good middle ground between moving vertically by line and moving vertically by page, it's a very natural hierarchy.
-
-I move the page to display the correct section of the buffer, then I move to the right paragraph, then to the right line within that paragraph.
-
-The default bindings for movement are annoying, `M-{`/`M-}`, but it's simple enough to rebind them to `M-[`/`M-]`.
-
-You can mark the current paragraph with `M-h`.
+It's based on code from https://github.com/alphapapa/sbuffer.el, which should hit MELPA soon.
 
 
 ## u/kastauyra [🔗](https://www.reddit.com/r/emacs/comments/ev2q9q/comment/fftpfj0)
-**Votes:** 10
+**Votes:** 9
 
 I use Emacs on my laptop either undocked, either with external screens connected. It used to be manual work of dragging and resizing frames around, and then setting up windows, but no more, thanks to the great [dispwatch](https://github.com/mnp/dispwatch) package, which handles the screen changes after Emacs has been started. I [wrote some code](https://github.com/laurynas-biveinis/dotfiles/blob/master/emacs/emacs/setup.el#L154) for the initial frame setup, and now have this, which makes the docking/undocking fully seamless:
 
@@ -2539,956 +3490,6 @@ I use Emacs on my laptop either undocked, either with external screens connected
 Some things here might be overkill (cl-defstruct, seq?), but this was also an Emacs lisp exercise.
 
 
-## u/jimm [🔗](https://www.reddit.com/r/emacs/comments/tfcmcx/comment/i0vtxte)
-**Votes:** 10
-
-The `git grep` git command is great for finding a regex (or a simple string) everywhere in a git repo. I define the following functions and bind the `git-grep` function to `F2`. It will prompt for a regex and search for that in the repo or, if you give it a numeric prefix like `C-u` it will read the current symbol at point (the word under the cursor) and search for that. Results appear in a grep buffer, so you can use `C-g C-n` and `C-g C-p` to navigate from one result to the next.
-
-```elisp
-(defun git-root-dir ()
-  "Returns the current directory's root Git repo directory, or
-NIL if the current directory is not in a Git repo."
-  (let ((dir (locate-dominating-file default-directory ".git")))
-    (when dir
-      (file-name-directory dir))))
-
-(defun git-grep (arg)
-  "Runs 'git grep', starting the search in the current
-directory's root git repo directory.
-
-By default, reads the regex from the minibuffer. With a prefix
-argument, initializes the search string with the current symbol
-at point."
-  (interactive "P")
-  (let* ((symbol-at-point (thing-at-point 'symbol))
-         (regexp (if (and arg (symbol-at-point))
-                   (regexp-quote symbol-at-point)
-                     (read-from-minibuffer
-                      "Search regexp: " nil nil nil 'grep-find-history)))
-
-         (default-directory (git-root-dir))
-         (case-ignore-flag (and (isearch-no-upper-case-p regexp t) "-i"))
-         (cmd (concat "git grep --extended-regexp --line-number --full-name"
-                      " --untracked " case-ignore-flag " -- \"" regexp "\""
-                      " | cut -c -240")))
-    (while (equal "" regexp)
-        (setq regexp (read-from-minibuffer
-                      "Search regexp (must not be the empty string): " nil nil nil 'grep-find-history)))
-    (grep-find cmd)))
-```
-
-
-## u/primitiveinds [🔗](https://www.reddit.com/r/emacs/comments/erro41/comment/ff90d5b)
-**Votes:** 10
-
-I just now figured out that you can interactively pass flags to commands like `counsel-rg` by putting the `--` separator between the flags and the search string, so something like `-g '*.txt' -- whatever` will search for `whatever` only in `txt` files. `counsel` uses a function called `counsel--split-command-args` to split the parts before and after the `--`.
-
-
-## u/char1zard4 [🔗](https://www.reddit.com/r/emacs/comments/v2by7z/comment/iarzi1s)
-**Votes:** 10
-
-This week I learned that:
-
--	You can redefine all yes/no prompts to y/n:
-`(defalias ‘yes-or-no-p ‘y-or-n-p)`
-
--	`C-c C-c` in LaTeX-mode buffers will allow you to compile/view output (I’ve used LaTeX-preview-pane for the last couple of years)
-
--	Tab-stops in yas-snippet are very handy for filling out multiple parts of a template, didn’t even know these existed:
-https://joaotavora.github.io/yasnippet/snippet-development.html#org41a4ac7
-
-
-## u/c17g [🔗](https://www.reddit.com/r/emacs/comments/bb5c1w/comment/ekgnfnv)
-**Votes:** 10
-
-If you:
-
-1. Develop code on remote machine;
-2. Use SSH to access remote; and
-3. Annoyed by `flycheck` not working properly over TRAMP
-
-Then consider using [`sshfs`](https://github.com/libfuse/sshfs) to mount your remote filesystem to local. This way, `flycheck` will regard your files just as a local one, and works properly. Neat trick discovered today when debugging flycheck-flake8 with my colleague (are you reading? :P)
-
-
-## u/spfft [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fvqq7ck)
-**Votes:** 10
-
-Undo-tree and kill-ring are two of the best features in Emacs / packages. Change your life today.
-
-
-## u/Ramin_HAL9001 [🔗](https://www.reddit.com/r/emacs/comments/d8k4ce/comment/f1blal2)
-**Votes:** 10
-
-I'm on Emacs 26.1, I just tried the [`M-x butterfly`]( https://www.xkcd.com/378/ ) command to see what would happen.
-
-Wouldn't you know it, it actually does something that isn't an error message!
-
-
-## u/Desmesura [🔗](https://www.reddit.com/r/emacs/comments/d8k4ce/comment/f1ayv4c)
-**Votes:** 10
-
-I've found that if you press `C-f`, the cursor goes right.
-
-
-## u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/ojzv53/comment/h55vkl6)
-**Votes:** 10
-
-I often find myself wanting to be able to switch between `master` and a feature branch in magit quickly:
-
-```elisp
-(defun lw-magit-checkout-last (&optional start-point)
-    (interactive)
-    (magit-branch-checkout "-" start-point))
-(transient-append-suffix 'magit-branch "w"
-  '("-" "last branch" lw-magit-checkout-last))
-
-```
-So that `C-x g b -` switches to the last branch I was on, similar to `cd -`.
-
-
-## u/11fdriver [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eob6fj2)
-**Votes:** 10
-
-I'm sure that this is something that people already knew about, but I had no idea until today.
-
-I often start selecting text and realise that I actually want a rectangular selection (or the other way round). 
-
-I found out that rather than having to jump to the mark, cancel, and restart, I can just press `C-x SPC` `[xfk: SPC r SPC]` `(rectangle-mark-mode)` and Emacs will toggle to the other selection scheme.
-
-
-## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/g5bat3/comment/fo362s8)
-**Votes:** 10
-
-`rx` isn't just an (extensible!) sexp syntax for regexps, it's an optimizing compiler!
-
-Examples:
-
--   `(rx (or "dude@home.org" "dude@work.com"))` produces
-```elisp
-`"\\(?:dude@\\(?:home\\.org\\|work\\.com\\)\\)"`
-```
--   `(rx (intersection (any (?g . ?z)) (any (?a . ?p))))` produces  `"[g-p]"`
-
-And from Lisp code it's easy to plug in computed portions, using `eval`.
-For example I recently used this in some silly code to count mentions
-of animals in the bible :P:
-
-```elisp
-(defun plural (word)
-  (pcase word
-    ("mouse" "mice")
-    ("wolf" "wolves")
-    ("fish" "fishes")
-    (word (concat word "s"))))
-
-(defun bible-count (word)
-  "Count number of times WORD or its plural appears in the bible."
-  (with-current-buffer "king-james-bible.txt"
-    (count-matches
-      (rx-to-string `(word-start (or ,word ,(plural word)) word-end)))))
-
-```
-Which I used to make an Org mode table with an Emacs Lisp column formula:
-
-```elisp
-#+TBLFM: $2='(bible-count $1)
-
-```
-**EDIT**:  A previous version of the `bible-count` function used the `rx` macro and the `eval` construct:
-
-```elisp
-(defun bible-count (word)
-  "Count number of times WORD or its plural appears in the bible."
-  (with-current-buffer "king-james-bible.txt"
-    (count-matches (rx word-start
-                       (or (eval word) (eval (plural word)))
-                       word-end))))
-
-```
-This version is incorrect: `eval` is meant to be used only for value known at compile time. It's actual [behavior is very complicated](https://www.reddit.com/r/emacs/comments/g5bat3/weekly_tipstricketc_thread/fo7qdas) and depends on plenty of seemingly extraneous circumstances.
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/cgptj7/comment/eulon9b)
-**Votes:** 10
-
-Recently I started getting annoyed by a new phenomenon: Messages sent to the echo area would only persist for a second or less before disappearing.
-
-I tracked the problem down to the Slack package, where a timer callback was doing `(message "")` regularly.  The context suggested this was meant to erase transient messages like "so-and-so is typing...", but it was happening all the time.  I didn't see any clear way to prevent that timer callback from sending an empty message, so...
-
-```elisp
-(defun empty-slack-message-p (format &rest args)
-  (and (string= format "")
-       (catch 'slack
-         (mapbacktrace
-          (lambda (_ f _ _)
-            (when (and (symbolp f) (string-match-p "slack-" (symbol-name f)))
-              (throw 'slack t)))))))
-
-(advice-add 'message :before-until #'empty-slack-message-p)
-
-```
-I hadn't known about `mapbacktrace` before.  Handy!
-
-
-## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/c86mn9/comment/esz8l1y)
-**Votes:** 10
-
-The `table` package is very useful and not very popular in Emacs (it's included by default).
-
-Imagine that you have some text that is more or less structured like a table, but not quite. For example it may be some text where you applied a "table-like" layout manually by using a lot of spaces, but the structure is big and things are difficult to maintain. You can select the text, do `M-x table-capture`, and specify empty strings as separators. Emacs will create a pretty table with one cell containing your text. Now you can move the point to parts inside that cell and split around that point with `M-x split-cell`. Once a cell is split, you can navigate each cell with Tab and edit text independently! After you have finished creating a layout, just do `M-x table-release` and everything will be in plain text again, keeping your layout intact.
-
-`table` is a useful package to create complex layouts in code comments (for example, to explain a difficult concept).
-
-For more information, check "Editing Text-based Tables" in the Emacs manual.
-
-
-## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/c86mn9/comment/esy8p93)
-**Votes:** 10
-
-A bunch of useful built-in commands have no default keybinding. Here's a list that includes the binding I use as suggestion:
-
-- List editing commands:
-  - `up-list` (`C-M-o` --mnemonic: it gets you Out of a list)
-  - `kill-backward-up-list` (`<C-M-backspace>`)
-  - `raise-sexp` (`M-R`)
-  
-- Prose oriented commands:
-  - `kill-paragraph` (`M-K`)
-  - `mark-end-of-sentence` (`M-E`)
-  - `transpose-sentences` (`M-T`)
-  - `transpose-paragraphs` (`C-x t`)
-  
-- Miscellaneous:
-  - `browse-url-at-point` (`C-c b`) Of course, if you use `goto-address-mode`, you don't need a keybinding for this one.
-  - `info-apropos` (`C-h A`)
-  - `proced` (`C-x C-p`) It works on Windows too!
-
-Also, there are a bunch of default keybindings that I think could be better used for a very similar command:
-
-- `C-d`. It is usually bound to `delete-char`, but even the help for `delete-char` thinks this is a bad idea!:
-   
-   > The command ‘delete-forward-char’ is preferable for interactive use, e.g.
-   > because it respects values of ‘delete-active-region’ and ‘overwrite-mode’.
-
-  So I bind `C-d` to `delete-forward-char` and enjoy the `delete-active-region` goodness.
-  
-- `C-x k`. I use it for `kill-current-buffer` and use `C-x K` for `kill-buffer`.
-
-- `M-z`. It's normally bound to `zap-to-char` but I find `zap-up-to-char` useful more often, so I bind it to `M-z` and put `zap-to-char` on `M-Z`.
-
-- `M-c`, `M-l`, `M-u`. These are bound to `capitalize-word`, `downcase-word` and `upcase-word`, but I think `capitalize-dwim`, `downcase-dwim` and `upcase-dwim` are strictly better: they act like the `-word` versions when no region is active, and like the `-region` versions  when there is an active region.
-
-
-## u/hale314 [🔗](https://www.reddit.com/r/emacs/comments/gi70ye/comment/fqg7qys)
-**Votes:** 10
-
-I tend to have a lot of function that is defined solely to be added to a hook. Turns out I can customize `defun-declarations-alist` to define a new `hook` property in the `declare` form. Now I can specify the hook that the function is intended for right inside the function definition.
-
-```elisp
-;; Need to be done during compilation as well if your functions are getting compiled
-(eval-and-compile
-  (setf (alist-get 'hook defun-declarations-alist)
-        (list (lambda (fun _args hook &optional depth)
-                `(add-hook ',hook #',fun ,@(when depth (list depth)))))))
-
-(defun ask-about-scratch-buffer ()
-  "Confirm that user want to discard the content of the scratch buffer."
-  (declare (hook kill-emacs-query-functions))
-  (let ((scratch (get-buffer "*scratch*")))
-    (or (zerop (buffer-size scratch))
-        (progn (pop-to-buffer scratch)
-               (y-or-n-p "Scratch buffer is not empty, discard?")))))
-;; no longer needed
-;; (add-hook 'kill-emacs-query-functions #'ask-about-scratch-buffer)
-```
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/o0zvb5/comment/h1znz1s)
-**Votes:** 10
-
-I keep forgetting how useful the `pcase` macro is.  Recently I wrote a command that expected to find a single jar file in a certain directory and operate on it.  I started with a more "traditional" implementation:
-
-```elisp
-(let ((jars (directory-files some-dir t (rx ".jar" eos))))
-  (if (= 1 (length jars))
-      (do-something-with (car jars))
-    (error "Didn't find exactly one jar file")))
-
-```
-Then I remembered `pcase`:
-
-```elisp
-(pcase (directory-files some-dir t (rx ".jar" eos))
-  (`(,jar) (do-something-with jar))
-  (_ (error "Didn't find exactly one jar file")))
-
-```
-Much more readable!
-
-
-## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/ei02j1/comment/fcmosxh)
-**Votes:** 10
-
-Here's how I open pdf files in mupdf with the colors of my current emacs theme:
-
-```elisp
-(defun mupdf-reader (file)
-  (let* ((background (face-attribute 'default :background))
-         (foreground (face-attribute 'default :foreground))
-         ;; if it's a hex code then remove the # prefix
-         ;; if it's a color name then convert it to hex code
-         (backg-color (if (equal (substring background 0 1) "#")
-                          (substring background 1)
-                        (substring (color-name-to-hex background) 1)))
-         (font-color (if (equal (substring foreground 0 1) "#")
-                         (substring foreground 1)
-                       (substring (color-name-to-hex foreground) 1))))
-    (make-process
-     :name "book-reader"
-     :connection-type 'pipe
-     :command (list "mupdf-gl" "-B" font-color "-C" backg-color file))))
-
-```
-The above function depends on `color-name-to-hex`, which basically combines two inbuilt functions:
-
-```elisp
-(defun color-name-to-hex (name)
-  (let ((rgb (color-name-to-rgb name)))
-    (when rgb
-      (setcdr (last rgb) '(2))
-      (apply 'color-rgb-to-hex rgb))))
-
-```
-Here's a simple handler function to open all pdf and epub files from emacs with mupdf:
-
-```elisp
-(defun mupdf-file-handler (operation &rest args)
-  (mupdf-reader (car args))
-  (kill-buffer nil)
-  ;; the error here is to avoid a bug that tries to
-  ;; match the true filename with the deleted buffer
-  (error ""))
-
-```
-Add the magic filenames to init.el so that emacs will know when to use the handler:
-
-```elisp
-(put 'mupdf-file-handler 'safe-magic t)
-(put 'mupdf-file-handler 'operations '(insert-file-contents))
-(add-to-list 'file-name-handler-alist '("\\(\\.\\(?:epub\\|pdf\\)\\)$" . mupdf-file-handler))
-```
-
-
-## u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/q2g1gq/comment/hfldw8n)
-**Votes:** 10
-
-One of the most useful bindings for me:
-
-```elisp
-(use-package avy
-  :bind* (("C-j" . avy-goto-char-timer)))
-```
-
-
-## u/Stefan-Kangas [🔗](https://www.reddit.com/r/emacs/comments/pxqvtm/comment/hf1gzs2)
-**Votes:** 10
-
-Read [SICP](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Preferably in Info, installable through MELPA or: [https://github.com/webframp/sicp-info](https://github.com/webframp/sicp-info)
-
-
-## u/jalihal [🔗](https://www.reddit.com/r/emacs/comments/cjopqe/comment/evfx0a3)
-**Votes:** 10
-
-Awesome trick I learned yesterday. C-x r N numbers the lines in a region!
-
-
-## u/Bodertz [🔗](https://www.reddit.com/r/emacs/comments/lfww57/comment/gmtk79e)
-**Votes:** 10
-
-From the mailing list, I've just learned of `generic-x.el`, which provides syntax highlighting for `/etc/fstab` or `/etc/passwd` and the like.  I appreciated that vim provided that out of the box and I was surprised that emacs also does, but it's just disabled.
-
-`(require 'generic-x)` to enable it.
-
-
-## u/andreyorst [🔗](https://www.reddit.com/r/emacs/comments/s21457/comment/hsgj7a6)
-**Votes:** 10
-
-Prevent horizontal scrolling from going too far left.
-
-I use Emacs on a laptop and quite often scroll with a touchpad. I also don't use line wrapping, as in code it usually looks misleading, so lines can sometimes exceed window width, either because of some long names or because the current window configuration is too narrow.
-
-However, when scrolling text sideways, there's a small annoyance that the scroll can go way too far to the left. E.g. if this is your window, and your text exceeds it:
-
-
-```elisp
-|Short line             |
-|Some really long line o|
-|Another short line     |
-
-```
-What I'd like to is to prevent scrolling any further than that:
-
-```elisp
-|line                   |
-|eally long line of text|
-|r short line           |
-
-```
-But Emacs actually allows to scroll as far as one would want to, like here:
-
-```elisp
-|                       |
-|t                      |
-|                       |
-
-```
-This doesn't make sense to me, as you can't see anything at all.
-Probably handy, when you write in really long lines, and you wish to have some buffer for adding more text without triggering scrolling, but I never needed that. So I wrote such predicate:
-
-```elisp
-(defun truncated-lines-p ()
-  "Non-nil if any line is longer than `window-width' + `window-hscroll'.
-
-Returns t if any line exceeds the right border of the window.
-Used for stopping scroll from going beyond the longest line.
-Based on `so-long-detected-long-line-p'."
-  (save-excursion
-    (goto-char (point-min))
-    (let* ((window-width
-            ;; this computes a more accurate width rather than `window-width', and respects
-            ;; `text-scale-mode' font width.
-            (/ (window-body-width nil t) (window-font-width)))
-           (hscroll-offset
-            ;; `window-hscroll' returns columns that are not affected by
-            ;; `text-scale-mode'.  Because of that, we have to recompute the correct
-            ;; `window-hscroll' by multiplying it with a non-scaled value and
-            ;; dividing it with a scaled width value, rounding it to the upper
-            ;; boundary.  Since there's no way to get unscaled value, we have to get
-            ;; a width of a face that is not scaled by `text-scale-mode', such as
-            ;; `window-divider' face.
-            (ceiling (/ (* (window-hscroll) (window-font-width nil 'window-divider))
-                        (float (window-font-width)))))
-           (line-number-width
-            ;; compensate line numbers width
-            (if (bound-and-true-p display-line-numbers-mode)
-                (- display-line-numbers-width)
-              0))
-           ;; subtracting 2 for extra space in case some calculations were imprecise
-           (threshold (+ window-width hscroll-offset line-number-width -2)))
-      (catch 'excessive
-        (while (not (eobp))
-          (let ((start (point)))
-            (save-restriction
-              (narrow-to-region start (min (+ start 1 threshold)
-                                           (point-max)))
-              (forward-line 1))
-            (unless (or (bolp)
-                        (and (eobp) (<= (- (point) start)
-                                        threshold)))
-              (throw 'excessive t))))))))
-
-```
-This function can calculate window width, and line width, and check if any line in the buffer exceeds the window width screen-wise. By screen-wise I mean that if you've scrolled text to the left, it will begin to return `nil` once all lines don't exceed the right border of the window, thus achieving the described behavior in the diagrams. I then define advice around the `scroll-left` function, and it works pretty good:
-
-```elisp
-(define-advice scroll-left (:around (foo &optional arg set-minimum))
-  (when (and truncate-lines
-             (not (memq major-mode '(vterm-mode term-mode)))
-             (truncated-lines-p))
-    (funcall foo arg set-minimum)))
-
-```
-Though it's not very accurate when using `text-scale-adjust`, as line width is not the same as before, the function, that reports how much the window was scrolled to the left still returns unscaled values. You can see my thoughts in the function's comments. Any suggestions on how to make it more accurate?
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/d5dwkq/comment/f0mf4g0)
-**Votes:** 10
-
-I frequently want to copy a long, one-line JSON expression into a fresh buffer and pretty-print it there, and I recently got tired of performing all the steps myself.  Now I can just put the cursor on the first character of the string, and run this command:
-
-```elisp
-(defun view-pretty-json (begin)
-  (interactive "d")
-  (let ((buffer (current-buffer))
-        (end (save-excursion (forward-sexp) (point))))
-    (switch-to-buffer (generate-new-buffer "*json*"))
-    (insert-buffer-substring buffer begin end)
-    (json-pretty-print (point-min) (point-max))
-    (goto-char (point-min))))
-```
-
-
-## u/bgcartman [🔗](https://www.reddit.com/r/emacs/comments/us7zae/comment/i92mn8w)
-**Votes:** 10
-
-I little advice I use in org-mode to auto load org-babel modules only when needed.
-```elisp
-  (defadvice org-babel-execute-src-block (around load-language nil activate)
-  "Load ob-{language} only when needed."
-  (let ((lang (org-element-property :language (org-element-at-point))))
-(when (or (string= lang "bash") (string= lang "sh")) (setq lang "shell"))
-(unless (cdr (assoc (intern lang) org-babel-load-languages))
-  (add-to-list 'org-babel-load-languages (cons (intern lang) t))
-  (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
-ad-do-it))
-
-```
-
-Saves me some time and speeds up loading org-mode as a nice bonus.
-
-P.S. Speaking of speeding up the loading of org-mode I found out that setting this before loading it helps a lot. Obviously one should modify it to include used modules/back-ends:
-```elisp
-(setq org-modules nil
-  org-export-backends '(html)))
-```
-
-
-## u/diamondnbond [🔗](https://www.reddit.com/r/emacs/comments/us7zae/comment/i928gaj)
-**Votes:** 10
-
-[I Recently discovered engine-mode.](https://github.com/DiamondBond/emacs/blob/master/config.org#initialize-engine-mode)
-
-
-## u/kastauyra [🔗](https://www.reddit.com/r/emacs/comments/ibwzcu/comment/g1zlh2t)
-**Votes:** 10
-
-# 27.1 do GC if no frame has focus
-
-I am porting my [config](https://github.com/laurynas-biveinis/dotfiles) from 26.3 to 27.1, which had the tweak to do GC whenever a frame loses focus, originally from [MatthewZMD's config](https://github.com/MatthewZMD/.emacs.d) I think:
-```elisp
-(add-hook 'focus-out-hook #'garbage-collect)
-```elisp
-27.1 NEWS say more generic (and more correct) `after-focus-change-function` should be used instead. Which pointed out that I do not want to GC on just any frame going out of focus, if another frame is being focused instead. It might be a better idea to GC if no frames at all are focused. Somewhat surprisingly I was not able to find any public dotfiles repo implementing this to copy paste from, so I tried to write my own:
-```elisp
-(defun dotfiles--gc-on-last-frame-out-of-focus ()
-  "GC if all frames are inactive."
-  (if (seq-every-p #'null (mapcar #'frame-focus-state (frame-list)))
-  (garbage-collect)))
-
-(add-function :after after-focus-change-function
-          #'dotfiles--gc-on-last-frame-out-of-focus)
-```
-
-
-## u/tungd [🔗](https://www.reddit.com/r/emacs/comments/2awvj3/comment/cizm4e7)
-**Votes:** 10
-
-You'll need to either adapt to the Emacs way of doing things, or make Emacs to adapt to your way of doing things. For the specific problem you described, if you want to adapt, install [Projectile](https://github.com/bbatsov/projectile), and you can open files quickly using `C-c p f` (hint: it is similar to ST's `Ctrp-P`. If you love NERDTree and doesn't want to switch to a new way and Speedbar doesn't work for you, install [Neotree](https://github.com/jaypei/emacs-neotree) instead.
-
-
-## u/takethecannoli4 [🔗](https://www.reddit.com/r/emacs/comments/audffp/comment/eh7lrj3)
-**Votes:** 9
-
-May I suggest you post this to the Emacs Wiki?
-
-
-## u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/9ajxqj/comment/e4w2ych)
-**Votes:** 9
-
-Very nice post!  Although I certainly do not deserve to be named in the company of such pillars of the community as Sacha, John, and Nicolas.
-
-You should consider starting a "real" blog to host these more permanently (or more personally and visibly, at least).  I often find myself reading blog posts from a few years ago about Emacs/Org, but old Reddit posts like this are probably more likely to fade into obscurity.  Then you can write a blog post about blogging with Emacs/Org!  ;)  You could also then submit it to Planet Emacs for syndication.  Kaushal Modi has set up a beautiful blog with Org and Hugo, so you might use it as an example.
-
-Thanks for sharing your insights!
-
-
-## u/ieure [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eewn8ex)
-**Votes:** 9
-
-Maybe you already know about `occur`, which shows matching lines in the current buffer -- like grep, but the buffer doesn't need to be backed by a file.
-
-Emacs also has `multi-occur` which does the same thing across multiple buffers (you have to specify each one); and `multi-occur-in-matching-buffers`, which matches lines across buffers whose name matches a regexp'.
-
-Most of the time, I want to search *all* open buffers, so I wrote:
-
-```elisp
-(defun multi-occur-global (regexp &optional nlines)
-  "Do a `multi-occur' across all buffers."
-  (interactive (occur-read-primary-args))
-  (thread-first
-  ;; Don't occur in *Occur* buffers
-  (lambda (buffer) (eq (buffer-local-value 'major-mode buffer) 'occur-mode))
-(cl-remove-if (buffer-list))
-(multi-occur regexp)))
-```
-
-This is great if you have IRC chats or emails open in Emacs and need to quickly find a previous conversation.  And of course `occur` works properly with `next-error` / `previous-error` just like the `grep` commands do.
-
-
-## u/shoutouttmud [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eetvkas)
-**Votes:** 9
-
-Let me start this thread off: [Pragmatic emacs](http://pragmaticemacs.com/) is a great source of ideas. I recently came across this setting:
-```elisp
-    
-(setq wdired-allow-to-change-permissions t)
-
-```
-plus a simple function to replace kill-buffer so that it kill the current buffer without prompting me for what buffer I want to kill(the docstring is mine):
-
-```elisp
-(defun my-kill-this-buffer ()
-  "Kill the current buffer. This function is required because the
-`kill-this-buffer' included in Emacs is safe to use only
-from the menu bar"
-  (interactive)
-  (kill-buffer (current-buffer)))
-```
-
-
-## u/tareefdev [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efid3tn)
-**Votes:** 9
-
-Install [Wttrin](https://github.com/bcbcarl/emacs-wttrin) package, and then add the following to your `.emacs`:
-
-```elisp
-(require 'wttrin)
-(setq wttrin-default-cities '("XXXXX"))
-(setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
-(global-set-key (kbd "s-w") 'wttrin)
-
-```
-Put your city name instead of XXXXX and change the key binding to whatever you want. Now you can check the weather condition without leaving Emacs :)
-
-
-## u/10q20w [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efgr3wm)
-**Votes:** 9
-
-Idea: this thread could also double as a "help me implement this" thread.
-
-Speaking of that: Is it possible to get atom-like completion suggestions before you start typing? I'm doing some CSS, and in Atom when you write something like
-
-```elisp
-.exampleclass {
-    text-align: <cursor here>
-}
-
-```
-Atom would give autocomplete-suggestions, displaying a list of possible values like "center", "left", "right". Company doesn't seem to do this.
-
-
-## u/shoutouttmud [🔗](https://www.reddit.com/r/emacs/comments/aoqcyl/comment/eg2ujqe)
-**Votes:** 9
-
-Evil related:
-
-An interesting thing I read in the past week was this [blog post](http://vimcasts.org/blog/2014/02/follow-my-leader/). What I got out of it is that, although vi keybinds cover almost all keys, leaving you with few free keys to change, a significant amount of combinations of keys are invalid (for example c followed by x doesn't do anything) and thus you can bind them to whatever you want. 
-
-I have not integrated this idea to my evil workflow yet, but it sounds quite promising, and I think I'll start using it at some point. 
-
-(One thing to consider though is that with evil there are packages that add additional text objects. If you added a text object that is represented by x then c followed by x would become a valid combination and thus would clash with your keybinding, forcing you to change it to something else)
-
-
-## u/agumonkey [🔗](https://www.reddit.com/r/emacs/comments/910pga/comment/e2urd08)
-**Votes:** 9
-
-Thanks, I like seeing workflow of others so I can steal because I'm a great artist.
-
-
-## u/zreeon [🔗](https://www.reddit.com/r/emacs/comments/98nkt6/comment/e4hrsja)
-**Votes:** 9
-
-This is basically my setup as well. Seems to work well. 
-
-I set up a little raspberry pi that runs syncthing so that I can sync my phone and computers more easily. Also serves as a nice backup. 
-
-
-## u/marcowahl [🔗](https://www.reddit.com/r/emacs/comments/b058f8/comment/eicbkxv)
-**Votes:** 9
-
-In the spirit of `incf` this is an abstraction to toggle a truth value without having to write the place twice.
-
-E.g. write `(togglef foo)` instead of `(setf foo (not foo))`.
-
-```elisp
-(defmacro togglef (place)
-  "Toggle PLACE.  non-nil becomes nil, nil becomes t.
-PLACE may be a symbol, or any generalized variable allowed by ‘setf’.
-The return value is the new value of PLACE."
-  `(setf ,place (not ,place)))
-
-```
-&#x200B;
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/b2uqdm/comment/eivtuo4)
-**Votes:** 9
-
-If I have a file that I'd like to live in a Git repo, but I don't want to have to bother telling Git to ignore it, I'll just create it elsewhere but then put a line at the top like:
-
-```elisp
-# -*- default-directory: "/path/to/repo/"; -*-
-
-```
-The file then lives in the repo for nearly all intents and purposes, despite being stored elsewhere.  For example, if I run a shell command while visiting the file, the shell is run in the repo directory; Projectile commands can be run in the repo while visiting the file; etc.  Very handy!
-
-
-## u/Vurpius [🔗](https://www.reddit.com/r/emacs/comments/b5n1yh/comment/ejjcd82)
-**Votes:** 9
-
-I just learned that savehist is a thing. It makes minibuffer history persist across sessions. Enable it with `(savehist-mode 1)`.
-
-
-## u/permafrosty [🔗](https://www.reddit.com/r/emacs/comments/2wh9o0/comment/coqw3ui)
-**Votes:** 9
-
-For quick note-taking, there is deft:
-
-http://jblevins.org/projects/deft/
-
-
-## u/globalcandyamnesia [🔗](https://www.reddit.com/r/emacs/comments/o68i0v/comment/h31xz50)
-**Votes:** 9
-
-If you're using the mark setting commands to expand a selection like `M-@` (mark next word) or `C-M-@` (mark next sexp), you can swap the point and mark (`C-x C-x`) and the selection will be expanded to the left rather than the right.
-
-So if you're in the middle of a sentence, you can press `M-@` a few times to select some words to the right, press `C-xx`, and press `M-@` a few more times to add words before the selection.
-
-
-## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/hqxm5v/comment/fy0xduj)
-**Votes:** 9
-
-Hippie-expand google search suggestions. Completely inspired from [shell-parse.el](https://github.com/malloc47/shell-parse.el/blob/master/shell-parse.el).
-
-I've added `try-expand-google-completion` to the bottom of my `hippie-expand-try-functions-list`
-
-```elisp
-(defun google-suggest--request (query)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       (format "http://suggestqueries.google.com/complete/search?client=firefox&q=%s" query) t t 1)
-    (goto-char (point-min))
-    (re-search-forward "^$")
-    (delete-region (point)(point-min))(buffer-string)))
-
-(defun google-suggest--list (result)
-  (let* ((q (progn
-              (string-match ",\\[\\(.*?\\)\\]" result)
-              (match-string 1 result)))
-         (r (replace-regexp-in-string "\\\"" "" q))
-         (l (split-string r "," t)))
-    (when (> (length (car (cdr l))) 0)
-      (remove
-       (car l)
-       (cdr l)))))
-
-(defun try-expand-google-completion (old)
-  (unless old
-    (he-init-string (hippie-word-bg) (point))
-    (setq he-expand-list (sort
-                          (all-completions
-                           he-search-string
-                           (lambda (s y n) (google-suggest--list (google-suggest--request s))))
-                          'string-lessp)))
-  (if (null he-expand-list)
-      (progn
-        (when old (he-reset-string))
-        ())
-    (he-substitute-string (car he-expand-list) t)
-    (setq he-tried-table (cons (car he-expand-list) (cdr he-tried-table)))
-    (setq he-expand-list (cdr he-expand-list))
-    t))
-```
-
-
-## u/c17g [🔗](https://www.reddit.com/r/emacs/comments/domrl6/comment/f65iky4)
-**Votes:** 9
-
-I just found out the great variable `org-extend-today-until`. Basically it defines when your day really ends. If you sleep late, check it out.
-
-Goodbye to the days using `M-x org-todo-yesterday` at midnight, clocking off items before sleep..
-
-
-## u/sugarbridalsentry [🔗](https://www.reddit.com/r/emacs/comments/domrl6/comment/f5qf3jw)
-**Votes:** 9
-
-This is a classic "Wow, Emacs does that?" situation: I discovered `imenu` by accident this week.
-
-On the one hand, it's a great tool for finding definitions in code -- but because my main use of Emacs is for writing and PIM, the thing that really excited me was `imenu-add-menubar-index`. 
-
-In org files, it treats each heading as a part of the index -- so by adding `imenu` to the menu bar, I have fly-out navigation for large org files. (I know people hate the menu bar, but I've found it handy). 
-
-That's all well and good, but now add in the `imenu-list`package, and you have a little pop-up outline of your org file just one keypress away: it's like the bookmarks in a PDF, and has been really helpful already in getting around. Light, clean, easy.
-
-Customizing `org-imenu-depth` sets how deep into a nested hierarchy to index for either `imenu-list` or the menubar index.
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/dyhkcd/comment/f82dxoa)
-**Votes:** 9
-
-I just put together this little function that kills a buffer's process if there's no input or output for a given time:
-
-```elisp
-(defun kill-buffer-process-after-idle (buffer seconds)
-  (let (timer)
-    (cl-labels
-      ((set-timer ()
-         (setq timer (run-at-time seconds nil #'done)))
-       (reset-timer (_ _)
-         (cancel-timer timer)
-         (set-timer))
-       (done ()
-         (with-current-buffer buffer
-           (remove-hook 'before-change-functions #'reset-timer t))
-         (kill-process (get-buffer-process buffer))))
-      (with-current-buffer buffer
-        (add-hook 'before-change-functions #'reset-timer nil t))
-      (set-timer))))
-
-```
-The context is that I occasionally use Spark throughout the day, but having a Spark shell open keeps a substantial amount of resources reserved, and my co-workers and I are encouraged to close our shells when not using them.  This way, I don't have to bother remembering.
-
-
-## u/jumpUpHigh [🔗](https://www.reddit.com/r/emacs/comments/kvmmq3/comment/gj33uht)
-**Votes:** 9
-
-AucTeX
-
-When you compile your TeX file and there are errors, the message asks you to see error messages using
-
-```elisp
- C-c `
-
-```
-This leads to the last error which is sometimes incomprehensible and you are left to yourself to figure out what went wrong.
-
-Instead of getting the last error, you can get an overview of all the errors by setting below variable to `t`:
-
-```elisp
- (setq TeX-error-overview-open-after-TeX-run t)
-
-```
-You can pop this up in a separate frame using:
-
-```elisp
-  (setq TeX-error-overview-setup 'separate-frame)
-
-```
-Related docs are [here](https://www.gnu.org/software/auctex/manual/auctex/Error-overview.html).
-
-This totally changes the way you can handle errors messages.
-
-
-## u/andrmuel [🔗](https://www.reddit.com/r/emacs/comments/jn6m14/comment/gb502ps)
-**Votes:** 9
-
-This is something I'm not actively using anymore, but it was one of my I-love-emacs moments, so I wanted to share this for a while.
-
-At work, I used to have an org-mode journal where I would take meeting notes. After the meeting, I exported the subtree for the current meeting to a PDF (via ODT) and sent it to the participants via mail.
-
-After a while I extended org-export to get a shortcut (`C-e C-s o M`) to automatically
-
-* export to PDF via ODT
-   * using a proper corporate design & logo via ODT\_STYLES\_FILE header
-* rename the file to include the current date
-* open thunderbird, starting a new message with
-   * subject taken from document title (if exporting all) or subtree heading (if exporting subtree
-   * pre-filled text
-   * the exported PDF already attached
-
-&#8203;
-
-```elisp
-;;
-;; export and send to mail
-;;
-(defun org-foo-export-to-foo-and-sendto-mail (org-export-function &optional async subtreep visible-only ext-plist)
-  (interactive)
-  (when (or (string-equal (file-name-extension (buffer-file-name)) "gpg")
-            (string-equal (file-name-extension (buffer-file-name)) "asc"))
-    (unless (yes-or-no-p "Really export GPG encrypted file and send via mail? ")
-      (throw 'abort-export-mail-gpg "export aborted by user")))
-  (unless subtreep
-    (unless (yes-or-no-p "Really export everything and send via mail? ")
-      (throw 'abort-export-mail-everything "export aborted by user")))
-  (let* ((title (if subtreep
-                    ;; subtree -> use subtree heading as title
-                    (nth 4 (org-heading-components))
-                    ;; whole document -> use document title
-                    (org-element-map
-                        (org-element-parse-buffer)
-                        'keyword
-                      (lambda (e)
-                        (when (string= "TITLE" (org-element-property :key e))
-                          (org-element-property :value e)))
-                      nil
-                      t)))
-         (file (file-name-nondirectory (funcall org-export-function async subtreep visible-only ext-plist))) ; note: odt export includes directory in output file name, html export includes no directory
-         (newfile (format "%s_%s" (format-time-string "%Y%m%d") file))
-         (directory (file-name-directory (buffer-file-name))))
-    (rename-file (concat directory file) (concat directory newfile) 1)
-    (my/thunderbird-compose-mail
-     ""
-     (format "Notes: %s" title)
-     "Please find attached my notes ...\n\nBest regards, Andreas"
-     (format "file://%s%s"
-             directory newfile))))
-
-(defun org-odt-export-to-odt-and-sendto-mail (&optional async subtreep visible-only ext-plist)
-  (interactive)
-  (org-foo-export-to-foo-and-sendto-mail 'org-odt-export-to-odt async subtreep visible-only ext-plist))
-
-(defun org-odt-export-to-pdf-and-sendto-mail (&optional async subtreep visible-only ext-plist)
-  (interactive)
-  (let ((org-odt-preferred-output-format "pdf"))
-    (org-odt-export-to-odt-and-sendto-mail async subtreep visible-only ext-plist)))
-
-(defun org-html-export-to-html-and-sendto-mail (&optional async subtreep visible-only ext-plist)
-  (interactive)
-  (org-foo-export-to-foo-and-sendto-mail 'org-html-export-to-html async subtreep visible-only ext-plist))
-
-(eval-after-load 'org
- '(progn
-    (org-export-define-derived-backend 'odt-mail 'odt
-      :menu-entry
-      '(?o "Export to ODT"
-           ((?m "As ODT file and send mail" org-odt-export-to-odt-and-sendto-mail)
-            (?M "As PDF file and send mail" org-odt-export-to-pdf-and-sendto-mail))))
-
-    (org-export-define-derived-backend 'html-mail 'html
-      :menu-entry
-      '(?h "Export to HTML"
-           ((?m "As HTML file and send mail" org-html-export-to-html-and-sendto-mail))))))
-           
-(defun my/thunderbird-compose-mail (&optional recipient subject body attachment)
-  (interactive)
-  (call-process "thunderbird" nil 0 nil "-compose" (format "to='%s',subject='%s',body='%s',attachment='%s'" recipient subject body attachment)))
-```
-
-
-## u/fabiopapa [🔗](https://www.reddit.com/r/emacs/comments/f972tf/comment/firc94m)
-**Votes:** 9
-
-This may be common knowledge, but I’m always surprised at how few people know about this.
-
-If you have an `ALTERNATE_EDITOR=''`environment variable, and start emacsclient with no emacs server running, it will start an emacs server and try starting emacsclient again. Also works with a `-a` flag on emacsclient command.
-
-
-## u/hairlesscaveman [🔗](https://www.reddit.com/r/emacs/comments/wqjare/comment/ikwhvfs)
-**Votes:** 9
-
-Question: I generally work with 3 vertical panes, with my preferred layout as left for code, middle for related test file, and right for test output or magit. However, keeping this layout is tricky; sometimes magit will open in the first pane, or the current pane when I'm focused in the middle, and deadgrep will open just anywhere… well, it's quite hectic and feels random.
-
-Is there any way I can get files to open in panes 1 or 2, and always have things like magit/test-output/deadgrep/etc on pane 3? I've tried "shackle" but I've had no success with it; everything seems to open in a horizontal pane at the bottom of my screen regardless of config.
-
-Any suggestions would be appreciated!
-
-
-## u/ProfessorSexyTime [🔗](https://www.reddit.com/r/emacs/comments/bj0ti2/comment/emgahec)
-**Votes:** 9
-
-I guess if no one has learned yet, you can create external shell scripts for Emacs with having just
-
-```elisp
-!#/usr/bin/env bash
-":"; exec emacs --script "$0" -- "$@"
-
-```
-At the top of a script and any elisp code you write under that will be ran when you run the script.
-
-I don't know many fancier things to do with it than that. Some people probably know more.
-
-
 ## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/bj0ti2/comment/em5rxk7)
 **Votes:** 9
 
@@ -3515,101 +3516,6 @@ Then in my `~/.emacs` I do this:
            :full-and-display-names t
            credentials)))
 ```
-
-
-## u/xu-chunyang [🔗](https://www.reddit.com/r/emacs/comments/fwgpkd/comment/fmochkh)
-**Votes:** 9
-
-Prettify the minibuffer prompt on the default value
-
-```elisp
-(setq minibuffer-eldef-shorten-default t)
-(minibuffer-electric-default-mode)
-
-```
-Then try eval
-
-```elisp
-(read-string "Year (default 2019): " nil nil "2019")
-
-```
-You will notice "Year (default 2019): " is shorten to "Year [2019]: ", and when
-you enter anything, the prompt is shorten further to "Year: ". Next time, you
-use the minibuffer api, if you provide the default value, don't forget to format
-the prompt using that specfic format.
-
-
-## u/rhmatthijs [🔗](https://www.reddit.com/r/emacs/comments/h9zoy9/comment/fuzucay)
-**Votes:** 9
-
-On a Mac: make Emacs detect if you have light or dark mode enabled system wide.
-
-If you have two themes, a light one and a dark one, and you want the dark theme by default unless you have light mode enabled, add this to your init.el:
-
-```elisp
-;; If we're on a Mac and the file "~/bin/get_dark.osascript" exists
-;; and it outputs "false", activate light mode. Otherwise activate
-;; dark mode.
-(cond ((and (file-exists-p "~/bin/get_dark.osascript")
-            (string> (shell-command-to-string "command -v osascript") "")
-            (equal "false\n"
-                   (shell-command-to-string "osascript ~/bin/get_dark.osascript")))
-       (mcj/theme-set-light))
-      (t (mcj/theme-set-dark)))
-
-```
-(mcj/theme-set-light and mcj/theme-set-light are functions that enable the light and the dark theme, respectively).
-
-~/bin/get_dark.osascript contains the following:
-
-```elisp
-tell application "System Events"
-	tell appearance preferences
-		get dark mode
-	end tell
-end tell
-```
-
-
-## u/a-k-n [🔗](https://www.reddit.com/r/emacs/comments/mg98ki/comment/gsvlfku)
-**Votes:** 9
-
-I just discovered that installing the Emacs macport homebrew formula with \`--with-mac-metal\` will significantly increase the performance of Emacs. It's buttery smooth!
-
-
-## u/isamert [🔗](https://www.reddit.com/r/emacs/comments/vskthv/comment/if1ua6o)
-**Votes:** 9
-
-I sometimes clone stuff with https instead of ssh, so this fixes that:
-
-```elisp
-(defun isamert/git-origin-switch-to-ssh ()
-  (interactive)
-  (when-let* ((https-origin (s-trim (shell-command-to-string "git config --get remote.origin.url")))
-              (it (s-match "https://\\(.*\\)\\.\\(com\\|net\\|org\\)/\\(.*\\)" https-origin))
-              (ssh-origin (format "git@%s.%s:%s" (nth 1 it) (nth 2 it) (nth 3 it))))
-    (shell-command-to-string (format "git remote set-url origin %s" ssh-origin))))
-
-
-```
-It works for github/gitlab etc. You need to extend the regexp for making it work for more obscure addresses.
-
-
-## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/btxe4d/comment/ep51nt6)
-**Votes:** 9
-
-Use the header line to show the mode line's information:
-
-```elisp
-(setq-default header-line-format mode-line-format
-              mode-line-format nil)
-
-```
-Screenshot: https://i.imgur.com/cejaNar.png
-
-This doesn't work everywhere e.g., some major modes need manipulate the header line for their own use. 
-
-Inspired by https://www.reddit.com/r/emacs/comments/btz1d6/show_mode_line_in_minibuffer/
 
 
 ## u/1Nude [🔗](https://www.reddit.com/r/emacs/comments/8px8pa/comment/e0etkh5)
@@ -3665,10 +3571,14 @@ If you want executions of keyboard macros to undo in a single step, you can use 
 And, of course, you can add that advice to other ready made functions you'd like to be able to undo in a single step. (I haven't found any examples in stock Emacs other than keyboard macros, where I want that behavior and don't already have it, but who knows). For new commands you write, it is probably best to use `undo-amalgamate-change-group` in the implementation rather than advising.
 
 
-## u/ragoneio [🔗](https://www.reddit.com/r/emacs/comments/blo25q/comment/emq00pa)
+## u/11fdriver [🔗](https://www.reddit.com/r/emacs/comments/br7q0y/comment/eob6fj2)
 **Votes:** 9
 
-Not sure if it will be helpful to anyone else - but working on legacy code, I often need to review code in large files with hundreds of errors and warnings. So I wrote a package which runs Flycheck on all the files in a diff and filters the output to only the lines which was modified or added! https://github.com/ragone/magit-diff-flycheck. I hope you like it - it’s currently in review to get published on MELPA.
+I'm sure that this is something that people already knew about, but I had no idea until today.
+
+I often start selecting text and realise that I actually want a rectangular selection (or the other way round). 
+
+I found out that rather than having to jump to the mark, cancel, and restart, I can just press `C-x SPC` `[xfk: SPC r SPC]` `(rectangle-mark-mode)` and Emacs will toggle to the other selection scheme.
 
 
 ## u/hairlesscaveman [🔗](https://www.reddit.com/r/emacs/comments/gmkg4g/comment/fr4gdm6)
@@ -3683,37 +3593,15 @@ The advice below quiets this warning, and inserts a dash whenever space is press
 ```
 
 
-## u/agumonkey [🔗](https://www.reddit.com/r/emacs/comments/w3gx6o/comment/ih3s9fl)
+## u/shitterwithaclitter [🔗](https://www.reddit.com/r/emacs/comments/s7lac1/comment/htnz373)
 **Votes:** 9
 
-you can have an org-mode file in source block in an org file
-
-
-## u/zkryrmr [🔗](https://www.reddit.com/r/emacs/comments/fgahb2/comment/fk567v4)
-**Votes:** 9
-
-Here is how you can calculate how many times larger an objects shadow is at solar noon. I was surprised to see how many quality functions related to astronomical calculations come with Emacs.
+I recently had the idea to start emacs in org-mode but have a src block at the top so I can still write elisp snippets easily. Here's the code for anyone interested:
 
 ```elisp
-(require 'solar)
-(defun height-of-sun-at-noon (date)
-"Calculates the height of at solar noon on DATE as '(M D YYYY)."
-  (let* ((exact-local-noon (solar-exact-local-noon date))
-		 (t0 (solar-julian-ut-centuries (car exact-local-noon)))
-		 (ut (cadr exact-local-noon))
-		 (hnoon (solar-horizontal-coordinates (list t0 ut)
-		  (calendar-latitude)
-		  (calendar-longitude) t)))
-	hnoon))
-
-(defun deg-to-rad (x)
-  "Convert X from radians to degrees."
-  (/ (* x float-pi) 180))
-
-(defun length-of-shadow-at-noon (date)
-  "Calculates the relative length of an objects shadow at solar noon on DATE."
-  (let ((hn (cadr (height-of-sun-at-noon date))))
-	(/ 1 (tan (deg-to-rad hn)))))
+;; start in org-mode with a source block for lisp evaluation
+(setq initial-major-mode #'org-mode
+      initial-scratch-message "#+begin_src emacs-lisp\n;; This block is for text that is not saved, and for Lisp evaluation.\n;; To create a file, visit it with \\[find-file] and enter text in its buffer.\n\n#+end_src\n\n")
 ```
 
 
@@ -3757,6 +3645,143 @@ This `emacs.desktop` locally overrides system one, and when I open files with th
 I still use Emacs in tty sometimes (often on a phone) so I want to keep the `(window-system)` checks and avoid loading unnecessary plugins, so I guess this method is acceptable.
 
 
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/o0zvb5/comment/h1znz1s)
+**Votes:** 9
+
+I keep forgetting how useful the `pcase` macro is.  Recently I wrote a command that expected to find a single jar file in a certain directory and operate on it.  I started with a more "traditional" implementation:
+
+```elisp
+(let ((jars (directory-files some-dir t (rx ".jar" eos))))
+  (if (= 1 (length jars))
+      (do-something-with (car jars))
+    (error "Didn't find exactly one jar file")))
+
+```
+Then I remembered `pcase`:
+
+```elisp
+(pcase (directory-files some-dir t (rx ".jar" eos))
+  (`(,jar) (do-something-with jar))
+  (_ (error "Didn't find exactly one jar file")))
+
+```
+Much more readable!
+
+
+## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/bwm94g/comment/epyjl3q)
+**Votes:** 9
+
+Unlike many applications' [Selection](https://en.wikipedia.org/wiki/Selection_(user_interface)), the Emacs region doesn't need to be highlighted to work. The Emacs region is the range of mark and point, mark is usually an old point, for example, many movement commands such as M-> and C-s automatically stores the starting point as the mark, thus the region is available once the command ends, for example, to select the whole buffer without highlighting, you can use
+
+```elisp
+M-> M-<
+
+```
+Highlighted region is also called active region. Many commands doesn't care if the region is active or inactive, both of them works.
+
+
+## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/ei02j1/comment/fcmosxh)
+**Votes:** 9
+
+Here's how I open pdf files in mupdf with the colors of my current emacs theme:
+
+```elisp
+(defun mupdf-reader (file)
+  (let* ((background (face-attribute 'default :background))
+         (foreground (face-attribute 'default :foreground))
+         ;; if it's a hex code then remove the # prefix
+         ;; if it's a color name then convert it to hex code
+         (backg-color (if (equal (substring background 0 1) "#")
+                          (substring background 1)
+                        (substring (color-name-to-hex background) 1)))
+         (font-color (if (equal (substring foreground 0 1) "#")
+                         (substring foreground 1)
+                       (substring (color-name-to-hex foreground) 1))))
+    (make-process
+     :name "book-reader"
+     :connection-type 'pipe
+     :command (list "mupdf-gl" "-B" font-color "-C" backg-color file))))
+
+```
+The above function depends on `color-name-to-hex`, which basically combines two inbuilt functions:
+
+```elisp
+(defun color-name-to-hex (name)
+  (let ((rgb (color-name-to-rgb name)))
+    (when rgb
+      (setcdr (last rgb) '(2))
+      (apply 'color-rgb-to-hex rgb))))
+
+```
+Here's a simple handler function to open all pdf and epub files from emacs with mupdf:
+
+```elisp
+(defun mupdf-file-handler (operation &rest args)
+  (mupdf-reader (car args))
+  (kill-buffer nil)
+  ;; the error here is to avoid a bug that tries to
+  ;; match the true filename with the deleted buffer
+  (error ""))
+
+```
+Add the magic filenames to init.el so that emacs will know when to use the handler:
+
+```elisp
+(put 'mupdf-file-handler 'safe-magic t)
+(put 'mupdf-file-handler 'operations '(insert-file-contents))
+(add-to-list 'file-name-handler-alist '("\\(\\.\\(?:epub\\|pdf\\)\\)$" . mupdf-file-handler))
+```
+
+
+## u/SamTheComputerSlayer [🔗](https://www.reddit.com/r/emacs/comments/qbvyza/comment/hhinrm4)
+**Votes:** 9
+
+I use a lot of toggles in my config. I used to do it ad-hoc every time, but the pattern ends up the same so I made this macro:
+```elisp
+(defun deftoggle-var-doc (name)
+  (concat "Non-nil if " name " is enabled.\n\n"
+      "See " name
+      " command for a description of this toggle."))
+(defun deftoggle-fun-doc (name doc)
+  (concat "Toggle " name " on or off.\n\n" doc))
+(defmacro deftoggle (name doc enabler disabler)
+  `(progn
+ (defvar ,name nil ,(deftoggle-var-doc (symbol-name name)))
+ (defun ,name (&optional enable)
+   ,(deftoggle-fun-doc (symbol-name name) doc)
+   (interactive)
+   (if (called-interactively-p 'interactive)
+       (progn
+         (if ,name
+             ,disabler
+           ,enabler)
+         (setq ,name (not ,name)))
+     (progn
+       (if enable
+           ,enabler
+         ,disabler)
+       (setq ,name enable))))))
+```
+
+It's very similar to define-minor-mode, but with all the hooks, keymaps, and lighters stripped out, so it's less verbose. Here I use it to toggle my theme for example:
+```elisp
+(deftoggle sam-toggle-theme
+  "Toggle theme between light and dark."
+  (progn (disable-theme 'dracula)
+     (load-theme 'spacemacs-light t))
+  (progn (disable-theme 'spacemacs-light)
+     (load-theme 'dracula t)))
+```
+
+
+## u/Stefan-Kangas [🔗](https://www.reddit.com/r/emacs/comments/pxqvtm/comment/hexdfiq)
+**Votes:** 9
+
+Replace the binding for `count-words-region` with `count-words`. The latter has better semantics: it only shows words in region if the region is active.
+
+`(global-set-key (kbd "M-=") #'count-words)`
+
+
 ## u/11fdriver [🔗](https://www.reddit.com/r/emacs/comments/mpwapo/comment/gufsfeu)
 **Votes:** 9
 
@@ -3769,16 +3794,24 @@ It will keep the text aligned as you move through the file, and pairs well with 
 If I'm studying/notetaking, I often end up with a few Emacs-windows arranged in a vertical stack. `winner-mode` or `window-configuration-to-register` are great, but if I want to quickly regain some vertical screen-real-estate without messing up the layout, then it's pretty intuitive to use `follow-mode` and just switch multiple windows to the same buffer, now they behave like one.
 
 
-## u/blankspruce [🔗](https://www.reddit.com/r/emacs/comments/rbmfwk/comment/hnrdt9x)
+## u/T_Verron [🔗](https://www.reddit.com/r/emacs/comments/qlpvgu/comment/hjfbuae)
 **Votes:** 9
 
-Is there a package similar to wdired or wgrep that would work on magit diffs? 
+(Nothing too fancy, I'm sure a lot of people have a similar thing in their toolbox, but it was useful to me again today.)
 
-Particular use cases I have in mind are:
+When writing elisp packages, the compiler expects that all variables and functions are declared. Declaring variables defined somewhere else is easy, one just needs to \`defvar\` them, but declaring functions should mention the file where it is defined.
 
-1. You've prepared a commit for pull request and during review someone spotted a mistake that's present in multiple files of that commit. Usually I grep the mistake and edit only affected files with wgrep (there might be some arbitrary reason to not fix similar issue in files not present in the commit).
-2. In C++ it happens sometimes that you want to separate declaration and definition and in your commit you forgot to move some definitions to .cpp.
-Usually I switch to `foobar.hpp`, kill the necessary part, switch to `foobar.cpp`, yank that part.
+Inserting all those forms is tedious, especially if the function comes from a package with several files. But emacs already knows where the function comes from, so we can just ask it.
+
+```elisp
+(defun tv/add-declare-function (fun)
+  (interactive "a") 
+  (let* ((buf (car (find-function-noselect fun))) 
+         (name (file-name-base (buffer-file-name buf)))) 
+    (insert (format "(declare-function %s "%s")\n" fun name))))
+
+```
+Call it with M-x, insert the name of the function you want to declare (with completion), and voilà.
 
 
 ## u/human_banana [🔗](https://www.reddit.com/r/emacs/comments/eeyhdz/comment/fbyevye)
@@ -3799,960 +3832,8 @@ So you can deal with different environments.
 I mostly use this for things that are nice to have, but aren't required and don't need to be installed if they aren't already.
 
 
-## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/eeyhdz/comment/fbxf389)
-**Votes:** 9
-
-Update your hosts file to block internet ads with this function:
-
-```elisp
-(defun update-hosts-file ()
-  (interactive)
-  ;; make a backup in case something goes wrong
-  (copy-file "/etc/hosts" "/tmp/" t)
-  (let ((coding-system-for-write 'raw-text-unix))
-    (with-temp-file  "/sudo:root@localhost:/etc/hosts"
-      (insert-file-contents "/etc/hosts")
-      (goto-char (point-min))
-      ;; This "if block" allows you to keep your custom entries untouched
-      (if (re-search-forward "^# This hosts file is" nil t)
-          (progn
-            (goto-char (line-beginning-position))
-            (delete-region (point)(point-max)))
-        (goto-char (point-max)))
-      ;; get the updated list
-      (insert
-       (with-current-buffer
-           (url-retrieve-synchronously "https://someonewhocares.org/hosts/hosts" t t)
-         (goto-char (point-min))
-         (re-search-forward "^$")
-         (delete-region (point) (point-min))
-         (buffer-string))))))
-```
-
-
-## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/k4gv0x/comment/ge8si78)
-**Votes:** 9
-
-Here's all I need for completions:
-
-```elisp
-(use-package icomplete
-  :bind
-  (:map icomplete-minibuffer-map
-        ([C-return] . exit-minibuffer)
-        ([return] . minibuffer-try-complete-and-exit))
-  :config
-  (defun minibuffer-try-complete-and-exit ()
-    (interactive)
-    (minibuffer-force-complete)
-    (setq-local deactivate-mark nil)
-    (throw 'exit nil))
-  :hook (after-init . icomplete-mode))
-
-(use-package orderless
-  :ensure t
-  :custom
-  (completion-styles '(orderless))
-  (orderless-matching-styles 'orderless-literal))
-```
-
-
-## u/dmartincy [🔗](https://www.reddit.com/r/emacs/comments/polxft/comment/hcxub77)
-**Votes:** 9
-
-If you write Lisp, there's a couple of old Emacs commands to help you write code while keeping parenthesis balanced: `M-(` (`insert-parenthesis`), and `M-)` (`move-past-close-and-reindent`). They used to be documented in old Emacs manuals, but presumably their description was removed to make room for other content.
-
-With a prefix argument, `M-(` wraps in parenthesis that number of sexps. For example with point represented as "*":
-
-*foo -> C-u 1 M-( -> (foo)
-
-There's more information in EmacsWiki: https://www.emacswiki.org/emacs/InsertPair
-
-
-## u/b3n [🔗](https://www.reddit.com/r/emacs/comments/ml4wql/comment/gtkc524)
-**Votes:** 9
-
-Skeletons are one of Emacs' killer features, especially when combined with `abbrev-mode`. Here's a macro I wrote to make them a little easier to handle:
-
-```elisp
-(defmacro snip (name &rest skeleton)
-  (let* ((snip-name (symbol-name `,name))
-         (func-name (intern (concat "snip-" snip-name))))
-    `(progn
-       (define-skeleton ,func-name
-         ,(concat snip-name " skeleton")
-         ,@skeleton)
-       (define-abbrev global-abbrev-table ,snip-name
-         "" ',func-name))))
-
-```
-Here's a simplistic example using the macro:
-
-```elisp
-(snip dd "" (format-time-string "%Y-%m-%d"))
-
-```
-Now (assuming you have `abbrev-mode` enabled), type `dd ` into your buffer (that's `d` `d` `SPC`) and it'll be replaced with the current date.
-
-This is just scratching the surface, skeletons are extremely powerful. Once you start using them they become a superpower and can take your Emacs usage to the next level.
-
-
-## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/p28rl5/comment/h8utmh2)
-**Votes:** 9
-
-Imenu is pretty adictive and it's disappointing when some major mode doesn't support it. Luckily, it's fairly easy to cook up some regexps to provide imenu support in a new major mode. For example I recently noticed that customize buffers didn't have imenu support add I wrote this:
-
-```elisp
-(defun configure-imenu-Custom ()
-  (setq imenu-generic-expression
-        '(("Faces" "^\\(?:Show\\|Hide\\) \\(.*\\) face: \\[sample\\]" 1)
-          ("Variables" "^\\(?:Show Value\\|Hide\\) \\([^:\n]*\\)" 1))))
-
-(add-hook 'Custom-mode-hook #'configure-imenu-Custom)
-
-```
-One subtlety with writing this is that the customize buffers show little triangles instead of the words "Show", "Hide" or "Show Value". To figure out what text is really in the buffer you can use `C-u C-x =` which tells you about any overlays at point.
-
-
-## u/ForkInBrain [🔗](https://www.reddit.com/r/emacs/comments/aikrx5/comment/eerci75)
-**Votes:** 8
-
-It is not clear to me what problem this idea is intending to solve. Your post says "hey this is neat" or "hey I learned about" posts are not worthy. Why not? Isn't Reddit designed for exactly that kind of post?
-
-Is the idea to encourage participation? An alternative is to just start posting these kinds of things and seeing if the community appreciates it. This goes back to the question of whether such posts are "not worthy" or not.
-
-One disadvantage of a single stickied post with a diverse set of topics being discussed is that it almost fights the basic design of Reddit. Personally, I tend to learn to skip/ignore them because they are always there, and it is harder to sift through what is good/interesting within them. For this reason I'd prefer stuff be posted at the top level.
-
-I tend to think these kinds of automatically stickied weekly posts are more useful in high volume subreddits, where one kind of post is clearly under served an needs a place. E.g. a thread dedicated for "noob" questions in a game forum where such things are often down voted. Do we have that problem here? I don't see it. It is very easy to keep up with everything posted to r/emacs.
-
-I'm probably in the "don't sticky to start with" camp. Stickied posts with low participation are kinda sad. Posts that are useful and popular won't have any problem getting eyeballs in this sub.
-
-
-## u/RememberToBackupData [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeu1waj)
-**Votes:** 8
-
-I've been adding a ton of new words to my noun list, and the package `define-word` has been excellent for checking whether a word on that list really is a noun or not. It has `define-word-at-point` which fetches definitions from the web and displays it in the minibuffer.
-
-
-## u/thehaas [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeujw0a)
-**Votes:** 8
-
-Replace a string in a bunch of files in a directory. I got this from https://emacs.stackexchange.com/a/13719
-
- - run  `helm-ag` and search for a string
- - on the results, do `C-c C-e` to get it into an editable buffer
- - make the changes
- - `C-c C-c` to commit all the changes
-
-
-## u/Stieffers [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eevf1c6)
-**Votes:** 8
-
-Just found out about layouts using Eyebrowse \[1\] which is pretty awesome. It has really streamlined my workflow regarding project and context switching since buffers are stored per layout. Checkout a demo below, also featuring Golden ratio scroll \[2\]
-
-&#x200B;
-
-Demo Webm - [https://gfycat.com/speedymassivefattaileddunnart](https://gfycat.com/speedymassivefattaileddunnart)
-
-&#x200B;
-
-1: [https://melpa.org/#/eyebrowse](https://melpa.org/#/eyebrowse)
-
-2: [https://melpa.org/#/golden-ratio](https://melpa.org/#/golden-ratio)
-
-
-## u/agumonkey [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeujoxp)
-**Votes:** 8
-
-if I may, r/france has weekly threads about a few topics, I find it very nice, sometimes attendance shrinks a little, but there's always nice things to read.
-
-I always found I learned more about emacs by hearing others ideas rather than manual or code.. workflow ideas don't necessarily come from mastering atoms. 
-
-So I find this thread a very very nice idea. (thanks)
-
-
-## u/Timesweeper_00 [🔗](https://www.reddit.com/r/emacs/comments/ijmgtx/comment/g3fdvf7)
-**Votes:** 8
-
-FYI lsp-mode has added support for pyright as a language server, Microsoft is deprecating the c# python language server in favor of pylance (proprietary and closed source), which uses pyright.
-
-
-## u/zacktivist [🔗](https://www.reddit.com/r/emacs/comments/bfsck6/comment/elgoumx)
-**Votes:** 8
-
-Dynamically setting the width of the columns so it takes up the whole width:
-
-```elisp
-  (add-hook 'mu4e-headers-mode-hook
-	    (defun my/mu4e-change-headers ()
-	      (interactive)
-	      (setq mu4e-headers-fields
-		    `((:human-date . 12)
-		      (:flags . 4)
-		      (:from-or-to . 15)
-		      (:subject . ,(- (window-body-width) 47))
-		      (:size . 7)))))
-```
-
-
-## u/zreeon [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efh2l6r)
-**Votes:** 8
-
-Those weird keys like C-m that actually send other keys like RETURN? From our terminal days?
-
-You can convince GUI Emacs to let you bind them, which opens up a whole slew of new easy-to-reach keybindings.
-
-https://emacs.stackexchange.com/questions/20240/how-to-distinguish-c-m-from-return
-
-
-## u/xircon [🔗](https://www.reddit.com/r/emacs/comments/aoqcyl/comment/eg3l6bt)
-**Votes:** 8
-
-Hydra to edit system config files (for Manjaro/Arch based distros):
-
-```elisp
-(defhydra hydra-edit-conf (:color red
-                              :hint nil)
-
-  "Edit system configuration files"
-  ("p"  (find-file (concat "/sudo::" "/etc/pacman.conf")) "pacman" :color blue)
-  ("m"  (find-file (concat "/sudo::" "/etc/pacman-mirrors.conf")) "mirrors" :color blue)
-  ("f"  (find-file (concat "/sudo::" "/etc/fstab")) "fstab" :color blue)
-  ("s"  (find-file (concat "/sudo::" "/etc/sddm.conf")) "sddm" :color blue)
-  ("g"  (find-file (concat "/sudo::" "/etc/default/grub")) "grub" :color blue)
-  ("y"  (find-file "~/.config/yay/config.json") "yay" :color blue)
-  ("z"  (find-file "~/.zshrc") "zsh" :color blue)
-  ("q"   quit-window "quit" :color blue))
-
-(global-set-key (kbd "C-c m") #'hydra-edit-conf/body)
-```
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/b058f8/comment/eid928p)
-**Votes:** 8
-
-I got tired of electric-pair-mode adding a closing parenthesis after I typed a frowny emoticon (`:(` or `:-(`), so:
-
-```elisp
-(setq electric-pair-inhibit-predicate
-      (lambda (c) (or (looking-back ":-?(" (- (point) 3)
-                      (string-match-p (rx bos " *Minibuf-" (+ digit)) (buffer-name))
-                      (electric-pair-default-inhibit c))))
-
-```
-(The matching against the buffer name had already been present.)
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/b5n1yh/comment/ejfk1o0)
-**Votes:** 8
-
-When I pretty-print JSON, I prefer to have arrays of numbers printed all on one line:
-
-```elisp
-(with-eval-after-load 'json
-  (defun encode-json-array-of-numbers-on-one-line (encode array)
-    (let* ((json-encoding-pretty-print
-            (and json-encoding-pretty-print
-                 (not (loop for x across array always (numberp x)))))
-           (json-encoding-separator (if json-encoding-pretty-print "," ", ")))
-      (funcall encode array)))
-  (advice-add 'json-encode-array :around #'encode-json-array-of-numbers-on-one-line))
-
-```
-Before adding the advice. `(json-encode '((foo . [1 2 3]) (bar . [3 4 5])))` produces:
-
-```elisp
-{
-  "foo": [
-    1,
-    2,
-    3
-  ],
-  "bar": [
-    3,
-    4,
-    5
-  ]
-}
-
-```
-After:
-
-```elisp
-{
-  "foo": [1, 2, 3],
-  "bar": [3, 4, 5]
-}
-```
-
-
-## u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/hij4ga/comment/fwt1k27)
-**Votes:** 8
-
-Registers: in Emacs from the beginning, so simple you forget how insanely useful they can be. I use them to save text, windows, and locations. https://orys.us/tv
-
-
-## u/chrchr [🔗](https://www.reddit.com/r/emacs/comments/as83e2/comment/egtxcbu)
-**Votes:** 8
-
-I was watching some Lisp Machine demos on youtube a few weeks ago, and I observed that pressing ")" in the REPL causes the expression to be evaluated immediately if the expression is complete. There is no need to press `enter` at the end of the expression to submit it. I wanted my Emacs to do that as well, so I cooked up the following thing: [electric-paren](https://www.emacswiki.org/emacs/electric-paren.el)
-
-&#x200B;
-
-It works in inferior-lisp-mode, ielm, slime, and, my favorite of all, eshell.
-
-
-## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/as83e2/comment/egsp7dw)
-**Votes:** 8
-
-In the past, when I forgot a command flag I would go to the man page, search, copy/remeber the option and finally paste it into the shell. Last week I thought about ways to make this more efficient, and thanks to `pcmpl-args` and `helm` I finally have a better workflow for this:
-
-```elisp
-(defun insert-shell-option (cmd)
-  (interactive "sCommand: ")
-  (let ((options ()))
-    (require 'pcmpl-args)
-    (require 'helm)
-    (dolist (item (pcmpl-args-extract-argspecs-from-manpage cmd))
-      (let ((option (plist-get item 'option))
-            (help (plist-get item :help)))
-        (push (cons (with-temp-buffer
-                      (insert help)
-                      (let ((fill-column 80))
-                        (fill-paragraph))
-                      (goto-char (point-min))
-                      (insert (format "%s\n" option))
-                      (buffer-string))
-                    (format "%s" option))
-              options)))
-    (helm (helm-build-sync-source "Options: "
-            :candidates (nreverse options)
-            :multiline t
-            :action #'insert))))
-
-```
-The command lets you fuzzy search the options (including their description in the man page) and insert the right flag in one go.
-
-
-## u/primitiveinds [🔗](https://www.reddit.com/r/emacs/comments/domrl6/comment/f5oz3bp)
-**Votes:** 8
-
-This is one of the things that I'm sure exists somewhere but I can't find it so I wrote a few lines. I work in a big monorepo and depend on `projectile` for navigation by adding `.projectile` files here and there, in subdirectories that I consider "projects". However there are some directories that e.g. contain libraries. If I want to work on all of them for e.g. refactoring, going into a project then locks me in that (I mean `projectile-find-file`) and I have to manually go into another project. Also I flood my projectile cache with little things that I might not use a lot. What I did was add some logic to create temporary root directories for projects, where I can then use `counsel-file-jump` and `counsel-ag`. I have some keybindings and with a prefix argument I am prompted to change the temp root. Here's the code:
-```elisp
-(defvar my/temp-project-root nil)
-
-(defun my/get-or-set-temp-root (reset)
-  (let* ((reset-root (if reset my/temp-project-root nil))
-     (root
-      (if (or reset
-              (null my/temp-project-root)
-              (not (file-directory-p my/temp-project-root)))
-          (read-directory-name "Temp root dir: " reset-root)
-        my/temp-project-root)))
-(setq my/temp-project-root root)))
-
-(defun my/counsel-file-jump-temp-root (reset)
-  (interactive "P")
-  (my/get-or-set-temp-root reset)
-  (let ((current-prefix-arg nil))
-(counsel-file-jump nil my/temp-project-root)))
-
-(defun my/counsel-ag-temp-root (reset)
-  (interactive "P")
-  (my/get-or-set-temp-root reset)
-  (let ((current-prefix-arg nil))
-(counsel-ag "" my/temp-project-root)))
-```
-Also `counsel-file-jump` is so good
-
-
-## u/itistheblurstoftimes [🔗](https://www.reddit.com/r/emacs/comments/dyhkcd/comment/f8978oj)
-**Votes:** 8
-
-I just started using mu4e and wanted to have some visual indication of which account was associated with each email. Did this quickly but it seems to work well. This is akin to what K9 mail does on android.
-
-The names "account1" refer to the folders in your Maildir for each account, i.e., \~/Maildir/account1
-
-&#x200B;
-
-```elisp
-(setq x-mu4e-account-colors '(("account1" . "orange")
-			      ("account2" . "red")
-			      ("account3" . "blue")))
-
-(setq x-mu4e-account-colors-prefix "    ")
-
-(defun x-mu4e-header-colors (msg line)
-  "Add a small color block to headers view indicating the account for each email"
-  (let* ((maildir (nth 1 (s-split "/" (plist-get msg :maildir))))
-         (color (cdr (assoc maildir x-mu4e-account-colors))))
-    (setq line (concat x-mu4e-account-colors-prefix line))
-    (put-text-property 0 (- (length x-mu4e-account-colors-prefix) 2) 'face `(:background ,color) line)
-    line))
-
-(add-to-list 'mu4e~headers-line-handler-functions 'x-mu4e-header-colors t)
-```
-
-
-## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/dyhkcd/comment/f81qch6)
-**Votes:** 8
-
-I searched for a convenient way to read multiple file names interactively. With helm and ivy you can mark files and afterwards act on them but what about convenient navigation and marking tools you know from dired to choose the file names you want to act on?
-
-Recursive edit to the rescue:
-
-```elisp
-(defun read-file-names-with-dired+ (&optional directory)
-  (save-window-excursion
-    (dired directory)
-    (recursive-edit)
-    (dired-get-marked-files)))
-
-
-```
-With this you can do `(setq files (read-file-names-with-dired+))` mark the files you are interested in and finish with `C-M-c` which exits the recursive edit.
-
-
-## u/clemera [🔗](https://www.reddit.com/r/emacs/comments/drw8i3/comment/f6ys5ae)
-**Votes:** 8
-
-My fav org-bullets config, looks nice and you immediately know which headline level you have:
-
-```elisp
-    (setq org-bullets-bullet-list
-      '("⓪" "①" "②" "③" "④" "⑤" "⑥" "⑦" "⑧" "⑨"))
-```
-
-
-## u/jalihal [🔗](https://www.reddit.com/r/emacs/comments/drw8i3/comment/f6mm087)
-**Votes:** 8
-
-TIL about `indent-rigidly` bound to `C-x TAB`. Very useful when indenting copy-pasted python code at different levels!
-
-
-## u/WalterGR [🔗](https://www.reddit.com/r/emacs/comments/bdrdx0/comment/el427i0)
-**Votes:** 8
-
-What's the series of videos that are 'like Emacs Rocks but they show the keys being pressed'?
-
-I vaguely recall someone mentioning something like that...
-
-
-## u/attento_redaz [🔗](https://www.reddit.com/r/emacs/comments/wqjare/comment/iku77h0)
-**Votes:** 8
-
-Using [zotra](https://github.com/mpedramfar/zotra), [citar](https://github.com/emacs-citar/citar) and some parts of the Org-cite ecosystem I hacked together a highly experimental but pretty comfortable environment for working with "org-biblatex bibliographies" which are basically like [org-bibtex](http://gewhere.github.io/org-bibtex) but with biblatex entries represented as headings with suitable properties instead of bibtex. I have a function which retrieves a biblatex entry corresponding to an url using zotra and adds a corresponding Org heading with the biblatex fields as properties, and the entry becomes available in Citar as soon as I save the document. Citing these entries then works anywhere, even in the same document with a suitable `#+bibliography: my-org-biblatex-file.org` declaration. Exporting the citations also works with the CSL exporter, no conversion is necessary to a proper biblatex bibliography file (but can be easily done if one needs biblatex-based export). Since the bibliography is an Org document, tagging, agenda commands, column view etc. can all be used with the bibliography entries.  In a way it's frightening how much can be achieved building on already existing stuff and with a few lines of Emacs Lisp.
-
-
-## u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/wqjare/comment/ikrx30z)
-**Votes:** 8
-
-I've parsed and prettified some of the comments (I think I'm missing some, but hopefully should be fixed soonish) from past weekly tips and tricks thread here: [https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md](https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md)
-
-If you fancy procrastinating for a bit today...
-
-
-## u/adt7799 [🔗](https://www.reddit.com/r/emacs/comments/ja97xs/comment/g8op875)
-**Votes:** 8
-
-I find this very useful.
-
-When I have multiple buffers opened and I switch from another program to emacs I always get confused about which buffer the cursor is in. So I created a mapping to
-
-`(global-set-key (kbd "M-l") 'beacon-blink)`
-
-
-## u/ProfessorSexyTime [🔗](https://www.reddit.com/r/emacs/comments/bj0ti2/comment/em6fkc4)
-**Votes:** 8
-
-I think it's neat you can make use of Awk scripts with org-babel.
-
-With learning Assembly, I used it to grab all the system calls from `/usr/include/asm/unistd_64.h`
-
-```elisp
-#+BEGIN_SRC sh
-gawk '{$1=" "; print substr($2, 6, $NF) " " $3}' /usr/include/asm/unistd_64.h
-#+END_SRC
-
-```
-Granted the output isn't really fancy, but it works.
-
-
-## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/e8nv40/comment/fadilfw)
-**Votes:** 8
-
-I switched to exwm two days ago (even though I was satisfied with dwm) and I'm liking it so far because it's so good to have a consistent workflow environment.
-
-Initially I started with using workspaces and managing X applications to automatically start in different workspaces but now I'm using a single workspace with winner mode and save window configuration (when the view I want is a few undos away).
-
-I had to convert a few bash scripts I regularly used to elisp but that was easy and fun.
-
-Here's one I wrote for youtube-dl, which I can be run from qutebrowser with a keybinding in config.py. You can choose your desired format using ivy (best format by default, or a combination of formats can be specified with "video+audio" numbers manually).  You have to supply it a link from qutebrowser or another script, otherwise it uses the link in your clipboard.
-
-In qutebrowser:
-
-	config.bind(',y', 'hint links spawn emacsclient -n -e "(ivy-youtube-dl \\"{hint-url}\\")"')
-	config.bind(',Y', 'spawn emacsclient -n -e "(ivy-youtube-dl \\"{url}\\")"')
-
-In emacs:
-
-	(defun ivy-youtube-dl (&optional link)
-	  (interactive)
-	  (let ((link (or link (current-kill 0)))
-		(buffer (generate-new-buffer "*ytd-formats*")))
-	    (make-process :name "ytd-formats"
-			  :buffer buffer
-			  :command (list "youtube-dl" "--list-formats" link)
-			  :connection-type 'pipe
-			  :sentinel `(lambda (p e)
-				       (set-buffer ',buffer)
-				       (goto-char (point-min))
-				       (unless (search-forward "format code" nil t)
-					 (kill-buffer)
-					 (error "url not supported"))
-				       (forward-line 1)
-				       (let (list)
-					 (while (not (eobp))
-					   (setq list (cons
-						       (split-string
-							(buffer-substring-no-properties
-							 (point)
-							 (point-at-eol)) "\n" t nil)
-						       list))
-					   (forward-line 1))
-					 (setq list (nreverse list))
-					 (kill-buffer "*ytd-formats*")
-					 (ivy-read "youtube-dl formats (vid+aud): " list
-						   :action (lambda (x)
-							     (youtube-dl
-							      (substring-no-properties
-							       (format "%s" x)
-							       (if (string-match "(" (format "%s" x))
-								   (match-end 0)
-								 nil)
-							       (string-match "[[:space:]]" (format "%s" x))) ',link))
-						   :sort nil
-						   :re-builder #'regexp-quote
-						   :preselect "best"))))))
-
-	(defun youtube-dl (fmt link)
-	  (let ((buffer (generate-new-buffer "*youtube-dl*")))
-	    (with-current-buffer buffer
-	      (ansi-color-for-comint-mode-on)
-	      (comint-mode))
-	    (make-process :name "youtube-dl"
-			  :buffer buffer
-			  :command (list "youtube-dl" "--flat-playlist" "--format" fmt link)
-			  :connection-type 'pty
-			  :filter 'comint-output-filter
-			  :sentinal (lambda (p e) (message "Process %s %s" p (replace-regexp-in-string "\n\\'" "" e))))))
-
-
-And this one for downloading files with aria2c (which can download torrents and magnet links in addition to regular files). This function takes a link from another function otherwise uses your clipboard. Can be easily bound with qutebrowser like the above function.
-
-	(defun download-with-aria2c (&optional link)
-	  (interactive)
-	  (let ((link (or link (current-kill 0)))
-		(buffer (generate-new-buffer "*aria2c*")))
-	    (with-current-buffer buffer
-	      (ansi-color-for-comint-mode-on)
-	      (comint-mode))
-	    (make-process :name "aria2c"
-			  :connection-type 'pty
-			  :buffer buffer
-			  :command (list "aria2c" link)
-			  :filter 'comint-output-filter
-			  :sentinel (lambda (p e)
-				      (make-process :name "notify"
-						    :connection-type 'pipe
-						    :command (list "notify-send" (format "%s %s" p e) "download complete"))
-				      (message "Process %s %s" p (replace-regexp-in-string "\n\\'" "" e))))))
-
-
-## u/jumpUpHigh [🔗](https://www.reddit.com/r/emacs/comments/nlefvx/comment/gzjal45)
-**Votes:** 8
-
-Considering the ongoing freenode to librea.chat movement, I tried to use erc for the *n*th time to connect to the debian channel on oftc. I want to authenticate automatically but it doesn't happen. I still need to use `/msg NickServ IDENTIFY mypass`. Can you tell me what to do?
-
-
-
-```elisp
- (use-package erc
-   :custom
-   (erc-autojoin-channels-alist '(("OFTC" "#debian" )))
-   (erc-prompt-for-nickserv-password nil)
-   (erc-prompt-for-password nil)
-
-   :config
-   (add-to-list 'erc-modules 'services)
-   (erc-update-modules)
-   (erc-autojoin-enable)
-   (defun erc-start()
-     "Start ERC."
-     (interactive)
-     (erc :server "irc.oftc.net" :nick "mynick"))
- ) 
-
-```
-and my `~/.authinfo` file has an entry
-
-```elisp
- machine irc.oftc.net login "mynick" password "mypass"
-
-```
-Edit: Using GNU Emacs 27.1
-
-
-## u/jstad [🔗](https://www.reddit.com/r/emacs/comments/cdu7cd/comment/eu8781u)
-**Votes:** 8
-
-When testing out or learning elisp, I have found [eros](https://github.com/xiongtx/eros) to be indispensable.
-
-It shows an overlay inline with the function to display the evaluated result.
-
-
-## u/itistheblurstoftimes [🔗](https://www.reddit.com/r/emacs/comments/el8oq7/comment/fdh3fyn)
-**Votes:** 8
-
-I had previously written a function to replace org-beginning-of-line to behave this way, but later found `org-special-ctrl-a/e` which does exactly what I wanted for C-a (and C-e). The default behavior drove me crazy and I didn't know there was a built-in fix. 
-
-```elisp
- "Non-nil means `C-a' and `C-e' behave specially in headlines and items. When t, `C-a' will bring back the cursor to the beginning of the headline text, i.e. after the stars and after a possible TODO keyword.  In an item, this will be the position after bullet and check-box, if any.  When the cursor is already at that position,another `C-a' will bring it to the beginning of the line.`C-e' will jump to the end of the headline, ignoring the presence of tags in the headline.  A second `C-e' will then jump to the true end of the line, after any tags.  This also means that, when this variable is non-nil, `C-e' also will never jump beyond the end of the heading of a folded section, i.e. not after the ellipses.When set to the symbol `reversed', the first `C-a' or `C-e' works normally, going to the true line boundary first.  Only a directly following, identical keypress will bring the cursor to the special positions.This may also be a cons cell where the behavior for `C-a' and`C-e' is set separately.
-
-"When t, `C-a' will bring back the cursor to the beginning of the headline text, i.e. after the stars and after a possible TODO keyword.  In an item, this will be the position after bullet and check-box, if any.  When the cursor is already at that position,another `C-a' will bring it to the beginning of the line.`C-e' will jump to the end of the headline, ignoring the presence of tags in the headline.  A second `C-e' will then jump to the true end of the line, after any tags.  This also means that, when this variable is non-nil, `C-e' also will never jump beyond the end of the heading of a folded section, i.e. not after the ellipses.When set to the symbol `reversed', the first `C-a' or `C-e' works normally, going to the true line boundary first.  Only a directly following, identical keypress will bring the cursor to the special positions. This may also be a cons cell where the behavior for `C-a' and `C-e' is set separately."
-
-When t, `C-a' will bring back the cursor to the beginning of the headline text, i.e. after the stars and after a possible TODO keyword.  In an item, this will be the position after bullet and check-box, if any.  When the cursor is already at that position,another `C-a' will bring it to the beginning of the line.
-
-`C-e' will jump to the end of the headline, ignoring the presence of tags in the headline.  A second `C-e' will then jump to the true end of the line, after any tags.  This also means that, when this variable is non-nil, `C-e' also will never jump beyond the end of the heading of a folded section, i.e. not after the ellipses.
-
-When set to the symbol `reversed', the first `C-a' or `C-e' works normally, going to the true line boundary first.  Only a directly following, identical keypress will bring the cursor to the special positions. This may also be a cons cell where the behavior for `C-a' and `C-e' is set separately."
-```
-
-
-## u/shiroghost [🔗](https://www.reddit.com/r/emacs/comments/g11mp9/comment/fnd2p6p)
-**Votes:** 8
-
-I use `mu4e` as email client. I guess that it is common to send some email to later discover that you forgot the attachment.
-
-This routines check if a mail **likely** needs an attachment by matching a simple regexp. If this is the case and there is no attach, we are asked to confirm that this is what we want to do.
-
-```elisp
-  ;;
-  ;; Auto-detect if there is a missing attachment in the
-  ;; mail and warn before sending.
-  ;;
-  ;; See https://notmuchmail.org/pipermail/notmuch/2018/026414.html
-  ;;
-  (defcustom message-likely-needs-attach-regex "attach\\|file\\|adjunto\\|fichero"
-    "regex that matches if a mail likely needs an attach. In
-  most cases this just matches a few keywords"
-    :type '(regexp))
-
-  (defun message-narrow-to-body()
-    "Narrow the compose buffer to the body of the mail"
-    (interactive)
-    (widen)
-    (goto-char (point-min))
-    (narrow-to-region
-     (re-search-forward "--text follows this line--" nil t 1)
-     (point-max)))
-
-  (defun mail-needs-attach-p ()
-    "Count number of attach keywords in buffer and return t 
-  if there is any"
-    (interactive)
-    (save-excursion
-      (message-narrow-to-body)
-      (let (
-            (res (count-matches message-likely-needs-attach-regex)))
-        (widen)
-        (> res 0))))
-
-  (defun mail-number-of-attach ()
-    "Count number of attach in buffer."
-    (interactive)
-    (save-excursion
-      (goto-char (point-min))
-      (count-matches "<#part [^>]*filename=[^>]*>")))
-
-  (defun check-mail-and-send ()
-    "Check if mail will likely have a missing attachment. 
-     If yes ask for confirmation, if no send it."
-    (interactive)
-    (if (mail-needs-attach-p)
-        (if (> (mail-number-of-attach) 0)
-            (message-send-and-exit)
-          (if (y-or-n-p "Mail has NO attach. Send it anyway? ")
-              (message-send-and-exit)))
-        (message-send-and-exit)))
-
-  (define-key mu4e-compose-mode-map (kbd "C-c C-c") 'check-mail-and-send)
-```
-
-
-## u/mrolivertaylor [🔗](https://www.reddit.com/r/emacs/comments/rgu8dp/comment/hoqrg9e)
-**Votes:** 8
-
-`bs-show` is an interesting command, it shows a pop-up-like buffer that you can use to quickly act on open buffers. There are a ton of customizations you can make and a bunch of convenient bindings. I've been trying it out instead of `list-buffers` and `ibuffer` and I like it so far, very fast.
-
-
-## u/aartist111 [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fvrw4cu)
-**Votes:** 8
-
-Found / c for M-x ibuffer.  It filters buffers by content.
-It looks like  'grep -c' .   Very helpful to locate a file quickly for which you remember any word from content
-Until now I had only used filters for filenames or modes only. .
-
-
-## u/zackallison [🔗](https://www.reddit.com/r/emacs/comments/ki09cm/comment/ggoehoo)
-**Votes:** 8
-
-I posted this in the emacsclient thread, but I think it deserves to live here as well:
-
-
-The emacsclient / server system is great.  If you have it listening on tcp and port forward that when connecting to remote machine it adds another level of power.
-
-I use [emacs-vterm](https://github.com/akermu/emacs-libvterm) for a terminal inside emacs, so I've got a lot of commands remapped.  Like `man` runs `emacsclient ... man ..`, which opens the man page in the "other" buffer, so it doesn't interrupt my flow.  I use "scroll-other-window" to navigate the man page while I still have my prompt. `magit`, `dired`, and others map to their `emacsclient` equivalents.
-
-I've written wrapper script for e/emacs client that I've come to call `e`, because it saves keystrokes
-
-#### [The full repo is here e-emacs.sh](https://gitlab.com/zackallison/e-emacs/)
-
-It does the standard things you would expect, starts emacs if it's not already started, open a file in a new buffer / window / terminal and optionally wait for you to finish or have the shell continue.
-
-Then I added some functions that I found useful, starting with piping results from a command into an emacs buffer, such as `find . -name foo\* | e`.  Naturally after that was piping from a buffer to a command: `e [file] | rot13` super secure encryption.  And of course piping into and out of a buffer works as well `find . -name incriminating-evidence\* | e | xargs rm`, so you can verify / tweak the results before passing them through.  Maybe you want to leave the evidence on Two Time Tommy.  Who knows.
-
-The other nice feature is the ability to use templates.  For example to edit a HTTP request and then send it to a server you can do that: `e -t header_template.txt | nc www.example.com 80`  The template file is copied to a temp file which is the one that is edited.
-
-Or the poor man's blog system: `e -t header_template.html body_template.html footer.html > new_page.html`
-
-See the repo for more examples and to download.  The notes of getting it working on remote machines aren't the cleanest.  If you have any suggestions or features that would make your life easier let me know; submit an issue or comment here.
-
-#### [The full repo is here e-emacs.sh](https://gitlab.com/zackallison/e-emacs/)
-
-~~I really should post this on one of the share your stuff posts.  But I get distracted.~~ There, I did it.
-
-In case you can't tell I *really* like emacs and it's client server model.
-
-
-## u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/txh85s/comment/i3mghuf)
-**Votes:** 8
-
-I wanted to be able to expand yasnippets within other yasnippets (so here tab would jump to the next position instead of trying to expand snippet), surprisingly all I had to do was:
-
-`:bind ("C-<tab>" . yas-expand)`
-
-So C-<tab> expands a snippet within a snippet, and everything just worked as I'd hoped.  Once I'm done with the nested expansion <TAB> just moves on to the outer one. \*shrug\*
-
-
-## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/w3gx6o/comment/igyt3ff)
-**Votes:** 8
-
-I sometimes want to pick a random choice from a long org-mode checkbox list from among those items not already checked.  I recently whipped up a little helper function for that:
-
-```elisp
-(defun random-choice ()
-  (interactive)
-  (let ((n 0)
-        (selected nil))
-    (while (search-forward-regexp (rx point "- [" (group nonl) "]" (+ nonl) "\n") nil t)
-      (when (and (string= " " (match-string 1)) (zerop (random (setq n (1+ n)))))
-        (setq selected (match-beginning 0))))
-    (if selected
-        (goto-char selected)
-      (error "No unfinished choice found"))))
-```
-
-
-## u/tryptych [🔗](https://www.reddit.com/r/emacs/comments/qgrpte/comment/hicheof)
-**Votes:** 8
-
-A colleague just showed me Intellij's "[compare with clipboard](https://www.jetbrains.com/help/idea/comparing-files-and-folders.html#clipboard)" feature: it's fairly neat, you select a region, invoke compare-with-clipboard and get a diff of the two selections.
-
-It didn't take me long to implement something similar:
-
-```elisp
-(defun ediff-compare-region-clipboard (begin end)
-  (interactive "r")
-  (save-excursion
-    (let ((selected-region (buffer-substring begin end))
-          (clipboard-buffer (get-buffer-create "*ediff-clipboard*"))
-          (region-buffer (get-buffer-create "*ediff-region*")))
-      (with-current-buffer clipboard-buffer
-        (insert (car kill-ring)))
-      (with-current-buffer region-buffer
-        (insert selected-region))
-      (ediff-buffers clipboard-buffer region-buffer))))
-
-```
-It's not ideal though.  In particular, is there a better way to insert the "clipboard"?  One thing I quickly found was that you might copy the region to compare but then so many editing commands will add to the kill-ring, so I might want to make that part of the process interactive.
-
-
-## u/mmarshall540 [🔗](https://www.reddit.com/r/emacs/comments/un4wf8/comment/i88sp07)
-**Votes:** 8
-
-Here's a little solution to a minor complaint about `isearch` that I think is fairly common.
-
-# The Problem
-
-TLDR: See [this old StackExchange question](https://emacs.stackexchange.com/questions/32373/go-to-start-of-search-string-after-ret)
-
-Often, I'll want to go to a precise location in a buffer to correct a typo. If that location is behind point (as it usually is if I notice the typo shortly after entering it), then `isearch-backward` works great. You press "C-r" and type some characters starting with your target until the location becomes the current result.  As soon as the cursor jumps to your target location, you can use an editing command like "C-t", which exits isearch automatically for you. Or you can press "C-m" to exit isearch-mode and then start inserting text at that location. Wonderful!
-
-But it's a little less perfect when your target is *after* point. This is because with `isearch-forward`, point lands at the end of your search result, instead of the beginning as it does with `isearch-backward`.
-
-You could type your search starting with some arbitrary number of characters in front of the target. But then you have to decide in advance how many characters to use, and if you don't use enough, there might be too many results. And then if you have to keep typing past your target character to sufficiently narrow the results, point won't land where you want it.
-
-Another strategy would be to do the same thing as when searching backwards, start with the target character and just type characters until your target location is selected. But now point is at the other end of the result, instead of where you want it. "M-b" would exit and move point to the beginning of the word, but that assumes there are no word boundaries in your search result, and besides, your actual target won't always be the beginning of a word. Often it will be somewhere in the middle of a word.
-
-Or you could use C-r to move point to the beginning of the result. But then you still have to press C-m to exit the search and start inserting text at that location. And that's 2 key-presses just to finish your search, not to mention all the key-presses you did to start.
-
-So we can fix this.
-
-# My Solution
-
-```elisp
-(defun my/isearch-bor-exit ()
-  "Ensure point is at beginning of isearch result, then exit."
-  (interactive)
-  (when (< isearch-other-end (point))
-    (goto-char isearch-other-end))
-  (call-interactively 'isearch-exit))
-
-(define-key isearch-mode-map ?\M-m 'my/isearch-bor-exit)
-
-```
-So now if I'm using isearch to get to a precise location (as opposed to just searching for a word), I can type beginning with the character at the target location, stop typing after it becomes part of the result, and press "M-m" to exit the search and make my correction. No more having to stop and think about whether I'm going backwards or forwards and whether I'll have to move point back before exiting isearch.
-
-# The Conclusion
-
-A minor problem with a fairly simple solution, but it made me happy to stop and solve it.
-
-I think I'll be using isearch now for a lot of things that I used to use Avy for.  But Avy is still great for a bunch of reasons. Not the least of which is the `avy-isearch` command which comes in handy when there are a lot of isearch results that would require too much typing to narrow down. (And it always puts point at the beginning of the result, never at the end).
-
-
-## u/c17g [🔗](https://www.reddit.com/r/emacs/comments/b8gcjb/comment/ejxofqj)
-**Votes:** 8
-
-I'm a big fan of [alphapapa/org-protocol-capture-html](https://github.com/alphapapa/org-protocol-capture-html) (using pandoc to translate webpage as Org tree) and [abo-abo/org-download](https://github.com/abo-abo/org-download) (save screenshot, download image). They help me archive Internet contents conveniently. 
-
-The only inconvenience I had with `org-protocol-capture-html` is that it doesn't download images automatically. In the resulting subtree, I still see raw image links. So I wrote this little function to download all images under an Org subtree. 
-
-```elisp
-(defun search-forward-and-org-download-images()
-  "Search forward for HTTP Image URLs, replace each using
-org-download-image to obtain a local copy."
-  (interactive)
-  (while (re-search-forward org-bracket-link-regexp nil t)
-    (let* (
-           (end (match-end 0))
-           (beg (match-beginning 0))
-           (s (buffer-substring-no-properties beg end))
-           (match? (string-match org-bracket-link-regexp s))
-           (link (match-string 1 s))
-           )
-      (when (string-match "^http.*?\\.\\(?:png\\|jpg\\|jpeg\\)\\(.*\\)$"
-                          link) ;; This is an image link
-        (message (concat "Downloading image: "link))
-        (delete-region beg end)
-        (org-download-image link)
-        (sleep-for 1) ;; Some sites dislike frequent requests
-        ))))
-
-```
-Now I can one click and archive web contents easily. I find it more pleasurable reading experience, and it gives me the peace of mind to have a local copy. Note: It doesn't handle relative link yet, and there's no error handling, so use with cautions
-
-
-## u/b3n [🔗](https://www.reddit.com/r/emacs/comments/gdtqov/comment/fq9186h)
-**Votes:** 8
-
-If you want to switch between two themes, depending on time of day (e.g. a light and dark theme), it's as simple as this:
-
-```elisp
-;; Light
-(load-theme 'modus-operandi t t)
-(run-at-time "05:00" (* 60 60 24) (lambda () (enable-theme 'modus-operandi))))
-
-;; Dark
-(load-theme 'modus-vivendi t t)
-(run-at-time "21:00" (* 60 60 24) (lambda () (enable-theme 'modus-vivendi))))
-
-```
-This selects the correct theme when starting Emacs and automatically switch when the times come.
-
-
-## u/karthink [🔗](https://www.reddit.com/r/emacs/comments/gi70ye/comment/fqfc1wi)
-**Votes:** 8
-
-AucTex users: You're missing out if you don't use [CDLatex](https://github.com/cdominik/cdlatex). It's primarily a fast input tool for LaTeX, sort of like snippet templates. The difference between setting up Yasnippet templates for LaTeX and CDLatex is that CDLaTeX's TAB key to jump past stuff is _always available_, not just during snippet entry. It's difficult to explain, so here are some demos:
-
-1. [Fast input with cdlatex and preview.el](https://gfycat.com/heavenlynegligiblehoiho)
-2. [Fast input with keys displayed](https://gfycat.com/safeidolizedlangur)
-
-I wrote a longer post explaining [how I set up AucTex](https://www.reddit.com/r/emacs/comments/g8ecpj/advice_for_auclatex_what_keybinds_do_you_find/foo64ge/) recently.
-
-CDLaTeX was written by Carsten Dominik, the author of Org-mode and reftex. Thus Org ships with an `org-cdlatex` minor-mode that makes these features available in org-mode.
-
-
-## u/00-11 [🔗](https://www.reddit.com/r/emacs/comments/f1x0jq/comment/fh95nk7)
-**Votes:** 8
-
-1. You can just go to the value of `isearch-other-end`, which is the buffer position of the start of the last (i.e. current) search hit. E.g., `(goto-char isearch-other-end)` instead of doing `(isearch-repeat 'backward)` (when searching forward).
-
-2. It's generally better to use `push-mark`, and then end your command with `(setq deactivate-mark  nil)`, rather than use
-
-```elisp
-     (let ((current-prefix-arg '(4)))
-       (call-interactively 'set-mark-command))
-```
-
-
-## u/ScottWC2 [🔗](https://www.reddit.com/r/emacs/comments/vi01zb/comment/idb3m43)
-**Votes:** 8
-
-Anyone know why r/planetemacs went private? Private subs don't work with rss and I just noticed it changed around April 15th.
-
-
-## u/T_Verron [🔗](https://www.reddit.com/r/emacs/comments/qlpvgu/comment/hjfbuae)
-**Votes:** 8
-
-(Nothing too fancy, I'm sure a lot of people have a similar thing in their toolbox, but it was useful to me again today.)
-
-When writing elisp packages, the compiler expects that all variables and functions are declared. Declaring variables defined somewhere else is easy, one just needs to \`defvar\` them, but declaring functions should mention the file where it is defined.
-
-Inserting all those forms is tedious, especially if the function comes from a package with several files. But emacs already knows where the function comes from, so we can just ask it.
-
-```elisp
-(defun tv/add-declare-function (fun)
-  (interactive "a") 
-  (let* ((buf (car (find-function-noselect fun))) 
-         (name (file-name-base (buffer-file-name buf)))) 
-    (insert (format "(declare-function %s "%s")\n" fun name))))
-
-```
-Call it with M-x, insert the name of the function you want to declare (with completion), and voilà.
-
-
-## u/StrangeAstronomer [🔗](https://www.reddit.com/r/emacs/comments/kqsw1k/comment/gi8tvp8)
-**Votes:** 8
-
-Here's a really simple one, but I find it invaluable.
-
-It took me about 30 years to realise that using C-u with `buffer-menu` (C-x C-b) doesn't show 'special' buffers like `*Messages*`. Less clutter when I want to switch to a file, which is most of the time.
-
-It then took me a few more years to realise that that's my preferred mode, so I created this simple thing to invert the sense - now C-x C-b only shows me files, and I prefix that with C-u to show special buffers too. Sounds stupid and trivial but it floats my boat.
-
-```elisp
-(global-set-key (kbd "C-x C-b")        '(lambda (&optional arg)
-                                          "runs buffer-menu but with the sense of C-u inverted (ie files-only unless C-u is given)"
-                                          (interactive "P")
-                                          (setq arg (not arg))
-                                          (buffer-menu arg)))
-```
-
-
 ## u/geza42 [🔗](https://www.reddit.com/r/emacs/comments/kqsw1k/comment/gi66krb)
-**Votes:** 8
+**Votes:** 9
 
 I created a "smart" enter function for C/C++ mode. Here's what it does:
 
@@ -4864,7 +3945,7 @@ Here's the code, maybe there can be a lot of improvements:
 
 
 ## u/b3n [🔗](https://www.reddit.com/r/emacs/comments/oxo1xh/comment/h85cv7f)
-**Votes:** 8
+**Votes:** 9
 
 Little quality of life improvement if you work with multiple eshell buffers:
 
@@ -4874,6 +3955,918 @@ Little quality of life improvement if you work with multiple eshell buffers:
 
 (add-hook 'eshell-directory-change-hook #'eshell-buffer-name)
 (add-hook 'eshell-prompt-load-hook #'eshell-buffer-name)
+```
+
+
+## u/diamondnbond [🔗](https://www.reddit.com/r/emacs/comments/us7zae/comment/i928gaj)
+**Votes:** 9
+
+[I Recently discovered engine-mode.](https://github.com/DiamondBond/emacs/blob/master/config.org#initialize-engine-mode)
+
+
+## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/p28rl5/comment/h8utmh2)
+**Votes:** 9
+
+Imenu is pretty adictive and it's disappointing when some major mode doesn't support it. Luckily, it's fairly easy to cook up some regexps to provide imenu support in a new major mode. For example I recently noticed that customize buffers didn't have imenu support add I wrote this:
+
+```elisp
+(defun configure-imenu-Custom ()
+  (setq imenu-generic-expression
+        '(("Faces" "^\\(?:Show\\|Hide\\) \\(.*\\) face: \\[sample\\]" 1)
+          ("Variables" "^\\(?:Show Value\\|Hide\\) \\([^:\n]*\\)" 1))))
+
+(add-hook 'Custom-mode-hook #'configure-imenu-Custom)
+
+```
+One subtlety with writing this is that the customize buffers show little triangles instead of the words "Show", "Hide" or "Show Value". To figure out what text is really in the buffer you can use `C-u C-x =` which tells you about any overlays at point.
+
+
+## u/b3n [🔗](https://www.reddit.com/r/emacs/comments/ml4wql/comment/gtkc524)
+**Votes:** 9
+
+Skeletons are one of Emacs' killer features, especially when combined with `abbrev-mode`. Here's a macro I wrote to make them a little easier to handle:
+
+```elisp
+(defmacro snip (name &rest skeleton)
+  (let* ((snip-name (symbol-name `,name))
+         (func-name (intern (concat "snip-" snip-name))))
+    `(progn
+       (define-skeleton ,func-name
+         ,(concat snip-name " skeleton")
+         ,@skeleton)
+       (define-abbrev global-abbrev-table ,snip-name
+         "" ',func-name))))
+
+```
+Here's a simplistic example using the macro:
+
+```elisp
+(snip dd "" (format-time-string "%Y-%m-%d"))
+
+```
+Now (assuming you have `abbrev-mode` enabled), type `dd ` into your buffer (that's `d` `d` `SPC`) and it'll be replaced with the current date.
+
+This is just scratching the surface, skeletons are extremely powerful. Once you start using them they become a superpower and can take your Emacs usage to the next level.
+
+
+## u/RememberToBackupData [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeu1waj)
+**Votes:** 8
+
+I've been adding a ton of new words to my noun list, and the package `define-word` has been excellent for checking whether a word on that list really is a noun or not. It has `define-word-at-point` which fetches definitions from the web and displays it in the minibuffer.
+
+
+## u/RobThorpe [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeuczs4)
+**Votes:** 8
+
+Does everyone know about?...
+
+```elisp
+(setq delete-by-moving-to-trash t)
+
+```
+It does exactly what it says on the tin.
+
+
+## u/agumonkey [🔗](https://www.reddit.com/r/emacs/comments/aja311/comment/eeujoxp)
+**Votes:** 8
+
+if I may, r/france has weekly threads about a few topics, I find it very nice, sometimes attendance shrinks a little, but there's always nice things to read.
+
+I always found I learned more about emacs by hearing others ideas rather than manual or code.. workflow ideas don't necessarily come from mastering atoms. 
+
+So I find this thread a very very nice idea. (thanks)
+
+
+## u/Timesweeper_00 [🔗](https://www.reddit.com/r/emacs/comments/ijmgtx/comment/g3fdvf7)
+**Votes:** 8
+
+FYI lsp-mode has added support for pyright as a language server, Microsoft is deprecating the c# python language server in favor of pylance (proprietary and closed source), which uses pyright.
+
+
+## u/zreeon [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efh2l6r)
+**Votes:** 8
+
+Those weird keys like C-m that actually send other keys like RETURN? From our terminal days?
+
+You can convince GUI Emacs to let you bind them, which opens up a whole slew of new easy-to-reach keybindings.
+
+https://emacs.stackexchange.com/questions/20240/how-to-distinguish-c-m-from-return
+
+
+## u/10q20w [🔗](https://www.reddit.com/r/emacs/comments/also27/comment/efgr3wm)
+**Votes:** 8
+
+Idea: this thread could also double as a "help me implement this" thread.
+
+Speaking of that: Is it possible to get atom-like completion suggestions before you start typing? I'm doing some CSS, and in Atom when you write something like
+
+```elisp
+.exampleclass {
+    text-align: <cursor here>
+}
+
+```
+Atom would give autocomplete-suggestions, displaying a list of possible values like "center", "left", "right". Company doesn't seem to do this.
+
+
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/b2uqdm/comment/eivssto)
+**Votes:** 8
+
+When using the excellent [restclient-mode](https://github.com/pashky/restclient.el), many HTTP requests in the same file need the same header lines (Authorization, Content-Type, etc).  There's a hippie-expand function, try-expand-line, which isn't very useful elsewhere, but is perfect for this situation.  So I locally move that function to the head of the list in my `restclient-mode-hook`:
+
+```elisp
+(setq-local hippie-expand-try-functions-list
+  (cons 'try-expand-line (delq 'try-expand-line hippie-expand-try-functions-list)))
+
+```
+Now when writing a new HTTP request I can just type `Co` M-/ to expand to (say) `Content-Type: application/json`, or `Au` M-/ to expand to `Authorization: Basic long-hex-string`.
+
+
+## u/eeeickythump [🔗](https://www.reddit.com/r/emacs/comments/2wh9o0/comment/coqx59d)
+**Votes:** 8
+
+I've used orgmode a lot, Evernote only a little. Orgmode works best when your notes are stored as "children" within a single large outline (or a small number of outlines, e.g. one per large topic). Storing hundreds of individual files doesn't work so well.
+
+It is possible for orgmode to display images inline by default - there is a variable that controls that (org-startup-with-inline-images) or you can put this line in your orgmode file:
+
+```elisp
+#+STARTUP: inlineimages
+
+```
+You can apply multiple tags to items in orgmode files, although the tags are crowded onto the end of the item's headline so it can get cumbersome and ugly if an item has more than a handful of tags.
+
+Adding notes can be done very efficiently in orgmode using the "capture" functionality. You can add notes based on different predefined templates by associating each template with a hotkey. You can even set up a bookmark in your web browser that will add highlighted text as a new orgmode note when you click it (see "org-protocol" in the manual).
+
+The main problem with orgmode is that it is completely dependent on Emacs. Essentially no other program understands the orgmode format, beyond the fact that it is based on plain text. There is a mobile app ([MobileOrg](http://mobileorg.ncogni.to/)) but it seems to be seldom updated and I have not found it useful. There are also modules that attempt to integrate orgmode with [Toodledo](http://toodledoo.com) and [Trello](http://trello.com). However, if you rely on orgmode then you should be aware that it will be difficult for you to interact with your notes database when you are not sitting in front of a computer running Emacs.
+
+For notes, I use [SimpleNote](http://simplenote.com) (free, available for most platforms + web client, syncs your notes, plain text but also allows tagging of notes). For task management, orgmode is the most powerful piece of software available -- no contest -- but because of its mobile-unfriendliness I have ended up using OmniFocus instead (Mac/iOS only).
+
+Another alternative to consider is Microsoft OneNote, which is free and is available on a lot of platforms. I don't think MS will be disappearing any time soon.
+
+
+## u/chrchr [🔗](https://www.reddit.com/r/emacs/comments/as83e2/comment/egtxcbu)
+**Votes:** 8
+
+I was watching some Lisp Machine demos on youtube a few weeks ago, and I observed that pressing ")" in the REPL causes the expression to be evaluated immediately if the expression is complete. There is no need to press `enter` at the end of the expression to submit it. I wanted my Emacs to do that as well, so I cooked up the following thing: [electric-paren](https://www.emacswiki.org/emacs/electric-paren.el)
+
+&#x200B;
+
+It works in inferior-lisp-mode, ielm, slime, and, my favorite of all, eshell.
+
+
+## u/martinslot [🔗](https://www.reddit.com/r/emacs/comments/kdgv43/comment/gfwlm9q)
+**Votes:** 8
+
+I need to try to do something custom to eshell so it feels more like home: http://www.modernemacs.com/post/custom-eshell/. Also set som aliases up.
+
+How does your eshell look like?
+
+
+## u/hairlesscaveman [🔗](https://www.reddit.com/r/emacs/comments/wqjare/comment/ikwhvfs)
+**Votes:** 8
+
+Question: I generally work with 3 vertical panes, with my preferred layout as left for code, middle for related test file, and right for test output or magit. However, keeping this layout is tricky; sometimes magit will open in the first pane, or the current pane when I'm focused in the middle, and deadgrep will open just anywhere… well, it's quite hectic and feels random.
+
+Is there any way I can get files to open in panes 1 or 2, and always have things like magit/test-output/deadgrep/etc on pane 3? I've tried "shackle" but I've had no success with it; everything seems to open in a horizontal pane at the bottom of my screen regardless of config.
+
+Any suggestions would be appreciated!
+
+
+## u/adt7799 [🔗](https://www.reddit.com/r/emacs/comments/ja97xs/comment/g8op875)
+**Votes:** 8
+
+I find this very useful.
+
+When I have multiple buffers opened and I switch from another program to emacs I always get confused about which buffer the cursor is in. So I created a mapping to
+
+`(global-set-key (kbd "M-l") 'beacon-blink)`
+
+
+## u/ProfessorSexyTime [🔗](https://www.reddit.com/r/emacs/comments/bj0ti2/comment/emgahec)
+**Votes:** 8
+
+I guess if no one has learned yet, you can create external shell scripts for Emacs with having just
+
+```elisp
+!#/usr/bin/env bash
+":"; exec emacs --script "$0" -- "$@"
+
+```
+At the top of a script and any elisp code you write under that will be ran when you run the script.
+
+I don't know many fancier things to do with it than that. Some people probably know more.
+
+
+## u/xu-chunyang [🔗](https://www.reddit.com/r/emacs/comments/fwgpkd/comment/fmochkh)
+**Votes:** 8
+
+Prettify the minibuffer prompt on the default value
+
+```elisp
+(setq minibuffer-eldef-shorten-default t)
+(minibuffer-electric-default-mode)
+
+```
+Then try eval
+
+```elisp
+(read-string "Year (default 2019): " nil nil "2019")
+
+```
+You will notice "Year (default 2019): " is shorten to "Year [2019]: ", and when
+you enter anything, the prompt is shorten further to "Year: ". Next time, you
+use the minibuffer api, if you provide the default value, don't forget to format
+the prompt using that specfic format.
+
+
+## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/e8nv40/comment/fadilfw)
+**Votes:** 8
+
+I switched to exwm two days ago (even though I was satisfied with dwm) and I'm liking it so far because it's so good to have a consistent workflow environment.
+
+Initially I started with using workspaces and managing X applications to automatically start in different workspaces but now I'm using a single workspace with winner mode and save window configuration (when the view I want is a few undos away).
+
+I had to convert a few bash scripts I regularly used to elisp but that was easy and fun.
+
+Here's one I wrote for youtube-dl, which I can be run from qutebrowser with a keybinding in config.py. You can choose your desired format using ivy (best format by default, or a combination of formats can be specified with "video+audio" numbers manually).  You have to supply it a link from qutebrowser or another script, otherwise it uses the link in your clipboard.
+
+In qutebrowser:
+
+	config.bind(',y', 'hint links spawn emacsclient -n -e "(ivy-youtube-dl \\"{hint-url}\\")"')
+	config.bind(',Y', 'spawn emacsclient -n -e "(ivy-youtube-dl \\"{url}\\")"')
+
+In emacs:
+
+	(defun ivy-youtube-dl (&optional link)
+	  (interactive)
+	  (let ((link (or link (current-kill 0)))
+		(buffer (generate-new-buffer "*ytd-formats*")))
+	    (make-process :name "ytd-formats"
+			  :buffer buffer
+			  :command (list "youtube-dl" "--list-formats" link)
+			  :connection-type 'pipe
+			  :sentinel `(lambda (p e)
+				       (set-buffer ',buffer)
+				       (goto-char (point-min))
+				       (unless (search-forward "format code" nil t)
+					 (kill-buffer)
+					 (error "url not supported"))
+				       (forward-line 1)
+				       (let (list)
+					 (while (not (eobp))
+					   (setq list (cons
+						       (split-string
+							(buffer-substring-no-properties
+							 (point)
+							 (point-at-eol)) "\n" t nil)
+						       list))
+					   (forward-line 1))
+					 (setq list (nreverse list))
+					 (kill-buffer "*ytd-formats*")
+					 (ivy-read "youtube-dl formats (vid+aud): " list
+						   :action (lambda (x)
+							     (youtube-dl
+							      (substring-no-properties
+							       (format "%s" x)
+							       (if (string-match "(" (format "%s" x))
+								   (match-end 0)
+								 nil)
+							       (string-match "[[:space:]]" (format "%s" x))) ',link))
+						   :sort nil
+						   :re-builder #'regexp-quote
+						   :preselect "best"))))))
+
+	(defun youtube-dl (fmt link)
+	  (let ((buffer (generate-new-buffer "*youtube-dl*")))
+	    (with-current-buffer buffer
+	      (ansi-color-for-comint-mode-on)
+	      (comint-mode))
+	    (make-process :name "youtube-dl"
+			  :buffer buffer
+			  :command (list "youtube-dl" "--flat-playlist" "--format" fmt link)
+			  :connection-type 'pty
+			  :filter 'comint-output-filter
+			  :sentinal (lambda (p e) (message "Process %s %s" p (replace-regexp-in-string "\n\\'" "" e))))))
+
+
+And this one for downloading files with aria2c (which can download torrents and magnet links in addition to regular files). This function takes a link from another function otherwise uses your clipboard. Can be easily bound with qutebrowser like the above function.
+
+	(defun download-with-aria2c (&optional link)
+	  (interactive)
+	  (let ((link (or link (current-kill 0)))
+		(buffer (generate-new-buffer "*aria2c*")))
+	    (with-current-buffer buffer
+	      (ansi-color-for-comint-mode-on)
+	      (comint-mode))
+	    (make-process :name "aria2c"
+			  :connection-type 'pty
+			  :buffer buffer
+			  :command (list "aria2c" link)
+			  :filter 'comint-output-filter
+			  :sentinel (lambda (p e)
+				      (make-process :name "notify"
+						    :connection-type 'pipe
+						    :command (list "notify-send" (format "%s %s" p e) "download complete"))
+				      (message "Process %s %s" p (replace-regexp-in-string "\n\\'" "" e))))))
+
+
+## u/jimm [🔗](https://www.reddit.com/r/emacs/comments/tfcmcx/comment/i0vtxte)
+**Votes:** 8
+
+The `git grep` git command is great for finding a regex (or a simple string) everywhere in a git repo. I define the following functions and bind the `git-grep` function to `F2`. It will prompt for a regex and search for that in the repo or, if you give it a numeric prefix like `C-u` it will read the current symbol at point (the word under the cursor) and search for that. Results appear in a grep buffer, so you can use `C-g C-n` and `C-g C-p` to navigate from one result to the next.
+
+```elisp
+(defun git-root-dir ()
+  "Returns the current directory's root Git repo directory, or
+NIL if the current directory is not in a Git repo."
+  (let ((dir (locate-dominating-file default-directory ".git")))
+    (when dir
+      (file-name-directory dir))))
+
+(defun git-grep (arg)
+  "Runs 'git grep', starting the search in the current
+directory's root git repo directory.
+
+By default, reads the regex from the minibuffer. With a prefix
+argument, initializes the search string with the current symbol
+at point."
+  (interactive "P")
+  (let* ((symbol-at-point (thing-at-point 'symbol))
+         (regexp (if (and arg (symbol-at-point))
+                   (regexp-quote symbol-at-point)
+                     (read-from-minibuffer
+                      "Search regexp: " nil nil nil 'grep-find-history)))
+
+         (default-directory (git-root-dir))
+         (case-ignore-flag (and (isearch-no-upper-case-p regexp t) "-i"))
+         (cmd (concat "git grep --extended-regexp --line-number --full-name"
+                      " --untracked " case-ignore-flag " -- \"" regexp "\""
+                      " | cut -c -240")))
+    (while (equal "" regexp)
+        (setq regexp (read-from-minibuffer
+                      "Search regexp (must not be the empty string): " nil nil nil 'grep-find-history)))
+    (grep-find cmd)))
+```
+
+
+## u/jumpUpHigh [🔗](https://www.reddit.com/r/emacs/comments/nlefvx/comment/gzjal45)
+**Votes:** 8
+
+Considering the ongoing freenode to librea.chat movement, I tried to use erc for the *n*th time to connect to the debian channel on oftc. I want to authenticate automatically but it doesn't happen. I still need to use `/msg NickServ IDENTIFY mypass`. Can you tell me what to do?
+
+
+
+```elisp
+ (use-package erc
+   :custom
+   (erc-autojoin-channels-alist '(("OFTC" "#debian" )))
+   (erc-prompt-for-nickserv-password nil)
+   (erc-prompt-for-password nil)
+
+   :config
+   (add-to-list 'erc-modules 'services)
+   (erc-update-modules)
+   (erc-autojoin-enable)
+   (defun erc-start()
+     "Start ERC."
+     (interactive)
+     (erc :server "irc.oftc.net" :nick "mynick"))
+ ) 
+
+```
+and my `~/.authinfo` file has an entry
+
+```elisp
+ machine irc.oftc.net login "mynick" password "mypass"
+
+```
+Edit: Using GNU Emacs 27.1
+
+
+## u/xu_chunyang [🔗](https://www.reddit.com/r/emacs/comments/btxe4d/comment/ep51nt6)
+**Votes:** 8
+
+Use the header line to show the mode line's information:
+
+```elisp
+(setq-default header-line-format mode-line-format
+              mode-line-format nil)
+
+```
+Screenshot: https://i.imgur.com/cejaNar.png
+
+This doesn't work everywhere e.g., some major modes need manipulate the header line for their own use. 
+
+Inspired by https://www.reddit.com/r/emacs/comments/btz1d6/show_mode_line_in_minibuffer/
+
+
+## u/a-k-n [🔗](https://www.reddit.com/r/emacs/comments/mg98ki/comment/gsvlfku)
+**Votes:** 8
+
+I just discovered that installing the Emacs macport homebrew formula with \`--with-mac-metal\` will significantly increase the performance of Emacs. It's buttery smooth!
+
+
+## u/jstad [🔗](https://www.reddit.com/r/emacs/comments/cdu7cd/comment/eu8781u)
+**Votes:** 8
+
+When testing out or learning elisp, I have found [eros](https://github.com/xiongtx/eros) to be indispensable.
+
+It shows an overlay inline with the function to display the evaluated result.
+
+
+## u/isamert [🔗](https://www.reddit.com/r/emacs/comments/vskthv/comment/if1ua6o)
+**Votes:** 8
+
+I sometimes clone stuff with https instead of ssh, so this fixes that:
+
+```elisp
+(defun isamert/git-origin-switch-to-ssh ()
+  (interactive)
+  (when-let* ((https-origin (s-trim (shell-command-to-string "git config --get remote.origin.url")))
+              (it (s-match "https://\\(.*\\)\\.\\(com\\|net\\|org\\)/\\(.*\\)" https-origin))
+              (ssh-origin (format "git@%s.%s:%s" (nth 1 it) (nth 2 it) (nth 3 it))))
+    (shell-command-to-string (format "git remote set-url origin %s" ssh-origin))))
+
+
+```
+It works for github/gitlab etc. You need to extend the regexp for making it work for more obscure addresses.
+
+
+## u/itistheblurstoftimes [🔗](https://www.reddit.com/r/emacs/comments/el8oq7/comment/fdh3fyn)
+**Votes:** 8
+
+I had previously written a function to replace org-beginning-of-line to behave this way, but later found `org-special-ctrl-a/e` which does exactly what I wanted for C-a (and C-e). The default behavior drove me crazy and I didn't know there was a built-in fix. 
+
+```elisp
+ "Non-nil means `C-a' and `C-e' behave specially in headlines and items. When t, `C-a' will bring back the cursor to the beginning of the headline text, i.e. after the stars and after a possible TODO keyword.  In an item, this will be the position after bullet and check-box, if any.  When the cursor is already at that position,another `C-a' will bring it to the beginning of the line.`C-e' will jump to the end of the headline, ignoring the presence of tags in the headline.  A second `C-e' will then jump to the true end of the line, after any tags.  This also means that, when this variable is non-nil, `C-e' also will never jump beyond the end of the heading of a folded section, i.e. not after the ellipses.When set to the symbol `reversed', the first `C-a' or `C-e' works normally, going to the true line boundary first.  Only a directly following, identical keypress will bring the cursor to the special positions.This may also be a cons cell where the behavior for `C-a' and`C-e' is set separately.
+
+"When t, `C-a' will bring back the cursor to the beginning of the headline text, i.e. after the stars and after a possible TODO keyword.  In an item, this will be the position after bullet and check-box, if any.  When the cursor is already at that position,another `C-a' will bring it to the beginning of the line.`C-e' will jump to the end of the headline, ignoring the presence of tags in the headline.  A second `C-e' will then jump to the true end of the line, after any tags.  This also means that, when this variable is non-nil, `C-e' also will never jump beyond the end of the heading of a folded section, i.e. not after the ellipses.When set to the symbol `reversed', the first `C-a' or `C-e' works normally, going to the true line boundary first.  Only a directly following, identical keypress will bring the cursor to the special positions. This may also be a cons cell where the behavior for `C-a' and `C-e' is set separately."
+
+When t, `C-a' will bring back the cursor to the beginning of the headline text, i.e. after the stars and after a possible TODO keyword.  In an item, this will be the position after bullet and check-box, if any.  When the cursor is already at that position,another `C-a' will bring it to the beginning of the line.
+
+`C-e' will jump to the end of the headline, ignoring the presence of tags in the headline.  A second `C-e' will then jump to the true end of the line, after any tags.  This also means that, when this variable is non-nil, `C-e' also will never jump beyond the end of the heading of a folded section, i.e. not after the ellipses.
+
+When set to the symbol `reversed', the first `C-a' or `C-e' works normally, going to the true line boundary first.  Only a directly following, identical keypress will bring the cursor to the special positions. This may also be a cons cell where the behavior for `C-a' and `C-e' is set separately."
+```
+
+
+## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/el8oq7/comment/fdggv7n)
+**Votes:** 8
+
+```elisp
+(defun repeat-last-shell-command ()
+  (interactive)
+  (let ((last-cmd (cadr (assoc 'shell-command command-history))))
+    (when (y-or-n-p (concat "execute " last-cmd))
+      (async-shell-command last-cmd))))
+```
+
+
+## u/shiroghost [🔗](https://www.reddit.com/r/emacs/comments/g11mp9/comment/fnd2p6p)
+**Votes:** 8
+
+I use `mu4e` as email client. I guess that it is common to send some email to later discover that you forgot the attachment.
+
+This routines check if a mail **likely** needs an attachment by matching a simple regexp. If this is the case and there is no attach, we are asked to confirm that this is what we want to do.
+
+```elisp
+  ;;
+  ;; Auto-detect if there is a missing attachment in the
+  ;; mail and warn before sending.
+  ;;
+  ;; See https://notmuchmail.org/pipermail/notmuch/2018/026414.html
+  ;;
+  (defcustom message-likely-needs-attach-regex "attach\\|file\\|adjunto\\|fichero"
+    "regex that matches if a mail likely needs an attach. In
+  most cases this just matches a few keywords"
+    :type '(regexp))
+
+  (defun message-narrow-to-body()
+    "Narrow the compose buffer to the body of the mail"
+    (interactive)
+    (widen)
+    (goto-char (point-min))
+    (narrow-to-region
+     (re-search-forward "--text follows this line--" nil t 1)
+     (point-max)))
+
+  (defun mail-needs-attach-p ()
+    "Count number of attach keywords in buffer and return t 
+  if there is any"
+    (interactive)
+    (save-excursion
+      (message-narrow-to-body)
+      (let (
+            (res (count-matches message-likely-needs-attach-regex)))
+        (widen)
+        (> res 0))))
+
+  (defun mail-number-of-attach ()
+    "Count number of attach in buffer."
+    (interactive)
+    (save-excursion
+      (goto-char (point-min))
+      (count-matches "<#part [^>]*filename=[^>]*>")))
+
+  (defun check-mail-and-send ()
+    "Check if mail will likely have a missing attachment. 
+     If yes ask for confirmation, if no send it."
+    (interactive)
+    (if (mail-needs-attach-p)
+        (if (> (mail-number-of-attach) 0)
+            (message-send-and-exit)
+          (if (y-or-n-p "Mail has NO attach. Send it anyway? ")
+              (message-send-and-exit)))
+        (message-send-and-exit)))
+
+  (define-key mu4e-compose-mode-map (kbd "C-c C-c") 'check-mail-and-send)
+```
+
+
+## u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/v2by7z/comment/iatuubw)
+**Votes:** 8
+
+I like being able to switch projects quickly, and I'm too lazy to choose a specific file after selecting which project to switch to, so I did this:
+
+```elisp
+(defun lw-switch-project ()
+(interactive)
+(let* ((projects (projectile-relevant-known-projects))
+       (project (f-expand (completing-read "Switch to project: " projects)))
+       (windows (window-list))
+       (opened-files (projectile-project-buffers project))
+       (all-files (if (> (length windows) (length opened-files))
+                      (append
+                       opened-files
+                       (--> (projectile-project-files project)
+                         (-take (- (length windows)(length opened-files)) it)
+                         (-map (-partial #'f-join project) it)
+                         (-map #'find-file-noselect it)))
+                    opened-files)))
+  (--each (-zip windows all-files)
+    (set-window-buffer (car it) (cdr it)))))
+
+```
+A little verbose, but basically it prompts for a projectile project, then fills all open windows with recent project files, preferring already open buffers.
+
+
+## u/aartist111 [🔗](https://www.reddit.com/r/emacs/comments/heaoiu/comment/fvrw4cu)
+**Votes:** 8
+
+Found / c for M-x ibuffer.  It filters buffers by content.
+It looks like  'grep -c' .   Very helpful to locate a file quickly for which you remember any word from content
+Until now I had only used filters for filenames or modes only. .
+
+
+## u/Ramin_HAL9001 [🔗](https://www.reddit.com/r/emacs/comments/cz1xt6/comment/ez4161m)
+**Votes:** 8
+
+I used EDebug for the first time this week to solve an annoying problem, it was pretty easy.
+
+I was having trouble understanding why Projectile was not detecting the type of my project and I was getting sick of Google and StackOverflow, and I decided to just cut the crap and look at exactly what was going on by stepping through program execution.
+
+1. Navigate to the ELisp source file (e.g. `~/.emacs.d/projectile/projectile.el`)
+2. Add instrumentation to a function by cursoring-over to the start of the `defun` and do `C-u C-M-x`. (When you are done debugging, do `C-M-x` [no preceeding `C-u`] on the `defun` to remove instrumentation).
+3. Do something to trigger the function call, the EDebug window pops up automatically.
+4. Press the spacebar key to step through evaluation of every S-expression.
+5. After evaluation of each S-expression returns, the value returned is displayed in the echo area (I like to keep the `*Messages*` buffer open in a split screen to see the log of returned values).
+
+----
+
+Although I can't yet solve the problem, I was able to figure out that Projectile was skipping past my `.cabal` file (which should have denoted the top-level of my Haskell project), and instead it is going all the way up to the project root for the entire application where the `.git` directory resides. The Git top-level contains a bunch of submodules but there is no single over-arching build script at that level, so Projectile gives up and returns a "generic" project type and fails to build my Haskell project.
+
+I am trying figure out the canonical way of making the `projectile-detect-project-type` function to stop stepping up the directory hierarchy as soon as it sees the `.cabal` file, so if anyone can suggest something for me to do, please let me know.
+
+
+## u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/txh85s/comment/i3mghuf)
+**Votes:** 8
+
+I wanted to be able to expand yasnippets within other yasnippets (so here tab would jump to the next position instead of trying to expand snippet), surprisingly all I had to do was:
+
+`:bind ("C-<tab>" . yas-expand)`
+
+So C-<tab> expands a snippet within a snippet, and everything just worked as I'd hoped.  Once I'm done with the nested expansion <TAB> just moves on to the outer one. \*shrug\*
+
+
+## u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/w3gx6o/comment/igyt3ff)
+**Votes:** 8
+
+I sometimes want to pick a random choice from a long org-mode checkbox list from among those items not already checked.  I recently whipped up a little helper function for that:
+
+```elisp
+(defun random-choice ()
+  (interactive)
+  (let ((n 0)
+        (selected nil))
+    (while (search-forward-regexp (rx point "- [" (group nonl) "]" (+ nonl) "\n") nil t)
+      (when (and (string= " " (match-string 1)) (zerop (random (setq n (1+ n)))))
+        (setq selected (match-beginning 0))))
+    (if selected
+        (goto-char selected)
+      (error "No unfinished choice found"))))
+```
+
+
+## u/agumonkey [🔗](https://www.reddit.com/r/emacs/comments/w3gx6o/comment/ih3s9fl)
+**Votes:** 8
+
+you can have an org-mode file in source block in an org file
+
+
+## u/Desmesura [🔗](https://www.reddit.com/r/emacs/comments/fgahb2/comment/fki3lrc)
+**Votes:** 8
+
+Any Emacs Mode for dealing with Coronavirus?
+
+
+## u/zkryrmr [🔗](https://www.reddit.com/r/emacs/comments/fgahb2/comment/fk567v4)
+**Votes:** 8
+
+Here is how you can calculate how many times larger an objects shadow is at solar noon. I was surprised to see how many quality functions related to astronomical calculations come with Emacs.
+
+```elisp
+(require 'solar)
+(defun height-of-sun-at-noon (date)
+"Calculates the height of at solar noon on DATE as '(M D YYYY)."
+  (let* ((exact-local-noon (solar-exact-local-noon date))
+		 (t0 (solar-julian-ut-centuries (car exact-local-noon)))
+		 (ut (cadr exact-local-noon))
+		 (hnoon (solar-horizontal-coordinates (list t0 ut)
+		  (calendar-latitude)
+		  (calendar-longitude) t)))
+	hnoon))
+
+(defun deg-to-rad (x)
+  "Convert X from radians to degrees."
+  (/ (* x float-pi) 180))
+
+(defun length-of-shadow-at-noon (date)
+  "Calculates the relative length of an objects shadow at solar noon on DATE."
+  (let ((hn (cadr (height-of-sun-at-noon date))))
+	(/ 1 (tan (deg-to-rad hn)))))
+```
+
+
+## u/b3n [🔗](https://www.reddit.com/r/emacs/comments/gdtqov/comment/fq9186h)
+**Votes:** 8
+
+If you want to switch between two themes, depending on time of day (e.g. a light and dark theme), it's as simple as this:
+
+```elisp
+;; Light
+(load-theme 'modus-operandi t t)
+(run-at-time "05:00" (* 60 60 24) (lambda () (enable-theme 'modus-operandi))))
+
+;; Dark
+(load-theme 'modus-vivendi t t)
+(run-at-time "21:00" (* 60 60 24) (lambda () (enable-theme 'modus-vivendi))))
+
+```
+This selects the correct theme when starting Emacs and automatically switch when the times come.
+
+
+## u/mmarshall540 [🔗](https://www.reddit.com/r/emacs/comments/un4wf8/comment/i88sp07)
+**Votes:** 8
+
+Here's a little solution to a minor complaint about `isearch` that I think is fairly common.
+
+# The Problem
+
+TLDR: See [this old StackExchange question](https://emacs.stackexchange.com/questions/32373/go-to-start-of-search-string-after-ret)
+
+Often, I'll want to go to a precise location in a buffer to correct a typo. If that location is behind point (as it usually is if I notice the typo shortly after entering it), then `isearch-backward` works great. You press "C-r" and type some characters starting with your target until the location becomes the current result.  As soon as the cursor jumps to your target location, you can use an editing command like "C-t", which exits isearch automatically for you. Or you can press "C-m" to exit isearch-mode and then start inserting text at that location. Wonderful!
+
+But it's a little less perfect when your target is *after* point. This is because with `isearch-forward`, point lands at the end of your search result, instead of the beginning as it does with `isearch-backward`.
+
+You could type your search starting with some arbitrary number of characters in front of the target. But then you have to decide in advance how many characters to use, and if you don't use enough, there might be too many results. And then if you have to keep typing past your target character to sufficiently narrow the results, point won't land where you want it.
+
+Another strategy would be to do the same thing as when searching backwards, start with the target character and just type characters until your target location is selected. But now point is at the other end of the result, instead of where you want it. "M-b" would exit and move point to the beginning of the word, but that assumes there are no word boundaries in your search result, and besides, your actual target won't always be the beginning of a word. Often it will be somewhere in the middle of a word.
+
+Or you could use C-r to move point to the beginning of the result. But then you still have to press C-m to exit the search and start inserting text at that location. And that's 2 key-presses just to finish your search, not to mention all the key-presses you did to start.
+
+So we can fix this.
+
+# My Solution
+
+```elisp
+(defun my/isearch-bor-exit ()
+  "Ensure point is at beginning of isearch result, then exit."
+  (interactive)
+  (when (< isearch-other-end (point))
+    (goto-char isearch-other-end))
+  (call-interactively 'isearch-exit))
+
+(define-key isearch-mode-map ?\M-m 'my/isearch-bor-exit)
+
+```
+So now if I'm using isearch to get to a precise location (as opposed to just searching for a word), I can type beginning with the character at the target location, stop typing after it becomes part of the result, and press "M-m" to exit the search and make my correction. No more having to stop and think about whether I'm going backwards or forwards and whether I'll have to move point back before exiting isearch.
+
+# The Conclusion
+
+A minor problem with a fairly simple solution, but it made me happy to stop and solve it.
+
+I think I'll be using isearch now for a lot of things that I used to use Avy for.  But Avy is still great for a bunch of reasons. Not the least of which is the `avy-isearch` command which comes in handy when there are a lot of isearch results that would require too much typing to narrow down. (And it always puts point at the beginning of the result, never at the end).
+
+
+## u/c17g [🔗](https://www.reddit.com/r/emacs/comments/b8gcjb/comment/ejxofqj)
+**Votes:** 8
+
+I'm a big fan of [alphapapa/org-protocol-capture-html](https://github.com/alphapapa/org-protocol-capture-html) (using pandoc to translate webpage as Org tree) and [abo-abo/org-download](https://github.com/abo-abo/org-download) (save screenshot, download image). They help me archive Internet contents conveniently. 
+
+The only inconvenience I had with `org-protocol-capture-html` is that it doesn't download images automatically. In the resulting subtree, I still see raw image links. So I wrote this little function to download all images under an Org subtree. 
+
+```elisp
+(defun search-forward-and-org-download-images()
+  "Search forward for HTTP Image URLs, replace each using
+org-download-image to obtain a local copy."
+  (interactive)
+  (while (re-search-forward org-bracket-link-regexp nil t)
+    (let* (
+           (end (match-end 0))
+           (beg (match-beginning 0))
+           (s (buffer-substring-no-properties beg end))
+           (match? (string-match org-bracket-link-regexp s))
+           (link (match-string 1 s))
+           )
+      (when (string-match "^http.*?\\.\\(?:png\\|jpg\\|jpeg\\)\\(.*\\)$"
+                          link) ;; This is an image link
+        (message (concat "Downloading image: "link))
+        (delete-region beg end)
+        (org-download-image link)
+        (sleep-for 1) ;; Some sites dislike frequent requests
+        ))))
+
+```
+Now I can one click and archive web contents easily. I find it more pleasurable reading experience, and it gives me the peace of mind to have a local copy. Note: It doesn't handle relative link yet, and there's no error handling, so use with cautions
+
+
+## u/karthink [🔗](https://www.reddit.com/r/emacs/comments/gi70ye/comment/fqfc1wi)
+**Votes:** 8
+
+AucTex users: You're missing out if you don't use [CDLatex](https://github.com/cdominik/cdlatex). It's primarily a fast input tool for LaTeX, sort of like snippet templates. The difference between setting up Yasnippet templates for LaTeX and CDLatex is that CDLaTeX's TAB key to jump past stuff is _always available_, not just during snippet entry. It's difficult to explain, so here are some demos:
+
+1. [Fast input with cdlatex and preview.el](https://gfycat.com/heavenlynegligiblehoiho)
+2. [Fast input with keys displayed](https://gfycat.com/safeidolizedlangur)
+
+I wrote a longer post explaining [how I set up AucTex](https://www.reddit.com/r/emacs/comments/g8ecpj/advice_for_auclatex_what_keybinds_do_you_find/foo64ge/) recently.
+
+CDLaTeX was written by Carsten Dominik, the author of Org-mode and reftex. Thus Org ships with an `org-cdlatex` minor-mode that makes these features available in org-mode.
+
+
+## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/gi70ye/comment/fqcycvb)
+**Votes:** 8
+
+A rudimentary interface for the fabulous [Links web browser](http://links.twibright.com/user_en.html):
+
+```elisp
+(defun links-browser (&optional link new-window)
+  (interactive)
+  (unless link
+    (setq link (read-from-minibuffer "url: ")))
+  (make-process
+   :name "links-browser"
+   :connection-type 'pipe
+   :command (list "links" "-g" link)))
+
+(defun links-search (&optional query)
+  (interactive)
+  (unless query
+    (setq query (read-from-minibuffer "search query: ")))
+  (pcase query
+    ((pred (string-match "\\`d .*"))
+     (links-search--launch "dict" (substring query 2 nil)))
+    ((pred (string-match "\\`b .*"))
+     (links-search--launch "book" (substring query 2 nil)))
+    ((pred (string-match "\\`w .*"))
+     (links-search--launch "wiki" (substring query 2 nil)))
+    ((pred (string-match "\\`m .*"))
+     (links-search--launch "imdb" (substring query 2 nil)))
+    ((pred (string-match "\\`y .*"))
+     (links-search--launch "yout" (substring query 2 nil)))
+    ((pred (string-match "\\`t .*"))
+     (links-search--launch "thes" (substring query 2 nil)))
+    ((pred (string-match "\\`s .*"))
+     (links-search--launch "syno" (substring query 2 nil)))
+    (_ (links-search--launch "seax" query))))
+
+(defun links-search--launch (engine query)
+    (pcase engine
+      ("dict" (links-browser (format "https://en.wiktionary.org/wiki/Special:Search?search=%s" query)))
+      ("wiki" (links-browser (format "https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s&go=Go" query)))
+      ("imdb" (links-browser (format "https://www.imdb.com/find?s=all&q=%s" query)))
+      ("yout" (links-browser (format "https://www.youtube.com/results?search_query=%s" query)))
+      ("book" (links-browser (format "http://gen.lib.rus.ec/search.php?req=%s&res=100&sort=id&sortmode=DESC" query)))
+      ("thes" (links-browser (format "https://www.powerthesaurus.org/%s" query)))
+      ("syno" (links-browser (format "https://duckduckgo.com/lite/?q=%s site:macmillandictionary.com" query)))
+      ("seax" (links-browser (format "https://search.snopyta.org/?q=%s" query)))))
+```
+
+
+## u/jalihal [🔗](https://www.reddit.com/r/emacs/comments/cjopqe/comment/evfx0a3)
+**Votes:** 8
+
+Awesome trick I learned yesterday. C-x r N numbers the lines in a region!
+
+
+## u/slinchisl [🔗](https://www.reddit.com/r/emacs/comments/pfpgm9/comment/hb765zp)
+**Votes:** 8
+
+This is a very simple function, but it has saved me from countless of "do I have to do _this_ again now?" moments.
+
+When editing LaTeX files I often find myself wanting to convert inline math to display math, in order for equations to "pop out" more.  I could not find anything already implemented, so I wrote something that does this whenever the point is inside an inline math (`$`-based, sorry `\( \)` gang) environment: 
+
+```elisp
+(defun slot/inline-to-display-math ()
+  "Transform inline math to display math."
+  (interactive)
+  (when (and (texmathp) (equal "$" (car texmathp-why))) ; inline math?
+    (let* ((beg   (save-excursion (search-backward "$")))
+           (end-$ (search-forward "$"))
+           (end   (if (-contains? '(?. ?,) (char-after end-$))
+                      (1+ end-$)    ; put punctuation into display-maths
+                    end-$)))
+      (kill-region beg end)
+      ;; insert display math
+      (TeX-newline)
+      (insert "\\[")
+      (TeX-newline)
+      (insert-for-yank (string-replace "$" "" (current-kill 0)))
+      (TeX-newline)
+      (insert "\\]")
+      (TeX-newline))))
+
+```
+For example, this would transform 
+
+```elisp
+The cowedge $\iota \colon P \xRightarrow{\; .. \;} C$ is easily seen to be unique up to unique isomorphism.
+
+```
+into 
+
+```elisp
+The cowedge
+\[
+  \iota \colon P \xRightarrow{\; .. \;} C
+\]
+is easily seen to be unique up to unique isomorphism.
+
+```
+I'm a bit surprised by my not finding any function to already insert some string into the simple `\[ \]`-based display math; everything I could find just inserted dollars instead.  I suppose one could insert a `displaymath` environment, but I've never like the look of that.  Oh well.
+
+
+## u/mrolivertaylor [🔗](https://www.reddit.com/r/emacs/comments/mpwapo/comment/gudoljm)
+**Votes:** 8
+
+**Create Rectangular Selection with Meta+Click+Drag**
+
+By default, when you click and drag with the Meta key Emacs creates what it calls a "secondary selection" which is super interesting and useful, but not what this tip is about. In most editors (on the Mac anyway) option+click+drag is used to create a rectangular selection. Emacs, of course, supports this, you just need to remap it.
+
+```elisp
+(global-set-key [M-down-mouse-1] #'mouse-drag-region-rectangle)
+(global-set-key [M-drag-mouse-1] #'ignore)
+(global-set-key [M-mouse-1]      #'mouse-set-point)
+
+```
+You can also create a rectangular selection with the command `rectangle-mark-mode`.
+
+Don't forget to bind `replace-rectangle` to something convenient for super easy editing.
+
+
+## u/rberaldo [🔗](https://www.reddit.com/r/emacs/comments/rbmfwk/comment/hnvaab8)
+**Votes:** 8
+
+A tiny thing I just noticed: in `tex-mode`, you can create a new environment with `C-c C-e`. With the universal argument (`C-u C-c C-e`), however, you can easily change any environment into another.
+
+I created an `enumerate` environment and immediately changed my mind. By chance, I intuitively tried the aforementioned command and I was instantly able to change the environment into `itemize`.
+
+EDIT: markdown
+
+
+## u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/k4gv0x/comment/ge8si78)
+**Votes:** 8
+
+Here's all I need for completions:
+
+```elisp
+(use-package icomplete
+  :bind
+  (:map icomplete-minibuffer-map
+        ([C-return] . exit-minibuffer)
+        ([return] . minibuffer-try-complete-and-exit))
+  :config
+  (defun minibuffer-try-complete-and-exit ()
+    (interactive)
+    (minibuffer-force-complete)
+    (setq-local deactivate-mark nil)
+    (throw 'exit nil))
+  :hook (after-init . icomplete-mode))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless))
+  (orderless-matching-styles 'orderless-literal))
 ```
 
 
@@ -4887,27 +4880,19 @@ This isn't a tip or trick, so I guess it is covered by &c. The Init File section
 ```
 
 
-## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/jix6od/comment/gaid3f4)
+## u/Amonwilde [🔗](https://www.reddit.com/r/emacs/comments/j61aoh/comment/g7wd5gj)
 **Votes:** 8
 
-I love using `dabbrev-expand` (bound by default to `M-/`) to complete text I know is in one of my buffers. It completes one word at a time, but if you want to keep pulling subsequent words from the location where a completion is found you can insert a space and run `dabbrev-expand` again, so `SPC M-/`.
+For some this will be obvious, but I'm sure there will be at least one person who will find this useful. One of the most amazing features of Emacs to me is dabbrev-expand, by default bound to M-/. 
 
-For example if you have the text "The quick brown fox jumps over the lazy dog" in some buffer (and say no other "qu" appears anywhere in your buffers), then `qu M-/ SPC M-/ SPC M-/` will insert "quick brown fox".
+> Expand previous word "dynamically".
 
-This is already great, but I find the key sequence `SPC M-/` awkward to type so I wrote this little function which I bind to `M-'`:
+> Expands to the most recent, preceding word for which this is a prefix.
+I> ifno suitable preceding word is found, words following point are
+considered.  If still no suitable word is found, then look in the
+> buffers accepted by the function pointed out by variable
 
-```elisp
-(defun dabbrev-next (arg)
-  "Insert the next ARG words from where previous expansion was found."
-  (interactive "p")
-  (dotimes (_ arg)
-    (insert " ")
-    (dabbrev-expand 1)))
-    
-```
-Then for "quick grown fox" I can go `qu M-/ M-' M-'` which feels much easier to type (on my keyboard `/` and `'` are very close to each other).
-
-(`M-'` is bound by default to `abbrev-prefix-mark` which I never use, so I didn't mind rebinding it.)
+This command is essentially omni-autocomplete. Chances are, the term you're trying to complete is in the buffer you're using or another buffer, and you can hit multiple times to cycle through different completions. I find the expander to be quicker and more deterministic than language autocomplete about 70% of the time. It's especially useful in writing, if you use Emacs for things other than programming, as you can complete proper names and specalized vocabulary quickly.
 
 
 ## u/emacsomancer [🔗](https://www.reddit.com/r/emacs/comments/gqsz8u/comment/fs5sq09)
@@ -4924,48 +4909,108 @@ Each person gets a different colour to indicate the part of the file they’re e
 https://imgur.com/a/zvfLpdH
 
 
-## u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/d5dwkq/comment/f0q8vgo)
+## u/nv-elisp [🔗](https://www.reddit.com/r/emacs/comments/eymwl9/comment/fgjj6i8)
 **Votes:** 8
 
-This one is a life changer! Use `(setq set-mark-command-repeat-pop t)` so after pressing `C-u C-SPC` to jump to a mark popped off the local mark ring, you can just keeping pressing `C-SPC` to repeat! (It's like repeatedly running `repeat` with `C-x z z z z ...`).
-
-I learned this from [Tony Ballantyne's blog](https://tech.tonyballantyne.com/emacs/workout/evil-emacs-1/).
-
-
-## u/khourhin [🔗](https://www.reddit.com/r/emacs/comments/uxcm6i/comment/i9x2a0i)
-**Votes:** 8
-
-Just discovered that you can do pull request from magit forge. Got some troubles with the origin / myfork setup and was helped by this issue: https://github.com/magit/forge/issues/278 .
-And this improved as well how I deal with the naming of my remotes.
-
-Pure awesomeness, thanks a lot for Magit/ Magit forge !
-
-
-## u/w0ntfix [🔗](https://www.reddit.com/r/emacs/comments/l0ei0t/comment/gknr3hp)
-**Votes:** 8
-
-my first package is now on melpa! https://melpa.org/#/ct
-
-
-## u/NoisyFrequency [🔗](https://www.reddit.com/r/emacs/comments/pk6akd/comment/hc3bikc)
-**Votes:** 8
-
-I'm using [orderless](https://github.com/oantolin/orderless) for completion but I also want to walk through files with initials only, to do something like [like this](https://imgur.com/a/CJg8MGw) for example. It only requires to ignore the case and ask the minibuffer to use initials. 
+I use a number of Emacs servers daily: terminal $EDITOR, GUI Emacs, elfeed updater, and one to summon a dedicated org-capture client.
+This macro allows running code on a group of servers by name.
 
 ```elisp
-(use-package orderless
-      :ensure t
-      :custom
-      (completion-styles '(orderless))
-      (completion-category-defaults nil)
-      (read-file-name-completion-ignore-case t)
-      (completion-category-overrides '((file (styles partial-completion))
-    				   (minibuffer (initials)))))
+;;;###autoload
+(defmacro my/with-servers (servers &rest body)
+  "Evaluate BODY on each server in SERVERS.
+If SERVERS is the symbol \all\:, evaluate BODY on all servers."
+  (declare (indent defun))
+  (let* ((files (directory-files server-socket-dir nil nil t))
+         (sockets (cond
+                   ((eq 'all servers)
+                    (seq-filter (lambda (file)
+                                  (not (member file '("." ".."))))
+                                files))
+                   ((and (listp servers)
+                         (seq-every-p #'stringp servers))
+                    servers)
+                   (t (signal 'wrong-type-error `(((stringp), all) ,servers))))))
+    `(let (current-server)
+       (condition-case err
+           (let ((servers (mapc (lambda (socket)
+                                  (setq current-server socket)
+                                  (server-eval-at socket '(progn ,@body nil)))
+                                ',sockets)))
+             (format "evaled on %d servers: %s" (length servers) servers))
+         (error (message "%s on server %s" err current-server))))))
+
+```
+A couple of examples:
+
+```elisp
+(defun my/kill-server (name)
+  "Kill emacs server named NAME."
+  (eval `(my/with-servers (,name)
+           (kill-emacs))))
+
+(defun my/kill-other-servers ()
+  "Kill other Emacs servers."
+  (interactive)
+  (eval `(my/with-servers all
+           (when (not (equal server-name ,server-name))
+             (kill-emacs)))))
+
+(defun my/reload-init-on-all-servers ()
+  "Reload init file on all Emacs servers."
+  (interactive)
+  (my/with-servers all
+    (load-file "~/.emacs.d/init.el")))
 ```
 
 
-## u/Tohiko [🔗](https://www.reddit.com/r/emacs/comments/r107bg/comment/hlxvxv3)
+## u/slinchisl [🔗](https://www.reddit.com/r/emacs/comments/pt2xws/comment/hdtoivy)
 **Votes:** 8
 
-I have a custom minor-mode with a keymap. I want to enable this keymap globally so I made a globalized version of my minor-mode. However, now keys from modes which override the same keys as my keymap do not work anymore. How do I make my globalized minor-mode  (and its keymap) of a lower priority than other modes? I know I can modify `minor-mode-map-alist` but I am not sure how to do this without adding a hook for every mode.
+I've been playing around with Emacs 28's [repeat-mode](https://git.savannah.gnu.org/cgit/emacs.git/commit/lisp?id=12409c9064c386a496dcbdca76b790108f6c1cad) a bit.  It allows for not having to press modifiers when executing several conceptually similar actions in a row.  Sadly, the ergonomics of defining these repeat maps are not quite there yet, so I wrote a small macro (my first one ever, actually!) to define the map and set the appropriate symbol property for the function:
+
+```elisp
+(defmacro defrepeatmap (symbol &optional pairs docstring)
+  "A macro for defining `repeat-map's.
+Defines a new repeat-map called SYMBOL with the given DOCSTRING.
+The keys are derived via the list PAIRS, whose elements are cons
+cells of the form (KEY . DEF), where KEY and DEF must fulfill the
+same requirements as if given to `define-key'."
+  `(progn
+     (defvar ,symbol
+       (let ((map (make-sparse-keymap)))
+         (--each ,pairs (define-key map (car it) (cdr it)))
+         map)
+       ,docstring)
+     ;; Tell the keys they are in a repeat map.
+     (--each (mapcar 'cdr (cdr ,symbol))
+       (put it 'repeat-map ',symbol))))
+       
+```
+It can be used like 
+
+```elisp
+(defrepeatmap window-repeat-map
+  '(("}" . enlarge-window-horizontally)
+    ("{" . shrink-window-horizontally )
+    ("+" . balance-windows            )
+    ("o" . other-window               )
+    ("1" . delete-other-windows       )
+    ("2" . split-window-below         )
+    ("3" . split-window-right         )
+    ("0" . delete-window              )
+    ("s" . window-swap-states         )
+    ("f" . project-find-file          ))
+  "Keymap to repeat window key sequences.  Used in `repeat-mode'.")
+```
+
+
+## u/mmaug [🔗](https://www.reddit.com/r/emacs/comments/2awvj3/comment/cizo8vg)
+**Votes:** 8
+
+You seem to be trying to emulate your workflow in Sublime and/or Vim in Emacs.  Emacs was created by programmers to solve their problems, not an editor that demos well because it is pretty.  
+
+I've been using a flavor of Emacs since the mid-1980's and am currently a GNU Emacs maintainer.  I rarely use the mouse so point-and-click style features like toolbars, speedbar and MS Windows like features are of little use.  I find that being able to define my own operations to fit my development model to be most valuable.  The features worth investing your time in understanding: Dired, Tramp, ELPA, and Org.
+
+My guess is that you ought to go back to the editor you started with because that is how you see the problem.  There is nothing wrong with that.  Emacs is a complex tool and has a multi-year learning curve (I'm finally learning Org).   
 
