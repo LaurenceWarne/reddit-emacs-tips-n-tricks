@@ -52,7 +52,7 @@ object Handler extends ZLambda[ScheduledEvent, String] {
           for {
             token <- ZIO.attempt(sys.env("GH_PAT"))
             msg = s"Weekly update from ${formatter.format(event.time)}"
-            proc <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", msg)
+            _ <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", msg)
               .flatMap(printStdoutStderr)
             _ <- runCommandInDir(
               wrkDir,
