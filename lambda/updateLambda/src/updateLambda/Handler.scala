@@ -25,8 +25,7 @@ object ScheduledEvent {
 object Handler extends ZLambda[ScheduledEvent, String] {
 
   val repoName   = "reddit-emacs-tips-n-tricks"
-  val username   = "LaurenceWarne"
-  val repoDomain = s"github.com/$username/$repoName"
+  val repoDomain = s"github.com/LaurenceWarne/$repoName"
   val repoUri    = "https://" ++ repoDomain
   val formatter =
     DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(ZoneId.of("UTC"))
@@ -34,12 +33,14 @@ object Handler extends ZLambda[ScheduledEvent, String] {
 
   override def apply(event: ScheduledEvent, context: Context): Task[String] = {
     for {
-      wrkDir <- ZIO.attempt(Paths.get("/tmp", repoName).toFile())
+      wrkDir     <- ZIO.attempt(Paths.get("/tmp", repoName).toFile())
+      ghUsername <- ZIO.attempt(sys.env("GH_USERNAME"))
       _ <- ZIO.unlessZIO(ZIO.attempt(wrkDir.exists())) {
         for {
           cloneDir <- ZIO.attempt(wrkDir.getParentFile())
-          repoPath <- performClone(cloneDir)
-          _        <- initGitIdentity(wrkDir)
+          _        <- performClone(cloneDir)
+          ghEmail  <- ZIO.attempt(sys.env("GH_EMAIL"))
+          _        <- initGitIdentity(wrkDir, ghUsername, ghEmail)
         } yield ()
       }
 
@@ -50,7 +51,7 @@ object Handler extends ZLambda[ScheduledEvent, String] {
         case numberPattern(posts, comments)
             if posts.toIntOption.exists(_ > 200) =>
           for {
-            token <- ZIO.attempt(sys.env("GH_PAT"))
+            ghPAT <- ZIO.attempt(sys.env("GH_PAT"))
             msg = s"Weekly update from ${formatter.format(event.time)}"
             _ <- runCommandInDir(wrkDir, "git", "commit", "-a", "-m", msg)
               .flatMap(printStdoutStderr)
@@ -58,30 +59,27 @@ object Handler extends ZLambda[ScheduledEvent, String] {
               wrkDir,
               "git",
               "push",
-              s"https://$username:$token@$repoDomain",
+              s"https://$ghUsername:$ghPAT@$repoDomain",
               "HEAD:master"
             ).flatMap(printStdoutStderr)
           } yield ()
         case _ =>
           printLine(s"Not enough comments found, proc stdout: '$procStdout'")
       }
-
     } yield "Handler ran successfully"
   }
 
-  def initGitIdentity(path: JFile): Task[Unit] =
+  private def initGitIdentity(
+      path: JFile,
+      username: String,
+      email: String
+  ): Task[Unit] =
     for {
-      _ <- runCommandInDir(path, "git", "config", "user.name", "weeklyupdate")
+      _ <- runCommandInDir(path, "git", "config", "user.name", username)
         .flatMap(
           printStdoutStderr
         )
-      _ <- runCommandInDir(
-        path,
-        "git",
-        "config",
-        "user.email",
-        "weeklyupdate@users.noreply.github.com"
-      )
+      _ <- runCommandInDir(path, "git", "config", "user.email", email)
         .flatMap(
           printStdoutStderr
         )
