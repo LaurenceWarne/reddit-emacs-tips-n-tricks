@@ -1,5 +1,4 @@
 AWSTemplateFormatVersion: '2010-09-09'
-# aws cloudformation deploy --stack-name tips-n-tricks-lambda --template-file templates/template.yaml --capabilities CAPABILITY_IAM --parameter-overrides "BaseStackName=base" "CodeKey=tips-n-tricks-lambda.zip" "LayerKey=tips-n-tricks-exe.zip" "PATSecretsKey=GH_PAT:SecretString:GH_PAT"
 Parameters:
   BaseStackName:
     Type: String
@@ -10,9 +9,19 @@ Parameters:
   LayerKey:
     Type: String
     Description: Name of the S3 key poiting to the lambda layer containg the executable
+  GithubUsername:
+    Type: String
+    Description: Github username the lambda will use
+    Default: emacs-reddit-tips-n-tricks-bot
   PATSecretsKey:
     Type: String
-    Description: Name of the secrets key for the GH PAT token
+    Description: >
+      Name of the secrets key for the GH PAT token, note this can't be a password
+      since password authentication was removed by Github on August 13, 2021.
+  GithubUserEmail:
+    Type: String
+    Description: Github username the lambda will use
+    Default: emacstipsntricksbot@gmail.com
 
 Resources:
 
@@ -49,9 +58,11 @@ Resources:
       Runtime: provided  # Custom runtime
       Handler: bootstrap
       Timeout: 120
-      MemorySize: 512
+      MemorySize: 512  # Probably we can get away with 256
       Environment:
         Variables:
+          GH_USERNAME: !Ref GithubUsername
+          GH_EMAIL: !Ref GithubUserEmail
           GH_PAT: !Sub '{{resolve:secretsmanager:${PATSecretsKey}}}'
       Code:
         S3Bucket: !ImportValue
