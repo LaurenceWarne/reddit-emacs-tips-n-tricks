@@ -2,15 +2,14 @@ package updateLambda
 
 import java.io.{File => JFile}
 import java.nio.file.{Path => JPath, Paths}
-import java.time.{Instant, ZoneId}
 import java.time.format.DateTimeFormatter
+import java.time.{Instant, ZoneId}
 
 import scala.util.matching.Regex
 
 import zio.Console._
 import zio._
-import zio.json.DeriveJsonDecoder
-import zio.json.JsonDecoder
+import zio.json.{DeriveJsonDecoder, JsonDecoder}
 import zio.lambda._
 import zio.lambda.event._
 import zio.process._

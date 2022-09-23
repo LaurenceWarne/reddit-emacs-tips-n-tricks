@@ -1,9 +1,13 @@
+import $ivy.`com.goyeau::mill-scalafix::0.2.9`
+import com.goyeau.mill.scalafix.ScalafixModule
 import mill._
 import mill.scalalib._
 
-object updateLambda extends ScalaModule {
+object updateLambda extends ScalaModule with ScalafixModule {
 
   def scalaVersion = "2.13.8"
+
+  def scalafixIvyDeps = Agg(ivy"com.github.liancheng::organize-imports:0.6.0")
 
   val zioLambdaVersion = "1.0.0-RC6"
 
@@ -38,6 +42,7 @@ object updateLambda extends ScalaModule {
       )
       val zipPath = T.dest / "reddit-tips-n-tricks.zip"
       os.proc("zip", "-j", zipPath, bootstrapFilePath, outPath).call()
+      println(s"Output bootstrap zip file to $outPath")
     }
 
   def zipParserExe =
