@@ -6,15 +6,11 @@ import zio.Console._
 import zio._
 import zio.process._
 
-case class RepoConfig(ghUsername: String, token: String)
+case class RepoConfig(ghUsername: String, ghEmail: String, ghToken: String)
 
 trait GitRepoService {
 
-  def createGitIdentity(
-      repoDir: JFile,
-      username: String,
-      email: String
-  ): Task[Unit]
+  def createGitIdentity(repoDir: JFile): Task[Unit]
 
   def clone(outputDir: JFile, remoteUri: String): Task[Unit]
 
@@ -34,9 +30,7 @@ case class GitRepoServiceImpl(repoConfig: RepoConfig) extends GitRepoService {
   }
 
   override def createGitIdentity(
-      repoDir: JFile,
-      username: String,
-      email: String
+      repoDir: JFile
   ): Task[Unit] =
     for {
       _ <- runCommandInDir(
@@ -44,9 +38,15 @@ case class GitRepoServiceImpl(repoConfig: RepoConfig) extends GitRepoService {
         "git",
         "config",
         "user.name",
-        username
+        repoConfig.ghUsername
       ).std
-      _ <- runCommandInDir(repoDir, "git", "config", "user.email", email).std
+      _ <- runCommandInDir(
+        repoDir,
+        "git",
+        "config",
+        "user.email",
+        repoConfig.ghEmail
+      ).std
     } yield ()
 
   override def clone(outputDir: JFile, remoteUri: String): Task[Unit] =
@@ -59,7 +59,7 @@ case class GitRepoServiceImpl(repoConfig: RepoConfig) extends GitRepoService {
     runCommandInDir(repoDir, "git", "commit", "-a", "-m", msg).std
 
   override def push(repoDir: JFile, repoDomain: String): Task[Unit] = {
-    val RepoConfig(ghUsername, ghToken) = repoConfig
+    val RepoConfig(ghUsername, _, ghToken) = repoConfig
     runCommandInDir(
       repoDir,
       "git",
