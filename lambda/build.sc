@@ -1,9 +1,11 @@
 import $ivy.`com.goyeau::mill-scalafix::0.2.9`
 import com.goyeau.mill.scalafix.ScalafixModule
-import mill._
-import mill.scalalib._
+import mill._, scalalib._, scalafmt._
 
-object updateLambda extends ScalaModule with ScalafixModule {
+object updateLambda
+    extends ScalaModule
+    with ScalafmtModule
+    with ScalafixModule {
 
   def scalaVersion = "2.13.8"
 
@@ -20,22 +22,27 @@ object updateLambda extends ScalaModule with ScalafixModule {
       ivy"dev.zio::zio-aws-netty:5.17.271.1",
       ivy"dev.zio::zio-process:0.7.1"
     )
- 
+
   def buildBootstrap =
     T {
-      val jar      = assembly()
-      val fileName = artifactName() + "-native-image"
-      val outPath  = T.dest / fileName
-      val resDir = resources().headOption
-      val res_conf_path = resDir.map(_.path / "resource_config.json")
+      val jar            = assembly()
+      val fileName       = artifactName() + "-native-image"
+      val outPath        = T.dest / fileName
+      val resDir         = resources().headOption
+      val res_conf_path  = resDir.map(_.path / "resource_config.json")
       val refl_conf_path = resDir.map(_.path / "reflection_config.json")
-      val resConf =
+      val resConf        =
         // https://www.graalvm.org/22.0/reference-manual/native-image/Reflection/
         res_conf_path.map(p => s"-H:ResourceConfigurationFiles=$p").toList ++
-        refl_conf_path.map(p => s"-H:ReflectionConfigurationFiles=$p")
+          refl_conf_path.map(p => s"-H:ReflectionConfigurationFiles=$p")
       os.proc(
-        "native-image","--enable-http","--enable-https",
-        resConf, "-jar", jar.path, outPath
+        "native-image",
+        "--enable-http",
+        "--enable-https",
+        resConf,
+        "-jar",
+        jar.path,
+        outPath
       ).call()
       val bootstrapFilePath = T.dest / "bootstrap"
       os.write(

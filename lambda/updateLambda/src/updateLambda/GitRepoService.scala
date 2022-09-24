@@ -50,10 +50,12 @@ case class GitRepoServiceImpl(repoConfig: RepoConfig) extends GitRepoService {
     } yield ()
 
   override def clone(outputDir: JFile, remoteUri: String): Task[Unit] =
-    for {
-      _ <- runCommandInDir(outputDir, "git", "clone", remoteUri).std
-      _ <- runCommandInDir(outputDir, "git", "pull").std
-    } yield ()
+    runCommandInDir(
+      outputDir,
+      "git",
+      "clone",
+      remoteUri
+    ).std *> runCommandInDir(outputDir, "git", "pull").std
 
   override def commit(repoDir: JFile, msg: String): Task[Unit] =
     runCommandInDir(repoDir, "git", "commit", "-a", "-m", msg).std

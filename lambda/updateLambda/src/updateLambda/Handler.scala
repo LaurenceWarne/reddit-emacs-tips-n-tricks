@@ -7,8 +7,13 @@ import java.time.{Instant, ZoneId}
 
 import scala.util.matching.Regex
 
+import software.amazon.awssdk.services.cloudwatch.CloudWatchClient
 import zio.Console._
 import zio._
+import zio.aws.cloudwatch._
+import zio.aws.cloudwatch.model._
+import zio.aws.core.config.AwsConfig
+import zio.aws.netty.NettyHttpClient
 import zio.json.{DeriveJsonDecoder, JsonDecoder}
 import zio.lambda._
 import zio.lambda.event._
@@ -22,6 +27,8 @@ object Handler extends ZLambda[ScheduledEvent, String] {
   private val formatter =
     DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(ZoneId.of("UTC"))
   private val numberPattern: Regex = """^.*?(\d+).*\n.*?(\d+)[\s\S]*$""".r
+
+  val client = NettyHttpClient.default >>> AwsConfig.default >>> CloudWatch.live
 
   override def apply(event: ScheduledEvent, context: Context): Task[String] = {
     val layer: ZLayer[Any, Throwable, GitRepoService] = ZLayer {
