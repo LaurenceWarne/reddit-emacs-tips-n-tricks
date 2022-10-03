@@ -33,9 +33,12 @@ object Handler extends ZLambda[ScheduledEvent, String] {
   override def apply(event: ScheduledEvent, context: Context): Task[String] = {
     val layer: ZLayer[Any, Throwable, GitRepoService] = ZLayer {
       for {
-        ghUsername <- envOrErr("GH_USERNAME")
-        ghEmail    <- envOrErr("GH_EMAIL")
-        ghToken    <- envOrErr("GH_PAT")
+        ghUsername <-
+          System
+            .env("GH_USERNAME")
+            .someOrFail(EnvVarNotFound("GH_USERNAME"))
+        ghEmail <- System.env("GH_EMAIL").someOrFail(EnvVarNotFound("GH_EMAIL"))
+        ghToken <- System.env("GH_PAT").someOrFail(EnvVarNotFound("GH_PAT"))
       } yield RepoConfig(ghUsername, ghEmail, ghToken)
     } >>> GitRepoServiceImpl.layer
     invoke(event, context).provideLayer(layer)
@@ -72,13 +75,6 @@ object Handler extends ZLambda[ScheduledEvent, String] {
       }
     } yield "Handler ran successfully"
   }
-
-  private def envOrErr(variable: String): ZIO[Any, Throwable, String] =
-    for {
-      opt <- System.env(variable)
-      variable <-
-        ZIO.fromOption(opt).mapError(_ => EnvVarNotFoundError(variable))
-    } yield variable
 }
 
 case class ScheduledEvent(time: Instant)
@@ -88,4 +84,4 @@ object ScheduledEvent {
     DeriveJsonDecoder.gen[ScheduledEvent]
 }
 
-case class EnvVarNotFoundError(name: String) extends Throwable
+case class EnvVarNotFound(name: String) extends Throwable

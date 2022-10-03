@@ -11,7 +11,7 @@ import zio.stream.ZSink
 
 trait CommentMetricService {
 
-  def getLastNPoints(n: Int): Task[List[Int]]
+  def getPointsFrom(days: Int): Task[List[Int]]
 
   def put(value: Int): Task[Unit]
 }
@@ -22,7 +22,7 @@ case class CommentMetricServiceImpl(
     metricInfo: LambdaMetricInfo
 ) extends CommentMetricService {
 
-  override def getLastNPoints(n: Int): Task[List[Int]] =
+  override def getPointsFrom(days: Int): Task[List[Int]] =
     for {
       now <- clock.instant
       metricQuery = MetricDataQuery(
@@ -39,7 +39,7 @@ case class CommentMetricServiceImpl(
       )
       req = GetMetricDataRequest(
         List(metricQuery),
-        Timestamp(now.minus(1.day * 365)),
+        Timestamp(now.minus(1.day * days)),
         Timestamp(now)
       )
       dataResult <-
