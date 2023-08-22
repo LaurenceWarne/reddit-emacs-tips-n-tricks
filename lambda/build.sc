@@ -20,7 +20,7 @@ object updateLambda
       ivy"dev.zio::zio-lambda-response:$zioLambdaVersion",
       ivy"dev.zio::zio-aws-cloudwatch:5.17.271.1",
       ivy"dev.zio::zio-aws-netty:5.17.271.1",
-      ivy"dev.zio::zio-process:0.7.1"
+      ivy"dev.zio::zio-process:0.7.2"
     )
 
   def buildBootstrap =

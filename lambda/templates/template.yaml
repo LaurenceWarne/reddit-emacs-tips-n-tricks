@@ -5,10 +5,10 @@ Parameters:
     Description: Name of the base stack
   CodeKey:
     Type: String
-    Description: Name of the S3 key poiting to the lambda function code
+    Description: Name of the S3 key pointing to the lambda function code
   LayerKey:
     Type: String
-    Description: Name of the S3 key poiting to the lambda layer containg the executable
+    Description: Name of the S3 key pointing to the lambda layer containg the executable
   GithubUsername:
     Type: String
     Description: Github username the lambda will use
