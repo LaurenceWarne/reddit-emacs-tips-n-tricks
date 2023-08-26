@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 rm -rf /tmp/zip-crap/bin/
 
@@ -18,7 +18,7 @@ ls -lah reddit-emacs-tips-n-tricks-exe.zip
 
 AWS_REGION=us-east-1 aws s3 cp $(pwd)/reddit-emacs-tips-n-tricks-exe.zip s3://base-miscbucket-8f9wra06edtd
 
-VERSION="$(AWS_REGION=us-east-1 aws lambda publish-layer-version --layer-name ExeLambdaLayer --content S3Bucket=base-miscbucket-8f9wra06edtd,S3Key=tips-n-tricks-exe.zip | jq .Version)"
+VERSION="$(AWS_REGION=us-east-1 aws lambda publish-layer-version --layer-name ExeLambdaLayer --content S3Bucket=base-miscbucket-8f9wra06edtd,S3Key=reddit-emacs-tips-n-tricks-exe.zip | jq .Version)"
 
 echo "New layer version $VERSION"
 
