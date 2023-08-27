@@ -16,9 +16,12 @@ cp /tmp/zip-crap/reddit-emacs-tips-n-tricks-exe.zip .
 
 ls -lah reddit-emacs-tips-n-tricks-exe.zip
 
-AWS_REGION=us-east-1 aws s3 cp $(pwd)/reddit-emacs-tips-n-tricks-exe.zip s3://base-miscbucket-8f9wra06edtd
+BUCKET='base-miscbucket-8f9wra06edtd'
+KEY='reddit-emacs-tips-n-tricks-exe.zip'
 
-VERSION="$(AWS_REGION=us-east-1 aws lambda publish-layer-version --layer-name ExeLambdaLayer --content S3Bucket=base-miscbucket-8f9wra06edtd,S3Key=reddit-emacs-tips-n-tricks-exe.zip | jq .Version)"
+AWS_REGION=us-east-1 aws s3 cp "$(pwd)/$KEY" "s3://$BUCKET"
+
+VERSION="$(AWS_REGION=us-east-1 aws lambda publish-layer-version --layer-name ExeLambdaLayer --content S3Bucket=$BUCKET,S3Key=$KEY | jq .Version)"
 
 echo "New layer version $VERSION"
 
