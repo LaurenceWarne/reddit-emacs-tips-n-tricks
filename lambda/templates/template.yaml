@@ -22,6 +22,14 @@ Parameters:
     Type: String
     Description: Github username the lambda will use
     Default: emacstipsntricksbot@gmail.com
+  GitHubOrg:
+    Description: Name of GitHub organization/user (case sensitive)
+    Type: String
+    Default: laurencewarne
+  RepositoryName:
+    Description: Name of GitHub repository (case sensitive)
+    Type: String
+    Default: reddit-emacs-tips-n-tricks
 
 Resources:
 
@@ -86,3 +94,20 @@ Resources:
       Action: "lambda:InvokeFunction"
       Principal: "events.amazonaws.com"
       SourceArn: !GetAtt ScheduledRule.Arn
+
+  GHDeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action: sts:AssumeRoleWithWebIdentity
+            Principal:
+              Federated:
+                - !ImportValue
+                  'Fn::Sub': '${BaseStackName}-GithubOidc'
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: "sts.amazonaws.com"
+              StringLike:
+                token.actions.githubusercontent.com:sub: !Sub repo:${GitHubOrg}/${RepositoryName}:*
