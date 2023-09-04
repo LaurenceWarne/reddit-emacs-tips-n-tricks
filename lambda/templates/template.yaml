@@ -22,10 +22,10 @@ Parameters:
     Type: String
     Description: Github username the lambda will use
     Default: emacstipsntricksbot@gmail.com
-  GitHubOrg:
+  GithubOrg:
     Description: Name of GitHub organization/user (case sensitive)
     Type: String
-    Default: laurencewarne
+    Default: LaurenceWarne
   RepositoryName:
     Description: Name of GitHub repository (case sensitive)
     Type: String
@@ -110,4 +110,23 @@ Resources:
               StringEquals:
                 token.actions.githubusercontent.com:aud: "sts.amazonaws.com"
               StringLike:
-                token.actions.githubusercontent.com:sub: !Sub repo:${GitHubOrg}/${RepositoryName}:*
+                token.actions.githubusercontent.com:sub: !Sub repo:${GithubOrg}/${RepositoryName}:*
+
+  DeployPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - "cloudformation:CreateStack"
+              - "cloudformation:DescribeStacks"
+              - "cloudformation:CreateChangeSet"
+              - "cloudformation:DescribeChangeSet"
+              - "cloudformation:DeleteChangeSet"
+              - "cloudformation:ExecuteChangeSet"
+            Resource: "*"
+      PolicyName: DeployTipsAndTricksPolicy
+      Roles:
+        - !Ref GHDeployRole
