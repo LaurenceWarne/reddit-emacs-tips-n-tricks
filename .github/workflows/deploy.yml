@@ -33,4 +33,5 @@ jobs:
           template: lambda/templates/template.yaml
           no-fail-on-empty-changeset: "1"
           parameter-overrides: "BaseStackName=base,CodeKey=tips-n-tricks-lambda.zip,LayerKey=tips-n-tricks-exe.zip,GithubPAT=${{ secrets.GH_PAT }}"
+          capabilities: CAPABILITY_IAM, CAPABILITY_NAMED_IAM
  
