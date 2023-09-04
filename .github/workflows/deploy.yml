@@ -31,5 +31,6 @@ jobs:
         with:
           name: tips-n-tricks-lambda
           template: lambda/templates/template.yaml
-          parameter-overrides: "BaseStackName=base,CodeKey=tips-n-tricks-lambda.zip,LayerKey=tips-n-tricks-exe.zip,PATSecretsKey=GH_PAT:SecretString:GH_PAT"
+          no-fail-on-empty-changeset: "1"
+          parameter-overrides: "BaseStackName=base,CodeKey=tips-n-tricks-lambda.zip,LayerKey=tips-n-tricks-exe.zip,GithubPAT=${{ secrets.GH_PAT }}"
  

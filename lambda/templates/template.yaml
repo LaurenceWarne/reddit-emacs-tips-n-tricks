@@ -13,11 +13,11 @@ Parameters:
     Type: String
     Description: Github username the lambda will use
     Default: emacs-reddit-tips-n-tricks-bot
-  PATSecretsKey:
+  GithubPAT:
     Type: String
     Description: >
-      Name of the secrets key for the GH PAT token, note this can't be a password
-      since password authentication was removed by Github on August 13, 2021.
+      The GH PAT token, note this can't be a password since password authentication
+      was removed by Github on August 13, 2021.
   GithubUserEmail:
     Type: String
     Description: Github username the lambda will use
@@ -71,7 +71,7 @@ Resources:
         Variables:
           GH_USERNAME: !Ref GithubUsername
           GH_EMAIL: !Ref GithubUserEmail
-          GH_PAT: !Sub '{{resolve:secretsmanager:${PATSecretsKey}}}'
+          GH_PAT: !Ref GithubPAT
       Code:
         S3Bucket: !ImportValue
           'Fn::Sub': '${BaseStackName}-MiscBucket'
