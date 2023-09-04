@@ -126,6 +126,8 @@ Resources:
               - "cloudformation:DescribeChangeSet"
               - "cloudformation:DeleteChangeSet"
               - "cloudformation:ExecuteChangeSet"
+              - "iam:GetRole"
+              - "iam:UpdateAssumeRolePolicy"
             Resource: "*"
       PolicyName: DeployTipsAndTricksPolicy
       Roles:
