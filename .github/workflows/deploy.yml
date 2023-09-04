@@ -1,5 +1,5 @@
 on:
-  workflow-dispatch:
+  workflow_dispatch:
 
 name: Deploy
 
@@ -7,6 +7,12 @@ jobs:
 
   deploy:
     name: Deploy
+    runs-on: ubuntu-latest    
+
+    permissions:
+      id-token: write
+      contents: read
+    
     steps:
 
       - name: Checkout
@@ -20,9 +26,10 @@ jobs:
           role-to-assume: ${{ secrets.DEPLOY_ROLE_ARN }}
           aws-region: us-east-1
 
-     - name: Deploy to AWS CloudFormation
-       uses: aws-actions/aws-cloudformation-github-deploy@v1
-       with:
-         name: tips-n-tricks-lambda
-         template: lambda/templates/template.yaml
-         parameter-overrides: "BaseStackName=base,CodeKey=tips-n-tricks-lambda.zip,LayerKey=tips-n-tricks-exe.zip,PATSecretsKey=GH_PAT:SecretString:GH_PAT"
+      - name: Deploy to AWS CloudFormation
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: tips-n-tricks-lambda
+          template: lambda/templates/template.yaml
+          parameter-overrides: "BaseStackName=base,CodeKey=tips-n-tricks-lambda.zip,LayerKey=tips-n-tricks-exe.zip,PATSecretsKey=GH_PAT:SecretString:GH_PAT"
+ 
