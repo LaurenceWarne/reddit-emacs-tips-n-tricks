@@ -1,5 +1,11 @@
-on: [push]
-name: build
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+name: Build
+
 jobs:
   runhaskell:
 

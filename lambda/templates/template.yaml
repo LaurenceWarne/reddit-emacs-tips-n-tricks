@@ -111,24 +111,7 @@ Resources:
                 token.actions.githubusercontent.com:aud: "sts.amazonaws.com"
               StringLike:
                 token.actions.githubusercontent.com:sub: !Sub repo:${GithubOrg}/${RepositoryName}:*
-
-  DeployPolicy:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Action:
-              - "cloudformation:CreateStack"
-              - "cloudformation:DescribeStacks"
-              - "cloudformation:CreateChangeSet"
-              - "cloudformation:DescribeChangeSet"
-              - "cloudformation:DeleteChangeSet"
-              - "cloudformation:ExecuteChangeSet"
-              - "iam:GetRole"
-              - "iam:UpdateAssumeRolePolicy"
-            Resource: "*"
-      PolicyName: DeployTipsAndTricksPolicy
-      Roles:
-        - !Ref GHDeployRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
+        - arn:aws:iam::aws:policy/IAMFullAccess
+        - arn:aws:iam::aws:policy/AWSLambda_FullAccess
