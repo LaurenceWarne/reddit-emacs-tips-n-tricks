@@ -1,5 +1,5 @@
 """
-Usage: python3 bin/run.py [--all]
+Usage: python3 bin/run.py [--all] [--skip-pushing]
 """
 import sys, itertools, json, logging, os, datetime
 
@@ -111,8 +111,8 @@ def persisted_posts():
         return json.load(f)
 
 
-def main():
-    all_posts = "--all" in sys.argv
+def run(all_posts, skip_pushing):
+    LOGGER.info("Fetching posts...")
     fetched_posts = get_posts(all_posts)
     LOGGER.info("Found %d applicable posts", len(fetched_posts))
     existing_posts = persisted_posts()
@@ -127,9 +127,17 @@ def main():
     with open(OUT, "w") as f:
         f.write(s)
 
-    if new_posts > 0:
+    if skip_pushing:
+        LOGGER.info("Skipping pushing to git repo")
+    elif new_posts > 0:
         LOGGER.info("Pushing to git repo...")
         update_git_repo()
         LOGGER.info("Done")
     else:
         LOGGER.info("Not pushing to git repo since no new posts were found")
+
+
+def main():
+    all_posts = "--all" in sys.argv
+    skip_pushing = "--skip-pushing" in sys.argv
+    run(all_posts, skip_pushing)
