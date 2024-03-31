@@ -1,7 +1,7 @@
 """
 Usage: python3 bin/run.py [--all]
 """
-import sys, itertools, json, logging, os
+import sys, itertools, json, logging, os, datetime
 
 import praw
 
@@ -15,6 +15,11 @@ FILE = "posts.json"
 OUT = "out.md"
 CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
+REPO = os.environ["GIT_REPO"]
+REPO_URL = f"https://{REPO}"
+GH_USERNAME = os.environ["GH_USERNAME"]
+GH_EMAIL = os.environ["GH_EMAIL"]
+GH_PAT = os.environ["GH_PAT"]
 
 
 def posts(subreddit, read_all):
@@ -35,7 +40,7 @@ def comment_to_md(content, username, post_id, comment_id, upvotes):
     markdown = ""
     for line in content.splitlines():
         new_formatting = last_formatting
-        stripped = line.startswith(line_prefix) and line.lstrip("    ")
+        stripped = line.startswith(line_prefix) and line.removeprefix("    ")
         if last_formatting == triple_quoted:
             if "```" in line:
                 new_formatting = None
@@ -66,6 +71,12 @@ def comment_to_md(content, username, post_id, comment_id, upvotes):
     split = (markdown + ("\n```" if quote_last_line else "")).split("```\n")
     code_it = itertools.cycle(["```elisp\n", "```\n"])
     return title + "".join([a + b for a, b in zip(split[:-1], code_it)] + [split[-1]])
+
+
+def update_git_repo():
+    os.system(f"git clone {REPO_URL}")
+    os.system(f"git commit -am 'Weekly update from {datetime.date.today()}'")
+    os.system(f"git push https://{GH_USERNAME}:{GH_PAT}@{REPO}")
 
 
 def get_posts(read_all):
@@ -105,7 +116,8 @@ def main():
     fetched_posts = get_posts(all_posts)
     LOGGER.info("Found %d applicable posts", len(fetched_posts))
     existing_posts = persisted_posts()
-    LOGGER.info("Of which %d are new", sum(1 for p in fetched_posts if p not in existing_posts))
+    new_posts = sum(1 for p in fetched_posts if p not in existing_posts)
+    LOGGER.info("Of which %d are new", new_posts)
 
     for post, attribs in fetched_posts.items(): existing_posts[post] = attribs
     with open(FILE, "w") as f:
@@ -114,4 +126,10 @@ def main():
     s = "\n\n".join(t[1]["body"] for t in sorted(existing_posts.items(), key=lambda t: t[1]["upvotes"], reverse=True))
     with open(OUT, "w") as f:
         f.write(s)
-        
+
+    if new_posts > 0:
+        LOGGER.info("Pushing to git repo...")
+        update_git_repo()
+        LOGGER.info("Done")
+    else:
+        LOGGER.info("Not pushing to git repo since no new posts were found")
