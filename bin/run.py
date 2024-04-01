@@ -162,3 +162,7 @@ def main():
     skip_pushing = "--skip-pushing" in sys.argv
     tmp_directory = "--tmp-directory" in sys.argv
     run(all_posts, skip_pushing, tmp_directory)
+
+
+if __name__ == "__main__":
+    main()
