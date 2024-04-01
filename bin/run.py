@@ -1,5 +1,7 @@
 """
 Usage: python3 bin/run.py [--all] [--skip-pushing]
+
+https://praw.readthedocs.io/en/latest/
 """
 import sys, itertools, json, logging, os, datetime
 
@@ -74,7 +76,7 @@ def comment_to_md(content, username, post_id, comment_id, upvotes):
 
 
 def update_git_repo():
-    os.system(f"git clone {REPO_URL}")
+    os.system(f'git clone {REPO_URL} && cd "$(basename "$_" .git)"')
     os.system(f"git commit -am 'Weekly update from {datetime.date.today()}'")
     os.system(f"git push https://{GH_USERNAME}:{GH_PAT}@{REPO}")
 
@@ -135,6 +137,12 @@ def run(all_posts, skip_pushing):
         LOGGER.info("Done")
     else:
         LOGGER.info("Not pushing to git repo since no new posts were found")
+
+
+def handler(event, context):
+    LOGGER.info("event %s", event)
+    LOGGER.info("context %s", context)
+    run(True, False)
 
 
 def main():
