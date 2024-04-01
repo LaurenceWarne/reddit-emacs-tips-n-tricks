@@ -1,5 +1,5 @@
 """
-Usage: python3 bin/run.py [--all] [--skip-pushing]
+Usage: python3 bin/run.py [--all] [--skip-pushing] [--tmp-directory]
 
 https://praw.readthedocs.io/en/latest/
 """
@@ -19,9 +19,8 @@ CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 REPO = os.environ["GIT_REPO"]
 REPO_URL = f"https://{REPO}"
-GH_USERNAME = os.environ["GH_USERNAME"]
-GH_EMAIL = os.environ["GH_EMAIL"]
-GH_PAT = os.environ["GH_PAT"]
+GITHUB_USERNAME = os.environ["GITHUB_USERNAME"]
+GITHUB_EMAIL = os.environ["GITHUB_EMAIL"]
 
 
 def posts(subreddit, read_all):
@@ -75,10 +74,17 @@ def comment_to_md(content, username, post_id, comment_id, upvotes):
     return title + "".join([a + b for a, b in zip(split[:-1], code_it)] + [split[-1]])
 
 
+def init_git_repo():
+    os.system(f"git clone {REPO_URL}")
+    os.chdir([s for s in REPO.split("/") if s][-1])
+    os.system(f"git config user.name {GITHUB_USERNAME}")
+    os.system(f"git config user.email {GITHUB_EMAIL}")
+
+
 def update_git_repo():
-    os.system(f'git clone {REPO_URL} && cd "$(basename "$_" .git)"')
-    os.system(f"git commit -am 'Weekly update from {datetime.date.today()}'")
-    os.system(f"git push https://{GH_USERNAME}:{GH_PAT}@{REPO}")
+    os.system(f"git add out.md posts.json")
+    os.system(f"git commit -m 'Weekly update from {datetime.date.today()}'")
+    os.system(f"git push origin master")
 
 
 def get_posts(read_all):
@@ -113,8 +119,14 @@ def persisted_posts():
         return json.load(f)
 
 
-def run(all_posts, skip_pushing):
+def run(all_posts, skip_pushing, tmp_directory):
     LOGGER.info("Fetching posts...")
+    if not skip_pushing:
+        LOGGER.info("Initialising git repo...")
+        if tmp_directory: os.chdir("/tmp")
+        init_git_repo()
+        LOGGER.info("Done")
+
     fetched_posts = get_posts(all_posts)
     LOGGER.info("Found %d applicable posts", len(fetched_posts))
     existing_posts = persisted_posts()
@@ -142,10 +154,11 @@ def run(all_posts, skip_pushing):
 def handler(event, context):
     LOGGER.info("event %s", event)
     LOGGER.info("context %s", context)
-    run(True, False)
+    run(all_posts=True, skip_pushing=False, tmp_directory=False)
 
 
 def main():
     all_posts = "--all" in sys.argv
     skip_pushing = "--skip-pushing" in sys.argv
-    run(all_posts, skip_pushing)
+    tmp_directory = "--tmp-directory" in sys.argv
+    run(all_posts, skip_pushing, tmp_directory)

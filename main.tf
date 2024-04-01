@@ -72,12 +72,12 @@ resource "aws_lambda_function" "reddit_tips_and_tricks_lambda" {
   ]
   environment {
     variables = {
-      GH_USERNAME   = var.github_username
-      GH_PAT        = var.github_pat
-      GH_EMAIL      = var.github_user_email
-      REPO          = var.github_repo
-      CLIENT_ID     = var.client_id
-      CLIENT_SECRET = var.client_secret
+      GITHUB_USERNAME = var.github_username
+      GITHUB_PAT      = var.github_pat
+      GITHUB_EMAIL    = var.github_user_email
+      REPO            = var.github_repo
+      CLIENT_ID       = var.client_id
+      CLIENT_SECRET   = var.client_secret
     }
   }
 }
