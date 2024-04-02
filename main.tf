@@ -8,7 +8,7 @@ variable "github_username" {
   default     = "emacs-reddit-tips-n-tricks-bot"
 }
 
-variable "github_pat" {
+variable "github_token" {
   description = "The GH PAT token, note this can't be a password since password authentication was removed by Github on August 13, 2021."
   type        = string
 }
@@ -76,9 +76,9 @@ resource "aws_lambda_function" "reddit_tips_and_tricks_lambda" {
   environment {
     variables = {
       GITHUB_USERNAME = var.github_username
-      GITHUB_PAT      = var.github_pat
+      GITHUB_TOKEN    = var.github_token
       GITHUB_EMAIL    = var.github_user_email
-      REPO            = var.github_repo
+      GIT_REPO        = var.github_repo
       CLIENT_ID       = var.client_id
       CLIENT_SECRET   = var.client_secret
     }

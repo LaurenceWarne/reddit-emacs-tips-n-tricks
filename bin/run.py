@@ -21,6 +21,7 @@ REPO = os.environ["GIT_REPO"]
 REPO_URL = f"https://{REPO}"
 GITHUB_USERNAME = os.environ["GITHUB_USERNAME"]
 GITHUB_EMAIL = os.environ["GITHUB_EMAIL"]
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 
 
 def posts(subreddit, read_all):
@@ -82,8 +83,9 @@ def init_git_repo():
 
 
 def update_git_repo():
-    os.system(f"git add out.md posts.json")
+    os.system("git add out.md posts.json")
     os.system(f"git commit -m 'Weekly update from {datetime.date.today()}'")
+    os.system(f"git remote set-url origin https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@{REPO}")
     os.system(f"git push origin master")
 
 
@@ -125,7 +127,7 @@ def run(all_posts, skip_pushing, tmp_directory):
         LOGGER.info("Initialising git repo...")
         if tmp_directory: os.chdir("/tmp")
         init_git_repo()
-        LOGGER.info("Done")
+        LOGGER.info("Done cloning repo")
 
     fetched_posts = get_posts(all_posts)
     LOGGER.info("Found %d applicable posts", len(fetched_posts))
@@ -154,7 +156,7 @@ def run(all_posts, skip_pushing, tmp_directory):
 def handler(event, context):
     LOGGER.info("event %s", event)
     LOGGER.info("context %s", context)
-    run(all_posts=True, skip_pushing=False, tmp_directory=False)
+    run(all_posts=False, skip_pushing=False, tmp_directory=True)
 
 
 def main():
