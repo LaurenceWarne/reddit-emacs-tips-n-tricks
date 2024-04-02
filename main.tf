@@ -68,7 +68,10 @@ resource "aws_lambda_function" "reddit_tips_and_tricks_lambda" {
   memory_size      = 512
   timeout          = 300
   layers = [
-    "arn:aws:lambda:us-east-1:553035198032:layer:git-lambda2:8"
+    # https://github.com/lambci/git-lambda-layer
+    "arn:aws:lambda:us-east-1:553035198032:layer:git-lambda2:8",
+    # https://github.com/keithrozario/Klayers
+    "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p312-praw:1"
   ]
   environment {
     variables = {
