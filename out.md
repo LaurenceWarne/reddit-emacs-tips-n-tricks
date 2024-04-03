@@ -217,23 +217,6 @@ I have two org mode link tips:
    (add-hook 'org-mode-hook #'echo-area-tooltips)
 ```
 
-## u/vkazanov [🔗](https://www.reddit.com/r/emacs/comments/1bdm6mc/comment/kuo1f9y) 
-**Votes:** 16
-
-A dump of my Emacs-related principles after 18 years of tinkering:
-
-1. Don't try to replicate a static IDE setup, Emacs is fluid. 
-2. Emacs Lisp is inevitable for Emacser to make this fluidity possible.
-3. Language-agnostic is better than language-specific. 
-4. Embrace display-alist, fast window manipulation, winner-mode. 
-5. .emacs.el reset every couple of years to accomodate innovation. 
-6. Org-mode/org-roam for all documentation, projects, tips. The agenda is not set in stone. Use queries, filters, tweak, evolve things. 
-7. A contextual dwim is always better than many keybindings. 
-8. Use completion everywhere on everything (vertico is magic).  
-9. Contribute to the core and favourite packages.
-
-I am a beginner though, things might change.
-
 ## u/slinchisl [🔗](https://www.reddit.com/r/emacs/comments/xw4muy/comment/ir96qmu) 
 **Votes:** 16
 
@@ -302,6 +285,23 @@ Migrated to native compiled emacs branch this week. Some hiccups but everything 
 **Votes:** 16
 
 If you needed more reasons to love Magit I've just found out can add the Git meta-fields in the commit message (`Co-authored-by`, `Signed-off-by`, etc, which I can never remember correctly) by typing `C-c TAB` which will interactively ask you for the field (`C-a` -> `Co-authored-by`) and then also interactively fill the relevant team member with their name and e-mail (probably from the repo's list of committers). Awesome!
+
+## u/vkazanov [🔗](https://www.reddit.com/r/emacs/comments/1bdm6mc/comment/kuo1f9y) 
+**Votes:** 15
+
+A dump of my Emacs-related principles after 18 years of tinkering:
+
+1. Don't try to replicate a static IDE setup, Emacs is fluid. 
+2. Emacs Lisp is inevitable for Emacser to make this fluidity possible.
+3. Language-agnostic is better than language-specific. 
+4. Embrace display-alist, fast window manipulation, winner-mode. 
+5. .emacs.el reset every couple of years to accomodate innovation. 
+6. Org-mode/org-roam for all documentation, projects, tips. The agenda is not set in stone. Use queries, filters, tweak, evolve things. 
+7. A contextual dwim is always better than many keybindings. 
+8. Use completion everywhere on everything (vertico is magic).  
+9. Contribute to the core and favourite packages.
+
+I am a beginner though, things might change.
 
 ## u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/1758wua/comment/k4g09iw) 
 **Votes:** 15
@@ -2247,11 +2247,6 @@ The names "account1" refer to the folders in your Maildir for each account, i.e.
 (add-to-list 'mu4e~headers-line-handler-functions 'x-mu4e-header-colors t)
 ```
 
-## u/demosthenex [🔗](https://www.reddit.com/r/emacs/comments/1b7uj43/comment/ktogga6) 
-**Votes:** 9
-
-M-x ielm  Use the repl while learning elisp coding. I had no idea!
-
 ## u/lesliesrussell [🔗](https://www.reddit.com/r/emacs/comments/198rnkj/comment/kibmgv2) 
 **Votes:** 9
 
@@ -3110,6 +3105,11 @@ This isn't a tip or trick, so I guess it is covered by &c. The Init File section
 ```elisp
 (setq user-mail-address "cheney@torture.gov")
 ```
+
+## u/demosthenex [🔗](https://www.reddit.com/r/emacs/comments/1b7uj43/comment/ktogga6) 
+**Votes:** 8
+
+M-x ielm  Use the repl while learning elisp coding. I had no idea!
 
 ## u/LionyxML [🔗](https://www.reddit.com/r/emacs/comments/1b20xgn/comment/kslwb72) 
 **Votes:** 8
