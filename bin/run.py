@@ -78,6 +78,8 @@ def comment_to_md(content, username, post_id, comment_id, upvotes):
 def init_git_repo():
     os.system(f"git clone {REPO_URL}")
     os.chdir([s for s in REPO.split("/") if s][-1])
+    os.system("git pull")
+    LOGGER.info("Working directory: %s", os.getcwd())
     os.system(f"git config user.name {GITHUB_USERNAME}")
     os.system(f"git config user.email {GITHUB_EMAIL}")
 
@@ -85,8 +87,11 @@ def init_git_repo():
 def update_git_repo():
     os.system("git add out.md posts.json")
     os.system(f"git commit -m 'Weekly update from {datetime.date.today()}'")
-    os.system(f"git remote set-url origin https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@{REPO}")
-    os.system(f"git push origin master")
+    LOGGER.info("\n\nGit config:")
+    os.system("git config -l")
+    LOGGER.info("\n\nRemote info:")
+    os.system("git remote -v")
+    os.system(f"git push https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@{REPO} master")
 
 
 def get_posts(read_all):
@@ -122,13 +127,15 @@ def persisted_posts():
 
 
 def run(all_posts, skip_pushing, tmp_directory):
-    LOGGER.info("Fetching posts...")
+    LOGGER.info(f"GH user: {GITHUB_USERNAME}")
+    LOGGER.info(f"Repo:    {REPO}")
     if not skip_pushing:
         LOGGER.info("Initialising git repo...")
         if tmp_directory: os.chdir("/tmp")
         init_git_repo()
         LOGGER.info("Done cloning repo")
 
+    LOGGER.info("Fetching posts...")
     fetched_posts = get_posts(all_posts)
     LOGGER.info("Found %d applicable posts", len(fetched_posts))
     existing_posts = persisted_posts()
@@ -145,7 +152,7 @@ def run(all_posts, skip_pushing, tmp_directory):
 
     if skip_pushing:
         LOGGER.info("Skipping pushing to git repo")
-    elif new_posts > 0:
+    elif True:#new_posts > 0:
         LOGGER.info("Pushing to git repo...")
         update_git_repo()
         LOGGER.info("Done")
