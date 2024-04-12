@@ -1,5 +1,5 @@
 provider "aws" {
-  region     = "us-east-1"
+  region = "us-east-1"
 }
 
 variable "github_username" {
@@ -89,6 +89,12 @@ resource "aws_cloudwatch_event_rule" "reddit_tips_and_tricks_lambda_rule" {
   name                = "run-reddit-tips-and-tricks-function"
   description         = "Schedule reddit tips and tricks lambda function"
   schedule_expression = "rate(7 days)"
+}
+
+resource "aws_cloudwatch_event_target" "reddit_tips_and_tricks_lambda_target" {
+  rule      = aws_cloudwatch_event_rule.reddit_tips_and_tricks_lambda_rule.name
+  target_id = "reddit_tips_and_tricks_lambda_target"
+  arn       = aws_lambda_function.reddit_tips_and_tricks_lambda.arn
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch" {
