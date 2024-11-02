@@ -112,10 +112,12 @@ def get_posts(read_all):
             if ups >= MIN_UPVOTES:
                 LOGGER.info("Found post %s with %d upvotes", post.id, ups)
                 name = comment.author.name if comment.author else "???"
+                parse_dt = lambda c: datetime.datetime.fromtimestamp(c).replace(tzinfo=datetime.timezone.utc)
                 valid[comment.id] = {
                     "author": name,
                     "upvotes": comment.ups,
-                    "body": comment_to_md(comment.body, name, post.id, comment.id, ups)
+                    "body": comment_to_md(comment.body, name, post.id, comment.id, ups),
+                    "created_datetime": str(parse_dt(comment.created_utc))
                 }
 
     return valid
@@ -144,7 +146,7 @@ def run(all_posts, skip_pushing, tmp_directory):
 
     for post, attribs in fetched_posts.items(): existing_posts[post] = attribs
     with open(FILE, "w") as f:
-        f.write(json.dumps(existing_posts))
+        f.write(json.dumps(existing_posts, default=str))
 
     s = "\n\n".join(t[1]["body"] for t in sorted(existing_posts.items(), key=lambda t: t[1]["upvotes"], reverse=True))
     with open(OUT, "w") as f:
