@@ -3,9 +3,10 @@ Usage: python3 bin/run.py [--all] [--skip-pushing] [--tmp-directory]
 
 https://praw.readthedocs.io/en/latest/
 """
-import sys, itertools, json, logging, os, datetime
+import sys, itertools, json, logging, os, datetime, collections
 
 import praw
+from collections import namedtuple
 
 HANDLER = logging.StreamHandler()
 HANDLER.setFormatter(logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s"))
@@ -14,7 +15,7 @@ LOGGER = logging.Logger(__name__)
 LOGGER.addHandler(HANDLER)
 MIN_UPVOTES = 8
 FILE = "posts.json"
-OUT = "out.md"
+OUT = "out"
 CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 REPO = os.environ["GIT_REPO"]
@@ -22,6 +23,11 @@ REPO_URL = f"https://{REPO}"
 GITHUB_USERNAME = os.environ["GITHUB_USERNAME"]
 GITHUB_EMAIL = os.environ["GITHUB_EMAIL"]
 GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
+
+
+MarkdownType = collections.namedtuple("MarkdownType", "header code_start code_end link bold ext")
+GithubMD = MarkdownType("##", "```", "```", lambda text, link: f"[{text}]({link})", lambda s: f"**{s}**", "md")
+OrgMD = MarkdownType("**", "#+BEGIN_SRC elisp", "#+END_SRC", lambda text, link: f"[[{link}][{text}]]", lambda s: f"*{s}*", "org")
 
 
 def posts(subreddit, read_all):
@@ -32,9 +38,9 @@ def posts(subreddit, read_all):
     return found
 
 
-def comment_to_md(content, username, post_id, comment_id, upvotes):
-    link = f"[🔗](https://www.reddit.com/r/emacs/comments/{post_id}/comment/{comment_id})"
-    title = f'## u/{username or "???"} {link} \n**Votes:** {upvotes}\n'
+def comment_to_md(content, username, post_id, comment_id, upvotes, md_type=GithubMD):
+    link = md_type.link("🔗", f"https://www.reddit.com/r/emacs/comments/{post_id}/comment/{comment_id}")
+    title = f'{md_type.header} u/{username or "???"} {link} \n{md_type.bold("Votes")} {upvotes}\n'
 
     last_formatting = None
     triple_quoted, indented = 1, 2
@@ -71,7 +77,7 @@ def comment_to_md(content, username, post_id, comment_id, upvotes):
 
     quote_last_line = last_formatting == indented
     split = (markdown + ("\n```" if quote_last_line else "")).split("```\n")
-    code_it = itertools.cycle(["```elisp\n", "```\n"])
+    code_it = itertools.cycle([md_type.code_start + "\n", md_type.code_end + "\n"])
     return title + "".join([a + b for a, b in zip(split[:-1], code_it)] + [split[-1]])
 
 
@@ -94,7 +100,7 @@ def update_git_repo():
     os.system(f"git push https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@{REPO} master")
 
 
-def get_posts(read_all):
+def get_posts(read_all, md_type=GithubMD):
     reddit = praw.Reddit(
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
@@ -116,7 +122,7 @@ def get_posts(read_all):
                 valid[comment.id] = {
                     "author": name,
                     "upvotes": comment.ups,
-                    "body": comment_to_md(comment.body, name, post.id, comment.id, ups),
+                    "body": comment_to_md(comment.body, name, post.id, comment.id, ups, md_type),
                     "created_datetime": str(parse_dt(comment.created_utc))
                 }
 
@@ -128,7 +134,7 @@ def persisted_posts():
         return json.load(f)
 
 
-def run(all_posts, skip_pushing, tmp_directory):
+def run(all_posts, skip_pushing, tmp_directory, md_type=OrgMD):
     LOGGER.info(f"GH user: {GITHUB_USERNAME}")
     LOGGER.info(f"Repo:    {REPO}")
     if not skip_pushing:
@@ -138,7 +144,7 @@ def run(all_posts, skip_pushing, tmp_directory):
         LOGGER.info("Done cloning repo")
 
     LOGGER.info("Fetching posts...")
-    fetched_posts = get_posts(all_posts)
+    fetched_posts = get_posts(all_posts, md_type)
     LOGGER.info("Found %d applicable posts", len(fetched_posts))
     existing_posts = persisted_posts()
     new_posts = sum(1 for p in fetched_posts if p not in existing_posts)
@@ -149,7 +155,7 @@ def run(all_posts, skip_pushing, tmp_directory):
         f.write(json.dumps(existing_posts, default=str))
 
     s = "\n\n".join(t[1]["body"] for t in sorted(existing_posts.items(), key=lambda t: t[1]["upvotes"], reverse=True))
-    with open(OUT, "w") as f:
+    with open(f"{OUT}.{md_type.ext}", "w") as f:
         f.write(s)
 
     if skip_pushing:
