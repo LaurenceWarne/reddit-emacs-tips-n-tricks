@@ -1,0 +1,52 @@
+name: Weekly Update
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:  
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+  
+      - name: Set up Emacs
+        uses: purcell/setup-emacs@master
+        with:
+          version: 29.4
+  
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+  
+      - uses: actions/checkout@v4
+  
+      - run: pip install praw
+  
+      - name: Find new posts
+        run: python3 bin/run.py --skip-pushing
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIT_REPO: github.com/LaurenceWarne/reddit-emacs-tips-n-tricks
+          GITHUB_USERNAME: emacs-reddit-tips-n-tricks-bot
+          GITHUB_EMAIL: emacstipsntricksbot@gmail.com
+  
+      - name: Export org to markdown
+        run: emacs -Q  --eval '(setq org-export-babel-evaluate nil)' -batch out.org -l ox-md -f org-md-export-to-markdown
+  
+      - name: Commit files
+        run: |
+          git config --local user.email "emacstipsntricksbot@gmail.com"
+          git config --local user.name "emacs-reddit-tips-n-tricks-bot"
+          git add *.org *.md posts.json
+          git commit -m 'Weekly update from $(date +"%Y-%m-%d")'
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
