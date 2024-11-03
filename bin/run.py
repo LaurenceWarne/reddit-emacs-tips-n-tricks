@@ -1,11 +1,11 @@
 """
 Usage: python3 bin/run.py [--all] [--skip-pushing] [--tmp-directory]
 
-https://praw.readthedocs.io/en/latest/
+https://www.reddit.com/dev/api/#GET_search
 """
 import sys, itertools, json, logging, os, datetime, collections
 
-import praw
+import requests
 from collections import namedtuple
 
 HANDLER = logging.StreamHandler()
@@ -14,7 +14,7 @@ HANDLER.setLevel(logging.INFO)
 LOGGER = logging.Logger(__name__)
 LOGGER.addHandler(HANDLER)
 MIN_UPVOTES = 8
-FILE = "posts.json"
+FILE = "comments.json"
 OUT = "out"
 CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
@@ -23,19 +23,59 @@ REPO_URL = f"https://{REPO}"
 GITHUB_USERNAME = os.environ["GITHUB_USERNAME"]
 GITHUB_EMAIL = os.environ["GITHUB_EMAIL"]
 GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
-
+AUTH_URL = "https://www.reddit.com/api/v1/access_token"
+BASE_EMACS_SUB_URL = "https://oauth.reddit.com/r/emacs"
 
 MarkdownType = collections.namedtuple("MarkdownType", "header code_start code_end link bold ext")
 GithubMD = MarkdownType("##", "```", "```", lambda text, link: f"[{text}]({link})", lambda s: f"**{s}**", "md")
 OrgMD = MarkdownType("**", "#+BEGIN_SRC elisp", "#+END_SRC", lambda text, link: f"[[{link}][{text}]]", lambda s: f"*{s}*", "org")
 
+def get_headers(token=None):
+    return {
+        "user-agent": "linux:reddit-tips-n-tricks:1.0 (by u/PriorOutcome)",
+        "Accept": "application/json"
+    } | ({"Authorization": f"bearer {token}"} if token else {})
 
-def posts(subreddit, read_all):
-    found = list(subreddit.search("Weekly Tips", sort="new", limit=None))
-    if not read_all: return found
-    while found:
-        found += list(subreddit.search("Weekly Tips", sort="new", limit=None, params={"after": f"t3_{found[-1]}"}))
-    return found
+
+def post_comments(post_id, headers):
+    response = requests.get(f"{BASE_EMACS_SUB_URL}/comments/{post_id}", headers=headers)
+    json_response = response.json()
+    assert all(e["data"]["after"] is None for e in json_response)
+    return [e["data"] for chunk in json_response for e in chunk["data"]["children"]]
+
+
+def search_emacs_subreddit(headers, count, after=None):
+    after_param = f"&after={after}" if after else ""
+    url = f"{BASE_EMACS_SUB_URL}/search?q=weekly%20tips&restrict_sr=1&sort=new&show=all&limit=100&count={count}{after_param}"
+    LOGGER.info(f"request URL: {url}")
+    response = requests.get(url, headers=headers)
+    data = response.json()["data"]
+    posts = [e["data"] for e in data["children"]]
+    return posts, data["after"]
+
+
+def get_comments(token, read_all):
+    headers = get_headers(token)
+    comments_from_posts = lambda posts: [
+        c for post in posts for c in post_comments(post["name"].removeprefix("t3_"), headers=headers)
+        if post["title"].strip().lower().startswith("weekly tips")  # Early were called 'Weekly tips/trick/etc/ thread'
+    ]
+    posts, after = search_emacs_subreddit(headers, 0)
+    # for p in posts: print(p["title"])
+    total_posts, calls = len(posts), 1
+    all_comments = comments_from_posts(posts)
+    log = lambda : LOGGER.info("Completed API call %d, posts: %d, new offset: %s, total_comments: %d", calls, len(posts), after, len(all_comments))
+    log()
+    if not read_all: return comments
+    while after:
+        calls += 1
+        posts, after = search_emacs_subreddit(headers, total_posts, after)
+        # for p in posts: print(p["title"])
+        total_posts += len(posts)
+        all_comments += comments_from_posts(posts)
+        log()
+    LOGGER.info("Found a total of %d posts", total_posts)    
+    return all_comments
 
 
 def comment_to_md(content, username, post_id, comment_id, upvotes, md_type=GithubMD):
@@ -100,38 +140,31 @@ def update_git_repo():
     os.system(f"git push https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@{REPO} master")
 
 
-def get_posts(read_all, md_type=GithubMD):
-    reddit = praw.Reddit(
-        client_id=CLIENT_ID,
-        client_secret=CLIENT_SECRET,
-        user_agent="linux:reddit-tips-n-tricks:1.0 (by u/PriorOutcome)",
-        check_for_updates=False
-    )
-    reddit.read_only = True    
-    subreddit = reddit.subreddit("emacs")
-    found = posts(subreddit, read_all)
-
+def refine_comments(comments, md_type=GithubMD):
     valid = {}
-    for post in found:
-        for comment in post.comments:
-            ups = comment.ups
-            if ups >= MIN_UPVOTES:
-                LOGGER.info("Found post %s with %d upvotes", post.id, ups)
-                name = comment.author.name if comment.author else "???"
-                parse_dt = lambda c: datetime.datetime.fromtimestamp(c).replace(tzinfo=datetime.timezone.utc)
-                valid[comment.id] = {
-                    "author": name,
-                    "upvotes": comment.ups,
-                    "body": comment_to_md(comment.body, name, post.id, comment.id, ups, md_type),
-                    "created_datetime": str(parse_dt(comment.created_utc))
-                }
-
+    for comment in comments:
+        ups = comment["ups"]
+        name = comment["name"]  # they put the id here apparently
+        body = comment.get("body", None)
+        if ups >= MIN_UPVOTES and body:
+            LOGGER.info("Found comment %s with %d upvotes", name, ups)
+            author = comment.get("author", "???")
+            parse_dt = lambda c: datetime.datetime.fromtimestamp(c).replace(tzinfo=datetime.timezone.utc)
+            valid[name] = {
+                "author": author,
+                "upvotes": ups,
+                "body": comment_to_md(body, author, comment["parent_id"], name, ups, md_type),
+                "created_datetime": str(parse_dt(comment["created_utc"]))
+            }
     return valid
     
 
-def persisted_posts():
-    with open(FILE, "r") as f:
-        return json.load(f)
+def persisted_comments():
+    try:
+        with open(FILE, "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
 
 
 def run(all_posts, skip_pushing, tmp_directory, md_type=OrgMD):
@@ -143,18 +176,27 @@ def run(all_posts, skip_pushing, tmp_directory, md_type=OrgMD):
         init_git_repo()
         LOGGER.info("Done cloning repo")
 
+    auth_response = requests.post(
+        AUTH_URL,
+        data={"grant_type": "client_credentials"},
+        auth=(CLIENT_ID, CLIENT_SECRET),
+        headers=get_headers()
+    )
+    token = auth_response.json()["access_token"]
+
     LOGGER.info("Fetching posts...")
-    fetched_posts = get_posts(all_posts, md_type)
-    LOGGER.info("Found %d applicable posts", len(fetched_posts))
-    existing_posts = persisted_posts()
-    new_posts = sum(1 for p in fetched_posts if p not in existing_posts)
-    LOGGER.info("Of which %d are new", new_posts)
+    raw_comments = get_comments(token, all_posts)
+    comments = refine_comments(raw_comments, md_type)
+    LOGGER.info("Found %d applicable comments", len(comments))
+    existing_comments = persisted_comments()
+    new_comments = sum(1 for p in comments if p not in existing_comments)
+    LOGGER.info("Of which %d are new", new_comments)
 
-    for post, attribs in fetched_posts.items(): existing_posts[post] = attribs
+    for comment, attribs in comments.items(): existing_comments[comment] = attribs
     with open(FILE, "w") as f:
-        f.write(json.dumps(existing_posts, default=str))
+        f.write(json.dumps(existing_comments, default=str))
 
-    s = "\n\n".join(t[1]["body"] for t in sorted(existing_posts.items(), key=lambda t: t[1]["upvotes"], reverse=True))
+    s = "\n\n".join(t[1]["body"] for t in sorted(existing_comments.items(), key=lambda t: t[1]["upvotes"], reverse=True))
     with open(f"{OUT}.{md_type.ext}", "w") as f:
         f.write(s)
 

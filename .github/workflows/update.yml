@@ -42,7 +42,7 @@ jobs:
         run: |
           git config --local user.email "emacstipsntricksbot@gmail.com"
           git config --local user.name "emacs-reddit-tips-n-tricks-bot"
-          git add *.org *.md posts.json
+          git add *.org *.md comments.json
           git commit -m 'Weekly update from $(date +"%Y-%m-%d")'
           
       - name: Push changes
