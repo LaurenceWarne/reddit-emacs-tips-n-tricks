@@ -1,5 +1,5 @@
 """
-Usage: python3 bin/run.py [--all] [--skip-pushing] [--tmp-directory]
+Usage: python3 bin/run.py [--all]
 
 https://www.reddit.com/dev/api/#GET_search
 """
@@ -18,11 +18,6 @@ FILE = "comments.json"
 OUT = "out"
 CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
-REPO = os.environ["GIT_REPO"]
-REPO_URL = f"https://{REPO}"
-GITHUB_USERNAME = os.environ["GITHUB_USERNAME"]
-GITHUB_EMAIL = os.environ["GITHUB_EMAIL"]
-GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 AUTH_URL = "https://www.reddit.com/api/v1/access_token"
 BASE_EMACS_SUB_URL = "https://oauth.reddit.com/r/emacs"
 
@@ -131,25 +126,6 @@ def comment_to_md(content, username, post_id, comment_id, upvotes, md_type=Githu
     return title + html.unescape(heading_escaped)
 
 
-def init_git_repo():
-    os.system(f"git clone {REPO_URL}")
-    os.chdir([s for s in REPO.split("/") if s][-1])
-    os.system("git pull")
-    LOGGER.info("Working directory: %s", os.getcwd())
-    os.system(f"git config user.name {GITHUB_USERNAME}")
-    os.system(f"git config user.email {GITHUB_EMAIL}")
-
-
-def update_git_repo():
-    os.system("git add out.md posts.json")
-    os.system(f"git commit -m 'Weekly update from {datetime.date.today()}'")
-    LOGGER.info("\n\nGit config:")
-    os.system("git config -l")
-    LOGGER.info("\n\nRemote info:")
-    os.system("git remote -v")
-    os.system(f"git push https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@{REPO} master")
-
-
 def refine_comments(comments, md_type=GithubMD):
     valid = {}
     for comment in comments:
@@ -177,15 +153,7 @@ def persisted_comments():
         return {}
 
 
-def run(all_posts, skip_pushing, tmp_directory, md_type=OrgMD):
-    LOGGER.info(f"GH user: {GITHUB_USERNAME}")
-    LOGGER.info(f"Repo:    {REPO}")
-    if not skip_pushing:
-        LOGGER.info("Initialising git repo...")
-        if tmp_directory: os.chdir("/tmp")
-        init_git_repo()
-        LOGGER.info("Done cloning repo")
-
+def run(all_posts, md_type=OrgMD):
     auth_response = requests.post(
         AUTH_URL,
         data={"grant_type": "client_credentials"},
@@ -211,27 +179,10 @@ def run(all_posts, skip_pushing, tmp_directory, md_type=OrgMD):
     with open(f"{OUT}.{md_type.ext}", "w") as f:
         f.write(md_type.bof + s)
 
-    if skip_pushing:
-        LOGGER.info("Skipping pushing to git repo")
-    elif True:#new_posts > 0:
-        LOGGER.info("Pushing to git repo...")
-        update_git_repo()
-        LOGGER.info("Done")
-    else:
-        LOGGER.info("Not pushing to git repo since no new posts were found")
-
-
-def handler(event, context):
-    LOGGER.info("event %s", event)
-    LOGGER.info("context %s", context)
-    run(all_posts=False, skip_pushing=False, tmp_directory=True)
-
 
 def main():
     all_posts = "--all" in sys.argv
-    skip_pushing = "--skip-pushing" in sys.argv
-    tmp_directory = "--tmp-directory" in sys.argv
-    run(all_posts, skip_pushing, tmp_directory)
+    run(all_posts)
 
 
 if __name__ == "__main__":
