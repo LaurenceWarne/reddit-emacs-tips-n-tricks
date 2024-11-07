@@ -1,5 +1,3 @@
-
-
 # u/TheDrownedKraken [🔗](https://www.reddit.com/r/emacs/comments/t3_o68i0v/comment/t1_h2rdkkz)
 
 **Votes** 37
@@ -36,27 +34,29 @@ When you have an active region, \`undo\` will only undo changes in that region i
 
 After years of using emacs, I wrote my second ever elisp function to open on github the code I'm browsing in emacs.
 
-    (defun open-on-github ()
-      (interactive)
-      (let
-          ((repo-url (magit-git-string "remote" "get-url" "--push" "origin"))
-           (commit-hash (magit-git-string "rev-parse" "HEAD"))
-           (start-line (if (use-region-p)
-                           (line-number-at-pos (region-beginning))
-                         (line-number-at-pos)))
-           (end-line (if (use-region-p) (line-number-at-pos (region-end)))))
-        (unless repo-url (error  "not in a git repo"))
-        (browse-url
-         (concat
-          (substring repo-url 0 -4)
-          "/blob/"
-          commit-hash
-          "/"
-          (substring buffer-file-name (length (projectile-project-root)))
-          "#L" (number-to-string start-line)
-          (if (and (use-region-p) (< 0 (- end-line start-line)))
-              (concat "..L" (number-to-string end-line)))
-          ))))
+```elisp
+(defun open-on-github ()
+  (interactive)
+  (let
+      ((repo-url (magit-git-string "remote" "get-url" "--push" "origin"))
+       (commit-hash (magit-git-string "rev-parse" "HEAD"))
+       (start-line (if (use-region-p)
+                       (line-number-at-pos (region-beginning))
+                     (line-number-at-pos)))
+       (end-line (if (use-region-p) (line-number-at-pos (region-end)))))
+    (unless repo-url (error  "not in a git repo"))
+    (browse-url
+     (concat
+      (substring repo-url 0 -4)
+      "/blob/"
+      commit-hash
+      "/"
+      (substring buffer-file-name (length (projectile-project-root)))
+      "#L" (number-to-string start-line)
+      (if (and (use-region-p) (< 0 (- end-line start-line)))
+          (concat "..L" (number-to-string end-line)))
+      ))))
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3m1liu)
@@ -85,13 +85,16 @@ So useful, especially for resetting point during macros that need to start at th
 
 Yasnippet has the capability of surrounding. For example, if you have this C++ namespace snippet:
 
-    # -*- mode: snippet -*-
-    # name: namespace-surround
-    # key: ns
-    # --
-    namespace ${1}${1:$(if (> (length yas-text) 0) " {" "{")}
-    `yas-selected-text`$0
-    } // namespace${1:$(if (> (length yas-text) 0) (concat " " (substring-no-properties yas-text)) "")}
+```elisp
+# -*- mode: snippet -*-
+# name: namespace-surround
+# key: ns
+# --
+namespace ${1}${1:$(if (> (length yas-text) 0) " {" "{")}
+`yas-selected-text`$0
+} // namespace${1:$(if (> (length yas-text) 0) (concat " " (substring-no-properties yas-text)) "")}
+
+```
 
 Then if you bind \`(yas-expand-snippet (yas-lookup-snippet "namespace-surround"))\` to some key, then you can select some code, press your keybinding, and the selected code will be surrounded by "namespace NAME {" and "} // namespace NAME".
 
@@ -118,24 +121,27 @@ I just learned that in eshell, $$ is replaced with the output from the last comm
 
 \`shortdoc\` - one of the new things in Emacs 28.1 - is great for maintaining your own "cheat sheets" of Elisp functions as you discover them. For example, eval this in your Emacs session:
 
-    (define-short-documentation-group my-datetime
-      "Querying current time"
-      (current-time
-       :eval (current-time))
-      (float-time
-       :eval (float-time))
-      
-      "Time formats"
-      (time-convert
-       :eval (time-convert (current-time))
-       :eval (time-convert (current-time) 'list)
-       :eval (time-convert (current-time) 100000)
-       :eval (time-convert (current-time) 200000)
-       :eval (time-convert (current-time) t)
-       :eval (time-convert (current-time) 'integer))
-      
-      (float-time
-       :eval (float-time (current-time))))
+```elisp
+(define-short-documentation-group my-datetime
+  "Querying current time"
+  (current-time
+   :eval (current-time))
+  (float-time
+   :eval (float-time))
+  
+  "Time formats"
+  (time-convert
+   :eval (time-convert (current-time))
+   :eval (time-convert (current-time) 'list)
+   :eval (time-convert (current-time) 100000)
+   :eval (time-convert (current-time) 200000)
+   :eval (time-convert (current-time) t)
+   :eval (time-convert (current-time) 'integer))
+  
+  (float-time
+   :eval (float-time (current-time))))
+
+```
 
 After this, the \`my-datetime\` group will show as an option in \`M-x shortdoc-display-group\`. Additionally, if you view help for any of the functions mentioned above, the Help buffer will refer back to the \`my-datetime\` shortdoc group!
 
@@ -170,43 +176,37 @@ But the fact you can attach keymaps to overlays just seems so useful, will defin
 
 I have two org mode link tips:
 
-1.  \`(setq org-return-follows-link t)\` lets you press RET to follow a
-    link. Don't worry, the traditional behavior of RET, namely inserting
-    a newline, is still easy: \`C-q C-j\`.
+1.  \`(setq org-return-follows-link t)\` lets you press RET to follow a link. Don't worry, the traditional behavior of RET, namely inserting a newline, is still easy: \`C-q C-j\`.
 
-2.  I often want to see what the destination of a link is. I used to
-    use one of these methods:
+2.  I often want to see what the destination of a link is. I used to use one of these methods:
     -   mouse hover,
     -   running and canceling \`org-insert-link\` (\`C-c C-l\`, read the
 
-    destination, `C-g`),
+```elisp
+destination, `C-g`),
+```
 
 -   \`org-toggle-link-display\`, which toggles between the neat formatting of
 
-    links and the raw source and is pretty ugly.
+```elisp
+links and the raw source and is pretty ugly.
 
-But a better option is to use \`display-local-help\` (\`C-h .\`), which
-will show the tooltip in the echo area. And, you can even have the
-tooltip at point echoed automatically with \`(setq
-help-at-pt-display-when-idle t)\`. There is a delay controlled by
-the variable \`help-at-pt-timer-delay\` which I like to set to 0.
-Beware that just using \`(setq help-at-pt-timer-delay 0)\` has no effect,
-you need to use \`customize-set-variable\` or manually cancel the
-timer and set a new one (see below).
+```
 
-Now, these \`help-at-pt\` variables aren't specifically for org
-links, they control the behavior of all tooltips, and I quickly
-realized I really only wanted to change the behavior in org mode
-buffers. You can do that as follows:
+But a better option is to use \`display-local-help\` (\`C-h .\`), which will show the tooltip in the echo area. And, you can even have the tooltip at point echoed automatically with \`(setq help-at-pt-display-when-idle t)\`. There is a delay controlled by the variable \`help-at-pt-timer-delay\` which I like to set to 0. Beware that just using \`(setq help-at-pt-timer-delay 0)\` has no effect, you need to use \`customize-set-variable\` or manually cancel the timer and set a new one (see below).
 
-    (defun echo-area-tooltips ()
-      "Show tooltips in the echo area automatically for current buffer."
-      (setq-local help-at-pt-display-when-idle t
-                  help-at-pt-timer-delay 0)
-      (help-at-pt-cancel-timer)
-      (help-at-pt-set-timer))
-    
-    (add-hook 'org-mode-hook #'echo-area-tooltips)
+Now, these \`help-at-pt\` variables aren't specifically for org links, they control the behavior of all tooltips, and I quickly realized I really only wanted to change the behavior in org mode buffers. You can do that as follows:
+
+```elisp
+(defun echo-area-tooltips ()
+  "Show tooltips in the echo area automatically for current buffer."
+  (setq-local help-at-pt-display-when-idle t
+              help-at-pt-timer-delay 0)
+  (help-at-pt-cancel-timer)
+  (help-at-pt-set-timer))
+
+(add-hook 'org-mode-hook #'echo-area-tooltips)
+```
 
 
 # u/vkazanov [🔗](https://www.reddit.com/r/emacs/comments/t3_1bdm6mc/comment/t1_kuo1f9y)
@@ -250,14 +250,14 @@ But this week I discovered \`ffap-bindings\`. This function replaces some key bi
 
 Update from a couple of weeks ago: after some grinding, I've set the parsing of past comments from this thread to auto update on a weekly basis here: [<https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md>](<https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md>)
 
-I've also fixed the broken highlighting of some code snippets, and hopefully parsed all past threads.  There's 200+ comments there (sorted by upvotes), so ctrl-f ing e.g. \\\`magit\\\` may help you if you're looking for something specific
+I've also fixed the broken highlighting of some code snippets, and hopefully parsed all past threads. There's 200+ comments there (sorted by upvotes), so ctrl-f ing e.g. \\\`magit\\\` may help you if you're looking for something specific
 
 
 # u/tryptych [🔗](https://www.reddit.com/r/emacs/comments/t3_v2by7z/comment/t1_iauyzbl)
 
 **Votes** 18
 
-It's not worth a separate post, but after spending some pleasant yak-shaving time optimising my startup using use-package, I wrote a [post about it](<https://blog.markhepburn.com/posts/understanding-use-package-optimisations/>).  There's a few posts around suggesting features of \`use-package\` to optimise startup, but none of them really explained how they tied back to \`autoload\`, \`eval-after-load\`, etc so I was trying to encourage people to dig out \`macroexpand\` and find out.
+It's not worth a separate post, but after spending some pleasant yak-shaving time optimising my startup using use-package, I wrote a [post about it](<https://blog.markhepburn.com/posts/understanding-use-package-optimisations/>). There's a few posts around suggesting features of \`use-package\` to optimise startup, but none of them really explained how they tied back to \`autoload\`, \`eval-after-load\`, etc so I was trying to encourage people to dig out \`macroexpand\` and find out.
 
 
 # u/AffectionateAd8985 [🔗](https://www.reddit.com/r/emacs/comments/t3_sd10q9/comment/t1_hu9xfed)
@@ -280,7 +280,7 @@ Move to first heading when open org files, with \`org-use-speed-commands\`, I ca
 
 **Votes** 16
 
-I finally got around to writing a small README for my Emacs config, highlighting some homegrown parts that I really like.  I reckon most of these things are pretty standard, but maybe some people here still find it useful: 
+I finally got around to writing a small README for my Emacs config, highlighting some homegrown parts that I really like. I reckon most of these things are pretty standard, but maybe some people here still find it useful:
 
 <https://gitlab.com/slotThe/dotfiles/-/tree/master/emacs/.config/emacs>
 
@@ -291,11 +291,13 @@ I finally got around to writing a small README for my Emacs config, highlighting
 
 I use the following snippet to change background color of compilation buffer to a light red if the compilation failed. I use compilation buffer to run tests on a second monitor and this is pretty useful.
 
-    (defun meain/compilation-colorcode (_buffer string)
-        "Change background color of compilation `_BUFFER' to red on failure."
-        (unless (string-prefix-p "finished" string) ; Having color for success was distracting
-        (face-remap-add-relative 'default 'diff-hl-delete)))
-    (add-to-list 'compilation-finish-functions 'meain/compilation-colorcode)
+```elisp
+(defun meain/compilation-colorcode (_buffer string)
+    "Change background color of compilation `_BUFFER' to red on failure."
+    (unless (string-prefix-p "finished" string) ; Having color for success was distracting
+    (face-remap-add-relative 'default 'diff-hl-delete)))
+(add-to-list 'compilation-finish-functions 'meain/compilation-colorcode)
+```
 
 
 # u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/t3_vnals8/comment/t1_ie7p6ja)
@@ -304,13 +306,16 @@ I use the following snippet to change background color of compilation buffer to 
 
 I recently discovered \`thing-at-point-looking-at\`, which seems much easier to use on its own than to fully define a new kind of "thing."
 
-For a while I've been wanting to conveniently identify a Jira ticket identifier at point so I can browse to it.  Ticket IDs are basically a sequence of letters, a hyphen, and a sequence of digits.  First I tried using \`symbol-at-point\`, but that can include extraneous neighboring characters, like \`/\` when the ticket ID is part of a URL.  Eventually, while poring over the \`thingatpt\` source, I found \`thing-at-point-looking-at\`, which quickly led to:
+For a while I've been wanting to conveniently identify a Jira ticket identifier at point so I can browse to it. Ticket IDs are basically a sequence of letters, a hyphen, and a sequence of digits. First I tried using \`symbol-at-point\`, but that can include extraneous neighboring characters, like \`/\` when the ticket ID is part of a URL. Eventually, while poring over the \`thingatpt\` source, I found \`thing-at-point-looking-at\`, which quickly led to:
 
-    (defun browse-ticket-at-point ()
-      (interactive)
-      (if (thing-at-point-looking-at (rx (+ alpha) "-" (+ digit)))
-          (browse-url (format "https://jirahost/browse/%s" (match-string 0)))
-        (error "No ticket at point")))
+```elisp
+(defun browse-ticket-at-point ()
+  (interactive)
+  (if (thing-at-point-looking-at (rx (+ alpha) "-" (+ digit)))
+      (browse-url (format "https://jirahost/browse/%s" (match-string 0)))
+    (error "No ticket at point")))
+
+```
 
 Easy peasy!
 
@@ -319,21 +324,18 @@ Easy peasy!
 
 **Votes** 16
 
-Something amazin that I have been using recently is \`ripgrep-all\` as the \`consult-ripgrep\` command to search in pdfs. 
+Something amazin that I have been using recently is \`ripgrep-all\` as the \`consult-ripgrep\` command to search in pdfs.
 
-It is amazing with the \`orderless\` dispatchers to control the search filtering.
-I use \`!\` to exclude a string and \`=\` to match exactly.
+It is amazing with the \`orderless\` dispatchers to control the search filtering. I use \`!\` to exclude a string and \`=\` to match exactly.
 
-Also amazing with \`embark-collect\` which allows collapsing features.
-Or within the collect buffer use \`consult-line\` to further filter.
-And even open the pdf.
+Also amazing with \`embark-collect\` which allows collapsing features. Or within the collect buffer use \`consult-line\` to further filter. And even open the pdf.
 
 
 # u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/t3_p6mwx2/comment/t1_h9e6uqq)
 
 **Votes** 16
 
-Here's a popular Emacs config I just rediscovered.  Some cool stuff here.  <https://github.com/angrybacon/dotemacs>
+Here's a popular Emacs config I just rediscovered. Some cool stuff here. <https://github.com/angrybacon/dotemacs>
 
 
 # u/gopar [🔗](https://www.reddit.com/r/emacs/comments/t3_k4gv0x/comment/t1_ge9det9)
@@ -342,7 +344,7 @@ Here's a popular Emacs config I just rediscovered.  Some cool stuff here.  <http
 
 A very simple thing I've done is remap ";" (semicolon) to to "\\\_" (underscore) in almost all modes. Since I work with mainly Python, this is so much easier than always doing SHIFT-DASH every couple of keystrokes. And if I want a regular semicolon, I just do "C-u ;" and insert a semicolon
 
-I also set this in modes such as C/C++, etc. This works by automatically setting the last character (if it was an underscore) to a semicolon on enter. 
+I also set this in modes such as C/C++, etc. This works by automatically setting the last character (if it was an underscore) to a semicolon on enter.
 
 eg. "|" is cursor
 
@@ -352,18 +354,9 @@ turns into
 
 int a = 10\\\*10;
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">(cursor on new line)</td>
-</tr>
-</tbody>
-</table>
+|                     |
+|-------------------- |
+| (cursor on new line) |
 
 &#x200B;
 
@@ -396,20 +389,26 @@ warning: poop emoji
 
 I was reading through the org manual, and learnt about two variables \`org-agenda-category-icon-alist\` and \`org-agenda-prefix-format\`, the first allows you to set icons for categories (\`CATEGORY\` property), icons can be images or symbols, this is the code I came up with and the agenda already looks more colorful and clear
 
-    (setq org-agenda-category-icon-alist nil)
-    (setq agenda-categories-alist
-    '(("WORK" "💼") ("SOFTWARE" "💻") ("SETUP" "🐧") ("EMAIL" "✉️")
-    ("HOME" "🏠") ("WOOD" "🪵") ("FAMILY" "👪") ("REPORTS" "📚")
-    ("INCOME" "💰")))
-    (dolist (icon agenda-categories-alist) (add-to-list 'org-agenda-category-icon-alist
-    `(,(car icon) ,(cdr icon) nil nil :width (16.) :ascent center)))
-    (defun format-agenda-prefix () (interactive)
-    (setcar org-agenda-prefix-format '(agenda . "  %-2i  %?-12t% s")))
-    (add-hook 'org-agenda-mode-hook 'format-agenda-prefix)
+```elisp
+(setq org-agenda-category-icon-alist nil)
+(setq agenda-categories-alist
+'(("WORK" "💼") ("SOFTWARE" "💻") ("SETUP" "🐧") ("EMAIL" "✉️")
+("HOME" "🏠") ("WOOD" "🪵") ("FAMILY" "👪") ("REPORTS" "📚")
+("INCOME" "💰")))
+(dolist (icon agenda-categories-alist) (add-to-list 'org-agenda-category-icon-alist
+`(,(car icon) ,(cdr icon) nil nil :width (16.) :ascent center)))
+(defun format-agenda-prefix () (interactive)
+(setcar org-agenda-prefix-format '(agenda . "  %-2i  %?-12t% s")))
+(add-hook 'org-agenda-mode-hook 'format-agenda-prefix)
+
+```
 
 Of course for the emojis to show up correctly I use this:
 
-    (set-fontset-font "fontset-default" 'symbol (font-spec :family "Noto Color Emoji"))
+```elisp
+(set-fontset-font "fontset-default" 'symbol (font-spec :family "Noto Color Emoji"))
+
+```
 
 I am sure a lot of you know about these, please share your customization
 
@@ -420,13 +419,16 @@ I am sure a lot of you know about these, please share your customization
 
 If you're like me, and your day ends way past midnight, handling those last few tasks in your Org Mode agenda gets tricky. Fortunately, it turns out Org Mode has what I call "25th hour mode".
 
-    ;; consider the current day to end at 3AM
-    (setq org-extend-today-until 3) 
-        
-    ;; make timestamp processing functions aware of this
-    (setq org-use-effective-time t) 
+```elisp
+;; consider the current day to end at 3AM
+(setq org-extend-today-until 3) 
+    
+;; make timestamp processing functions aware of this
+(setq org-use-effective-time t) 
 
-Combined, this allows to extend the day past midnight, with things like agenda views, scheduling commands, repeaters, etc. thinking the current time is 23:59 up until the \`org-extend-today-until\` limit. With this enabled, if I have a task that has a repeater of  and complete it at 01:00, I no longer have to then manually reschedule the task back one day.
+```
+
+Combined, this allows to extend the day past midnight, with things like agenda views, scheduling commands, repeaters, etc. thinking the current time is 23:59 up until the \`org-extend-today-until\` limit. With this enabled, if I have a task that has a repeater of and complete it at 01:00, I no longer have to then manually reschedule the task back one day.
 
 
 # u/globalcandyamnesia [🔗](https://www.reddit.com/r/emacs/comments/t3_ooldn6/comment/t1_h67qge6)
@@ -435,25 +437,28 @@ Combined, this allows to extend the day past midnight, with things like agenda v
 
 I'm trying to feminize my voice and org mode has been invaluable.
 
-    (org-babel-do-load-languages 'org-babel-load-lanuages
-      '((shell . t)))
-        
-    (setq org-capture-templates
-      `(("v" "Voice" entry
-        (file+olp+datetree ,(concat my-org-directory "voice/training.org"))
-        ,(concat
-          "* Record \n"
-          "\n"
-          "  #+begin_src sh\n"
-          "    rec %(format-time-string \"%Y-%m-%d-%H.%M.%S\").aiff\n"
-          "  #+end\_src\n"
-          "\n"
-          "* Play\n"
-          "  #+begin_src sh\n"
-          "    play %(format-time-string \"%Y-%m-%d-%H.%M.%S\").aiff\n"
-          "  #+end_src\n")
-        :immediate-finish t
-        :jump-to-captured t)))
+```elisp
+(org-babel-do-load-languages 'org-babel-load-lanuages
+  '((shell . t)))
+    
+(setq org-capture-templates
+  `(("v" "Voice" entry
+    (file+olp+datetree ,(concat my-org-directory "voice/training.org"))
+    ,(concat
+      "* Record \n"
+      "\n"
+      "  #+begin_src sh\n"
+      "    rec %(format-time-string \"%Y-%m-%d-%H.%M.%S\").aiff\n"
+      "  #+end\_src\n"
+      "\n"
+      "* Play\n"
+      "  #+begin_src sh\n"
+      "    play %(format-time-string \"%Y-%m-%d-%H.%M.%S\").aiff\n"
+      "  #+end_src\n")
+    :immediate-finish t
+    :jump-to-captured t)))
+
+```
 
 This requires 'SoX' for linux. You can go into the record src block and press \\\`C-c C-c\\\` to start recording and \\\`C-g\\\` to end. To play back the recording, press \\\`C-c C-c\\\` within the play src block. I imagine this might be useful beyond the trans community for basic voice journaling.
 
@@ -473,33 +478,35 @@ Note that there is also an \`isearch-query-replace-regexp\` command but you don'
 
 I use, and love, [transient](<https://github.com/magit/transient>). I have a ton of commands set up, but the below command is for window manipulation. Personally, I bind it to \`s-w\`. I use [buffer-move](<https://github.com/lukhas/buffer-move>) for rearranging windows in a frame.
 
-    (define-transient-command transient-window ()
-      "Most commonly used window commands"
-      [["Splits"
-        ("s" "Horizontal" split-window-below)
-        ("v" "Vertical"   split-window-right)
-        ("b" "Balance"    balance-windows)
-        ("f" "Fit"        fit-window-to-buffer)
-       ["Window"
-        ("c" "Clone Indirect" clone-indirect-buffer)
-        ("t" "Tear Off" tear-off-window)
-        ("k" "Kill" delete-window)
-        ("K" "Kill Buffer+Win"  kill-buffer-and-window)
-        ("o" "Kill Others"  delete-other-windows)
-        ("m" "Maximize" maximize-window)]
-       ["Navigate"
-        ("<left>"  "←" windmove-left  :transient t)
-        ("<right>" "→" windmove-right :transient t)
-        ("<up>"    "↑" windmove-up    :transient t)
-        ("<down>"  "↓" windmove-down  :transient t)]
-       ["Move"
-        ("S-<left>"  "S-←" buf-move-left  :transient t)
-        ("S-<right>" "S-→" buf-move-right :transient t)
-        ("S-<up>"    "S-↑" buf-move-up    :transient t)
-        ("S-<down>"  "S-↓" buf-move-down  :transient t)]
-       ["Undo/Redo"
-        ("s-z" "Winner Undo" winner-undo :transient t)
-        ("s-Z" "Winner Redo" winner-redo :transient t)]])
+```elisp
+(define-transient-command transient-window ()
+  "Most commonly used window commands"
+  [["Splits"
+    ("s" "Horizontal" split-window-below)
+    ("v" "Vertical"   split-window-right)
+    ("b" "Balance"    balance-windows)
+    ("f" "Fit"        fit-window-to-buffer)
+   ["Window"
+    ("c" "Clone Indirect" clone-indirect-buffer)
+    ("t" "Tear Off" tear-off-window)
+    ("k" "Kill" delete-window)
+    ("K" "Kill Buffer+Win"  kill-buffer-and-window)
+    ("o" "Kill Others"  delete-other-windows)
+    ("m" "Maximize" maximize-window)]
+   ["Navigate"
+    ("<left>"  "←" windmove-left  :transient t)
+    ("<right>" "→" windmove-right :transient t)
+    ("<up>"    "↑" windmove-up    :transient t)
+    ("<down>"  "↓" windmove-down  :transient t)]
+   ["Move"
+    ("S-<left>"  "S-←" buf-move-left  :transient t)
+    ("S-<right>" "S-→" buf-move-right :transient t)
+    ("S-<up>"    "S-↑" buf-move-up    :transient t)
+    ("S-<down>"  "S-↓" buf-move-down  :transient t)]
+   ["Undo/Redo"
+    ("s-z" "Winner Undo" winner-undo :transient t)
+    ("s-Z" "Winner Redo" winner-redo :transient t)]])
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_hqxm5v/comment/t1_fy1rq34)
@@ -517,9 +524,12 @@ If you need to find all the occurrences of a string in the project files, but on
 
 For example, If you need occurrences of \`fancystr\` in files of type \`html\`, the search pattern should be \`fancystr &#x2013; -t html\`
 
-From \`consult-grep\` documentation, command line options can be passed to grep, specified behind \`&#x2013;.\`  The overall prompt input has the form:
+From \`consult-grep\` documentation, command line options can be passed to grep, specified behind \`&#x2013;.\` The overall prompt input has the form:
 
-    #async-input -- rg-opts#filter-string
+```elisp
+#async-input -- rg-opts#filter-string
+
+```
 
 I have just discovered this, and it made my day.
 
@@ -528,7 +538,7 @@ I have just discovered this, and it made my day.
 
 **Votes** 14
 
-Plain old \`query-replace\` has many cool features, first of all it respects the active region (if it's active it will only query for replacements in the active region).  There are many useful keys in addition to plain \`y\`/\`n\`:
+Plain old \`query-replace\` has many cool features, first of all it respects the active region (if it's active it will only query for replacements in the active region). There are many useful keys in addition to plain \`y\`/\`n\`:
 
 \`!\`: replaces all remaning matches
 
@@ -545,32 +555,38 @@ And many more you can see using \`?\`.
 
 You can toggle vertico's height between 15 and "almost full frame" with this. When vertico is invoked, it will always have a height of 15. But if you have a lot of matches, and like to have a better overview, press the binding, and vertico will show a full frame of matches. This is useful for example when \`consult-buffer\` presents a lot of buffers.
 
-    (advice-add 'vertico--setup :before (lambda () (setq vertico-count 15)))
-    (define-key minibuffer-local-map (kbd "s-'") (lambda ()
-      (interactive)
-      (let ((vertico-resize t))
-        (setq vertico-count (if (= vertico-count 15) (- (frame-height) 5) 15))
-        (vertico--exhibit))))
+```elisp
+(advice-add 'vertico--setup :before (lambda () (setq vertico-count 15)))
+(define-key minibuffer-local-map (kbd "s-'") (lambda ()
+  (interactive)
+  (let ((vertico-resize t))
+    (setq vertico-count (if (= vertico-count 15) (- (frame-height) 5) 15))
+    (vertico--exhibit))))
+
+```
 
 Another useful feature is to kill buffers in \`consult-buffer\` without manually invoking \`embark-act\`. I miss this feature from Helm, where you can do actions using only one binding (no need to press an intermediate binding which invokes \`embark-act\`). Note, I just blindly copied some of the logic from \`embark\`, maybe there are some unnecessary things here.
 
-    (defun my-embark-M-k (&optional arg)
-      (interactive "P")
-      (require 'embark)
-      (if-let ((targets (embark--targets)))
-          (let* ((target
-                  (or (nth
-                      (if (or (null arg) (minibufferp))
-                          0
-                        (mod (prefix-numeric-value arg) (length targets)))
-                      targets)))
-                (type (plist-get target :type)))
-            (cond
-             ((eq type 'buffer)
-              (let ((embark-pre-action-hooks))
-                (embark--act 'kill-buffer target)))))))
-    
-    (define-key minibuffer-local-map (kbd "M-k") 'my-embark-M-k)
+```elisp
+(defun my-embark-M-k (&optional arg)
+  (interactive "P")
+  (require 'embark)
+  (if-let ((targets (embark--targets)))
+      (let* ((target
+              (or (nth
+                  (if (or (null arg) (minibufferp))
+                      0
+                    (mod (prefix-numeric-value arg) (length targets)))
+                  targets)))
+            (type (plist-get target :type)))
+        (cond
+         ((eq type 'buffer)
+          (let ((embark-pre-action-hooks))
+            (embark--act 'kill-buffer target)))))))
+
+(define-key minibuffer-local-map (kbd "M-k") 'my-embark-M-k)
+
+```
 
 I'm not sure whether these two can be achieved out-of-the box, but I didn't find these functionalities, so I created them.
 
@@ -579,150 +595,156 @@ I'm not sure whether these two can be achieved out-of-the box, but I didn't find
 
 **Votes** 14
 
-I've been using \`mu4e\` for some years now, and I really love it. However, I'm also a Gmail user, don't love it, but consider myself stuck with it (given budget constraints and it being my email for several years already). This makes me always weary of "the next Google shenanigan" which might break my workflow. One of the things I have learned to cherish about using \`mu4e\` is its integration with Org, with it's \`org-capture\` support, which enables me not to confuse my Inbox with my todo list, thus keeping my Inbox clean. So I came up with a preventive function, leveraging \`org-protocol\` to be able to capture a Gmail message from a bookmarklet on the browser.  Not particularly pretty code, but functional.
+I've been using \`mu4e\` for some years now, and I really love it. However, I'm also a Gmail user, don't love it, but consider myself stuck with it (given budget constraints and it being my email for several years already). This makes me always weary of "the next Google shenanigan" which might break my workflow. One of the things I have learned to cherish about using \`mu4e\` is its integration with Org, with it's \`org-capture\` support, which enables me not to confuse my Inbox with my todo list, thus keeping my Inbox clean. So I came up with a preventive function, leveraging \`org-protocol\` to be able to capture a Gmail message from a bookmarklet on the browser. Not particularly pretty code, but functional.
 
-    (with-eval-after-load 'org
-      ;; Add org-protocol to capture email in Gmail.
-      (add-to-list 'org-protocol-protocol-alist
-                   '("org-gmail-capture" :protocol "gmail-capture"
-                     :function gb/org-protocol-gmail-capture))
-    
-      ;; Bookmarklet:
-      ;;   javascript:location.href = 'org-protocol://gmail-capture?' +
-      ;;       new URLSearchParams({
-      ;;           msg: document.getElementById("raw_message_text").innerHTML});
-      ;; Must be called from the "Original message" page.
-      (defun gb/org-protocol-gmail-capture (info)
-        "Process an org-protocol://gmail-capture style url with INFO.
-    
-    This function detects the raw message text element from the \"Original
-    message\" page of a Gmail message.  It then parses relevant message
-    fields and calls the \"email\" org-capture template.
-    
-    The location for a browser's bookmark looks like this:
-    
-      javascript:location.href = \\='org-protocol://gmail-capture?\\=' +
-          new URLSearchParams({
-              msg: document.getElementById(\"raw_message_text\").innerHTML});
-    
-    The sub-protocol used to reach this function is set in
-    `org-protocol-protocol-alist'."
-        (when-let* ((parts (org-protocol-parse-parameters info))
-                    (msg (plist-get parts ':msg)))
-          ;; FIXME I'm not sure why this is needed, but the protocol fails on a
-          ;; fresh session (before 'org-capture' is loaded), and the new frame
-          ;; just flashes on the screen.
-          (require 'org-capture)
-          (let (subj id to from date
-                from-name from-email to-name to-email from-to-name)
-            (with-temp-buffer
-              (insert msg)
-              ;; 'mu4e~view-render-buffer' is responsible in mu4e to view /
-              ;; display a new message, it handles decoding, fontification
-              ;; etc.  However, the message we get from org-protocol is not
-              ;; really the "original" it is rather a html rendered version of
-              ;; it.  A "Download original" button exists, but we wouldn't be
-              ;; able to retrieve it, since only the browser is logged into
-              ;; the Gmail account, so we have to do with whatever the page
-              ;; displays.  That given, prettifying the buffer is of little
-              ;; use for the fields we are interested in.
-              (goto-char (point-min))
-              (let ((case-fold-search))
-                (while (re-search-forward
-                        (rx
-                         line-start
-                         (group
-                          (or
-                           "From:"
-                           "To:"
-                           "Subject:"
-                           "Date:"
-                           "Message-ID:"))
-                         " "
-                         (group (zero-or-more not-newline))
-                         line-end)
-                        nil t)
-                  (pcase (match-string 1)
-                    ("From:" (setq from (match-string 2)))
-                    ("To:" (setq to (match-string 2)))
-                    ("Subject:" (setq subj (match-string 2)))
-                    ("Date:" (setq date (match-string 2)))
-                    ("Message-ID:" (setq id (match-string 2)))))))
-    
-            ;; Ensure values
-            (when (or (not from) (string-blank-p from))
-              (setq from "<none>"))
-            (when (or (not to) (string-blank-p to))
-              (setq to "<none>"))
-            (when (or (not subj) (string-blank-p subj))
-              (setq subj "No subject"))
-            (unless date (setq date ""))
-            (unless id (setq id ""))
-            ;; Clean fields
-            (setq from (replace-regexp-in-string "&lt;" "<" from t t))
-            (setq from (replace-regexp-in-string "&gt;" ">" from t t))
-            (setq to (replace-regexp-in-string "&lt;" "<" to t t))
-            (setq to (replace-regexp-in-string "&gt;" ">" to t t))
-            (setq id (replace-regexp-in-string "&lt;" "" id t t))
-            (setq id (replace-regexp-in-string "&gt;" "" id t t))
-    
-            (let ((addr (mail-extract-address-components from)))
-              (if (car addr)
-                  (progn
-                    (setq from-name (car addr))
-                    (setq from (format "%s <%s>" (car addr) (cadr addr))))
-                (setq from-name (cadr addr))
-                (setq from (format "<%s>" (cadr addr))))
-              (setq from-email (cadr addr)))
-            (let ((addr (mail-extract-address-components to)))
-              (if (car addr)
-                  (progn
-                    (setq to-name (car addr))
-                    (setq to (format "%s <%s>" (car addr) (cadr addr))))
-                (setq to-name (cadr addr))
-                (setq to (format "<%s>" (cadr addr))))
-              (setq to-email (cadr addr)))
-            (setq from-to-name
-                  (if (member from-email
-                              '("myemail1@domain.com"
-                                "myemail2@domain.com"
-                                "myemail3@domain.com"
-                                "myemail4@domain.com"))
-                      to-name
-                    from-name))
-    
-            (let ((props `(:type "gmail"
-                           :date ,date
-                           :from ,from
-                           :fromname ,from-name
-                           :message-id ,id
-                           :subject ,subj
-                           :to ,to
-                           :toname ,to-name
-                           :annotation ,(org-link-make-string
-                                         (concat "gmail:" id) subj)
-                           :link ,(org-link-make-string (concat "gmail:" id))
-                           :description ,(format "%s (%s)" subj from-to-name)
-                           :annotation ,(concat "gmail:" id)))
-                  ;; Avoid call to `org-store-link', see 'org-protocol-capture'.
-                  (org-capture-link-is-already-stored t))
-              (apply #'org-link-store-props props)
-    
-              (raise-frame)
-              ;; Hard-coding the "e" capture template, since this function is very
-              ;; much tailor made for it.
-              (org-capture nil "e")))
-          ;; Make sure we do not return a string, see 'org-protocol-capture'.
-          nil))
-    
-      (org-link-set-parameters "gmail" :follow #'gb/org-link-gmail-open)
-      (defun gb/org-link-gmail-open (link _)
-        (kill-new (concat "rfc822msgid:" link))
-        (message "Message id copied to clipboard.")))
+```elisp
+(with-eval-after-load 'org
+  ;; Add org-protocol to capture email in Gmail.
+  (add-to-list 'org-protocol-protocol-alist
+               '("org-gmail-capture" :protocol "gmail-capture"
+                 :function gb/org-protocol-gmail-capture))
+
+  ;; Bookmarklet:
+  ;;   javascript:location.href = 'org-protocol://gmail-capture?' +
+  ;;       new URLSearchParams({
+  ;;           msg: document.getElementById("raw_message_text").innerHTML});
+  ;; Must be called from the "Original message" page.
+  (defun gb/org-protocol-gmail-capture (info)
+    "Process an org-protocol://gmail-capture style url with INFO.
+
+This function detects the raw message text element from the \"Original
+message\" page of a Gmail message.  It then parses relevant message
+fields and calls the \"email\" org-capture template.
+
+The location for a browser's bookmark looks like this:
+
+  javascript:location.href = \\='org-protocol://gmail-capture?\\=' +
+      new URLSearchParams({
+          msg: document.getElementById(\"raw_message_text\").innerHTML});
+
+The sub-protocol used to reach this function is set in
+`org-protocol-protocol-alist'."
+    (when-let* ((parts (org-protocol-parse-parameters info))
+                (msg (plist-get parts ':msg)))
+      ;; FIXME I'm not sure why this is needed, but the protocol fails on a
+      ;; fresh session (before 'org-capture' is loaded), and the new frame
+      ;; just flashes on the screen.
+      (require 'org-capture)
+      (let (subj id to from date
+            from-name from-email to-name to-email from-to-name)
+        (with-temp-buffer
+          (insert msg)
+          ;; 'mu4e~view-render-buffer' is responsible in mu4e to view /
+          ;; display a new message, it handles decoding, fontification
+          ;; etc.  However, the message we get from org-protocol is not
+          ;; really the "original" it is rather a html rendered version of
+          ;; it.  A "Download original" button exists, but we wouldn't be
+          ;; able to retrieve it, since only the browser is logged into
+          ;; the Gmail account, so we have to do with whatever the page
+          ;; displays.  That given, prettifying the buffer is of little
+          ;; use for the fields we are interested in.
+          (goto-char (point-min))
+          (let ((case-fold-search))
+            (while (re-search-forward
+                    (rx
+                     line-start
+                     (group
+                      (or
+                       "From:"
+                       "To:"
+                       "Subject:"
+                       "Date:"
+                       "Message-ID:"))
+                     " "
+                     (group (zero-or-more not-newline))
+                     line-end)
+                    nil t)
+              (pcase (match-string 1)
+                ("From:" (setq from (match-string 2)))
+                ("To:" (setq to (match-string 2)))
+                ("Subject:" (setq subj (match-string 2)))
+                ("Date:" (setq date (match-string 2)))
+                ("Message-ID:" (setq id (match-string 2)))))))
+
+        ;; Ensure values
+        (when (or (not from) (string-blank-p from))
+          (setq from "<none>"))
+        (when (or (not to) (string-blank-p to))
+          (setq to "<none>"))
+        (when (or (not subj) (string-blank-p subj))
+          (setq subj "No subject"))
+        (unless date (setq date ""))
+        (unless id (setq id ""))
+        ;; Clean fields
+        (setq from (replace-regexp-in-string "&lt;" "<" from t t))
+        (setq from (replace-regexp-in-string "&gt;" ">" from t t))
+        (setq to (replace-regexp-in-string "&lt;" "<" to t t))
+        (setq to (replace-regexp-in-string "&gt;" ">" to t t))
+        (setq id (replace-regexp-in-string "&lt;" "" id t t))
+        (setq id (replace-regexp-in-string "&gt;" "" id t t))
+
+        (let ((addr (mail-extract-address-components from)))
+          (if (car addr)
+              (progn
+                (setq from-name (car addr))
+                (setq from (format "%s <%s>" (car addr) (cadr addr))))
+            (setq from-name (cadr addr))
+            (setq from (format "<%s>" (cadr addr))))
+          (setq from-email (cadr addr)))
+        (let ((addr (mail-extract-address-components to)))
+          (if (car addr)
+              (progn
+                (setq to-name (car addr))
+                (setq to (format "%s <%s>" (car addr) (cadr addr))))
+            (setq to-name (cadr addr))
+            (setq to (format "<%s>" (cadr addr))))
+          (setq to-email (cadr addr)))
+        (setq from-to-name
+              (if (member from-email
+                          '("myemail1@domain.com"
+                            "myemail2@domain.com"
+                            "myemail3@domain.com"
+                            "myemail4@domain.com"))
+                  to-name
+                from-name))
+
+        (let ((props `(:type "gmail"
+                       :date ,date
+                       :from ,from
+                       :fromname ,from-name
+                       :message-id ,id
+                       :subject ,subj
+                       :to ,to
+                       :toname ,to-name
+                       :annotation ,(org-link-make-string
+                                     (concat "gmail:" id) subj)
+                       :link ,(org-link-make-string (concat "gmail:" id))
+                       :description ,(format "%s (%s)" subj from-to-name)
+                       :annotation ,(concat "gmail:" id)))
+              ;; Avoid call to `org-store-link', see 'org-protocol-capture'.
+              (org-capture-link-is-already-stored t))
+          (apply #'org-link-store-props props)
+
+          (raise-frame)
+          ;; Hard-coding the "e" capture template, since this function is very
+          ;; much tailor made for it.
+          (org-capture nil "e")))
+      ;; Make sure we do not return a string, see 'org-protocol-capture'.
+      nil))
+
+  (org-link-set-parameters "gmail" :follow #'gb/org-link-gmail-open)
+  (defun gb/org-link-gmail-open (link _)
+    (kill-new (concat "rfc822msgid:" link))
+    (message "Message id copied to clipboard.")))
+
+```
 
 The corresponding bookmarklet is:
 
-    javascript:location.href = 'org-protocol://gmail-capture?' + new URLSearchParams({msg: document.getElementById("raw_message_text").innerHTML});
+```elisp
+javascript:location.href = 'org-protocol://gmail-capture?' + new URLSearchParams({msg: document.getElementById("raw_message_text").innerHTML});
+
+```
 
 This must be called from the "Original message" page (which you can get with the "Show original" menu item). It won't work elsewhere.
 
@@ -730,22 +752,24 @@ The link created is a \`gmail:\` type link which essentially just copies \`rfc82
 
 Not that it matters much, but the corresponding capture template is:
 
-          ("e" "email" entry
-           (file+headline (lambda ()
-                            (expand-file-name gb/email-capture-file
-                                              gb/org-files-directory))
-                          "Email")
-           "* TODO %?%:description %(org-set-tags \":email:\")
-    :PROPERTIES:
-    :Message: %a
-    :From: %:from
-    :To:   %:to
-    :Date: %:date
-    :END:
-    :LOGBOOK:
-    - Created on %U
-    :END:"
-           :empty-lines 1)
+```elisp
+      ("e" "email" entry
+       (file+headline (lambda ()
+                        (expand-file-name gb/email-capture-file
+                                          gb/org-files-directory))
+                      "Email")
+       "* TODO %?%:description %(org-set-tags \":email:\")
+:PROPERTIES:
+:Message: %a
+:From: %:from
+:To:   %:to
+:Date: %:date
+:END:
+:LOGBOOK:
+- Created on %U
+:END:"
+       :empty-lines 1)
+```
 
 
 # u/com4 [🔗](https://www.reddit.com/r/emacs/comments/t3_xq6rpa/comment/t1_iqb2fci)
@@ -758,38 +782,44 @@ Flymake allows for stacking checkers but it turns out eglot clobbers these check
 
 For example, here is a simple setup for Python which includes Pyright's type checking and flake8 style checking
 
-    ;; Use flake8 as the python style checker by default
-    (setq python-flymake-command '("flake8" "-"))
-        
-    (use-package eglot
-      :hook ((python-mode . eglot-ensure)
-             (eglot-managed-mode
-    	  . (lambda ()
-    	      ;; re-enable flymake checkers because eglot clobbers
-    	      ;; them when starting
-    	      (when (derived-mode-p 'python-mode)
-    		(add-hook 'flymake-diagnostic-functions 
-                              'python-flymake nil t)))))
-        
-      :custom
-      ;; shutdown server after killing last managed buffer
-      (eglot-autoshutdown t)
-      :bind
-      (("C-c l r" . eglot-rename))
-      :config
-      (add-to-list 'eglot-server-programs
-                   `(python-mode "pyright-langserver" "-w" "--stdio")))
+```elisp
+;; Use flake8 as the python style checker by default
+(setq python-flymake-command '("flake8" "-"))
+    
+(use-package eglot
+  :hook ((python-mode . eglot-ensure)
+         (eglot-managed-mode
+	  . (lambda ()
+	      ;; re-enable flymake checkers because eglot clobbers
+	      ;; them when starting
+	      (when (derived-mode-p 'python-mode)
+		(add-hook 'flymake-diagnostic-functions 
+                          'python-flymake nil t)))))
+    
+  :custom
+  ;; shutdown server after killing last managed buffer
+  (eglot-autoshutdown t)
+  :bind
+  (("C-c l r" . eglot-rename))
+  :config
+  (add-to-list 'eglot-server-programs
+               `(python-mode "pyright-langserver" "-w" "--stdio")))
+
+```
 
 Now all that's left is mypy. Flymake originally used a ["Proc"](<https://www.gnu.org/software/emacs/manual/html_mono/flymake.html#The-legacy-Proc-backend>) method for creating checkers which existing mypy ones use. So for a bonus tip & trick [I've written a mypy checker in the new style](<http://github.com/com4/flymake-mypy>). It can be enabled when using eglot like this:
 
-    (use-package flymake-mypy
-      :straight (flymake-mypy
-                 :type git
-                 :host github
-                 :repo "com4/flymake-mypy")
-      :hook ((eglot-managed-mode . (lambda ()
-    				 (when (derived-mode-p 'python-mode)
-    				   (flymake-mypy-enable))))))
+```elisp
+(use-package flymake-mypy
+  :straight (flymake-mypy
+             :type git
+             :host github
+             :repo "com4/flymake-mypy")
+  :hook ((eglot-managed-mode . (lambda ()
+				 (when (derived-mode-p 'python-mode)
+				   (flymake-mypy-enable))))))
+
+```
 
 After opening a Python buffer and executing \`M-x flymake-running-backends\` we are greeted with a list of stacked checkers: \`Running backends: eglot-flymake-backend, flymake-mypy&#x2013;run, python-flymake\`.
 
@@ -805,8 +835,7 @@ I don’t have any specific tip but I just want to throw it out there that if yo
 
 **Votes** 14
 
-I just found out that Magit can backup changes of uncommitted files automatically. Here's the link to online manual:
-[Magit Wip Modes](<https://magit.vc/manual/magit/Wip-Modes.html#Wip-Modes>).
+I just found out that Magit can backup changes of uncommitted files automatically. Here's the link to online manual: [Magit Wip Modes](<https://magit.vc/manual/magit/Wip-Modes.html#Wip-Modes>).
 
 
 # u/Stefan-Kangas [🔗](https://www.reddit.com/r/emacs/comments/t3_q76kok/comment/t1_hgk3wik)
@@ -815,9 +844,7 @@ I just found out that Magit can backup changes of uncommitted files automaticall
 
 This is pretty neat: scrolling up/down one line at a time while keeping the position of point:
 
-\`(setq scroll-preserve-screen-position 1)\`  
-\`(global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))\`  
-\`(global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))\`  
+\`(setq scroll-preserve-screen-position 1)\` \`(global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))\` \`(global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))\`
 
 From: <http://pragmaticemacs.com/emacs/scrolling-and-moving-by-line/>
 
@@ -832,7 +859,7 @@ Instead of using repl-like interface, all the commands go to one buffer (and fil
 
 It's in a very early stage, but it already allows me to solve most tasks I usually do with more traditional shells.
 
-Let me know what is your first impression, what can be improved and what  do you think in general!
+Let me know what is your first impression, what can be improved and what do you think in general!
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_mg98ki/comment/t1_gstteeo)
@@ -855,54 +882,56 @@ You can use EWW to bypass pay-walls on news sites, and other Javascript-enabled 
 
 Working in education, I often find myself having to assign students into groups. This week I made a function in ELisp that helps me do this. Select a region in a buffer that contains a list of students (presumably), call this function, say how many students should be in each group and the function then randomly assigns groups.
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;                                                                 ;;
-    ;; Shuffling things.                                    ;;
-    ;;                                                                 ;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        
-    (defun mcj/shuffle (input)
-      " Shuffle a list in place. For some reason does not exist in
-    Emacs by default. Uses Fisher-Yates shuffle.
-    "
-      (let ((swap (lambda (list-to-swap i1 i2)
-                    (let ((tmp (elt list-to-swap i1)))
-                      (setf (elt list-to-swap i1) (elt list-to-swap i2))
-                      (setf (elt list-to-swap i2) tmp)))))
-        (dotimes (i (length input) input)
-          (funcall swap input i (random (+ i 1))))))
+```elisp
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                                 ;;
+;; Shuffling things.                                    ;;
+;;                                                                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     
-        
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;                                                                 ;;
-    ;; Pairing off things (students, say).        ;;
-    ;;                                                                 ;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        
-    (defun mcj/pair-off (input num)
-      "Return the elements of input paired off into pairs of length
-       num"
-      (cond ((< (length input) (* num 2)) (list input))
-            (t
-             (cons (butlast input (- (length input)num)) (mcj/pair-off (nthcdr num input) num)))))
-        
-        
-        
-    (defun mcj/pair-off-region (num)
-      " Pair off lines in a region"
-      (interactive (list
-                    (read-number "Members per pair (num):" 2)))
-      (let ((newcontents
-             (mapconcat (lambda (item-pair)
-                          (mapconcat (lambda (item) item) item-pair " + "))
-                        (mcj/pair-off
-                         (mcj/shuffle
-                          (split-string
-                           (buffer-substring-no-properties (mark) (point)) "[\n]" t ))
-                          num)
-                        "\n")))
-        (delete-region (mark) (point))
-        (insert newcontents)))
+(defun mcj/shuffle (input)
+  " Shuffle a list in place. For some reason does not exist in
+Emacs by default. Uses Fisher-Yates shuffle.
+"
+  (let ((swap (lambda (list-to-swap i1 i2)
+                (let ((tmp (elt list-to-swap i1)))
+                  (setf (elt list-to-swap i1) (elt list-to-swap i2))
+                  (setf (elt list-to-swap i2) tmp)))))
+    (dotimes (i (length input) input)
+      (funcall swap input i (random (+ i 1))))))
+
+    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                                 ;;
+;; Pairing off things (students, say).        ;;
+;;                                                                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    
+(defun mcj/pair-off (input num)
+  "Return the elements of input paired off into pairs of length
+   num"
+  (cond ((< (length input) (* num 2)) (list input))
+        (t
+         (cons (butlast input (- (length input)num)) (mcj/pair-off (nthcdr num input) num)))))
+    
+    
+    
+(defun mcj/pair-off-region (num)
+  " Pair off lines in a region"
+  (interactive (list
+                (read-number "Members per pair (num):" 2)))
+  (let ((newcontents
+         (mapconcat (lambda (item-pair)
+                      (mapconcat (lambda (item) item) item-pair " + "))
+                    (mcj/pair-off
+                     (mcj/shuffle
+                      (split-string
+                       (buffer-substring-no-properties (mark) (point)) "[\n]" t ))
+                      num)
+                    "\n")))
+    (delete-region (mark) (point))
+    (insert newcontents)))
+```
 
 
 # u/<sub>hmenke</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_fruqs1k)
@@ -915,80 +944,85 @@ Any ****BibTeX**** users here?
 -   Tired of their usually broken formatting?
 -   The journal doesn't offer BibTeX download in the first place? (Looking at you Nature)
 
-Did you know that doi.org has query interface that gives you the BibTeX record when you call it with the article DOI?  Of course you can access this via Emacs:
+Did you know that doi.org has query interface that gives you the BibTeX record when you call it with the article DOI? Of course you can access this via Emacs:
 
-    (require 'url)
-    (defun user/url-bibtex-from-doi (doi)
-      (interactive "sDOI: ")
-      (let* ((url (concat "https://doi.org/" doi))
-             (url-mime-accept-string "application/x-bibtex"))
-        (insert
-         (with-current-buffer (url-retrieve-synchronously url)
-           (let* ((start url-http-end-of-headers)
-                  (end (point-max))
-                  (all (buffer-string))
-                  (body (buffer-substring start end)))
-             (replace-regexp-in-string "^\t" "  " (url-unhex-string body)))))))
+```elisp
+(require 'url)
+(defun user/url-bibtex-from-doi (doi)
+  (interactive "sDOI: ")
+  (let* ((url (concat "https://doi.org/" doi))
+         (url-mime-accept-string "application/x-bibtex"))
+    (insert
+     (with-current-buffer (url-retrieve-synchronously url)
+       (let* ((start url-http-end-of-headers)
+              (end (point-max))
+              (all (buffer-string))
+              (body (buffer-substring start end)))
+         (replace-regexp-in-string "^\t" "  " (url-unhex-string body)))))))
+
+```
 
 Just paste the DOI of the article at the prompt and the BibTeX record will be inserted at point.
 
 Here is how I bind it in \`bibtex-mode\` (plus my other bindings for good measure)
 
-    ;; bibtex
-    (use-package bibtex
-      :bind (:map bibtex-mode-map
-                  ("C-c d" . user/url-bibtex-from-doi)
-                  ("C-c v" . bibtex-validate)
-                  ("C-c s" . bibtex-sort-buffer)
-                  ([down-mouse-3] . imenu))
-      :config
-      (setq
-       bibtex-maintain-sorted-entries t))
+```elisp
+;; bibtex
+(use-package bibtex
+  :bind (:map bibtex-mode-map
+              ("C-c d" . user/url-bibtex-from-doi)
+              ("C-c v" . bibtex-validate)
+              ("C-c s" . bibtex-sort-buffer)
+              ([down-mouse-3] . imenu))
+  :config
+  (setq
+   bibtex-maintain-sorted-entries t))
+```
 
 
 # u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gktndf/comment/t1_lvojz57)
 
 **Votes** 14
 
-\`use-package\` has an inbuilt feature that roughly reports the loading times of each package on startup ([\`esup\`](<https://github.com/jschaf/esup>) most likely does a better job, if you can get it to run; there are  [known issues](<https://github.com/alexmurray/emacs-snap/issues/71>) on Emacs snap):
+\`use-package\` has an inbuilt feature that roughly reports the loading times of each package on startup ([\`esup\`](<https://github.com/jschaf/esup>) most likely does a better job, if you can get it to run; there are [known issues](<https://github.com/alexmurray/emacs-snap/issues/71>) on Emacs snap):
 
 1.  put \`(setq use-package-compute-statistics t)\` at the beginning of your \`init.el\`
 2.  restart Emacs
 3.  do \`M-x use-package-report\`
 
-Which package is your biggest time sink and why is it worth it?  Mine is [\`pdf-tools\`](<https://github.com/vedang/pdf-tools>), but to my knowledge there is simply no better alternative for working with pdfs in emacs.
+Which package is your biggest time sink and why is it worth it? Mine is [\`pdf-tools\`](<https://github.com/vedang/pdf-tools>), but to my knowledge there is simply no better alternative for working with pdfs in emacs.
 
 
 # u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1fozctm/comment/t1_lpbqo0e)
 
 **Votes** 13
 
-I recently got tired of constantly having to move my eyes to the bottom of Emacs, so I switched to posframes, [which moves the information in a central pop-up instead](![img](https://blog.costan.ro/img/emacs-completion-system/switch-to.png)).  For me, this meant using the packages:
+I recently got tired of constantly having to move my eyes to the bottom of Emacs, so I switched to posframes, [which moves the information in a central pop-up instead](![img](https://blog.costan.ro/img/emacs-completion-system/switch-to.png)). For me, this meant using the packages:
 
-\\\* [\`vertico-posframe\`](<https://github.com/tumashu/vertico-posframe>) - for [\`vertico\`](<https://github.com/minad/vertico>)
-\\\* [\`which-key-posframe\`](<https://github.com/yanghaoxie/which-key-posframe>) - for [\`which-key\`](<https://github.com/justbur/emacs-which-key>)
-\\\* [\`transient-posframe\`](<https://github.com/yanghaoxie/transient-posframe>) - for all transient commands, e.g., in [\`magit\`](<https://github.com/magit/magit>) or in [\`casual-suite\`](<https://github.com/kickingvegas/casual-suite>)
+\\\* [\`vertico-posframe\`](<https://github.com/tumashu/vertico-posframe>) - for [\`vertico\`](<https://github.com/minad/vertico>) \\\* [\`which-key-posframe\`](<https://github.com/yanghaoxie/which-key-posframe>) - for [\`which-key\`](<https://github.com/justbur/emacs-which-key>) \\\* [\`transient-posframe\`](<https://github.com/yanghaoxie/transient-posframe>) - for all transient commands, e.g., in [\`magit\`](<https://github.com/magit/magit>) or in [\`casual-suite\`](<https://github.com/kickingvegas/casual-suite>)
 
-But regardless what you are using, chances are there already is a suitable \`\*-posframe\` package for it.  Installing these packages is easy:
+But regardless what you are using, chances are there already is a suitable \`\*-posframe\` package for it. Installing these packages is easy:
 
-    (use-package vertico-posframe
-      :init
-      (vertico-posframe-mode))
-    (use-package which-key-posframe
-      :init
-      (which-key-posframe-mode))
-    (use-package transient-posframe
-      :init
-      (transient-posframe-mode))
+```elisp
+(use-package vertico-posframe
+  :init
+  (vertico-posframe-mode))
+(use-package which-key-posframe
+  :init
+  (which-key-posframe-mode))
+(use-package transient-posframe
+  :init
+  (transient-posframe-mode))
+```
 
 
 # u/remillard [🔗](https://www.reddit.com/r/emacs/comments/t3_1cbsvxd/comment/t1_l11l7he)
 
 **Votes** 13
 
-I thought about making a whole post about this, but it's mostly ancillary appreciation so maybe this is a better place.  Anyhow, for anyone working with code projects, I'm finding that project.el is completely supplanting my previously heavy use of Treemacs.  I liked Treemacs because it's a very similar feel to the file/project sidebar in Sublime Text and VSCode (and others I'm sure).  It was kind of reassuring.  And dired is nice for many things, but navigating a lot of directories does get a little tedious compared to just opening nested directories in Treemacs. 
+I thought about making a whole post about this, but it's mostly ancillary appreciation so maybe this is a better place. Anyhow, for anyone working with code projects, I'm finding that project.el is completely supplanting my previously heavy use of Treemacs. I liked Treemacs because it's a very similar feel to the file/project sidebar in Sublime Text and VSCode (and others I'm sure). It was kind of reassuring. And dired is nice for many things, but navigating a lot of directories does get a little tedious compared to just opening nested directories in Treemacs.
 
-Well, I don't even remember why I started tinkering with project.el.  I think I read a post where someone described switching projects, so I set it up, figured couldn't hurt.  Man, definitely a good idea.  The "project goto file" (\`C-x p f\`) is insanely convenient.  I also have ctags support setup so a quick keybind will let me switch files based on definition, and between the two, I get through files across the project seamlessly.  The project find directory is a faster way to direct dired to a place where I do want to see where things are stored.
+Well, I don't even remember why I started tinkering with project.el. I think I read a post where someone described switching projects, so I set it up, figured couldn't hurt. Man, definitely a good idea. The "project goto file" (\`C-x p f\`) is insanely convenient. I also have ctags support setup so a quick keybind will let me switch files based on definition, and between the two, I get through files across the project seamlessly. The project find directory is a faster way to direct dired to a place where I do want to see where things are stored.
 
 I suspect completion is doing a lot of heavy lifting here though too, so a perfectly pristine project.el use might have a different experience, but those are quite common anymore.
 
@@ -1003,7 +1037,10 @@ For \`use-package\` users (which I assume is many of us), did you know that prof
 
 Enable \`use-package-compute-statistics\` right after you load \`use-package\`:
 
-    (setq use-package-compute-statistics t)
+```elisp
+(setq use-package-compute-statistics t)
+
+```
 
 Restart emacs, and then invoke \`use-package-report\`. You'll get a table of the load times for each package that \`use-package\` manages. I discovered this and found an immediate way to cut my startup time in half by fixing a few packages that weren't deferred properly by adding the right \`:hook\` keyword.
 
@@ -1016,15 +1053,18 @@ Working on a remote server with Tramp in eshell it's so easy that I'm always wor
 
 So I implemented a small function that makes me aware that I'm in a Tramp session by changing the prompt color.
 
-    (require 'subr-x)  
-    (defun tuxo/prompt-color-tramp ()  
-    "Change prompt color if a tramp session is open"  
-      (if (file-remote-p default-directory)  
-          (set-face-foreground 'eshell-prompt "red")  
-          (set-face-foreground 'eshell-prompt "green")))
-        
-    (use-package eshell
-      :hook (eshell-post-command . tuxo/prompt-color-tramp))
+```elisp
+(require 'subr-x)  
+(defun tuxo/prompt-color-tramp ()  
+"Change prompt color if a tramp session is open"  
+  (if (file-remote-p default-directory)  
+      (set-face-foreground 'eshell-prompt "red")  
+      (set-face-foreground 'eshell-prompt "green")))
+    
+(use-package eshell
+  :hook (eshell-post-command . tuxo/prompt-color-tramp))
+
+```
 
 Do you have any suggestions on how I could improve this issue?
 
@@ -1043,88 +1083,93 @@ Since I'm using the \`unbuffer\` program, this requires \`expect\` to be install
 
 \`dump-dom\` shell script
 
-    #!/bin/bash
-        
-    url="$1"
-    test -n "$url" || exit 1
-        
-    0</dev/tty unbuffer bash -c "chrome --headless --disable-gpu --virtual-time-budget=3000 --dump-dom \"$url\" 2>/dev/null"
+```elisp
+#!/bin/bash
+    
+url="$1"
+test -n "$url" || exit 1
+    
+0</dev/tty unbuffer bash -c "chrome --headless --disable-gpu --virtual-time-budget=3000 --dump-dom \"$url\" 2>/dev/null"
+
+```
 
 Make these modifications to \`eww-display-html\`.
 
 \`eww-display-html\`
 
-    (defun eww-display-html (charset url &optional document point buffer encode)
-      (unless (fboundp 'libxml-parse-html-region)
-        (error "This function requires Emacs to be compiled with libxml2"))
-      (unless (buffer-live-p buffer)
-        (error "Buffer %s doesn't exist" buffer))
-      ;; There should be a better way to abort loading images
-      ;; asynchronously.
-      (setq url-queue nil)
-      ;; If document exists then the html is already parsed into a DOM
-      (let* ((html (shell-command-to-string (concat "dom-dump " (shell-quote-argument url))))
-             (document
-              (or nil ;; document
-                  (list
-                   'base (list (cons 'href url))
-                   (progn
-                     (setq encode (or encode charset 'utf-8))
-                     (condition-case nil
-                         (decode-coding-region (point) (point-max) encode)
-                       (coding-system-error nil))
-                     (save-excursion
-                       ;; Remove CRLF before parsing.
-                       (while (re-search-forward "\r$" nil t)
-                         (replace-match "" t t)))
-                     (save-mark-and-excursion
-                       ;; Delete from here to the end. Replace with the new html
-                       (kill-region (point) (point-max))
-                       (insert (encode-coding-string html 'utf-8)))
-                     (libxml-parse-html-region (point) (point-max))))))
-             (source (and (null document)
-                          (buffer-substring (point) (point-max)))))
-        (with-current-buffer buffer
-          (setq bidi-paragraph-direction nil)
-          (plist-put eww-data :source html)
-          (plist-put eww-data :dom document)
-          (let ((inhibit-read-only t)
-                (inhibit-modification-hooks t)
-                (shr-target-id (url-target (url-generic-parse-url url)))
-                (shr-external-rendering-functions
-                 (append
-                  shr-external-rendering-functions
-                  '((title . eww-tag-title)
-                    (form . eww-tag-form)
-                    (input . eww-tag-input)
-                    (button . eww-form-submit)
-                    (textarea . eww-tag-textarea)
-                    (select . eww-tag-select)
-                    (link . eww-tag-link)
-                    (meta . eww-tag-meta)
-                    (a . eww-tag-a)))))
-            (erase-buffer)
-            (shr-insert-document document)
-            (cond
-             (point
-              (goto-char point))
-             (shr-target-id
-              (goto-char (point-min))
-              (let ((point (next-single-property-change
-                            (point-min) 'shr-target-id)))
-                (when point
-                  (goto-char point))))
-             (t
-              (goto-char (point-min))
-              ;; Don't leave point inside forms, because the normal eww
-              ;; commands aren't available there.
-              (while (and (not (eobp))
-                          (get-text-property (point) 'eww-form))
-                (forward-line 1)))))
-          (eww-size-text-inputs))))
+```elisp
+(defun eww-display-html (charset url &optional document point buffer encode)
+  (unless (fboundp 'libxml-parse-html-region)
+    (error "This function requires Emacs to be compiled with libxml2"))
+  (unless (buffer-live-p buffer)
+    (error "Buffer %s doesn't exist" buffer))
+  ;; There should be a better way to abort loading images
+  ;; asynchronously.
+  (setq url-queue nil)
+  ;; If document exists then the html is already parsed into a DOM
+  (let* ((html (shell-command-to-string (concat "dom-dump " (shell-quote-argument url))))
+         (document
+          (or nil ;; document
+              (list
+               'base (list (cons 'href url))
+               (progn
+                 (setq encode (or encode charset 'utf-8))
+                 (condition-case nil
+                     (decode-coding-region (point) (point-max) encode)
+                   (coding-system-error nil))
+                 (save-excursion
+                   ;; Remove CRLF before parsing.
+                   (while (re-search-forward "\r$" nil t)
+                     (replace-match "" t t)))
+                 (save-mark-and-excursion
+                   ;; Delete from here to the end. Replace with the new html
+                   (kill-region (point) (point-max))
+                   (insert (encode-coding-string html 'utf-8)))
+                 (libxml-parse-html-region (point) (point-max))))))
+         (source (and (null document)
+                      (buffer-substring (point) (point-max)))))
+    (with-current-buffer buffer
+      (setq bidi-paragraph-direction nil)
+      (plist-put eww-data :source html)
+      (plist-put eww-data :dom document)
+      (let ((inhibit-read-only t)
+            (inhibit-modification-hooks t)
+            (shr-target-id (url-target (url-generic-parse-url url)))
+            (shr-external-rendering-functions
+             (append
+              shr-external-rendering-functions
+              '((title . eww-tag-title)
+                (form . eww-tag-form)
+                (input . eww-tag-input)
+                (button . eww-form-submit)
+                (textarea . eww-tag-textarea)
+                (select . eww-tag-select)
+                (link . eww-tag-link)
+                (meta . eww-tag-meta)
+                (a . eww-tag-a)))))
+        (erase-buffer)
+        (shr-insert-document document)
+        (cond
+         (point
+          (goto-char point))
+         (shr-target-id
+          (goto-char (point-min))
+          (let ((point (next-single-property-change
+                        (point-min) 'shr-target-id)))
+            (when point
+              (goto-char point))))
+         (t
+          (goto-char (point-min))
+          ;; Don't leave point inside forms, because the normal eww
+          ;; commands aren't available there.
+          (while (and (not (eobp))
+                      (get-text-property (point) 'eww-form))
+            (forward-line 1)))))
+      (eww-size-text-inputs))))
 
-Demonstration:
-<https://asciinema.org/a/UAAVfp5O8SofJZvKBusTOP8QQ>
+```
+
+Demonstration: <https://asciinema.org/a/UAAVfp5O8SofJZvKBusTOP8QQ>
 
 
 # u/jimm [🔗](https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvqvedf)
@@ -1140,65 +1185,72 @@ I can't say how often I use \`dabbrev-expand\` (\`M-/\`) to complete words. Save
 
 I made my agenda collapsible (like org headings) by using outline-minor-mode. To make it work you need to name your agenda heading (\`org-agenda-overriding-header\`) with a starting asterisk, e.g "\* Current Tasks", "\* Today Agenda\*" etc
 
-      (defun my/org-agenda-fold()
-      "fold sections of agenda starting with \"* \" tab"
-        (interactive)
-        (setq-local outline-regexp "^\\* ")
-        (setq-local outline-heading-end-regexp "\n")
-        (setq-local outline-minor-mode-prefix (kbd "C-'"))
-        (outline-minor-mode)
-        (local-set-key outline-minor-mode-prefix outline-mode-prefix-map)
-        (org-defkey org-agenda-mode-map [(tab)] #'outline-toggle-children)
-        (map!
-          :after evil-org-agenda
-          :map evil-org-agenda-mode-map
-          :m "<tab>" #'outline-toggle-children
-          :m "<return>" #'org-agenda-goto
-          :m "S-<return>" #'org-agenda-switch-to
-          :m "C-<return>" #'org-agenda-recenter))
-        
-    (add-hook 'org-agenda-mode-hook 'my/org-agenda-fold)
+```elisp
+  (defun my/org-agenda-fold()
+  "fold sections of agenda starting with \"* \" tab"
+    (interactive)
+    (setq-local outline-regexp "^\\* ")
+    (setq-local outline-heading-end-regexp "\n")
+    (setq-local outline-minor-mode-prefix (kbd "C-'"))
+    (outline-minor-mode)
+    (local-set-key outline-minor-mode-prefix outline-mode-prefix-map)
+    (org-defkey org-agenda-mode-map [(tab)] #'outline-toggle-children)
+    (map!
+      :after evil-org-agenda
+      :map evil-org-agenda-mode-map
+      :m "<tab>" #'outline-toggle-children
+      :m "<return>" #'org-agenda-goto
+      :m "S-<return>" #'org-agenda-switch-to
+      :m "C-<return>" #'org-agenda-recenter))
+    
+(add-hook 'org-agenda-mode-hook 'my/org-agenda-fold)
+```
 
 
 # u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1f8nxb5/comment/t1_llfyzu6)
 
 **Votes** 12
 
-I regularly work with different emacs frames on different monitors, and [\`framemove\`](<https://github.com/emacsmirror/framemove>) is great for switching between them.  It can hook into \`windmove\` (which means switching to an adjacent window becomes switching to an adjacent frame if no such window exists) and offers the functions:
+I regularly work with different emacs frames on different monitors, and [\`framemove\`](<https://github.com/emacsmirror/framemove>) is great for switching between them. It can hook into \`windmove\` (which means switching to an adjacent window becomes switching to an adjacent frame if no such window exists) and offers the functions:
 
-\\\* \`fm-up-frame\`: move to the frame over the current frame
-\\\* \`fm-down-frame\`: move to the frame below the current frame
-\\\* \`fm-left-frame\`: move to the frame left of the current frame
-\\\* \`fm-right-frame\`: move to the frame right of the current frame
+\\\* \`fm-up-frame\`: move to the frame over the current frame \\\* \`fm-down-frame\`: move to the frame below the current frame \\\* \`fm-left-frame\`: move to the frame left of the current frame \\\* \`fm-right-frame\`: move to the frame right of the current frame
 
-It's not on any of the major package repositories, so you have to install it manually.  Thanks to [\`emacsmirror\`](<https://github.com/emacsmirror>), this can for example be done as follows using \`use-package\` and \`straight\` (adjust bindings to your liking):
+It's not on any of the major package repositories, so you have to install it manually. Thanks to [\`emacsmirror\`](<https://github.com/emacsmirror>), this can for example be done as follows using \`use-package\` and \`straight\` (adjust bindings to your liking):
 
-    (use-package framemove
-      :straight (:host github :repo "emacsmirror/framemove")
-      :init
-      (setq framemove-hook-into-windmove t) ;; doesn't work as :config or :custom
-      :bind
-      (("C-x 5 <up>" . fm-up-frame)
-       ("C-x 5 <down>" . fm-down-frame)
-       ("C-x 5 <left>" . fm-left-frame)
-       ("C-x 5 <right>" . fm-right-frame)))
+```elisp
+(use-package framemove
+  :straight (:host github :repo "emacsmirror/framemove")
+  :init
+  (setq framemove-hook-into-windmove t) ;; doesn't work as :config or :custom
+  :bind
+  (("C-x 5 <up>" . fm-up-frame)
+   ("C-x 5 <down>" . fm-down-frame)
+   ("C-x 5 <left>" . fm-left-frame)
+   ("C-x 5 <right>" . fm-right-frame)))
 
-edit: The only thing I don't understand is why setting \`framemove-hook-into-windmove\` to \`t\` doesn't work in via \`:config\` or \`:custom\`.  The package is loaded, \`C-h f\` confirms that \`fm-up-frame\` exists, but \`C-h v\` doesn't know \`framemove-hook-into-windmove\`. \`framemove-hook-into-windmove\` exists after I run \`fm-up-frame\`, but then it's set to \`nil\` and not \`t\`.
+```
+
+edit: The only thing I don't understand is why setting \`framemove-hook-into-windmove\` to \`t\` doesn't work in via \`:config\` or \`:custom\`. The package is loaded, \`C-h f\` confirms that \`fm-up-frame\` exists, but \`C-h v\` doesn't know \`framemove-hook-into-windmove\`. \`framemove-hook-into-windmove\` exists after I run \`fm-up-frame\`, but then it's set to \`nil\` and not \`t\`.
 
 
 # u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/t3_1djdync/comment/t1_l9cmdp9)
 
 **Votes** 12
 
-I started using org-capture when I started my current job several years ago.  I recorded my daily activities using this template:
+I started using org-capture when I started my current job several years ago. I recorded my daily activities using this template:
 
-    (setq org-capture-templates
-          '(("d" "Done" entry (file+olp+datetree "~/org/done.org"))))
+```elisp
+(setq org-capture-templates
+      '(("d" "Done" entry (file+olp+datetree "~/org/done.org"))))
 
-A minor annoyance was that an unwanted link to whatever file location I happened to be in when I invoked org-capture was stored along with my log entry.  I made occasional desultory efforts over the years to remove it, but I just couldn't figure it out.  I recently made a more concerted effort and <span class="underline">finally</span> was able to work it out after poring over the documentation for the \`org-capture-templates\` variable.  It turns out the default "template" for the \`entry\` capture type is \`"\* %?\n%a"\`, where the code \`%a\` means "annotation," ie, a link to the file location.  So I just had to change my definition to this:
+```
 
-    (setq org-capture-templates
-          '(("d" "Done" entry (file+olp+datetree "~/org/done.org") "* %?")))
+A minor annoyance was that an unwanted link to whatever file location I happened to be in when I invoked org-capture was stored along with my log entry. I made occasional desultory efforts over the years to remove it, but I just couldn't figure it out. I recently made a more concerted effort and <span class="underline">finally</span> was able to work it out after poring over the documentation for the \`org-capture-templates\` variable. It turns out the default "template" for the \`entry\` capture type is \`"\* %?\n%a"\`, where the code \`%a\` means "annotation," ie, a link to the file location. So I just had to change my definition to this:
+
+```elisp
+(setq org-capture-templates
+      '(("d" "Done" entry (file+olp+datetree "~/org/done.org") "* %?")))
+```
 
 
 # u/ayy<sub>ess</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_18hc301/comment/t1_kdobd72)
@@ -1216,14 +1268,17 @@ I jump into the built-in Elisp files a lot to see how things work. The indentati
 
 [Directory classes](<https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html>) to the rescue! My config makes a new directory variable class, \`builtin-elisp\`, with a list saying that \`emacs-lisp-mode\` should use a \`tab-width\` of 8. Then it applies that class to the Elisp files in the application bundle:
 
-    (use-package elisp-mode
-      :config
-      (dir-locals-set-class-variables
-       'builtin-elisp
-       '((emacs-lisp-mode . ((tab-width . 8)))))
-      (dir-locals-set-directory-class
-       (file-name-directory (directory-file-name (invocation-directory)))
-       'builtin-elisp))
+```elisp
+(use-package elisp-mode
+  :config
+  (dir-locals-set-class-variables
+   'builtin-elisp
+   '((emacs-lisp-mode . ((tab-width . 8)))))
+  (dir-locals-set-directory-class
+   (file-name-directory (directory-file-name (invocation-directory)))
+   'builtin-elisp))
+
+```
 
 And now when I visit one of those files, the alignment is always correct.
 
@@ -1268,10 +1323,13 @@ The emacs lisp tutorial is the real tutorial for emacs ;)
 
 Here's a nice eshell command:
 
-    (defun eshell/history ()
-      (interactive)
-      (insert
-       (completing-read "History: " (delete-dups (ring-elements eshell-history-ring)))))
+```elisp
+(defun eshell/history ()
+  (interactive)
+  (insert
+   (completing-read "History: " (delete-dups (ring-elements eshell-history-ring)))))
+
+```
 
 It lets you use your normal completion framework to select an item from history. Suddenly fzf-like history!
 
@@ -1282,34 +1340,41 @@ It lets you use your normal completion framework to select an item from history.
 
 I use Emacs for React development and it's usually great (rjsx-mode). We recently introduced styled components into our app and while they're very handy, not having proper css support inside rjsx-mode was pretty annoying. I was looking for solutions, maybe extending rjsx-mode, but I wasn't up to that task. I then realized the built-in emacs commands and buffers themselves could solve my problem! What I want is for css inside a styled component, which always looks something like this:
 
-    const myDiv = styled.div` // notice the backtick
-        Some css...
-     ` // ending backtick
+```elisp
+const myDiv = styled.div` // notice the backtick
+    Some css...
+ ` // ending backtick
+
+```
 
 to **actually** use scss-mode when editing, and then return to rjsx-mode when finished. The elisp is very simple and leads to a trivial workflow:
 
-    ;; The following 2 functions allow editing styled components with all scss mode features.
-    (defun edit-styled-component ()
-      (interactive)
-      (progn
-        (save-excursion
-          (let ((start (search-backward "`"))
-                (end (search-forward "`" nil nil 2))) ; second occurrence, since first is `start'
-            (narrow-to-region start end)))
-        (scss-mode)))
-    
-    (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
-      "ms" 'edit-styled-component)
-    
-    ;; When editing is done, use the same key sequence to return to the original file.
-    (defun return-from-styled-component ()
-      (interactive)
-      (progn
-        (widen)
-        (rjsx-mode)))
-    
-    (spacemacs/set-leader-keys-for-major-mode 'scss-mode
-      "ms" 'return-from-styled-component)
+```elisp
+;; The following 2 functions allow editing styled components with all scss mode features.
+(defun edit-styled-component ()
+  (interactive)
+  (progn
+    (save-excursion
+      (let ((start (search-backward "`"))
+            (end (search-forward "`" nil nil 2))) ; second occurrence, since first is `start'
+        (narrow-to-region start end)))
+    (scss-mode)))
+
+(spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
+  "ms" 'edit-styled-component)
+
+;; When editing is done, use the same key sequence to return to the original file.
+(defun return-from-styled-component ()
+  (interactive)
+  (progn
+    (widen)
+    (rjsx-mode)))
+
+(spacemacs/set-leader-keys-for-major-mode 'scss-mode
+  "ms" 'return-from-styled-component)
+
+
+```
 
 So now when I edit a styled component I just hit ****, m s****, which narrows the region to whatever is enclosed by backticks (i.e. all the css) and actually treats it as a bona fide css buffer, with all my snippets, completion, etc. Then when I'm done I just got ****, m s**** again to widen back to the original (rjsx) buffer!
 
@@ -1327,7 +1392,9 @@ Shells in emacs like \`shell-mode\` and \`eshell\` can write multi line input us
 
 One of my favourite tips for managing my init file is the \`imenu\` support in \`use-package\`. It's turned off by default, though:
 
-    (setq use-package-enable-imenu-support t)
+```elisp
+(setq use-package-enable-imenu-support t)
+```
 
 Combined with a nice imenu UI (\`consult-imenu\` and Vertico, say) you can navigate your init file really quickly.
 
@@ -1338,12 +1405,18 @@ Combined with a nice imenu UI (\`consult-imenu\` and Vertico, say) you can navig
 
 Simple hack to add attributes to the \`<html>\` tag of an exported org file by escaping the quote of the language header.
 
-    #+HTML_DOCTYPE: html5
-    #+LANGUAGE: en" data-theme="dark
+```elisp
+#+HTML_DOCTYPE: html5
+#+LANGUAGE: en" data-theme="dark
+
+```
 
 This when exported to html using \`org-html-export-to-html\` will result in:
 
-    <html lang="en" data-theme="dark">
+```elisp
+<html lang="en" data-theme="dark">
+
+```
 
 Useful when you include some classless css libraries which require you to add attributes to directly to \`<html>\` tag.
 
@@ -1372,7 +1445,10 @@ I use:\`(setq font-lock-maximum-decoration '((c-mode . 2) (c++-mode . 2) (t . t)
 
 Just added this to the \`:init\` section of my embark configuration:
 
-    (define-key minibuffer-local-map [C-tab] 'embark-select)
+```elisp
+(define-key minibuffer-local-map [C-tab] 'embark-select)
+
+```
 
 This allows super-convenient marking of entries for later \`embark-all\` using control-tab, instead of having to go first through the \`embark\` menu. (By default, this key binding is mapped to \`file-cache-minibuffer-complete\`, which I never use.)
 
@@ -1381,9 +1457,9 @@ This allows super-convenient marking of entries for later \`embark-all\` using c
 
 **Votes** 11
 
-I have long had convenience bindings for \`org-emphasize\` like \`super-i\` for *italic*, that match system bindings.  But I always wanted these to **be smarter**, i.e. do something useful when there is no text selected.  Something like intelligently toggling emphasis depending on whether you were already in the right kind of emphasized text, or just emphasize the word at point if not.
+I have long had convenience bindings for \`org-emphasize\` like \`super-i\` for *italic*, that match system bindings. But I always wanted these to **be smarter**, i.e. do something useful when there is no text selected. Something like intelligently toggling emphasis depending on whether you were already in the right kind of emphasized text, or just emphasize the word at point if not.
 
-[Check out my solution](<https://gist.github.com/jdtsmith/55e6a660dd4c0779a600ac81bf9bfc23>) (scroll down to see how it acts).  Will miss this behavior in other apps!
+[Check out my solution](<https://gist.github.com/jdtsmith/55e6a660dd4c0779a600ac81bf9bfc23>) (scroll down to see how it acts). Will miss this behavior in other apps!
 
 
 # u/algor512 [🔗](https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kg4ni5d)
@@ -1403,7 +1479,10 @@ Need to remove an element from a list when you're tinkering with elisp?
 
 Sometimes when I'm adding and removing elements from hooks or variables like \`completion-at-point-functions\` I'll often need to tinker with the symbols I've added. You could evaluate some form somewhere, but I like to be lazy and just:
 
-    M-x remove-hook
+```elisp
+M-x remove-hook
+
+```
 
 And you've got an interactive interface (using \`completing-read\`) for removing arbitrary elements from any list-like variable. It's <span class="underline">technically</span> for altering hooks, but you can abuse it to fool around with lists, too.
 
@@ -1414,12 +1493,15 @@ And you've got an interactive interface (using \`completing-read\`) for removing
 
 Do you want a key binding to wrap the selection in some kind of delimiter? Here's a built-in solution:
 
-    (defvar insert-pair-map
-      (let ((map (make-sparse-keymap)))
-        (define-key map [t] #'insert-pair)
-        map))
-    
-    (global-set-key (kbd "C-S-w") insert-pair-map)
+```elisp
+(defvar insert-pair-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map [t] #'insert-pair)
+    map))
+
+(global-set-key (kbd "C-S-w") insert-pair-map)
+
+```
 
 This setups up \`C-S-w\` to be a prefix map, \`insert-pair-map\`. The only key binding in \`insert-pair-map\` is for \`[t]\`, which means it is the default key binding and any key after the prefix will run the same command: \`insert-pair\`. Now, \`insert-pair\` looks at which key was used to invoke it and if it is an opening delimiter it inserts both it and the corresponding closing delimiter (and if the region is active it insert the opening delimiter at the start and the closing delimiter at the end, wrapping the region).
 
@@ -1446,7 +1528,10 @@ before you load evil \`(setq evil-want-minibuffer t)\` to use evil-mode in the m
 
 I thought it might be a fun project to make a package to expose org-capture templates as endpoints, so I can add reminders to my TODO list via any device on the network. Turns out, it was easy enough that a package would be kinda pointless:
 
-    (defservlet* capture/:keys/:contents text/plain () (org-capture-string contents keys))
+```elisp
+(defservlet* capture/:keys/:contents text/plain () (org-capture-string contents keys))
+
+```
 
 Now I can hit "localhost:8080/capture/t/test reminder" and it'll put a "\* TODO test reminder" line into my todo.org. Neat!
 
@@ -1459,17 +1544,26 @@ AucTeX
 
 When you compile your TeX file and there are errors, the message asks you to see error messages using
 
-    C-c `
+```elisp
+C-c `
+
+```
 
 This leads to the last error which is sometimes incomprehensible and you are left to yourself to figure out what went wrong.
 
 Instead of getting the last error, you can get an overview of all the errors by setting below variable to \`t\`:
 
-    (setq TeX-error-overview-open-after-TeX-run t)
+```elisp
+(setq TeX-error-overview-open-after-TeX-run t)
+
+```
 
 You can pop this up in a separate frame using:
 
-    (setq TeX-error-overview-setup 'separate-frame)
+```elisp
+(setq TeX-error-overview-setup 'separate-frame)
+
+```
 
 Related docs are [here](<https://www.gnu.org/software/auctex/manual/auctex/Error-overview.html>).
 
@@ -1482,43 +1576,45 @@ This totally changes the way you can handle errors messages.
 
 Since I find myself pair programming quite a bit, I made a small helper:
 
-    (defvar pair-programming--pair-programmer
-      nil
-      "The current pair programmer as (name email)")
-    
-    (defun enable-pair-programming-mode ()
-      "Sets visuals for pair programming mode and prompt for your buddy."
-      (global-display-line-numbers-mode 1)
-      (let ((pair-programmer (git-commit-read-ident nil)))
-    (setq pair-programming--pair-programmer pair-programmer)
-    (message (concat "Pair programming with " (car pair-programmer)))))
-    
-    (defun disable-pair-programming-mode ()
-      "Disable pair programming visuals and settings."
-      (setq pair-programming--pair-programmer nil)
-      (global-display-line-numbers-mode -1)
-      (message "PP mode disabled"))
-    
-    (define-minor-mode pair-programming-mode ()
-      "Toggle Pair Programming Mode.
-    
-    This prompts for a pair programmer from your current git commit history.
-    When you commit with (ma)git, the pair programmer is inserted as a co-author.
-    Additionally, line number mode is enabled."
-      :global t
-      :lighter " PP"
-      (if pair-programming-mode
-      (enable-pair-programming-mode)
-    (disable-pair-programming-mode)))
-    
-    (defun insert-pair-programmer-as-coauthor ()
-      "Insert your pair programer into the current git commit."
-      (when (and pair-programming-mode git-commit-mode)
-    (pcase pair-programming--pair-programmer
-      (`(,name ,email) (git-commit-insert-header "Co-authed-by" name email))
-      (_ (error "No pair programmer found or wrong content")))))
-    
-    (add-hook 'git-commit-setup-hook 'insert-pair-programmer-as-coauthor)
+```elisp
+(defvar pair-programming--pair-programmer
+  nil
+  "The current pair programmer as (name email)")
+
+(defun enable-pair-programming-mode ()
+  "Sets visuals for pair programming mode and prompt for your buddy."
+  (global-display-line-numbers-mode 1)
+  (let ((pair-programmer (git-commit-read-ident nil)))
+(setq pair-programming--pair-programmer pair-programmer)
+(message (concat "Pair programming with " (car pair-programmer)))))
+
+(defun disable-pair-programming-mode ()
+  "Disable pair programming visuals and settings."
+  (setq pair-programming--pair-programmer nil)
+  (global-display-line-numbers-mode -1)
+  (message "PP mode disabled"))
+
+(define-minor-mode pair-programming-mode ()
+  "Toggle Pair Programming Mode.
+
+This prompts for a pair programmer from your current git commit history.
+When you commit with (ma)git, the pair programmer is inserted as a co-author.
+Additionally, line number mode is enabled."
+  :global t
+  :lighter " PP"
+  (if pair-programming-mode
+  (enable-pair-programming-mode)
+(disable-pair-programming-mode)))
+
+(defun insert-pair-programmer-as-coauthor ()
+  "Insert your pair programer into the current git commit."
+  (when (and pair-programming-mode git-commit-mode)
+(pcase pair-programming--pair-programmer
+  (`(,name ,email) (git-commit-insert-header "Co-authed-by" name email))
+  (_ (error "No pair programmer found or wrong content")))))
+
+(add-hook 'git-commit-setup-hook 'insert-pair-programmer-as-coauthor)
+```
 
 It sets up a co-authored-by for git commits, and enables line numbers.
 
@@ -1534,9 +1630,9 @@ Undo-tree and kill-ring are two of the best features in Emacs / packages. Change
 
 **Votes** 10
 
-I recently discovered the [Dimmer](<https://github.com/gonewest818/dimmer.el>) package and can't believe I didn't try it until now.  It subtly dims  windows that aren't focused, just enough to draw your eyes to the window that **is** focused.  And of course, you can customize how much it dims and exclude certain buffers.
+I recently discovered the [Dimmer](<https://github.com/gonewest818/dimmer.el>) package and can't believe I didn't try it until now. It subtly dims windows that aren't focused, just enough to draw your eyes to the window that **is** focused. And of course, you can customize how much it dims and exclude certain buffers.
 
-I love things that reduce cognitive load like this.  You don't realize how much time you spent looking for little clues like a solid cursor, until you don't have to anymore.
+I love things that reduce cognitive load like this. You don't realize how much time you spent looking for little clues like a solid cursor, until you don't have to anymore.
 
 
 # u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q)
@@ -1556,9 +1652,11 @@ I assume the same trick applies to other mode-maps as well.
 
 This is how to have a beacon without installing any packages.
 
-    (defun pulse-line (_)
-      (pulse-momentary-highlight-one-line (point)))
-    (setq window-selection-change-functions '(pulse-line))
+```elisp
+(defun pulse-line (_)
+  (pulse-momentary-highlight-one-line (point)))
+(setq window-selection-change-functions '(pulse-line))
+```
 
 
 # u/lesliesrussell [🔗](https://www.reddit.com/r/emacs/comments/t3_198rnkj/comment/t1_kibmgv2)
@@ -1588,19 +1686,22 @@ This is maybe more a macOS tip than an Emacs tip, but it always bothered me that
 
 I created this file and now Emacs keybindings work everywhere:
 
-    /* ~/Library/KeyBindings/DefaultKeyBinding.dict */
-    {
-        /* Additional Emacs bindings */
-        "~f" = "moveWordForward:";
-        "~b" = "moveWordBackward:";
-        "~<" = "moveToBeginningOfDocument:";
-        "~>" = "moveToEndOfDocument:";
-        "~v" = "pageUp:";
-        "~d" = "deleteWordForward:";
-        "~^h" = "deleteWordBackward:";
-        "~\010" = "deleteWordBackward:";  /* Option-backspace */
-        "~\177" = "deleteWordBackward:";  /* Option-delete */
-    }
+```elisp
+/* ~/Library/KeyBindings/DefaultKeyBinding.dict */
+{
+    /* Additional Emacs bindings */
+    "~f" = "moveWordForward:";
+    "~b" = "moveWordBackward:";
+    "~<" = "moveToBeginningOfDocument:";
+    "~>" = "moveToEndOfDocument:";
+    "~v" = "pageUp:";
+    "~d" = "deleteWordForward:";
+    "~^h" = "deleteWordBackward:";
+    "~\010" = "deleteWordBackward:";  /* Option-backspace */
+    "~\177" = "deleteWordBackward:";  /* Option-delete */
+}
+
+```
 
 You can read more here: <https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html>
 
@@ -1618,33 +1719,36 @@ Just recently found out M-u makes the next word upper case, and the same for M-l
 
 I've been slowly accumulating cases for "flexing" the thing at point as a more general \`capitalize-word\` replacement:
 
-    ;; Stolen from the wiki somewhere
-    (defun increment-number-at-point ()
-      "Increment the number at point."
-      (interactive)
-      (skip-chars-backward "0-9")
-      (or (looking-at "[0-9]+")
-          (error "No number at point"))
-      (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
-        
-    (defun lw-flex ()
-      "Perform smart flexing at point.
-        
-    E.g. capitalize or decapitalize the next word, increment number at point."
-      (interactive)
-      (let ((case-fold-search nil))
-        (call-interactively
-         (cond ((looking-at "[0-9]+") #'increment-number-at-point)
-               ((looking-at "[[:lower:]]") #'capitalize-word)
-               ((looking-at "==") (delete-char 1) (insert "!") (forward-char 2))
-               ((looking-at "!=") (delete-char 1) (insert "=") (forward-char 2))
-               ((looking-at "+") (delete-char 1) (insert "-") (forward-char 1))
-               ((looking-at "-") (delete-char 1) (insert "+") (forward-char 1))
-               ((looking-at "<=") (delete-char 2) (insert ">=") (forward-char 2))
-               ((looking-at ">=") (delete-char 2) (insert "<=") (forward-char 2))
-               ((looking-at "<") (delete-char 1) (insert ">") (forward-char 1))
-               ((looking-at ">") (delete-char 1) (insert "<") (forward-char 1))
-               (t #'downcase-word)))))
+```elisp
+;; Stolen from the wiki somewhere
+(defun increment-number-at-point ()
+  "Increment the number at point."
+  (interactive)
+  (skip-chars-backward "0-9")
+  (or (looking-at "[0-9]+")
+      (error "No number at point"))
+  (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
+    
+(defun lw-flex ()
+  "Perform smart flexing at point.
+    
+E.g. capitalize or decapitalize the next word, increment number at point."
+  (interactive)
+  (let ((case-fold-search nil))
+    (call-interactively
+     (cond ((looking-at "[0-9]+") #'increment-number-at-point)
+           ((looking-at "[[:lower:]]") #'capitalize-word)
+           ((looking-at "==") (delete-char 1) (insert "!") (forward-char 2))
+           ((looking-at "!=") (delete-char 1) (insert "=") (forward-char 2))
+           ((looking-at "+") (delete-char 1) (insert "-") (forward-char 1))
+           ((looking-at "-") (delete-char 1) (insert "+") (forward-char 1))
+           ((looking-at "<=") (delete-char 2) (insert ">=") (forward-char 2))
+           ((looking-at ">=") (delete-char 2) (insert "<=") (forward-char 2))
+           ((looking-at "<") (delete-char 1) (insert ">") (forward-char 1))
+           ((looking-at ">") (delete-char 1) (insert "<") (forward-char 1))
+           (t #'downcase-word)))))
+
+```
 
 I bind it to \`M-c\`.
 
@@ -1653,7 +1757,7 @@ I bind it to \`M-c\`.
 
 **Votes** 10
 
-I was converting some old \`.odt\` notes files to \`.org\` today, and one of the things I wanted to do was to add two spaces after end of sentence periods for proper sentence navigation.  So there I was figuring out a general enough regexp for the nth time and, of course, I regretted not having taken note of this the last time. So I decided to do some searching for a good regexp and write it down this time, since this was obviously shared by someone somewhere. And it turns out Emacs has us covered, and I never knew: \`repunctuate-sentences\`. I have no idea if this is new or has always been there. It is new to me. It uses \`query-replace-regexp\`, so it's the same experience. And also can be configured for exclusions with \`repunctuate-sentences-filter\`. Neat!
+I was converting some old \`.odt\` notes files to \`.org\` today, and one of the things I wanted to do was to add two spaces after end of sentence periods for proper sentence navigation. So there I was figuring out a general enough regexp for the nth time and, of course, I regretted not having taken note of this the last time. So I decided to do some searching for a good regexp and write it down this time, since this was obviously shared by someone somewhere. And it turns out Emacs has us covered, and I never knew: \`repunctuate-sentences\`. I have no idea if this is new or has always been there. It is new to me. It uses \`query-replace-regexp\`, so it's the same experience. And also can be configured for exclusions with \`repunctuate-sentences-filter\`. Neat!
 
 
 # u/BunnyLushington [🔗](https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhrzybp)
@@ -1662,26 +1766,28 @@ I was converting some old \`.odt\` notes files to \`.org\` today, and one of the
 
 I found myself debugging [JWTs](<https://jwt.io>) earlier this week and whomped up a little function to decode them from a region into a help buffer.
 
-    (defun ii/decode-jwt (start end &optional jwt)
-      "Decode JWT in region and print to help buffer."
-      (interactive "r")
-      (let* ((tok (if jwt jwt
-                (buffer-substring start end)))
-         (data (s-split "\\." tok))
-         (header (car data))
-         (claims (cadr data)))
-    (with-temp-buffer
-      (insert (format "%s\n\n%s"
-                      (base64-decode-string header t)
-                      (base64-decode-string claims t)))
-      (json-pretty-print-buffer)
-      (with-output-to-temp-buffer "*JWT*"
-        (princ (buffer-string)))))
-      t)
+```elisp
+(defun ii/decode-jwt (start end &optional jwt)
+  "Decode JWT in region and print to help buffer."
+  (interactive "r")
+  (let* ((tok (if jwt jwt
+            (buffer-substring start end)))
+     (data (s-split "\\." tok))
+     (header (car data))
+     (claims (cadr data)))
+(with-temp-buffer
+  (insert (format "%s\n\n%s"
+                  (base64-decode-string header t)
+                  (base64-decode-string claims t)))
+  (json-pretty-print-buffer)
+  (with-output-to-temp-buffer "*JWT*"
+    (princ (buffer-string)))))
+  t)
+```
 
-I'd forgotten about \`with-output-to-temp-buffer\` which is pretty handy.  The \`t\` at the end is there just to suppress an overly large echo area message.
+I'd forgotten about \`with-output-to-temp-buffer\` which is pretty handy. The \`t\` at the end is there just to suppress an overly large echo area message.
 
-(This should be obvious but note that the JWT is not validated or verified.  This is intended for debugging only and the JWT should not be trusted.)
+(This should be obvious but note that the JWT is not validated or verified. This is intended for debugging only and the JWT should not be trusted.)
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8mo1bz)
@@ -1697,7 +1803,7 @@ Win - Alt - Ctrl - Space - Ctrl - Alt - Win
 
 **Votes** 10
 
-I started using \`god-mode\`, but I found it hard to get used to it at first: there was no easy way to check what command would be triggered by what key-sequence. 
+I started using \`god-mode\`, but I found it hard to get used to it at first: there was no easy way to check what command would be triggered by what key-sequence.
 
 I wrote up a \`god-mode\`\&#x00ad;specific \`describe-key\`, which translates \`god-mode\` key-sequences into commands and shows their usual description. I think it's a great way to get familiar with how the package handles keys, and it allows users to invoke \`describe-key\` without leaving god-mode (previously, most keys would just show information about the generic \`god-mode-self-insert-command\`)
 
@@ -1712,11 +1818,11 @@ Emacs has better long-lines support now??
 
 I just noticed while looking at the latest additions in the NEWS:
 
->\\\*\\\* Emacs is now capable of editing files with arbitrarily long lines. The display of long lines has been optimized, and Emacs no longer chokes when a buffer on display contains long lines.  If you still experience slowdowns while editing files with long lines, this is either due to font locking, which you can turn off with M-x font-lock-mode or C-u C-x x f, or to the current major mode or one of the enabled minor modes, in which case you should open the the file with M-x find-file-literally instead of C-x C-f.  The variable 'long-line-threshold' controls whether and when these display optimizations are used.
+>\\\*\\\* Emacs is now capable of editing files with arbitrarily long lines. The display of long lines has been optimized, and Emacs no longer chokes when a buffer on display contains long lines. If you still experience slowdowns while editing files with long lines, this is either due to font locking, which you can turn off with M-x font-lock-mode or C-u C-x x f, or to the current major mode or one of the enabled minor modes, in which case you should open the the file with M-x find-file-literally instead of C-x C-f. The variable 'long-line-threshold' controls whether and when these display optimizations are used.
 
-That sounds like great news!  Does anyone know what went into it?
+That sounds like great news! Does anyone know what went into it?
 
-(edit to add: this was added some time this week.  I rebuild from master weekly, and check out the NEWS diff each time)
+(edit to add: this was added some time this week. I rebuild from master weekly, and check out the NEWS diff each time)
 
 
 # u/ainstr [🔗](https://www.reddit.com/r/emacs/comments/t3_vcpk6u/comment/t1_ichiccu)
@@ -1727,47 +1833,49 @@ The other day I discovered that you can access Spotify through dbus. Most of my 
 
 This basically wraps \`completing-read\` over the alist stored in spotify-playlists. You can probably translate the qdbus call to dbus-send or whatever.
 
-    ;; Inspired by sp.sh: https://gist.github.com/wandernauta/6800547
-    ;; Could use https://codeberg.org/jao/espotify, but don't need all the functionalities
-    ;; Potential Issues: https://community.spotify.com/t5/Desktop-Linux/DBus-OpenUri-issue/td-p/1376397
-        
-    ;; Could just write a fn to extract the ID, and use that in spotify-playlists
-    ;; Current way with full uri allows for playlist vs artist, etc.
-    ;; but probably don't need flexiblity for my use case
-    (defun spotify--clean-uri (raw-uri)
-      "Clean RAW-URI into a dbus-acceptable uri."
-      (let* ((url-fields (split-string
-    		      raw-uri
-    		      (rx (or "/" "?"))))
-    	 (type (nth 3 url-fields))
-    	 (id (nth 4 url-fields)))
-        (concat "spotify:" type ":" id)))
-        
-    (defvar spotify-playlists
-      '(("Artist" . "https://open.spotify.com/playlist/1v4UqI9mEEB4ry3a3uaorO?si=bc675402c7384080"))
-      "Alist of spotify playlists for spotify-playlists to select from.
-      RAW-URI is from right-click on playlist > Share > Copy Link to Playlist.")
-        
-    (defun spotify--open-uri (raw-uri)
-      "Open RAW-URI."
-      (let ((prefix "qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.OpenUri ")
-    	(uri (spotify--clean-uri raw-uri)))
-        (shell-command (concat prefix uri))))
-        
-    (defun spotify--open-playlist ()
-      "Prompt to select and play a playlist from spotify-playlists."
-      (let* ((key (completing-read "Playlist: " spotify-playlists))
-    	 (raw-uri (cdr (assoc key spotify-playlists))))
-        (spotify--open-uri raw-uri)
-        (message (format "Now Playing: %s" key))))
-        
-    (defun spotify-open-playlist ()
-      "Wrapper around `spotify--open-playlist`, to check if spotify is running."
-      (interactive)
-      (pcase
-          (shell-command "pgrep spotify")
-        (1 (message "Spotify not running."))
-        (0 (spotify--open-playlist))))
+```elisp
+;; Inspired by sp.sh: https://gist.github.com/wandernauta/6800547
+;; Could use https://codeberg.org/jao/espotify, but don't need all the functionalities
+;; Potential Issues: https://community.spotify.com/t5/Desktop-Linux/DBus-OpenUri-issue/td-p/1376397
+    
+;; Could just write a fn to extract the ID, and use that in spotify-playlists
+;; Current way with full uri allows for playlist vs artist, etc.
+;; but probably don't need flexiblity for my use case
+(defun spotify--clean-uri (raw-uri)
+  "Clean RAW-URI into a dbus-acceptable uri."
+  (let* ((url-fields (split-string
+		      raw-uri
+		      (rx (or "/" "?"))))
+	 (type (nth 3 url-fields))
+	 (id (nth 4 url-fields)))
+    (concat "spotify:" type ":" id)))
+    
+(defvar spotify-playlists
+  '(("Artist" . "https://open.spotify.com/playlist/1v4UqI9mEEB4ry3a3uaorO?si=bc675402c7384080"))
+  "Alist of spotify playlists for spotify-playlists to select from.
+  RAW-URI is from right-click on playlist > Share > Copy Link to Playlist.")
+    
+(defun spotify--open-uri (raw-uri)
+  "Open RAW-URI."
+  (let ((prefix "qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.OpenUri ")
+	(uri (spotify--clean-uri raw-uri)))
+    (shell-command (concat prefix uri))))
+    
+(defun spotify--open-playlist ()
+  "Prompt to select and play a playlist from spotify-playlists."
+  (let* ((key (completing-read "Playlist: " spotify-playlists))
+	 (raw-uri (cdr (assoc key spotify-playlists))))
+    (spotify--open-uri raw-uri)
+    (message (format "Now Playing: %s" key))))
+    
+(defun spotify-open-playlist ()
+  "Wrapper around `spotify--open-playlist`, to check if spotify is running."
+  (interactive)
+  (pcase
+      (shell-command "pgrep spotify")
+    (1 (message "Spotify not running."))
+    (0 (spotify--open-playlist))))
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_us7zae/comment/t1_i92mn8w)
@@ -1790,36 +1898,38 @@ This basically wraps \`completing-read\` over the alist stored in spotify-playli
 
 The \`git grep\` git command is great for finding a regex (or a simple string) everywhere in a git repo. I define the following functions and bind the \`git-grep\` function to \`F2\`. It will prompt for a regex and search for that in the repo or, if you give it a numeric prefix like \`C-u\` it will read the current symbol at point (the word under the cursor) and search for that. Results appear in a grep buffer, so you can use \`C-g C-n\` and \`C-g C-p\` to navigate from one result to the next.
 
-    (defun git-root-dir ()
-      "Returns the current directory's root Git repo directory, or
-    NIL if the current directory is not in a Git repo."
-      (let ((dir (locate-dominating-file default-directory ".git")))
-        (when dir
-          (file-name-directory dir))))
-        
-    (defun git-grep (arg)
-      "Runs 'git grep', starting the search in the current
-    directory's root git repo directory.
-        
-    By default, reads the regex from the minibuffer. With a prefix
-    argument, initializes the search string with the current symbol
-    at point."
-      (interactive "P")
-      (let* ((symbol-at-point (thing-at-point 'symbol))
-             (regexp (if (and arg (symbol-at-point))
-                       (regexp-quote symbol-at-point)
-                         (read-from-minibuffer
-                          "Search regexp: " nil nil nil 'grep-find-history)))
-        
-             (default-directory (git-root-dir))
-             (case-ignore-flag (and (isearch-no-upper-case-p regexp t) "-i"))
-             (cmd (concat "git grep --extended-regexp --line-number --full-name"
-                          " --untracked " case-ignore-flag " -- \"" regexp "\""
-                          " | cut -c -240")))
-        (while (equal "" regexp)
-            (setq regexp (read-from-minibuffer
-                          "Search regexp (must not be the empty string): " nil nil nil 'grep-find-history)))
-        (grep-find cmd)))
+```elisp
+(defun git-root-dir ()
+  "Returns the current directory's root Git repo directory, or
+NIL if the current directory is not in a Git repo."
+  (let ((dir (locate-dominating-file default-directory ".git")))
+    (when dir
+      (file-name-directory dir))))
+    
+(defun git-grep (arg)
+  "Runs 'git grep', starting the search in the current
+directory's root git repo directory.
+    
+By default, reads the regex from the minibuffer. With a prefix
+argument, initializes the search string with the current symbol
+at point."
+  (interactive "P")
+  (let* ((symbol-at-point (thing-at-point 'symbol))
+         (regexp (if (and arg (symbol-at-point))
+                   (regexp-quote symbol-at-point)
+                     (read-from-minibuffer
+                      "Search regexp: " nil nil nil 'grep-find-history)))
+    
+         (default-directory (git-root-dir))
+         (case-ignore-flag (and (isearch-no-upper-case-p regexp t) "-i"))
+         (cmd (concat "git grep --extended-regexp --line-number --full-name"
+                      " --untracked " case-ignore-flag " -- \"" regexp "\""
+                      " | cut -c -240")))
+    (while (equal "" regexp)
+        (setq regexp (read-from-minibuffer
+                      "Search regexp (must not be the empty string): " nil nil nil 'grep-find-history)))
+    (grep-find cmd)))
+```
 
 
 # u/shitterwithaclitter [🔗](https://www.reddit.com/r/emacs/comments/t3_s7lac1/comment/t1_htnz373)
@@ -1828,9 +1938,11 @@ The \`git grep\` git command is great for finding a regex (or a simple string) e
 
 I recently had the idea to start emacs in org-mode but have a src block at the top so I can still write elisp snippets easily. Here's the code for anyone interested:
 
-    ;; start in org-mode with a source block for lisp evaluation
-    (setq initial-major-mode #'org-mode
-          initial-scratch-message "#+begin_src emacs-lisp\n;; This block is for text that is not saved, and for Lisp evaluation.\n;; To create a file, visit it with \\[find-file] and enter text in its buffer.\n\n#+end_src\n\n")
+```elisp
+;; start in org-mode with a source block for lisp evaluation
+(setq initial-major-mode #'org-mode
+      initial-scratch-message "#+begin_src emacs-lisp\n;; This block is for text that is not saved, and for Lisp evaluation.\n;; To create a file, visit it with \\[find-file] and enter text in its buffer.\n\n#+end_src\n\n")
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_s21457/comment/t1_hsgj7a6)
@@ -1843,73 +1955,87 @@ I use Emacs on a laptop and quite often scroll with a touchpad. I also don't use
 
 However, when scrolling text sideways, there's a small annoyance that the scroll can go way too far to the left. E.g. if this is your window, and your text exceeds it:
 
-    |Short line             |
-    |Some really long line o|
-    |Another short line     |
+```elisp
+|Short line             |
+|Some really long line o|
+|Another short line     |
+
+```
 
 What I'd like to is to prevent scrolling any further than that:
 
-    |line                   |
-    |eally long line of text|
-    |r short line           |
+```elisp
+|line                   |
+|eally long line of text|
+|r short line           |
+
+```
 
 But Emacs actually allows to scroll as far as one would want to, like here:
 
-    |                       |
-    |t                      |
-    |                       |
+```elisp
+|                       |
+|t                      |
+|                       |
 
-This doesn't make sense to me, as you can't see anything at all.
-Probably handy, when you write in really long lines, and you wish to have some buffer for adding more text without triggering scrolling, but I never needed that. So I wrote such predicate:
+```
 
-    (defun truncated-lines-p ()
-      "Non-nil if any line is longer than `window-width' + `window-hscroll'.
-    
-    Returns t if any line exceeds the right border of the window.
-    Used for stopping scroll from going beyond the longest line.
-    Based on `so-long-detected-long-line-p'."
-      (save-excursion
-        (goto-char (point-min))
-        (let* ((window-width
-                ;; this computes a more accurate width rather than `window-width', and respects
-                ;; `text-scale-mode' font width.
-                (/ (window-body-width nil t) (window-font-width)))
-               (hscroll-offset
-                ;; `window-hscroll' returns columns that are not affected by
-                ;; `text-scale-mode'.  Because of that, we have to recompute the correct
-                ;; `window-hscroll' by multiplying it with a non-scaled value and
-                ;; dividing it with a scaled width value, rounding it to the upper
-                ;; boundary.  Since there's no way to get unscaled value, we have to get
-                ;; a width of a face that is not scaled by `text-scale-mode', such as
-                ;; `window-divider' face.
-                (ceiling (/ (* (window-hscroll) (window-font-width nil 'window-divider))
-                            (float (window-font-width)))))
-               (line-number-width
-                ;; compensate line numbers width
-                (if (bound-and-true-p display-line-numbers-mode)
-                    (- display-line-numbers-width)
-                  0))
-               ;; subtracting 2 for extra space in case some calculations were imprecise
-               (threshold (+ window-width hscroll-offset line-number-width -2)))
-          (catch 'excessive
-            (while (not (eobp))
-              (let ((start (point)))
-                (save-restriction
-                  (narrow-to-region start (min (+ start 1 threshold)
-                                               (point-max)))
-                  (forward-line 1))
-                (unless (or (bolp)
-                            (and (eobp) (<= (- (point) start)
-                                            threshold)))
-                  (throw 'excessive t))))))))
+This doesn't make sense to me, as you can't see anything at all. Probably handy, when you write in really long lines, and you wish to have some buffer for adding more text without triggering scrolling, but I never needed that. So I wrote such predicate:
+
+```elisp
+(defun truncated-lines-p ()
+  "Non-nil if any line is longer than `window-width' + `window-hscroll'.
+
+Returns t if any line exceeds the right border of the window.
+Used for stopping scroll from going beyond the longest line.
+Based on `so-long-detected-long-line-p'."
+  (save-excursion
+    (goto-char (point-min))
+    (let* ((window-width
+            ;; this computes a more accurate width rather than `window-width', and respects
+            ;; `text-scale-mode' font width.
+            (/ (window-body-width nil t) (window-font-width)))
+           (hscroll-offset
+            ;; `window-hscroll' returns columns that are not affected by
+            ;; `text-scale-mode'.  Because of that, we have to recompute the correct
+            ;; `window-hscroll' by multiplying it with a non-scaled value and
+            ;; dividing it with a scaled width value, rounding it to the upper
+            ;; boundary.  Since there's no way to get unscaled value, we have to get
+            ;; a width of a face that is not scaled by `text-scale-mode', such as
+            ;; `window-divider' face.
+            (ceiling (/ (* (window-hscroll) (window-font-width nil 'window-divider))
+                        (float (window-font-width)))))
+           (line-number-width
+            ;; compensate line numbers width
+            (if (bound-and-true-p display-line-numbers-mode)
+                (- display-line-numbers-width)
+              0))
+           ;; subtracting 2 for extra space in case some calculations were imprecise
+           (threshold (+ window-width hscroll-offset line-number-width -2)))
+      (catch 'excessive
+        (while (not (eobp))
+          (let ((start (point)))
+            (save-restriction
+              (narrow-to-region start (min (+ start 1 threshold)
+                                           (point-max)))
+              (forward-line 1))
+            (unless (or (bolp)
+                        (and (eobp) (<= (- (point) start)
+                                        threshold)))
+              (throw 'excessive t))))))))
+
+```
 
 This function can calculate window width, and line width, and check if any line in the buffer exceeds the window width screen-wise. By screen-wise I mean that if you've scrolled text to the left, it will begin to return \`nil\` once all lines don't exceed the right border of the window, thus achieving the described behavior in the diagrams. I then define advice around the \`scroll-left\` function, and it works pretty good:
 
-    (define-advice scroll-left (:around (foo &optional arg set-minimum))
-      (when (and truncate-lines
-                 (not (memq major-mode '(vterm-mode term-mode)))
-                 (truncated-lines-p))
-        (funcall foo arg set-minimum)))
+```elisp
+(define-advice scroll-left (:around (foo &optional arg set-minimum))
+  (when (and truncate-lines
+             (not (memq major-mode '(vterm-mode term-mode)))
+             (truncated-lines-p))
+    (funcall foo arg set-minimum)))
+
+```
 
 Though it's not very accurate when using \`text-scale-adjust\`, as line width is not the same as before, the function, that reports how much the window was scrolled to the left still returns unscaled values. You can see my thoughts in the function's comments. Any suggestions on how to make it more accurate?
 
@@ -1918,7 +2044,7 @@ Though it's not very accurate when using \`text-scale-adjust\`, as line width is
 
 **Votes** 10
 
-Is there a package similar to wdired or wgrep that would work on magit diffs? 
+Is there a package similar to wdired or wgrep that would work on magit diffs?
 
 Particular use cases I have in mind are:
 
@@ -1934,38 +2060,42 @@ Usually I switch to \`foobar.hpp\`, kill the necessary part, switch to \`foobar.
 
 I use a lot of toggles in my config. I used to do it ad-hoc every time, but the pattern ends up the same so I made this macro:
 
-    (defun deftoggle-var-doc (name)
-      (concat "Non-nil if " name " is enabled.\n\n"
-          "See " name
-          " command for a description of this toggle."))
-    (defun deftoggle-fun-doc (name doc)
-      (concat "Toggle " name " on or off.\n\n" doc))
-    (defmacro deftoggle (name doc enabler disabler)
-      `(progn
-     (defvar ,name nil ,(deftoggle-var-doc (symbol-name name)))
-     (defun ,name (&optional enable)
-       ,(deftoggle-fun-doc (symbol-name name) doc)
-       (interactive)
-       (if (called-interactively-p 'interactive)
-           (progn
-             (if ,name
-                 ,disabler
-               ,enabler)
-             (setq ,name (not ,name)))
-         (progn
-           (if enable
-               ,enabler
-             ,disabler)
-           (setq ,name enable))))))
+```elisp
+(defun deftoggle-var-doc (name)
+  (concat "Non-nil if " name " is enabled.\n\n"
+      "See " name
+      " command for a description of this toggle."))
+(defun deftoggle-fun-doc (name doc)
+  (concat "Toggle " name " on or off.\n\n" doc))
+(defmacro deftoggle (name doc enabler disabler)
+  `(progn
+ (defvar ,name nil ,(deftoggle-var-doc (symbol-name name)))
+ (defun ,name (&optional enable)
+   ,(deftoggle-fun-doc (symbol-name name) doc)
+   (interactive)
+   (if (called-interactively-p 'interactive)
+       (progn
+         (if ,name
+             ,disabler
+           ,enabler)
+         (setq ,name (not ,name)))
+     (progn
+       (if enable
+           ,enabler
+         ,disabler)
+       (setq ,name enable))))))
+```
 
 It's very similar to define-minor-mode, but with all the hooks, keymaps, and lighters stripped out, so it's less verbose. Here I use it to toggle my theme for example:
 
-    (deftoggle sam-toggle-theme
-      "Toggle theme between light and dark."
-      (progn (disable-theme 'dracula)
-         (load-theme 'spacemacs-light t))
-      (progn (disable-theme 'spacemacs-light)
-         (load-theme 'dracula t)))
+```elisp
+(deftoggle sam-toggle-theme
+  "Toggle theme between light and dark."
+  (progn (disable-theme 'dracula)
+     (load-theme 'spacemacs-light t))
+  (progn (disable-theme 'spacemacs-light)
+     (load-theme 'dracula t)))
+```
 
 
 # u/github-alphapapa [🔗](https://www.reddit.com/r/emacs/comments/t3_q2g1gq/comment/t1_hfldw8n)
@@ -1974,8 +2104,10 @@ It's very similar to define-minor-mode, but with all the hooks, keymaps, and lig
 
 One of the most useful bindings for me:
 
-    (use-package avy
-      :bind* (("C-j" . avy-goto-char-timer)))
+```elisp
+(use-package avy
+  :bind* (("C-j" . avy-goto-char-timer)))
+```
 
 
 # u/Stefan-Kangas [🔗](https://www.reddit.com/r/emacs/comments/t3_pxqvtm/comment/t1_hexdfiq)
@@ -1993,11 +2125,14 @@ Replace the binding for \`count-words-region\` with \`count-words\`. The latter 
 
 I often find myself wanting to be able to switch between \`master\` and a feature branch in magit quickly:
 
-    (defun lw-magit-checkout-last (&optional start-point)
-        (interactive)
-        (magit-branch-checkout "-" start-point))
-    (transient-append-suffix 'magit-branch "w"
-      '("-" "last branch" lw-magit-checkout-last))
+```elisp
+(defun lw-magit-checkout-last (&optional start-point)
+    (interactive)
+    (magit-branch-checkout "-" start-point))
+(transient-append-suffix 'magit-branch "w"
+  '("-" "last branch" lw-magit-checkout-last))
+
+```
 
 So that \`C-x g b -\` switches to the last branch I was on, similar to \`cd -\`.
 
@@ -2015,18 +2150,24 @@ So if you're in the middle of a sentence, you can press \`M-@\` a few times to s
 
 **Votes** 10
 
-I keep forgetting how useful the \`pcase\` macro is.  Recently I wrote a command that expected to find a single jar file in a certain directory and operate on it.  I started with a more "traditional" implementation:
+I keep forgetting how useful the \`pcase\` macro is. Recently I wrote a command that expected to find a single jar file in a certain directory and operate on it. I started with a more "traditional" implementation:
 
-    (let ((jars (directory-files some-dir t (rx ".jar" eos))))
-      (if (= 1 (length jars))
-          (do-something-with (car jars))
-        (error "Didn't find exactly one jar file")))
+```elisp
+(let ((jars (directory-files some-dir t (rx ".jar" eos))))
+  (if (= 1 (length jars))
+      (do-something-with (car jars))
+    (error "Didn't find exactly one jar file")))
+
+```
 
 Then I remembered \`pcase\`:
 
-    (pcase (directory-files some-dir t (rx ".jar" eos))
-      (`(,jar) (do-something-with jar))
-      (_ (error "Didn't find exactly one jar file")))
+```elisp
+(pcase (directory-files some-dir t (rx ".jar" eos))
+  (`(,jar) (do-something-with jar))
+  (_ (error "Didn't find exactly one jar file")))
+
+```
 
 Much more readable!
 
@@ -2035,7 +2176,7 @@ Much more readable!
 
 **Votes** 10
 
-From the mailing list, I've just learned of \`generic-x.el\`, which provides syntax highlighting for \`/etc/fstab\` or \`/etc/passwd\` and the like.  I appreciated that vim provided that out of the box and I was surprised that emacs also does, but it's just disabled.
+From the mailing list, I've just learned of \`generic-x.el\`, which provides syntax highlighting for \`/etc/fstab\` or \`/etc/passwd\` and the like. I appreciated that vim provided that out of the box and I was surprised that emacs also does, but it's just disabled.
 
 \`(require 'generic-x)\` to enable it.
 
@@ -2051,14 +2192,11 @@ Just a cool concept: if you have a keypad on your keyboard which you rarely use,
 
 **Votes** 10
 
-For some this will be obvious, but I'm sure there will be at least one person who will find this useful. One of the most amazing features of Emacs to me is dabbrev-expand, by default bound to M-/. 
+For some this will be obvious, but I'm sure there will be at least one person who will find this useful. One of the most amazing features of Emacs to me is dabbrev-expand, by default bound to M-/.
 
 > Expand previous word "dynamically".
 
-> Expands to the most recent, preceding word for which this is a prefix.
-I> ifno suitable preceding word is found, words following point are
-considered.  If still no suitable word is found, then look in the
-> buffers accepted by the function pointed out by variable
+> Expands to the most recent, preceding word for which this is a prefix. I> ifno suitable preceding word is found, words following point are considered. If still no suitable word is found, then look in the > buffers accepted by the function pointed out by variable
 
 This command is essentially omni-autocomplete. Chances are, the term you're trying to complete is in the buffer you're using or another buffer, and you can hit multiple times to cycle through different completions. I find the expander to be quicker and more deterministic than language autocomplete about 70% of the time. It's especially useful in writing, if you use Emacs for things other than programming, as you can complete proper names and specalized vocabulary quickly.
 
@@ -2067,8 +2205,7 @@ This command is essentially omni-autocomplete. Chances are, the term you're tryi
 
 **Votes** 10
 
-\\\*\*Suggestion for moderators\*\* - Consider putting a note in the weekly announcement for this thread that using 3 backquotes or tildes to make code blocks doesn't work for those of us using old reddit (so the code people post that way is almost unreadable) - and that indenting by 4 spaces is better for compatibility.
-(Am I the only one who still uses old reddit? :-)  )
+\\\*\*Suggestion for moderators\*\* - Consider putting a note in the weekly announcement for this thread that using 3 backquotes or tildes to make code blocks doesn't work for those of us using old reddit (so the code people post that way is almost unreadable) - and that indenting by 4 spaces is better for compatibility. (Am I the only one who still uses old reddit? :-) )
 
 
 # u/Rotatop [🔗](https://www.reddit.com/r/emacs/comments/t3_hij4ga/comment/t1_fwi4ikt)
@@ -2079,71 +2216,74 @@ I've made it !
 
 After 6 month of emacs, I m able to open a side buffer when I m on ivy without using C-c C-O or hydra or alt-enter but directly with shift + arrow (except for Up because I need to go on buffer)
 
-    ;; Auto create new window
-    (setq windmove-create-window t)
-    ;; thanks to https://people.gnome.org/~federico/blog/bringing-my-emacs-from-the-past.html
-    ;; Let me switch windows with shift-arrows instead of "C-x o" all the time
-    (windmove-default-keybindings)
-        
-    ;; Ugly hack :
-    ;; What I want is to Shift arrow, then it open the selection on a new splitted window (up left right, down)
-    (defun tim/ivy-down-other ()
-      (interactive)
-      (ivy-exit-with-action #'tim/ivy-down-exit))
-        
-    (defun tim/ivy-left-other ()
-      (interactive)
-      (ivy-exit-with-action #'tim/ivy-left-exit))
-        
-    (defun tim/ivy-right-other ()
-      (interactive)
-      (ivy-exit-with-action #'tim/ivy-right-exit))
-        
-    (defun tim/ivy-down-exit (ivy-body)
-      (split-window-below)
-      (other-window 1)
-      (tim/reuse-open-goto-line ivy-body))
-        
-    (defun tim/ivy-left-exit (ivy-body)
-      (split-window-right)
-      (tim/reuse-open-goto-line ivy-body))
-        
-    (defun tim/ivy-right-exit (ivy-body)
-      (split-window-right)
-      (other-window 1)
-      (tim/reuse-open-goto-line ivy-body))
-        
-        
-    ;; Thanks to
-    ;; https://github.com/abo-abo/swiper/blob/master/doc/ivy.org#actions and
-    ;; https://www.reddit.com/r/emacs/comments/efg362/ivy_open_selection_vertically_or_horizontally/
-    (defun tim/reuse-open-goto-line (ivy-body)
-      (message "reuse-open-goto-line ivy-body: %s" ivy-body)
-      (let* ((tim/list (split-string ivy-body ":"))
-             (file (car tim/list))
-             (tim/number (car (cdr tim/list))))
-        
-        (condition-case err
-            (counsel-projectile-find-file-action file)
-          (void-function ; <- that s the error handler name
-           (message "open fail with projectile, try find-file. Error was: %s" err)
-           (find-file file)))
-        ;; Thanks to https://stackoverflow.com/questions/3139970/open-a-file-at-line-with-filenameline-syntax
-        (when tim/number
-          ;; goto-line is for interactive use
-          (goto-char (point-min))
-          (forward-line (1- (string-to-number tim/number))))))
-      ;; (ivy-resume)) ; It s strange but ivy-resume here change the way that 'ENTER' or ivy-done works afterwards
-      ;; Try, as a workaround , in a timer ; no luck
-      ;; (run-with-timer 0.1 nil 'ivy-resume))
-        
-    (use-package! ivy
-      :bind (:map ivy-minibuffer-map
-             ("C-p" . ivy-previous-history-element)
-             ("<S-down>" . tim/ivy-down-other)
-             ;; no up to avoid changing buffer problems
-             ("<S-left>" . tim/ivy-left-other)
-             ("<S-right>" . tim/ivy-right-other))
+```elisp
+;; Auto create new window
+(setq windmove-create-window t)
+;; thanks to https://people.gnome.org/~federico/blog/bringing-my-emacs-from-the-past.html
+;; Let me switch windows with shift-arrows instead of "C-x o" all the time
+(windmove-default-keybindings)
+    
+;; Ugly hack :
+;; What I want is to Shift arrow, then it open the selection on a new splitted window (up left right, down)
+(defun tim/ivy-down-other ()
+  (interactive)
+  (ivy-exit-with-action #'tim/ivy-down-exit))
+    
+(defun tim/ivy-left-other ()
+  (interactive)
+  (ivy-exit-with-action #'tim/ivy-left-exit))
+    
+(defun tim/ivy-right-other ()
+  (interactive)
+  (ivy-exit-with-action #'tim/ivy-right-exit))
+    
+(defun tim/ivy-down-exit (ivy-body)
+  (split-window-below)
+  (other-window 1)
+  (tim/reuse-open-goto-line ivy-body))
+    
+(defun tim/ivy-left-exit (ivy-body)
+  (split-window-right)
+  (tim/reuse-open-goto-line ivy-body))
+    
+(defun tim/ivy-right-exit (ivy-body)
+  (split-window-right)
+  (other-window 1)
+  (tim/reuse-open-goto-line ivy-body))
+    
+    
+;; Thanks to
+;; https://github.com/abo-abo/swiper/blob/master/doc/ivy.org#actions and
+;; https://www.reddit.com/r/emacs/comments/efg362/ivy_open_selection_vertically_or_horizontally/
+(defun tim/reuse-open-goto-line (ivy-body)
+  (message "reuse-open-goto-line ivy-body: %s" ivy-body)
+  (let* ((tim/list (split-string ivy-body ":"))
+         (file (car tim/list))
+         (tim/number (car (cdr tim/list))))
+    
+    (condition-case err
+        (counsel-projectile-find-file-action file)
+      (void-function ; <- that s the error handler name
+       (message "open fail with projectile, try find-file. Error was: %s" err)
+       (find-file file)))
+    ;; Thanks to https://stackoverflow.com/questions/3139970/open-a-file-at-line-with-filenameline-syntax
+    (when tim/number
+      ;; goto-line is for interactive use
+      (goto-char (point-min))
+      (forward-line (1- (string-to-number tim/number))))))
+  ;; (ivy-resume)) ; It s strange but ivy-resume here change the way that 'ENTER' or ivy-done works afterwards
+  ;; Try, as a workaround , in a timer ; no luck
+  ;; (run-with-timer 0.1 nil 'ivy-resume))
+    
+(use-package! ivy
+  :bind (:map ivy-minibuffer-map
+         ("C-p" . ivy-previous-history-element)
+         ("<S-down>" . tim/ivy-down-other)
+         ;; no up to avoid changing buffer problems
+         ("<S-left>" . tim/ivy-left-other)
+         ("<S-right>" . tim/ivy-right-other))
+
+```
 
 Emacs is good
 
@@ -2152,11 +2292,11 @@ Emacs is good
 
 **Votes** 10
 
-I've been using \`M-|\` (\`shell-command-on-region\`) frequently for years, and I only just stumbled on the fact that the region need not be active to use it.  If it isn't, the command operates on the text from point to the end of the buffer.  That's very reasonable and in line with various other commands, but the documentation doesn't mention it and so I never thought to try it.
+I've been using \`M-|\` (\`shell-command-on-region\`) frequently for years, and I only just stumbled on the fact that the region need not be active to use it. If it isn't, the command operates on the text from point to the end of the buffer. That's very reasonable and in line with various other commands, but the documentation doesn't mention it and so I never thought to try it.
 
-That saves me a call to \`C-x h\` (\`mark-whole-buffer\`) whenever I want to process the entire buffer, which is most of the time.  Also, it's a minor distraction for the entire buffer to be highlighted when I'm composing my shell command, so it's nice to avoid that.
+That saves me a call to \`C-x h\` (\`mark-whole-buffer\`) whenever I want to process the entire buffer, which is most of the time. Also, it's a minor distraction for the entire buffer to be highlighted when I'm composing my shell command, so it's nice to avoid that.
 
-Edited to add:  Sorry folks, this doesn't work like I thought it did.  See the coments below for details.
+Edited to add: Sorry folks, this doesn't work like I thought it did. See the coments below for details.
 
 
 # u/rhmatthijs [🔗](https://www.reddit.com/r/emacs/comments/t3_h9zoy9/comment/t1_fuzucay)
@@ -2167,25 +2307,30 @@ On a Mac: make Emacs detect if you have light or dark mode enabled system wide.
 
 If you have two themes, a light one and a dark one, and you want the dark theme by default unless you have light mode enabled, add this to your init.el:
 
-    ;; If we're on a Mac and the file "~/bin/get_dark.osascript" exists
-    ;; and it outputs "false", activate light mode. Otherwise activate
-    ;; dark mode.
-    (cond ((and (file-exists-p "~/bin/get_dark.osascript")
-                (string> (shell-command-to-string "command -v osascript") "")
-                (equal "false\n"
-                       (shell-command-to-string "osascript ~/bin/get_dark.osascript")))
-           (mcj/theme-set-light))
-          (t (mcj/theme-set-dark)))
+```elisp
+;; If we're on a Mac and the file "~/bin/get_dark.osascript" exists
+;; and it outputs "false", activate light mode. Otherwise activate
+;; dark mode.
+(cond ((and (file-exists-p "~/bin/get_dark.osascript")
+            (string> (shell-command-to-string "command -v osascript") "")
+            (equal "false\n"
+                   (shell-command-to-string "osascript ~/bin/get_dark.osascript")))
+       (mcj/theme-set-light))
+      (t (mcj/theme-set-dark)))
+
+```
 
 (mcj/theme-set-light and mcj/theme-set-light are functions that enable the light and the dark theme, respectively).
 
 ~/bin/get<sub>dark.osascript</sub> contains the following:
 
-    tell application "System Events"
-    	tell appearance preferences
-    		get dark mode
-    	end tell
-    end tell
+```elisp
+tell application "System Events"
+	tell appearance preferences
+		get dark mode
+	end tell
+end tell
+```
 
 
 # u/hale314 [🔗](https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqg7qys)
@@ -2194,21 +2339,23 @@ If you have two themes, a light one and a dark one, and you want the dark theme 
 
 I tend to have a lot of function that is defined solely to be added to a hook. Turns out I can customize \`defun-declarations-alist\` to define a new \`hook\` property in the \`declare\` form. Now I can specify the hook that the function is intended for right inside the function definition.
 
-    ;; Need to be done during compilation as well if your functions are getting compiled
-    (eval-and-compile
-      (setf (alist-get 'hook defun-declarations-alist)
-            (list (lambda (fun _args hook &optional depth)
-                    `(add-hook ',hook #',fun ,@(when depth (list depth)))))))
-        
-    (defun ask-about-scratch-buffer ()
-      "Confirm that user want to discard the content of the scratch buffer."
-      (declare (hook kill-emacs-query-functions))
-      (let ((scratch (get-buffer "*scratch*")))
-        (or (zerop (buffer-size scratch))
-            (progn (pop-to-buffer scratch)
-                   (y-or-n-p "Scratch buffer is not empty, discard?")))))
-    ;; no longer needed
-    ;; (add-hook 'kill-emacs-query-functions #'ask-about-scratch-buffer)
+```elisp
+;; Need to be done during compilation as well if your functions are getting compiled
+(eval-and-compile
+  (setf (alist-get 'hook defun-declarations-alist)
+        (list (lambda (fun _args hook &optional depth)
+                `(add-hook ',hook #',fun ,@(when depth (list depth)))))))
+    
+(defun ask-about-scratch-buffer ()
+  "Confirm that user want to discard the content of the scratch buffer."
+  (declare (hook kill-emacs-query-functions))
+  (let ((scratch (get-buffer "*scratch*")))
+    (or (zerop (buffer-size scratch))
+        (progn (pop-to-buffer scratch)
+               (y-or-n-p "Scratch buffer is not empty, discard?")))))
+;; no longer needed
+;; (add-hook 'kill-emacs-query-functions #'ask-about-scratch-buffer)
+```
 
 
 # u/b3n [🔗](https://www.reddit.com/r/emacs/comments/t3_gdtqov/comment/t1_fq9186h)
@@ -2217,13 +2364,16 @@ I tend to have a lot of function that is defined solely to be added to a hook. T
 
 If you want to switch between two themes, depending on time of day (e.g. a light and dark theme), it's as simple as this:
 
-    ;; Light
-    (load-theme 'modus-operandi t t)
-    (run-at-time "05:00" (* 60 60 24) (lambda () (enable-theme 'modus-operandi))))
-    
-    ;; Dark
-    (load-theme 'modus-vivendi t t)
-    (run-at-time "21:00" (* 60 60 24) (lambda () (enable-theme 'modus-vivendi))))
+```elisp
+;; Light
+(load-theme 'modus-operandi t t)
+(run-at-time "05:00" (* 60 60 24) (lambda () (enable-theme 'modus-operandi))))
+
+;; Dark
+(load-theme 'modus-vivendi t t)
+(run-at-time "21:00" (* 60 60 24) (lambda () (enable-theme 'modus-vivendi))))
+
+```
 
 This selects the correct theme when starting Emacs and automatically switch when the times come.
 
@@ -2232,20 +2382,22 @@ This selects the correct theme when starting Emacs and automatically switch when
 
 **Votes** 9
 
-I've recently discovered [\`org-pdftools\`](<https://github.com/fuxialexander/org-pdftools>) and it offers everything I need for annotating pdfs in emacs.  I mainly use it to enhance the inbuilt function \`org-store-link\`:
+I've recently discovered [\`org-pdftools\`](<https://github.com/fuxialexander/org-pdftools>) and it offers everything I need for annotating pdfs in emacs. I mainly use it to enhance the inbuilt function \`org-store-link\`:
 
-\\\* mark a passage in the pdf, run \`M-x org-store-link\`, and it creates a highlight in the pdf (technically an empty annotation) and copies a link to it.
-\\\* run \`C-c C-l\` in any org-buffer, and it pastes the link and prompts you for a name.
+\\\* mark a passage in the pdf, run \`M-x org-store-link\`, and it creates a highlight in the pdf (technically an empty annotation) and copies a link to it. \\\* run \`C-c C-l\` in any org-buffer, and it pastes the link and prompts you for a name.
 
 The installation is easy, you just need to hook it into \`org-mode\`:
 
-    (use-package org-pdftools
-      :after (org pdf-tools)
-      :hook (org-mode . org-pdftools-setup-link))
+```elisp
+(use-package org-pdftools
+  :after (org pdf-tools)
+  :hook (org-mode . org-pdftools-setup-link))
 
-The only thing to keep in mind is that the highlights in the pdf are not automatically deleted, as you delete the link in the org buffer.  You have to do that manually in the pdf (\`C-c C-a l\` to list all highlights, \`D\` to delete).
+```
 
-It has less features than [\`org-noter\`](<https://github.com/org-noter/org-noter>), but it is more flexible, which is why it suits my use-case better.  Unfortunately, it has \`org-noter\` as a dependency, so you will end up loading it either way.
+The only thing to keep in mind is that the highlights in the pdf are not automatically deleted, as you delete the link in the org buffer. You have to do that manually in the pdf (\`C-c C-a l\` to list all highlights, \`D\` to delete).
+
+It has less features than [\`org-noter\`](<https://github.com/org-noter/org-noter>), but it is more flexible, which is why it suits my use-case better. Unfortunately, it has \`org-noter\` as a dependency, so you will end up loading it either way.
 
 
 # u/fv\_\_ [🔗](https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr5ceqe)
@@ -2261,39 +2413,46 @@ C-x in a transient popup shows menu to save selected options e.g., it can be use
 
 You know that you can use vars in org source blocks that inject some data, like:
 
-    #+begin_src bash :var token="bla-bla-bla" 
-    echo ${token}
+```elisp
+#+begin_src bash :var token="bla-bla-bla" 
+echo ${token}
+```
 
     bla-bla-bla
 
-\#+END<sub>SRC</sub>
-That can be used to pass data from one block to another, right? So if you need to calculate something based on the result of another block, you just need a named block.
+\#+END<sub>SRC</sub> That can be used to pass data from one block to another, right? So if you need to calculate something based on the result of another block, you just need a named block.
 
-    #+name: dirs
-    #+begin_src bash :results silent
-    ls 
+```elisp
+#+name: dirs
+#+begin_src bash :results silent
+ls 
+```
 
-    console.log(data)
+```js
+console.log(data)
+```
 
-\#+END<sub>SRC</sub>
-But did you know, you can also use elisp there?
+\#+END<sub>SRC</sub> But did you know, you can also use elisp there?
 
-    #+begin_src js :var data=(if (featurep :system 'macos) "🍎" "🐧") 
-    return data;
+```elisp
+#+begin_src js :var data=(if (featurep :system 'macos) "🍎" "🐧") 
+return data;
+```
 
     🍎
 
-\#+END<sub>SRC</sub>
-Or previous-like example with dirs but without needing additional source block:
+\#+END<sub>SRC</sub> Or previous-like example with dirs but without needing additional source block:
 
-    #+begin_src clojure :var data=(shell-command-to-string "ls -a ~") 
-    ;; all dotfiles
-    (require '[clojure.string :as str])
-    
-    (->>  (str/split data #"\n")
-          (filter (partial re-find #"^\.*"))
-          (sort)
-          (str/join "\n"))
+```elisp
+#+begin_src clojure :var data=(shell-command-to-string "ls -a ~") 
+;; all dotfiles
+(require '[clojure.string :as str])
+
+(->>  (str/split data #"\n")
+      (filter (partial re-find #"^\.*"))
+      (sort)
+      (str/join "\n"))
+```
 
 \#+END<sub>SRC</sub>
 
@@ -2309,15 +2468,18 @@ Or previous-like example with dirs but without needing additional source block:
 
 **Votes** 9
 
-    (defun copy-source-for-reddit ()
-      (interactive)
-      (let ((contents (buffer-substring (point) (mark))))
-        (with-temp-buffer
-          (insert contents)
-          (mark-whole-buffer)
-          (indent-rigidly (point) (mark) 4 t)
-          (mark-whole-buffer)
-          (kill-ring-save 0 0 t))))
+```elisp
+(defun copy-source-for-reddit ()
+  (interactive)
+  (let ((contents (buffer-substring (point) (mark))))
+    (with-temp-buffer
+      (insert contents)
+      (mark-whole-buffer)
+      (indent-rigidly (point) (mark) 4 t)
+      (mark-whole-buffer)
+      (kill-ring-save 0 0 t))))
+
+```
 
 A handy little snippet for exporting code to reddit markdown. Takes the region, prepends four spaces to each line, and then copies it to the kill ring to be pasted in your browser, without modifying the original buffer.
 
@@ -2335,7 +2497,7 @@ If you are new to Emacs you will get so many answers to your questions by gettin
 
 **Votes** 9
 
-M-x ielm  Use the repl while learning elisp coding. I had no idea!
+M-x ielm Use the repl while learning elisp coding. I had no idea!
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kpct4cp)
@@ -2353,12 +2515,15 @@ Indirect buffers solve this. It makes two buffers for one file, and these buffer
 
 **Votes** 9
 
-I work with multiple Git repositories in my day job, but one in particular occupies 95% of my time.  I've often wished I could set up Projectile so that if I run one of its commands while not in any repo, it will behave as if I'd changed to that main repo first.  I couldn't find a built-in way to do that, but got the effect I wanted with some advice:
+I work with multiple Git repositories in my day job, but one in particular occupies 95% of my time. I've often wished I could set up Projectile so that if I run one of its commands while not in any repo, it will behave as if I'd changed to that main repo first. I couldn't find a built-in way to do that, but got the effect I wanted with some advice:
 
-    (defun default-to-main-project (dir)
-      (or dir *main-project-dir*))
-    
-    (advice-add 'projectile-ensure-project :override #'default-to-main-project)
+```elisp
+(defun default-to-main-project (dir)
+  (or dir *main-project-dir*))
+
+(advice-add 'projectile-ensure-project :override #'default-to-main-project)
+
+```
 
 I lose some of the functionality of \`projectile-ensure-project\`, but I never used it anyway.
 
@@ -2371,21 +2536,23 @@ I'm once again reminded of the utility of \`read-key\` for small functions where
 
 For example, I recently wanted a function that prints a set of predefined dates for me into the current buffer, and it was as easy as
 
-    (defun slot/insert-time ()
-      (interactive)
-      (let* ((formats '((?i "ISO 8601"  "%Y-%m-%d")
-                        (?l "DDmmmYYYY" "%d%b%Y")
-                        (?t "Time"      "%H:%M")))
-             (key (read-key
-                   (cl-loop for (key label _) in formats
-                            concat (format "[%s] %s "
-                                           (propertize (single-key-description key) 'face 'bold)
-                                           label)))))
-        (->> (alist-get key formats)
-             cl-second
-             format-time-string
-             downcase                     ; Jan -> jan
-             insert)))
+```elisp
+(defun slot/insert-time ()
+  (interactive)
+  (let* ((formats '((?i "ISO 8601"  "%Y-%m-%d")
+                    (?l "DDmmmYYYY" "%d%b%Y")
+                    (?t "Time"      "%H:%M")))
+         (key (read-key
+               (cl-loop for (key label _) in formats
+                        concat (format "[%s] %s "
+                                       (propertize (single-key-description key) 'face 'bold)
+                                       label)))))
+    (->> (alist-get key formats)
+         cl-second
+         format-time-string
+         downcase                     ; Jan -> jan
+         insert)))
+```
 
 
 # u/pathemata [🔗](https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8mpo5y)
@@ -2405,36 +2572,46 @@ I put a couple of similar functions on my \`<f5>\` key (with all combinations of
 
 So I made a small function to give some help for a list of keybindings.:
 
-    (defun my-generate-keybind-doc-on-keys (&rest keys)
-      "generate help on some given  keybindings (kbd style)."
-      (substring
-       (apply #'concat
-              (mapcar #'(lambda (key)
-                          (let* ((fun (key-binding (kbd key)))
-                                 (fun-name (symbol-name fun))
-                                 (doc (documentation fun 'raw))
-                                 (oneline (substring doc 0 (string-match "\n" doc))))
-                            (put-text-property 0 (length key) 'face 'font-lock-keyword-face key)
-                            (put-text-property 0 (length fun-name) 'face 'font-lock-function-name-face fun-name)
-                            (put-text-property 0 (length oneline) 'face 'font-lock-doc-face oneline)
-                            (format "%10s : %-30s → %s\n" key fun-name oneline)))
-                      keys))
-       0 -1))
+```elisp
+(defun my-generate-keybind-doc-on-keys (&rest keys)
+  "generate help on some given  keybindings (kbd style)."
+  (substring
+   (apply #'concat
+          (mapcar #'(lambda (key)
+                      (let* ((fun (key-binding (kbd key)))
+                             (fun-name (symbol-name fun))
+                             (doc (documentation fun 'raw))
+                             (oneline (substring doc 0 (string-match "\n" doc))))
+                        (put-text-property 0 (length key) 'face 'font-lock-keyword-face key)
+                        (put-text-property 0 (length fun-name) 'face 'font-lock-function-name-face fun-name)
+                        (put-text-property 0 (length oneline) 'face 'font-lock-doc-face oneline)
+                        (format "%10s : %-30s → %s\n" key fun-name oneline)))
+                  keys))
+   0 -1))
+
+```
 
 To show that help in the echo buffer, one needs to define a command, which can be bound to a key:
 
-    (defun my-show-help-on-some-keys ()
-      "demo generate help on 3 keys"
-      (interactive)
-      (message (my-generate-keybind-doc-on-keys "C-s"
-                                                "<f1> k"
-                                                "C-c !")))
+```elisp
+(defun my-show-help-on-some-keys ()
+  "demo generate help on 3 keys"
+  (interactive)
+  (message (my-generate-keybind-doc-on-keys "C-s"
+                                            "<f1> k"
+                                            "C-c !")))
+
+```
 
 Then calling the command \`my-show-help-on-some-keys\`, shows following message in the echo buffer:
 
-       C-s : isearch-forward                → Do incremental search forward.
-    <f1> k : helpful-key                    → Show help for interactive command bound to KEY-SEQUENCE.
-     C-c ! : shell-here                     → Open a shell relative to default-directory.
+```elisp
+   C-s : isearch-forward                → Do incremental search forward.
+<f1> k : helpful-key                    → Show help for interactive command bound to KEY-SEQUENCE.
+ C-c ! : shell-here                     → Open a shell relative to default-directory.
+
+
+```
 
 Remark: I know that \`which-key\` exists, but I'm already above that level of knowledge and don't need \`which-key\` anymore.
 
@@ -2447,18 +2624,23 @@ How I got my Info Directory node \`C-h i\` to display all my installed .info fil
 
 init.el snippet
 
-    (require 'info)
-    (info-initialize)
-    (push "/opt/homebrew/share/info" Info-directory-list)
+```elisp
+(require 'info)
+(info-initialize)
+(push "/opt/homebrew/share/info" Info-directory-list)
+
+```
 
 run this shell script to update the Directory node.
 
-    #!/usr/bin/env bash
-        
-    INFO_DIR="/opt/homebrew/share/info"
-    while read -r f; do
-        install-info --debug --keep-old "$f" "$INFO_DIR"/dir
-    done <<< $(find /opt/homebrew/Cellar -name \*.info)
+```elisp
+#!/usr/bin/env bash
+    
+INFO_DIR="/opt/homebrew/share/info"
+while read -r f; do
+    install-info --debug --keep-old "$f" "$INFO_DIR"/dir
+done <<< $(find /opt/homebrew/Cellar -name \*.info)
+```
 
 
 # u/Nondv [🔗](https://www.reddit.com/r/emacs/comments/t3_108zin2/comment/t1_j4ct1y1)
@@ -2499,12 +2681,16 @@ I use follow-mode (built-in to #emacs) to split reading buffers across modern wi
 
 I sometimes clone stuff with https instead of ssh, so this fixes that:
 
-    (defun isamert/git-origin-switch-to-ssh ()
-      (interactive)
-      (when-let* ((https-origin (s-trim (shell-command-to-string "git config --get remote.origin.url")))
-                  (it (s-match "https://\\(.*\\)\\.\\(com\\|net\\|org\\)/\\(.*\\)" https-origin))
-                  (ssh-origin (format "git@%s.%s:%s" (nth 1 it) (nth 2 it) (nth 3 it))))
-        (shell-command-to-string (format "git remote set-url origin %s" ssh-origin))))
+```elisp
+(defun isamert/git-origin-switch-to-ssh ()
+  (interactive)
+  (when-let* ((https-origin (s-trim (shell-command-to-string "git config --get remote.origin.url")))
+              (it (s-match "https://\\(.*\\)\\.\\(com\\|net\\|org\\)/\\(.*\\)" https-origin))
+              (ssh-origin (format "git@%s.%s:%s" (nth 1 it) (nth 2 it) (nth 3 it))))
+    (shell-command-to-string (format "git remote set-url origin %s" ssh-origin))))
+
+
+```
 
 It works for github/gitlab etc. You need to extend the regexp for making it work for more obscure addresses.
 
@@ -2534,7 +2720,7 @@ I wanted to be able to expand yasnippets within other yasnippets (so here tab wo
 
 \`:bind ("C-<tab>" . yas-expand)\`
 
-So C-<tab> expands a snippet within a snippet, and everything just worked as I'd hoped.  Once I'm done with the nested expansion <TAB> just moves on to the outer one. \\\*shrug\\\*
+So C-<tab> expands a snippet within a snippet, and everything just worked as I'd hoped. Once I'm done with the nested expansion <TAB> just moves on to the outer one. \\\*shrug\\\*
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_rgu8dp/comment/t1_hoqrg9e)
@@ -2554,11 +2740,14 @@ When writing elisp packages, the compiler expects that all variables and functio
 
 Inserting all those forms is tedious, especially if the function comes from a package with several files. But emacs already knows where the function comes from, so we can just ask it.
 
-    (defun tv/add-declare-function (fun)
-      (interactive "a") 
-      (let* ((buf (car (find-function-noselect fun))) 
-             (name (file-name-base (buffer-file-name buf)))) 
-        (insert (format "(declare-function %s "%s")\n" fun name))))
+```elisp
+(defun tv/add-declare-function (fun)
+  (interactive "a") 
+  (let* ((buf (car (find-function-noselect fun))) 
+         (name (file-name-base (buffer-file-name buf)))) 
+    (insert (format "(declare-function %s "%s")\n" fun name))))
+
+```
 
 Call it with M-x, insert the name of the function you want to declare (with completion), and voilà.
 
@@ -2571,19 +2760,22 @@ A colleague just showed me Intellij's "[compare with clipboard](<https://www.jet
 
 It didn't take me long to implement something similar:
 
-    (defun ediff-compare-region-clipboard (begin end)
-      (interactive "r")
-      (save-excursion
-        (let ((selected-region (buffer-substring begin end))
-              (clipboard-buffer (get-buffer-create "*ediff-clipboard*"))
-              (region-buffer (get-buffer-create "*ediff-region*")))
-          (with-current-buffer clipboard-buffer
-            (insert (car kill-ring)))
-          (with-current-buffer region-buffer
-            (insert selected-region))
-          (ediff-buffers clipboard-buffer region-buffer))))
+```elisp
+(defun ediff-compare-region-clipboard (begin end)
+  (interactive "r")
+  (save-excursion
+    (let ((selected-region (buffer-substring begin end))
+          (clipboard-buffer (get-buffer-create "*ediff-clipboard*"))
+          (region-buffer (get-buffer-create "*ediff-region*")))
+      (with-current-buffer clipboard-buffer
+        (insert (car kill-ring)))
+      (with-current-buffer region-buffer
+        (insert selected-region))
+      (ediff-buffers clipboard-buffer region-buffer))))
 
-It's not ideal though.  In particular, is there a better way to insert the "clipboard"?  One thing I quickly found was that you might copy the region to compare but then so many editing commands will add to the kill-ring, so I might want to make that part of the process interactive.
+```
+
+It's not ideal though. In particular, is there a better way to insert the "clipboard"? One thing I quickly found was that you might copy the region to compare but then so many editing commands will add to the kill-ring, so I might want to make that part of the process interactive.
 
 
 # u/yogsototh [🔗](https://www.reddit.com/r/emacs/comments/t3_qgrpte/comment/t1_hi8crmc)
@@ -2612,19 +2804,21 @@ There's more information in EmacsWiki: <https://www.emacswiki.org/emacs/InsertPa
 
 **Votes** 9
 
-This one is probably pretty niche but it was a noticeable improvement in my workflow, so I thought I'd share. I sometimes have to fill out forms I get in PDF but that aren't fillable PDFs, merely scans of paper forms. I guess a reasonable person would install The Gimp or something like that, but I fill them out in LaTeX, using \`\includegraphics\` for the PDF form, and the \`textpos\` package to place text on top of it. 
+This one is probably pretty niche but it was a noticeable improvement in my workflow, so I thought I'd share. I sometimes have to fill out forms I get in PDF but that aren't fillable PDFs, merely scans of paper forms. I guess a reasonable person would install The Gimp or something like that, but I fill them out in LaTeX, using \`\includegraphics\` for the PDF form, and the \`textpos\` package to place text on top of it.
 
 This is requires giving the coordinates you want the text placed at, which I used to do by trial and error. And as much as I normally dislike the mouse, I had to admit that for specifying a point in an image it is a much better input device than the keyboard. So I decided to write a function that would let me click on a point in a PDF and insert the coordinates in centimeters at point in the current buffer. Writing it was fairly easy and I think really illustrates the power of a system like Emacs, a Lisp Machine or Smalltalk, where you can instantly find the source code implementing any given functionality. I knew that \`pdf-tools\` must contain some code to translate mouse clicks into PDF document coordinates, because it lets you place annotations by clicking. I have the text annotation function bound to \`a t\`, and quick \`C-h k\` later I was reading the source code. And after that writing the following function was pretty easy:
 
-    (defun insert-coordinates ()
-      "Insert coordinates (in centimeters) of mouse click."
-      (interactive)
-      (let ((pos (event-start (pdf-util-read-click-event "Click on PDF"))))
-        (insert
-         (with-selected-window (posn-window pos)
-           (let ((pt (pdf-util-scale-pixel-to-points (posn-object-x-y pos))))
-             (cl-flet ((f (x) (* 2.54 (/ x 72.0))))
-               (format "(%.1fcm,%.1fcm)" (f (car pt)) (f (cdr pt)))))))))
+```elisp
+(defun insert-coordinates ()
+  "Insert coordinates (in centimeters) of mouse click."
+  (interactive)
+  (let ((pos (event-start (pdf-util-read-click-event "Click on PDF"))))
+    (insert
+     (with-selected-window (posn-window pos)
+       (let ((pt (pdf-util-scale-pixel-to-points (posn-object-x-y pos))))
+         (cl-flet ((f (x) (* 2.54 (/ x 72.0))))
+           (format "(%.1fcm,%.1fcm)" (f (car pt)) (f (cdr pt)))))))))
+```
 
 
 # u/11fdriver [🔗](https://www.reddit.com/r/emacs/comments/t3_mpwapo/comment/t1_gufsfeu)
@@ -2646,19 +2840,25 @@ If I'm studying/notetaking, I often end up with a few Emacs-windows arranged in 
 
 Skeletons are one of Emacs' killer features, especially when combined with \`abbrev-mode\`. Here's a macro I wrote to make them a little easier to handle:
 
-    (defmacro snip (name &rest skeleton)
-      (let* ((snip-name (symbol-name `,name))
-             (func-name (intern (concat "snip-" snip-name))))
-        `(progn
-           (define-skeleton ,func-name
-             ,(concat snip-name " skeleton")
-             ,@skeleton)
-           (define-abbrev global-abbrev-table ,snip-name
-             "" ',func-name))))
+```elisp
+(defmacro snip (name &rest skeleton)
+  (let* ((snip-name (symbol-name `,name))
+         (func-name (intern (concat "snip-" snip-name))))
+    `(progn
+       (define-skeleton ,func-name
+         ,(concat snip-name " skeleton")
+         ,@skeleton)
+       (define-abbrev global-abbrev-table ,snip-name
+         "" ',func-name))))
+
+```
 
 Here's a simplistic example using the macro:
 
-    (snip dd "" (format-time-string "%Y-%m-%d"))
+```elisp
+(snip dd "" (format-time-string "%Y-%m-%d"))
+
+```
 
 Now (assuming you have \`abbrev-mode\` enabled), type \`dd \` into your buffer (that's \`d\` \`d\` \`SPC\`) and it'll be replaced with the current date.
 
@@ -2688,8 +2888,7 @@ After a while I extended org-export to get a shortcut (\`C-e C-s o M\`) to autom
 
 -   using a proper corporate design & logo via ODT\\<sub>STYLES</sub>\\<sub>FILE</sub> header
 
-\\\* rename the file to include the current date
-\\\* open thunderbird, starting a new message with
+\\\* rename the file to include the current date \\\* open thunderbird, starting a new message with
 
 -   subject taken from document title (if exporting all) or subtree heading (if exporting subtree
 -   pre-filled text
@@ -2697,70 +2896,72 @@ After a while I extended org-export to get a shortcut (\`C-e C-s o M\`) to autom
 
 &#8203;
 
-    ;;
-    ;; export and send to mail
-    ;;
-    (defun org-foo-export-to-foo-and-sendto-mail (org-export-function &optional async subtreep visible-only ext-plist)
-      (interactive)
-      (when (or (string-equal (file-name-extension (buffer-file-name)) "gpg")
-                (string-equal (file-name-extension (buffer-file-name)) "asc"))
-        (unless (yes-or-no-p "Really export GPG encrypted file and send via mail? ")
-          (throw 'abort-export-mail-gpg "export aborted by user")))
-      (unless subtreep
-        (unless (yes-or-no-p "Really export everything and send via mail? ")
-          (throw 'abort-export-mail-everything "export aborted by user")))
-      (let* ((title (if subtreep
-                        ;; subtree -> use subtree heading as title
-                        (nth 4 (org-heading-components))
-                        ;; whole document -> use document title
-                        (org-element-map
-                            (org-element-parse-buffer)
-                            'keyword
-                          (lambda (e)
-                            (when (string= "TITLE" (org-element-property :key e))
-                              (org-element-property :value e)))
-                          nil
-                          t)))
-             (file (file-name-nondirectory (funcall org-export-function async subtreep visible-only ext-plist))) ; note: odt export includes directory in output file name, html export includes no directory
-             (newfile (format "%s_%s" (format-time-string "%Y%m%d") file))
-             (directory (file-name-directory (buffer-file-name))))
-        (rename-file (concat directory file) (concat directory newfile) 1)
-        (my/thunderbird-compose-mail
-         ""
-         (format "Notes: %s" title)
-         "Please find attached my notes ...\n\nBest regards, Andreas"
-         (format "file://%s%s"
-                 directory newfile))))
-        
-    (defun org-odt-export-to-odt-and-sendto-mail (&optional async subtreep visible-only ext-plist)
-      (interactive)
-      (org-foo-export-to-foo-and-sendto-mail 'org-odt-export-to-odt async subtreep visible-only ext-plist))
-        
-    (defun org-odt-export-to-pdf-and-sendto-mail (&optional async subtreep visible-only ext-plist)
-      (interactive)
-      (let ((org-odt-preferred-output-format "pdf"))
-        (org-odt-export-to-odt-and-sendto-mail async subtreep visible-only ext-plist)))
-        
-    (defun org-html-export-to-html-and-sendto-mail (&optional async subtreep visible-only ext-plist)
-      (interactive)
-      (org-foo-export-to-foo-and-sendto-mail 'org-html-export-to-html async subtreep visible-only ext-plist))
-        
-    (eval-after-load 'org
-     '(progn
-        (org-export-define-derived-backend 'odt-mail 'odt
-          :menu-entry
-          '(?o "Export to ODT"
-               ((?m "As ODT file and send mail" org-odt-export-to-odt-and-sendto-mail)
-                (?M "As PDF file and send mail" org-odt-export-to-pdf-and-sendto-mail))))
-        
-        (org-export-define-derived-backend 'html-mail 'html
-          :menu-entry
-          '(?h "Export to HTML"
-               ((?m "As HTML file and send mail" org-html-export-to-html-and-sendto-mail))))))
-               
-    (defun my/thunderbird-compose-mail (&optional recipient subject body attachment)
-      (interactive)
-      (call-process "thunderbird" nil 0 nil "-compose" (format "to='%s',subject='%s',body='%s',attachment='%s'" recipient subject body attachment)))
+```elisp
+;;
+;; export and send to mail
+;;
+(defun org-foo-export-to-foo-and-sendto-mail (org-export-function &optional async subtreep visible-only ext-plist)
+  (interactive)
+  (when (or (string-equal (file-name-extension (buffer-file-name)) "gpg")
+            (string-equal (file-name-extension (buffer-file-name)) "asc"))
+    (unless (yes-or-no-p "Really export GPG encrypted file and send via mail? ")
+      (throw 'abort-export-mail-gpg "export aborted by user")))
+  (unless subtreep
+    (unless (yes-or-no-p "Really export everything and send via mail? ")
+      (throw 'abort-export-mail-everything "export aborted by user")))
+  (let* ((title (if subtreep
+                    ;; subtree -> use subtree heading as title
+                    (nth 4 (org-heading-components))
+                    ;; whole document -> use document title
+                    (org-element-map
+                        (org-element-parse-buffer)
+                        'keyword
+                      (lambda (e)
+                        (when (string= "TITLE" (org-element-property :key e))
+                          (org-element-property :value e)))
+                      nil
+                      t)))
+         (file (file-name-nondirectory (funcall org-export-function async subtreep visible-only ext-plist))) ; note: odt export includes directory in output file name, html export includes no directory
+         (newfile (format "%s_%s" (format-time-string "%Y%m%d") file))
+         (directory (file-name-directory (buffer-file-name))))
+    (rename-file (concat directory file) (concat directory newfile) 1)
+    (my/thunderbird-compose-mail
+     ""
+     (format "Notes: %s" title)
+     "Please find attached my notes ...\n\nBest regards, Andreas"
+     (format "file://%s%s"
+             directory newfile))))
+    
+(defun org-odt-export-to-odt-and-sendto-mail (&optional async subtreep visible-only ext-plist)
+  (interactive)
+  (org-foo-export-to-foo-and-sendto-mail 'org-odt-export-to-odt async subtreep visible-only ext-plist))
+    
+(defun org-odt-export-to-pdf-and-sendto-mail (&optional async subtreep visible-only ext-plist)
+  (interactive)
+  (let ((org-odt-preferred-output-format "pdf"))
+    (org-odt-export-to-odt-and-sendto-mail async subtreep visible-only ext-plist)))
+    
+(defun org-html-export-to-html-and-sendto-mail (&optional async subtreep visible-only ext-plist)
+  (interactive)
+  (org-foo-export-to-foo-and-sendto-mail 'org-html-export-to-html async subtreep visible-only ext-plist))
+    
+(eval-after-load 'org
+ '(progn
+    (org-export-define-derived-backend 'odt-mail 'odt
+      :menu-entry
+      '(?o "Export to ODT"
+           ((?m "As ODT file and send mail" org-odt-export-to-odt-and-sendto-mail)
+            (?M "As PDF file and send mail" org-odt-export-to-pdf-and-sendto-mail))))
+    
+    (org-export-define-derived-backend 'html-mail 'html
+      :menu-entry
+      '(?h "Export to HTML"
+           ((?m "As HTML file and send mail" org-html-export-to-html-and-sendto-mail))))))
+           
+(defun my/thunderbird-compose-mail (&optional recipient subject body attachment)
+  (interactive)
+  (call-process "thunderbird" nil 0 nil "-compose" (format "to='%s',subject='%s',body='%s',attachment='%s'" recipient subject body attachment)))
+```
 
 
 # u/adt7799 [🔗](https://www.reddit.com/r/emacs/comments/t3_ja97xs/comment/t1_g8op875)
@@ -2791,17 +2992,21 @@ Kudos to the author, great little package.
 
 I am porting my [config](<https://github.com/laurynas-biveinis/dotfiles>) from 26.3 to 27.1, which had the tweak to do GC whenever a frame loses focus, originally from [MatthewZMD's config](<https://github.com/MatthewZMD/.emacs.d>) I think:
 
-    (add-hook 'focus-out-hook #'garbage-collect)
+```elispelisp
+(add-hook 'focus-out-hook #'garbage-collect)
+```
 
 27.1 NEWS say more generic (and more correct) \`after-focus-change-function\` should be used instead. Which pointed out that I do not want to GC on just any frame going out of focus, if another frame is being focused instead. It might be a better idea to GC if no frames at all are focused. Somewhat surprisingly I was not able to find any public dotfiles repo implementing this to copy paste from, so I tried to write my own:
 
-    (defun dotfiles--gc-on-last-frame-out-of-focus ()
-      "GC if all frames are inactive."
-      (if (seq-every-p #'null (mapcar #'frame-focus-state (frame-list)))
-      (garbage-collect)))
-    
-    (add-function :after after-focus-change-function
-              #'dotfiles--gc-on-last-frame-out-of-focus)
+```elispelisp
+(defun dotfiles--gc-on-last-frame-out-of-focus ()
+  "GC if all frames are inactive."
+  (if (seq-every-p #'null (mapcar #'frame-focus-state (frame-list)))
+  (garbage-collect)))
+
+(add-function :after after-focus-change-function
+          #'dotfiles--gc-on-last-frame-out-of-focus)
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_hv3kzf/comment/t1_fyrgnk7)
@@ -2819,41 +3024,43 @@ Hippie-expand google search suggestions. Completely inspired from [shell-parse.e
 
 I've added \`try-expand-google-completion\` to the bottom of my \`hippie-expand-try-functions-list\`
 
-    (defun google-suggest--request (query)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           (format "http://suggestqueries.google.com/complete/search?client=firefox&q=%s" query) t t 1)
-        (goto-char (point-min))
-        (re-search-forward "^$")
-        (delete-region (point)(point-min))(buffer-string)))
-        
-    (defun google-suggest--list (result)
-      (let* ((q (progn
-                  (string-match ",\\[\\(.*?\\)\\]" result)
-                  (match-string 1 result)))
-             (r (replace-regexp-in-string "\\\"" "" q))
-             (l (split-string r "," t)))
-        (when (> (length (car (cdr l))) 0)
-          (remove
-           (car l)
-           (cdr l)))))
-        
-    (defun try-expand-google-completion (old)
-      (unless old
-        (he-init-string (hippie-word-bg) (point))
-        (setq he-expand-list (sort
-                              (all-completions
-                               he-search-string
-                               (lambda (s y n) (google-suggest--list (google-suggest--request s))))
-                              'string-lessp)))
-      (if (null he-expand-list)
-          (progn
-            (when old (he-reset-string))
-            ())
-        (he-substitute-string (car he-expand-list) t)
-        (setq he-tried-table (cons (car he-expand-list) (cdr he-tried-table)))
-        (setq he-expand-list (cdr he-expand-list))
-        t))
+```elisp
+(defun google-suggest--request (query)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       (format "http://suggestqueries.google.com/complete/search?client=firefox&q=%s" query) t t 1)
+    (goto-char (point-min))
+    (re-search-forward "^$")
+    (delete-region (point)(point-min))(buffer-string)))
+    
+(defun google-suggest--list (result)
+  (let* ((q (progn
+              (string-match ",\\[\\(.*?\\)\\]" result)
+              (match-string 1 result)))
+         (r (replace-regexp-in-string "\\\"" "" q))
+         (l (split-string r "," t)))
+    (when (> (length (car (cdr l))) 0)
+      (remove
+       (car l)
+       (cdr l)))))
+    
+(defun try-expand-google-completion (old)
+  (unless old
+    (he-init-string (hippie-word-bg) (point))
+    (setq he-expand-list (sort
+                          (all-completions
+                           he-search-string
+                           (lambda (s y n) (google-suggest--list (google-suggest--request s))))
+                          'string-lessp)))
+  (if (null he-expand-list)
+      (progn
+        (when old (he-reset-string))
+        ())
+    (he-substitute-string (car he-expand-list) t)
+    (setq he-tried-table (cons (car he-expand-list) (cdr he-tried-table)))
+    (setq he-expand-list (cdr he-expand-list))
+    t))
+```
 
 
 # u/karthink [🔗](https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqfc1wi)
@@ -2878,9 +3085,12 @@ CDLaTeX was written by Carsten Dominik, the author of Org-mode and reftex. Thus 
 
 By default, when you click and drag with the Meta key Emacs creates what it calls a "secondary selection" which is super interesting and useful, but not what this tip is about. In most editors (on the Mac anyway) option+click+drag is used to create a rectangular selection. Emacs, of course, supports this, you just need to remap it.
 
-    (global-set-key [M-down-mouse-1] #'mouse-drag-region-rectangle)
-    (global-set-key [M-drag-mouse-1] #'ignore)
-    (global-set-key [M-mouse-1]      #'mouse-set-point)
+```elisp
+(global-set-key [M-down-mouse-1] #'mouse-drag-region-rectangle)
+(global-set-key [M-drag-mouse-1] #'ignore)
+(global-set-key [M-mouse-1]      #'mouse-set-point)
+
+```
 
 You can also create a rectangular selection with the command \`rectangle-mark-mode\`.
 
@@ -2893,9 +3103,9 @@ Don't forget to bind \`replace-rectangle\` to something convenient for super eas
 
 I posted this in the emacsclient thread, but I think it deserves to live here as well:
 
-The emacsclient / server system is great.  If you have it listening on tcp and port forward that when connecting to remote machine it adds another level of power.
+The emacsclient / server system is great. If you have it listening on tcp and port forward that when connecting to remote machine it adds another level of power.
 
-I use [emacs-vterm](<https://github.com/akermu/emacs-libvterm>) for a terminal inside emacs, so I've got a lot of commands remapped.  Like \`man\` runs \`emacsclient &#x2026; man ..\`, which opens the man page in the "other" buffer, so it doesn't interrupt my flow.  I use "scroll-other-window" to navigate the man page while I still have my prompt. \`magit\`, \`dired\`, and others map to their \`emacsclient\` equivalents.
+I use [emacs-vterm](<https://github.com/akermu/emacs-libvterm>) for a terminal inside emacs, so I've got a lot of commands remapped. Like \`man\` runs \`emacsclient &#x2026; man ..\`, which opens the man page in the "other" buffer, so it doesn't interrupt my flow. I use "scroll-other-window" to navigate the man page while I still have my prompt. \`magit\`, \`dired\`, and others map to their \`emacsclient\` equivalents.
 
 I've written wrapper script for e/emacs client that I've come to call \`e\`, because it saves keystrokes
 
@@ -2903,17 +3113,17 @@ I've written wrapper script for e/emacs client that I've come to call \`e\`, bec
 
 It does the standard things you would expect, starts emacs if it's not already started, open a file in a new buffer / window / terminal and optionally wait for you to finish or have the shell continue.
 
-Then I added some functions that I found useful, starting with piping results from a command into an emacs buffer, such as \`find . -name foo\\\* | e\`.  Naturally after that was piping from a buffer to a command: \`e [file] | rot13\` super secure encryption.  And of course piping into and out of a buffer works as well \`find . -name incriminating-evidence\\\* | e | xargs rm\`, so you can verify / tweak the results before passing them through.  Maybe you want to leave the evidence on Two Time Tommy.  Who knows.
+Then I added some functions that I found useful, starting with piping results from a command into an emacs buffer, such as \`find . -name foo\\\* | e\`. Naturally after that was piping from a buffer to a command: \`e [file] | rot13\` super secure encryption. And of course piping into and out of a buffer works as well \`find . -name incriminating-evidence\\\* | e | xargs rm\`, so you can verify / tweak the results before passing them through. Maybe you want to leave the evidence on Two Time Tommy. Who knows.
 
-The other nice feature is the ability to use templates.  For example to edit a HTTP request and then send it to a server you can do that: \`e -t header<sub>template.txt</sub> | nc www.example.com 80\`  The template file is copied to a temp file which is the one that is edited.
+The other nice feature is the ability to use templates. For example to edit a HTTP request and then send it to a server you can do that: \`e -t header<sub>template.txt</sub> | nc www.example.com 80\` The template file is copied to a temp file which is the one that is edited.
 
 Or the poor man's blog system: \`e -t header<sub>template.html</sub> body<sub>template.html</sub> footer.html > new<sub>page.html</sub>\`
 
-See the repo for more examples and to download.  The notes of getting it working on remote machines aren't the cleanest.  If you have any suggestions or features that would make your life easier let me know; submit an issue or comment here.
+See the repo for more examples and to download. The notes of getting it working on remote machines aren't the cleanest. If you have any suggestions or features that would make your life easier let me know; submit an issue or comment here.
 
 \#### [The full repo is here e-emacs.sh](<https://gitlab.com/zackallison/e-emacs/>)
 
-`~I really should post this on one of the share your stuff posts.  But I get distracted.~` There, I did it.
+`~I really should post this on one of the share your stuff posts. But I get distracted.~` There, I did it.
 
 In case you can't tell I **really** like emacs and it's client server model.
 
@@ -2924,114 +3134,122 @@ In case you can't tell I **really** like emacs and it's client server model.
 
 Here's all I need for completions:
 
-    (use-package icomplete
-      :bind
-      (:map icomplete-minibuffer-map
-            ([C-return] . exit-minibuffer)
-            ([return] . minibuffer-try-complete-and-exit))
-      :config
-      (defun minibuffer-try-complete-and-exit ()
-        (interactive)
-        (minibuffer-force-complete)
-        (setq-local deactivate-mark nil)
-        (throw 'exit nil))
-      :hook (after-init . icomplete-mode))
-        
-    (use-package orderless
-      :ensure t
-      :custom
-      (completion-styles '(orderless))
-      (orderless-matching-styles 'orderless-literal))
+```elisp
+(use-package icomplete
+  :bind
+  (:map icomplete-minibuffer-map
+        ([C-return] . exit-minibuffer)
+        ([return] . minibuffer-try-complete-and-exit))
+  :config
+  (defun minibuffer-try-complete-and-exit ()
+    (interactive)
+    (minibuffer-force-complete)
+    (setq-local deactivate-mark nil)
+    (throw 'exit nil))
+  :hook (after-init . icomplete-mode))
+    
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless))
+  (orderless-matching-styles 'orderless-literal))
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_frynpvt)
 
 **Votes** 9
 
-Make a little mode called \`my-minor-mode\` and enable it globally. Use it's keymap for your keybindings, without the prefix.  Then assign that keymap to a prefix. This way, you can disable most of your keybindings easily when needed, you can easily switch your prefix key (e.g. go from \`C-c\` to \`H-x\` or \`<menu>\`, etc.), have those keybindings available on multiple prefixes, and you can easily restore a default keybinding via \`(define-key my-minor-mode-map <key> nil)\`.  Here is how I define a minor mode for myself:
+Make a little mode called \`my-minor-mode\` and enable it globally. Use it's keymap for your keybindings, without the prefix. Then assign that keymap to a prefix. This way, you can disable most of your keybindings easily when needed, you can easily switch your prefix key (e.g. go from \`C-c\` to \`H-x\` or \`<menu>\`, etc.), have those keybindings available on multiple prefixes, and you can easily restore a default keybinding via \`(define-key my-minor-mode-map <key> nil)\`. Here is how I define a minor mode for myself:
 
-    ;;; The GK minor mode:
-        
-    ;; The GK minor mode is at the heart of this configuration.  Almost
-    ;; all keybindings, except unmapping some keys from the global map,
-    ;; and except bindings in specific modes, should be done with this
-    ;; minor modes keymap.  This minor mode is active everywhere, except
-    ;; the Minibuffer and the Fundamental mode buffers.
-        
-    (defgroup GK nil
-      "Group for my configuration."
-      :group 'emacs
-      :prefix "gk-")
-        
-    (defvar gk-minor-mode-map
-      (make-sparse-keymap)
-      "Where to put all my bindings.")
-        
-    (defvar gk-minor-mode-prefix-map
-      (make-sparse-keymap)
-      "Prefix map for my bindings.")
-        
-    (fset 'gk-minor-mode-prefix-map gk-minor-mode-prefix-map)
-        
-    (defvar gk-minor-mode-prefix "\C-c"
-      "Keymap prefix for `gk-minor-mode'.")
-        
-    (define-minor-mode gk-minor-mode
-      "Global minor mode for customisations.
-        
-    \\{gk-minor-mode-map}"
-      nil "" gk-minor-mode-map
-      (let ((map gk-minor-mode-map))
-        (define-key map gk-minor-mode-prefix #'gk-minor-mode-prefix-map)))
-        
-    (define-globalized-minor-mode global-gk-minor-mode gk-minor-mode
-      gk-minor-mode)
+```elisp
+;;; The GK minor mode:
+    
+;; The GK minor mode is at the heart of this configuration.  Almost
+;; all keybindings, except unmapping some keys from the global map,
+;; and except bindings in specific modes, should be done with this
+;; minor modes keymap.  This minor mode is active everywhere, except
+;; the Minibuffer and the Fundamental mode buffers.
+    
+(defgroup GK nil
+  "Group for my configuration."
+  :group 'emacs
+  :prefix "gk-")
+    
+(defvar gk-minor-mode-map
+  (make-sparse-keymap)
+  "Where to put all my bindings.")
+    
+(defvar gk-minor-mode-prefix-map
+  (make-sparse-keymap)
+  "Prefix map for my bindings.")
+    
+(fset 'gk-minor-mode-prefix-map gk-minor-mode-prefix-map)
+    
+(defvar gk-minor-mode-prefix "\C-c"
+  "Keymap prefix for `gk-minor-mode'.")
+    
+(define-minor-mode gk-minor-mode
+  "Global minor mode for customisations.
+    
+\\{gk-minor-mode-map}"
+  nil "" gk-minor-mode-map
+  (let ((map gk-minor-mode-map))
+    (define-key map gk-minor-mode-prefix #'gk-minor-mode-prefix-map)))
+    
+(define-globalized-minor-mode global-gk-minor-mode gk-minor-mode
+  gk-minor-mode)
+
+```
 
 Then just enable it somewhere. I like to use the following setup for enabling global modes at once:
 
-    ;;;; Global modes:
-        
-    ;; This module provides utilities for global modes, like turning them on
-    ;; and off collectively with a single command, registering and
-    ;; unregistering them, disabling default modes etc.
-        
-    ;; All the modes listed in =gk-global-modes= are toggled on with an
-    ;; =after-init-hook=, so modifications to this variable that happen up
-    ;; until the execution of the named hook will actually determine which
-    ;; modes are turned on.
-        
-    ;; =gk-disabled-modes= is a list of modes to disable.
-        
-    ;; Each of this lists contain symbols, actually =*-mode= functions.  The
-    ;; ones in the former will be called with =+1= as the argument, and ones
-    ;; in the latter with =-1=.
-        
-    ;; Do not use this as a hook, add to =after-init-hook= instead.
-        
-    (defvar gk-global-modes nil "List of global modes to be enabled.")
-    (defvar gk-disabled-modes nil "List of disabled global modes.")
-        
-    (defvar gk-toggle-global-modes nil)
-    (defun gk-toggle-global-modes ()
-      "Enable or disable the modes listed in `gk-global-modes' at once."
-      (interactive)
-      (setf gk-toggle-global-modes (not gk-toggle-global-modes))
-      (let (errors)
-        ;; Enable global modes
-        (dolist (mode gk-global-modes)
-          (condition-case e
-              (funcall mode (if gk-toggle-global-modes 1 -1))
-            (error (push `(,mode ,e) errors))))
-        ;; Disable modes in gk-disabled-modes
-        (dolist (mode gk-disabled-modes)
-          (condition-case e
-              (funcall mode (if gk-toggle-global-modes -1 1))
-            (error (push `(,mode ,e) errors))))
-        (when errors
-          (warn "Following errors occurred when activating global modes:\n%S"
-                errors))))
-        
-    (add-hook 'after-init-hook 'gk-toggle-global-modes)
+```elisp
+;;;; Global modes:
+    
+;; This module provides utilities for global modes, like turning them on
+;; and off collectively with a single command, registering and
+;; unregistering them, disabling default modes etc.
+    
+;; All the modes listed in =gk-global-modes= are toggled on with an
+;; =after-init-hook=, so modifications to this variable that happen up
+;; until the execution of the named hook will actually determine which
+;; modes are turned on.
+    
+;; =gk-disabled-modes= is a list of modes to disable.
+    
+;; Each of this lists contain symbols, actually =*-mode= functions.  The
+;; ones in the former will be called with =+1= as the argument, and ones
+;; in the latter with =-1=.
+    
+;; Do not use this as a hook, add to =after-init-hook= instead.
+    
+(defvar gk-global-modes nil "List of global modes to be enabled.")
+(defvar gk-disabled-modes nil "List of disabled global modes.")
+    
+(defvar gk-toggle-global-modes nil)
+(defun gk-toggle-global-modes ()
+  "Enable or disable the modes listed in `gk-global-modes' at once."
+  (interactive)
+  (setf gk-toggle-global-modes (not gk-toggle-global-modes))
+  (let (errors)
+    ;; Enable global modes
+    (dolist (mode gk-global-modes)
+      (condition-case e
+          (funcall mode (if gk-toggle-global-modes 1 -1))
+        (error (push `(,mode ,e) errors))))
+    ;; Disable modes in gk-disabled-modes
+    (dolist (mode gk-disabled-modes)
+      (condition-case e
+          (funcall mode (if gk-toggle-global-modes -1 1))
+        (error (push `(,mode ,e) errors))))
+    (when errors
+      (warn "Following errors occurred when activating global modes:\n%S"
+            errors))))
+    
+(add-hook 'after-init-hook 'gk-toggle-global-modes)
+
+```
 
 `~That function needs some updating tho. But it works fine as a hook that sets up the global modes.~` I put \`global-gk-minor-mode\` into \`gk-global-modes\` and it's enabled alongside some other ones.
 
@@ -3042,25 +3260,29 @@ Edit: fix \`gk-toggle-global-modes\`.
 
 **Votes** 9
 
-A blog post regarding my own Emacs config aiming to get the same user experience on both TUI and GUI.  
-[<https://www.rahuljuliato.com/posts/lemacs>](<https://www.rahuljuliato.com/posts/lemacs>)
+A blog post regarding my own Emacs config aiming to get the same user experience on both TUI and GUI. [<https://www.rahuljuliato.com/posts/lemacs>](<https://www.rahuljuliato.com/posts/lemacs>)
 
 
 # u/meedstrom [🔗](https://www.reddit.com/r/emacs/comments/t3_1fe504e/comment/t1_lmzbyro)
 
 **Votes** 8
 
-Elisp list indentation has been fixed since over two years ago (<https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21922>).  A lot of people probably still use an initfile hack, to fix the following problem, that lists would indent like this:
+Elisp list indentation has been fixed since over two years ago (<https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21922>). A lot of people probably still use an initfile hack, to fix the following problem, that lists would indent like this:
 
-    '(:foo bar
-           :baz zab
-           :rab oof)
-
-But now you can just add a space after the opening paren \`'(\`.  This is the new convention.
-
-    '( :foo bar
+```elisp
+'(:foo bar
        :baz zab
        :rab oof)
+
+```
+
+But now you can just add a space after the opening paren \`'(\`. This is the new convention.
+
+```elisp
+'( :foo bar
+   :baz zab
+   :rab oof)
+```
 
 
 # u/525G7bKV [🔗](https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfsffnb)
@@ -3074,14 +3296,14 @@ Highlight regexp or strings in your buffer with `M+s h` good for analyzing logfi
 
 **Votes** 8
 
-For users of [rg.el](<https://github.com/dajva/rg.el>) (emacs interface to ripgrep) there is [rga](<https://github.com/phiresky/ripgrep-all>) (ripgrep-all) a wrapper around ripgrep that "enables it to search in pdf, docx, sqlite, jpg, movie subtitles (mkv, mp4), etc." You can set the rg executable in the configuration of rg.el like so:    \`(setq rg-executable (executable-find "rga")\` to enable search in multiple document types.
+For users of [rg.el](<https://github.com/dajva/rg.el>) (emacs interface to ripgrep) there is [rga](<https://github.com/phiresky/ripgrep-all>) (ripgrep-all) a wrapper around ripgrep that "enables it to search in pdf, docx, sqlite, jpg, movie subtitles (mkv, mp4), etc." You can set the rg executable in the configuration of rg.el like so: \`(setq rg-executable (executable-find "rga")\` to enable search in multiple document types.
 
 
 # u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1de1hkf/comment/t1_l8d30q3)
 
 **Votes** 8
 
-A few people have asked about my code to change cursor color when repeat-mode is active (i.e. while you are repeating a command).  I rely on it. See [this gist](<https://gist.github.com/jdtsmith/a169362879388bc1bdf2bbb977782d4f>) for the details.
+A few people have asked about my code to change cursor color when repeat-mode is active (i.e. while you are repeating a command). I rely on it. See [this gist](<https://gist.github.com/jdtsmith/a169362879388bc1bdf2bbb977782d4f>) for the details.
 
 
 # u/AdjointFunctor [🔗](https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l359pqx)
@@ -3097,7 +3319,9 @@ I (re) discovered rectangle mode recently. Very useful when deleting lots of ind
 
 This makes stack-outputs of debug-buffers much more readable:
 
-    (setopt debugger-stack-frame-as-list t)
+```elisp
+(setopt debugger-stack-frame-as-list t)
+```
 
 
 # u/vjgoh [🔗](https://www.reddit.com/r/emacs/comments/t3_18149ql/comment/t1_kahspwz)
@@ -3137,7 +3361,11 @@ And if you want to balance these two buffers again just use \`C-x +\`
 
 turning off org-elements cache speeds up input latency for me (found from profiling):
 
-    (setq org-element-use-cache nil)
+```elisp
+(setq org-element-use-cache nil)
+
+
+```
 
 it seems (at least on my org 9.6.1) to update the cache after calls to \`org-self-insert-command\` (so, a lot!)
 
@@ -3154,34 +3382,38 @@ It is worth noting that Emacs 28 has included \`repeat-mode\` and Emacs 29 has a
 
 If you're still on Emacs 28, you can use:
 
-    (defvar buffer-navigation-repeat-map
-      (let ((map (make-sparse-keymap)))
-        (define-key map (kbd "<right>") 'next-buffer)
-        (define-key map (kbd "<left>") 'previous-buffer)
-        map)
-      "Keymap to repeat `next-buffer' and `previous-buffer'.  Used in `repeat-mode'.")
-    (put 'next-buffer 'repeat-map 'buffer-navigation-repeat-map)
-    (put 'previous-buffer 'repeat-map 'buffer-navigation-repeat-map)
+```elisp
+(defvar buffer-navigation-repeat-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "<right>") 'next-buffer)
+    (define-key map (kbd "<left>") 'previous-buffer)
+    map)
+  "Keymap to repeat `next-buffer' and `previous-buffer'.  Used in `repeat-mode'.")
+(put 'next-buffer 'repeat-map 'buffer-navigation-repeat-map)
+(put 'previous-buffer 'repeat-map 'buffer-navigation-repeat-map)
+```
 
 
 # u/pedzsanReddit [🔗](https://www.reddit.com/r/emacs/comments/t3_ydsjfy/comment/t1_itw7yp2)
 
 **Votes** 8
 
-I spent the past week cleaning up my Emacs init files and I bumped into this little gem.  I call it "ZSH man page search mode" because it was the place that I first needed it.
+I spent the past week cleaning up my Emacs init files and I bumped into this little gem. I call it "ZSH man page search mode" because it was the place that I first needed it.
 
-I do \`M-x man zshall(1)\` fairly frequently (and don't forget to \`widen\` so you can see all of the pages).  Then I would start searching for what I was looking for.  The man page is nicely structured so if I wanted to find "foo", search for "foo" had too many hits.  What I wanted to find was the place where "foo" is described.
+I do \`M-x man zshall(1)\` fairly frequently (and don't forget to \`widen\` so you can see all of the pages). Then I would start searching for what I was looking for. The man page is nicely structured so if I wanted to find "foo", search for "foo" had too many hits. What I wanted to find was the place where "foo" is described.
 
-This little search does the trick.  It is probably useful for other man pages and perhaps even other places but for now&#x2026; I call it "ZSH man page search"
+This little search does the trick. It is probably useful for other man pages and perhaps even other places but for now&#x2026; I call it "ZSH man page search"
 
 Enjoy!
 
-      (defun zsh-manpage-search-regexp (string &optional lax)
-    "Returns a string to search for entries in the zshall man page"
-    (format "\n[A-Z ]*\n \\{7\\}%s%s" string (if lax "" "\\_>")))
-    
-      (isearch-define-mode-toggle zsh-manpage "z" zsh-manpage-search-regexp "\
-      Searching zshall man page for where a concept is described")
+```elisplisp
+  (defun zsh-manpage-search-regexp (string &optional lax)
+"Returns a string to search for entries in the zshall man page"
+(format "\n[A-Z ]*\n \\{7\\}%s%s" string (if lax "" "\\_>")))
+
+  (isearch-define-mode-toggle zsh-manpage "z" zsh-manpage-search-regexp "\
+  Searching zshall man page for where a concept is described")
+```
 
 
 # u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/t3_xdw6ok/comment/t1_iodmtzu)
@@ -3190,10 +3422,12 @@ Enjoy!
 
 I find it pretty useful (for debugging etc) to override the default projectile mode line indicator and show the projectile project type of the buffer instead, which can be done pretty easily if you're a use-package user with <https://elpa.gnu.org/packages/delight.html>:
 
-    (use-package projectile
-      :delight '(:eval (format " P[%s]" (projectile-project-type)))
-      :config
-      (setq foo "bar"))
+```elisp
+(use-package projectile
+  :delight '(:eval (format " P[%s]" (projectile-project-type)))
+  :config
+  (setq foo "bar"))
+```
 
 
 # u/trae [🔗](https://www.reddit.com/r/emacs/comments/t3_xdw6ok/comment/t1_iof00tz)
@@ -3215,7 +3449,7 @@ Kind of like [emacs-everywhere](<https://github.com/tecosaur/emacs-everywhere/>)
 
 **Votes** 8
 
-In Org Mode, what is the reason to use \`~\` for in-line code vs. \`=\` for monospace text?  I use \`=\` for both code and monospace since (afaict) Org renders both code and monospace the same way in LaTeX PDF and HTML output, and \`=\` does not require using shift (unlike \`~\`).
+In Org Mode, what is the reason to use \`~\` for in-line code vs. \`=\` for monospace text? I use \`=\` for both code and monospace since (afaict) Org renders both code and monospace the same way in LaTeX PDF and HTML output, and \`=\` does not require using shift (unlike \`~\`).
 
 
 # u/hairlesscaveman [🔗](https://www.reddit.com/r/emacs/comments/t3_wqjare/comment/t1_ikwhvfs)
@@ -3233,26 +3467,27 @@ Any suggestions would be appreciated!
 
 **Votes** 8
 
-I sometimes want to pick a random choice from a long org-mode checkbox list from among those items not already checked.  I recently whipped up a little helper function for that:
+I sometimes want to pick a random choice from a long org-mode checkbox list from among those items not already checked. I recently whipped up a little helper function for that:
 
-    (defun random-choice ()
-      (interactive)
-      (let ((n 0)
-            (selected nil))
-        (while (search-forward-regexp (rx point "- [" (group nonl) "]" (+ nonl) "\n") nil t)
-          (when (and (string= " " (match-string 1)) (zerop (random (setq n (1+ n)))))
-            (setq selected (match-beginning 0))))
-        (if selected
-            (goto-char selected)
-          (error "No unfinished choice found"))))
+```elisp
+(defun random-choice ()
+  (interactive)
+  (let ((n 0)
+        (selected nil))
+    (while (search-forward-regexp (rx point "- [" (group nonl) "]" (+ nonl) "\n") nil t)
+      (when (and (string= " " (match-string 1)) (zerop (random (setq n (1+ n)))))
+        (setq selected (match-beginning 0))))
+    (if selected
+        (goto-char selected)
+      (error "No unfinished choice found"))))
+```
 
 
 # u/khourhin [🔗](https://www.reddit.com/r/emacs/comments/t3_uxcm6i/comment/t1_i9x2a0i)
 
 **Votes** 8
 
-Just discovered that you can do pull request from magit forge. Got some troubles with the origin / myfork setup and was helped by this issue: <https://github.com/magit/forge/issues/278> .
-And this improved as well how I deal with the naming of my remotes.
+Just discovered that you can do pull request from magit forge. Got some troubles with the origin / myfork setup and was helped by this issue: <https://github.com/magit/forge/issues/278> . And this improved as well how I deal with the naming of my remotes.
 
 Pure awesomeness, thanks a lot for Magit/ Magit forge !
 
@@ -3261,9 +3496,9 @@ Pure awesomeness, thanks a lot for Magit/ Magit forge !
 
 **Votes** 8
 
-[arxiv-citation](<https://github.com/slotthe/arxiv-citation>) from my [last post](<https://old.reddit.com/r/emacs/comments/ufvg93/my_phd_research_workflowemacs_inside/>) is now on MELPA!  Give it a spin if you're in the habit of downloading or citing papers from the arXiv (if you're doing maths, these citations will even become actual journal citations, if possible)!
+[arxiv-citation](<https://github.com/slotthe/arxiv-citation>) from my [last post](<https://old.reddit.com/r/emacs/comments/ufvg93/my_phd_research_workflowemacs_inside/>) is now on MELPA! Give it a spin if you're in the habit of downloading or citing papers from the arXiv (if you're doing maths, these citations will even become actual journal citations, if possible)!
 
-On that note, I've written a little bit about [calling Emacs from XMonad](<https://tony-zorman.com/posts/2022-05-25-calling-emacs-from-xmonad.html>).  The post itself isn't really Emacs related and so I don't think it warrants a crosspost in this subreddit, but I figured perhaps there was the odd XMonad user here who may find it helpful.
+On that note, I've written a little bit about [calling Emacs from XMonad](<https://tony-zorman.com/posts/2022-05-25-calling-emacs-from-xmonad.html>). The post itself isn't really Emacs related and so I don't think it warrants a crosspost in this subreddit, but I figured perhaps there was the odd XMonad user here who may find it helpful.
 
 
 # u/mmarshall540 [🔗](https://www.reddit.com/r/emacs/comments/t3_un4wf8/comment/t1_i88sp07)
@@ -3274,7 +3509,7 @@ Here's a little solution to a minor complaint about \`isearch\` that I think is 
 
 TLDR: See [this old StackExchange question](<https://emacs.stackexchange.com/questions/32373/go-to-start-of-search-string-after-ret>)
 
-Often, I'll want to go to a precise location in a buffer to correct a typo. If that location is behind point (as it usually is if I notice the typo shortly after entering it), then \`isearch-backward\` works great. You press "C-r" and type some characters starting with your target until the location becomes the current result.  As soon as the cursor jumps to your target location, you can use an editing command like "C-t", which exits isearch automatically for you. Or you can press "C-m" to exit isearch-mode and then start inserting text at that location. Wonderful!
+Often, I'll want to go to a precise location in a buffer to correct a typo. If that location is behind point (as it usually is if I notice the typo shortly after entering it), then \`isearch-backward\` works great. You press "C-r" and type some characters starting with your target until the location becomes the current result. As soon as the cursor jumps to your target location, you can use an editing command like "C-t", which exits isearch automatically for you. Or you can press "C-m" to exit isearch-mode and then start inserting text at that location. Wonderful!
 
 But it's a little less perfect when your target is **after** point. This is because with \`isearch-forward\`, point lands at the end of your search result, instead of the beginning as it does with \`isearch-backward\`.
 
@@ -3286,20 +3521,23 @@ Or you could use C-r to move point to the beginning of the result. But then you 
 
 So we can fix this.
 
-    (defun my/isearch-bor-exit ()
-      "Ensure point is at beginning of isearch result, then exit."
-      (interactive)
-      (when (< isearch-other-end (point))
-        (goto-char isearch-other-end))
-      (call-interactively 'isearch-exit))
-        
-    (define-key isearch-mode-map ?\M-m 'my/isearch-bor-exit)
+```elisp
+(defun my/isearch-bor-exit ()
+  "Ensure point is at beginning of isearch result, then exit."
+  (interactive)
+  (when (< isearch-other-end (point))
+    (goto-char isearch-other-end))
+  (call-interactively 'isearch-exit))
+    
+(define-key isearch-mode-map ?\M-m 'my/isearch-bor-exit)
+
+```
 
 So now if I'm using isearch to get to a precise location (as opposed to just searching for a word), I can type beginning with the character at the target location, stop typing after it becomes part of the result, and press "M-m" to exit the search and make my correction. No more having to stop and think about whether I'm going backwards or forwards and whether I'll have to move point back before exiting isearch.
 
 A minor problem with a fairly simple solution, but it made me happy to stop and solve it.
 
-I think I'll be using isearch now for a lot of things that I used to use Avy for.  But Avy is still great for a bunch of reasons. Not the least of which is the \`avy-isearch\` command which comes in handy when there are a lot of isearch results that would require too much typing to narrow down. (And it always puts point at the beginning of the result, never at the end).
+I think I'll be using isearch now for a lot of things that I used to use Avy for. But Avy is still great for a bunch of reasons. Not the least of which is the \`avy-isearch\` command which comes in handy when there are a lot of isearch results that would require too much typing to narrow down. (And it always puts point at the beginning of the result, never at the end).
 
 
 # u/rberaldo [🔗](https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnvaab8)
@@ -3324,16 +3562,18 @@ Checkout [Topsy Mode](<https://github.com/alphapapa/topsy.el>), it creates a hea
 
 **Votes** 8
 
-I'm using [orderless](<https://github.com/oantolin/orderless>) for completion but I also want to walk through files with initials only, to do something like [like this](<https://imgur.com/a/CJg8MGw>) for example. It only requires to ignore the case and ask the minibuffer to use initials. 
+I'm using [orderless](<https://github.com/oantolin/orderless>) for completion but I also want to walk through files with initials only, to do something like [like this](<https://imgur.com/a/CJg8MGw>) for example. It only requires to ignore the case and ask the minibuffer to use initials.
 
-    (use-package orderless
-          :ensure t
-          :custom
-          (completion-styles '(orderless))
-          (completion-category-defaults nil)
-          (read-file-name-completion-ignore-case t)
-          (completion-category-overrides '((file (styles partial-completion))
-        				   (minibuffer (initials)))))
+```elisp
+(use-package orderless
+      :ensure t
+      :custom
+      (completion-styles '(orderless))
+      (completion-category-defaults nil)
+      (read-file-name-completion-ignore-case t)
+      (completion-category-overrides '((file (styles partial-completion))
+    				   (minibuffer (initials)))))
+```
 
 
 # u/slinchisl [🔗](https://www.reddit.com/r/emacs/comments/t3_pfpgm9/comment/t1_hb765zp)
@@ -3342,40 +3582,49 @@ I'm using [orderless](<https://github.com/oantolin/orderless>) for completion bu
 
 This is a very simple function, but it has saved me from countless of "do I have to do <span class="underline">this</span> again now?" moments.
 
-When editing LaTeX files I often find myself wanting to convert inline math to display math, in order for equations to "pop out" more.  I could not find anything already implemented, so I wrote something that does this whenever the point is inside an inline math (\`$\`-based, sorry \`$ $\` gang) environment: 
+When editing LaTeX files I often find myself wanting to convert inline math to display math, in order for equations to "pop out" more. I could not find anything already implemented, so I wrote something that does this whenever the point is inside an inline math (\`$\`-based, sorry \`$ $\` gang) environment:
 
-    (defun slot/inline-to-display-math ()
-      "Transform inline math to display math."
-      (interactive)
-      (when (and (texmathp) (equal "$" (car texmathp-why))) ; inline math?
-        (let* ((beg   (save-excursion (search-backward "$")))
-               (end-$ (search-forward "$"))
-               (end   (if (-contains? '(?. ?,) (char-after end-$))
-                          (1+ end-$)    ; put punctuation into display-maths
-                        end-$)))
-          (kill-region beg end)
-          ;; insert display math
-          (TeX-newline)
-          (insert "\\[")
-          (TeX-newline)
-          (insert-for-yank (string-replace "$" "" (current-kill 0)))
-          (TeX-newline)
-          (insert "\\]")
-          (TeX-newline))))
+```elisp
+(defun slot/inline-to-display-math ()
+  "Transform inline math to display math."
+  (interactive)
+  (when (and (texmathp) (equal "$" (car texmathp-why))) ; inline math?
+    (let* ((beg   (save-excursion (search-backward "$")))
+           (end-$ (search-forward "$"))
+           (end   (if (-contains? '(?. ?,) (char-after end-$))
+                      (1+ end-$)    ; put punctuation into display-maths
+                    end-$)))
+      (kill-region beg end)
+      ;; insert display math
+      (TeX-newline)
+      (insert "\\[")
+      (TeX-newline)
+      (insert-for-yank (string-replace "$" "" (current-kill 0)))
+      (TeX-newline)
+      (insert "\\]")
+      (TeX-newline))))
 
-For example, this would transform 
+```
 
-    The cowedge $\iota \colon P \xRightarrow{\; .. \;} C$ is easily seen to be unique up to unique isomorphism.
+For example, this would transform
 
-into 
+```elisp
+The cowedge $\iota \colon P \xRightarrow{\; .. \;} C$ is easily seen to be unique up to unique isomorphism.
 
-    The cowedge
-    \[
-      \iota \colon P \xRightarrow{\; .. \;} C
-    \]
-    is easily seen to be unique up to unique isomorphism.
+```
 
-I'm a bit surprised by my not finding any function to already insert some string into the simple \`$$ $$\`-based display math; everything I could find just inserted dollars instead.  I suppose one could insert a \`displaymath\` environment, but I've never like the look of that.  Oh well.
+into
+
+```elisp
+The cowedge
+\[
+  \iota \colon P \xRightarrow{\; .. \;} C
+\]
+is easily seen to be unique up to unique isomorphism.
+
+```
+
+I'm a bit surprised by my not finding any function to already insert some string into the simple \`$$ $$\`-based display math; everything I could find just inserted dollars instead. I suppose one could insert a \`displaymath\` environment, but I've never like the look of that. Oh well.
 
 
 # u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/t3_p28rl5/comment/t1_h8utmh2)
@@ -3384,12 +3633,15 @@ I'm a bit surprised by my not finding any function to already insert some string
 
 Imenu is pretty adictive and it's disappointing when some major mode doesn't support it. Luckily, it's fairly easy to cook up some regexps to provide imenu support in a new major mode. For example I recently noticed that customize buffers didn't have imenu support add I wrote this:
 
-    (defun configure-imenu-Custom ()
-      (setq imenu-generic-expression
-            '(("Faces" "^\\(?:Show\\|Hide\\) \\(.*\\) face: \\[sample\\]" 1)
-              ("Variables" "^\\(?:Show Value\\|Hide\\) \\([^:\n]*\\)" 1))))
-    
-    (add-hook 'Custom-mode-hook #'configure-imenu-Custom)
+```elisp
+(defun configure-imenu-Custom ()
+  (setq imenu-generic-expression
+        '(("Faces" "^\\(?:Show\\|Hide\\) \\(.*\\) face: \\[sample\\]" 1)
+          ("Variables" "^\\(?:Show Value\\|Hide\\) \\([^:\n]*\\)" 1))))
+
+(add-hook 'Custom-mode-hook #'configure-imenu-Custom)
+
+```
 
 One subtlety with writing this is that the customize buffers show little triangles instead of the words "Show", "Hide" or "Show Value". To figure out what text is really in the buffer you can use \`C-u C-x =\` which tells you about any overlays at point.
 
@@ -3409,25 +3661,31 @@ Apparently, the \`&c.\` in the title is an abbreviation of the abbreviation \`et
 
 Considering the ongoing freenode to librea.chat movement, I tried to use erc for the \*n\*th time to connect to the debian channel on oftc. I want to authenticate automatically but it doesn't happen. I still need to use \`/msg NickServ IDENTIFY mypass\`. Can you tell me what to do?
 
-    (use-package erc
-      :custom
-      (erc-autojoin-channels-alist '(("OFTC" "#debian" )))
-      (erc-prompt-for-nickserv-password nil)
-      (erc-prompt-for-password nil)
-    
-      :config
-      (add-to-list 'erc-modules 'services)
-      (erc-update-modules)
-      (erc-autojoin-enable)
-      (defun erc-start()
-        "Start ERC."
-        (interactive)
-        (erc :server "irc.oftc.net" :nick "mynick"))
-    ) 
+```elisp
+(use-package erc
+  :custom
+  (erc-autojoin-channels-alist '(("OFTC" "#debian" )))
+  (erc-prompt-for-nickserv-password nil)
+  (erc-prompt-for-password nil)
+
+  :config
+  (add-to-list 'erc-modules 'services)
+  (erc-update-modules)
+  (erc-autojoin-enable)
+  (defun erc-start()
+    "Start ERC."
+    (interactive)
+    (erc :server "irc.oftc.net" :nick "mynick"))
+) 
+
+```
 
 and my \`~/.authinfo\` file has an entry
 
-    machine irc.oftc.net login "mynick" password "mypass"
+```elisp
+machine irc.oftc.net login "mynick" password "mypass"
+
+```
 
 Edit: Using GNU Emacs 27.1
 
@@ -3445,11 +3703,13 @@ I just discovered that installing the Emacs macport homebrew formula with \\\`&#
 
 If you want helpful mode to completely take over all help functions, and be able to use it with helm-apropos, then add this to your config:
 
-    (advice-add 'describe-function :override #'helpful-function)
-    (advice-add 'describe-variable :override #'helpful-variable)
-    (advice-add 'describe-command  :override #'helpful-callable)
-    (advice-add 'describe-key      :override #'helpful-key)
-    (advice-add 'describe-symbol   :override #'helpful-symbol)
+```elisp
+(advice-add 'describe-function :override #'helpful-function)
+(advice-add 'describe-variable :override #'helpful-variable)
+(advice-add 'describe-command  :override #'helpful-callable)
+(advice-add 'describe-key      :override #'helpful-key)
+(advice-add 'describe-symbol   :override #'helpful-symbol)
+```
 
 
 # u/w0ntfix [🔗](https://www.reddit.com/r/emacs/comments/t3_l0ei0t/comment/t1_gknr3hp)
@@ -3469,11 +3729,13 @@ It took me about 30 years to realise that using C-u with \`buffer-menu\` (C-x C-
 
 It then took me a few more years to realise that that's my preferred mode, so I created this simple thing to invert the sense - now C-x C-b only shows me files, and I prefix that with C-u to show special buffers too. Sounds stupid and trivial but it floats my boat.
 
-    (global-set-key (kbd "C-x C-b")        '(lambda (&optional arg)
-                                              "runs buffer-menu but with the sense of C-u inverted (ie files-only unless C-u is given)"
-                                              (interactive "P")
-                                              (setq arg (not arg))
-                                              (buffer-menu arg)))
+```elisp
+(global-set-key (kbd "C-x C-b")        '(lambda (&optional arg)
+                                          "runs buffer-menu but with the sense of C-u inverted (ie files-only unless C-u is given)"
+                                          (interactive "P")
+                                          (setq arg (not arg))
+                                          (buffer-menu arg)))
+```
 
 
 # u/geza42 [🔗](https://www.reddit.com/r/emacs/comments/t3_kqsw1k/comment/t1_gi66krb)
@@ -3482,21 +3744,23 @@ It then took me a few more years to realise that that's my preferred mode, so I 
 
 I created a "smart" enter function for C/C++ mode. Here's what it does:
 
-\\\* if you press it on a \`for\`/\`if\`/\`else\`/\`switch\` (no matter where the cursor is on the line) it will put \`{\`, an empty line and \`}\`, and will move the cursor into the body
-\\\* if you press it on a \`struct\`/\`class\`, it's similar to the previous case, but it puts a closing semicolon too.
-\\\* otherwise it will put a \`;\`, and a newline
-\\\* if the \`{\`, \`;\` or an empty line is already there, it won't put them again
-\\\* In comments, it will put an indented line, without continuing the comment (I configured my RET to continue commenting, so I use M-RET when I want to close the comment)
+\\\* if you press it on a \`for\`/\`if\`/\`else\`/\`switch\` (no matter where the cursor is on the line) it will put \`{\`, an empty line and \`}\`, and will move the cursor into the body \\\* if you press it on a \`struct\`/\`class\`, it's similar to the previous case, but it puts a closing semicolon too. \\\* otherwise it will put a \`;\`, and a newline \\\* if the \`{\`, \`;\` or an empty line is already there, it won't put them again \\\* In comments, it will put an indented line, without continuing the comment (I configured my RET to continue commenting, so I use M-RET when I want to close the comment)
 
 It is useful with smartparens, because you don't have to skip the closing \`)\` all the time. For example, if you start writing an \`if\` (cursor is \`|\`, the closing \`)\` was put by smartparens):
 
-    if (expr|)
+```elisp
+if (expr|)
+
+```
 
 Then press M-RET, this will be the result:
 
-    if (expr) {
-        |
-    }
+```elisp
+if (expr) {
+    |
+}
+
+```
 
 Since I created this function I use it all the time, I almost never press \`{\` \`}\` or \`;\`.
 
@@ -3504,83 +3768,85 @@ At function signatures, it cannot figure out whether you want to create a declar
 
 Here's the code, maybe there can be a lot of improvements:
 
-    (defun my-cc-mode-M-RET-context (force-curly)
-      (let ((c
-             (if force-curly 'curly
-               (let ((s (syntax-ppss)))
-                 (cond
-                  ((nth 4 s) 'comment)
-                  ((and (eolp) (looking-back "[{;]")) 'nop)
-                  ((save-excursion
-                     (skip-syntax-forward " ")
-                     (looking-at "\\(for\\|if\\|switch\\|else\\|do\\)\s?")) 'curly)
-                  ((save-excursion
-                     (skip-syntax-backward " ")
-                     (skip-syntax-backward "w")
-                     (looking-at "\\(for\\|if\\|switch\\|else\\|do\\)\s?")) 'curly)
-                  ((save-excursion
-                     (when (nth 3 s) (skip-syntax-backward "^\"") (backward-char))
-                     (skip-syntax-backward " ")
-                     (if (looking-back ")")
-                         (backward-sexp)
-                       (ignore-errors (backward-up-list)))
-                     (skip-syntax-backward "(")
-                     (skip-syntax-backward " ")
-                     (looking-back "for\\|if\\|switch")) 'curly)
-                  ((save-excursion
-                     (skip-syntax-forward " ")
-                     (looking-at "struct\\|class")) 'curly+semicolon)
-                  ((save-excursion
-                     (skip-syntax-backward " ")
-                     (skip-syntax-backward "w")
-                     (if (looking-at "struct\\|class") t
-                       (skip-syntax-backward "w")
-                       (skip-syntax-backward " ")
-                       (looking-back "struct\\|class"))) 'curly+semicolon)
-                  (t 'semicolon))))))
-        (cond
-         ((or (eq c 'curly) (eq c 'curly+semicolon))
-          (save-excursion
-            (end-of-line)
-            (if (looking-back "{")
-                'nop
-              c)))
-         ((eq c 'semicolon)
-          (save-excursion
-            (end-of-line)
-            (if (looking-back ";")
-                'nop
-              c)))
-         (t c))))
-        
-    (defun my-cc-mode-M-RET (force-curly)
-      (let ((c (my-cc-mode-M-RET-context force-curly)))
-        (cond
-         ((eq c 'nop)
-          (if (save-excursion
-                (forward-line)
-                (beginning-of-line)
-                (looking-at-p "[[:space:]]*$"))
-              (progn
-                (forward-line)
-                (c-indent-line))
-          (end-of-line) (newline-and-indent)))
-         ((eq c 'comment) (newline-and-indent))
-         ((eq c 'semicolon)
-          (end-of-line)
-          (self-insert-command 1 ?\;)
-          (newline-and-indent))
-         ((eq c 'curly)
-          (save-excursion (end-of-line) (unless (looking-back "\s") (insert " ")) (insert "{") (newline-and-indent) (insert "}") (c-indent-line))
-          (end-of-line)
-          (newline-and-indent))
-         ((eq c 'curly+semicolon)
-          (save-excursion (end-of-line) (unless (looking-back "\s") (insert " ")) (insert "{") (newline-and-indent) (insert "};") (c-indent-line))
-          (end-of-line)
-          (newline-and-indent)))))
-        
-    (define-key c-mode-base-map (kbd "M-RET") (lambda () (interactive) (my-cc-mode-M-RET nil)))
-    (define-key c-mode-base-map (kbd "<M-S-return>") (lambda () (interactive) (my-cc-mode-M-RET t)))
+```elisp
+(defun my-cc-mode-M-RET-context (force-curly)
+  (let ((c
+         (if force-curly 'curly
+           (let ((s (syntax-ppss)))
+             (cond
+              ((nth 4 s) 'comment)
+              ((and (eolp) (looking-back "[{;]")) 'nop)
+              ((save-excursion
+                 (skip-syntax-forward " ")
+                 (looking-at "\\(for\\|if\\|switch\\|else\\|do\\)\s?")) 'curly)
+              ((save-excursion
+                 (skip-syntax-backward " ")
+                 (skip-syntax-backward "w")
+                 (looking-at "\\(for\\|if\\|switch\\|else\\|do\\)\s?")) 'curly)
+              ((save-excursion
+                 (when (nth 3 s) (skip-syntax-backward "^\"") (backward-char))
+                 (skip-syntax-backward " ")
+                 (if (looking-back ")")
+                     (backward-sexp)
+                   (ignore-errors (backward-up-list)))
+                 (skip-syntax-backward "(")
+                 (skip-syntax-backward " ")
+                 (looking-back "for\\|if\\|switch")) 'curly)
+              ((save-excursion
+                 (skip-syntax-forward " ")
+                 (looking-at "struct\\|class")) 'curly+semicolon)
+              ((save-excursion
+                 (skip-syntax-backward " ")
+                 (skip-syntax-backward "w")
+                 (if (looking-at "struct\\|class") t
+                   (skip-syntax-backward "w")
+                   (skip-syntax-backward " ")
+                   (looking-back "struct\\|class"))) 'curly+semicolon)
+              (t 'semicolon))))))
+    (cond
+     ((or (eq c 'curly) (eq c 'curly+semicolon))
+      (save-excursion
+        (end-of-line)
+        (if (looking-back "{")
+            'nop
+          c)))
+     ((eq c 'semicolon)
+      (save-excursion
+        (end-of-line)
+        (if (looking-back ";")
+            'nop
+          c)))
+     (t c))))
+    
+(defun my-cc-mode-M-RET (force-curly)
+  (let ((c (my-cc-mode-M-RET-context force-curly)))
+    (cond
+     ((eq c 'nop)
+      (if (save-excursion
+            (forward-line)
+            (beginning-of-line)
+            (looking-at-p "[[:space:]]*$"))
+          (progn
+            (forward-line)
+            (c-indent-line))
+      (end-of-line) (newline-and-indent)))
+     ((eq c 'comment) (newline-and-indent))
+     ((eq c 'semicolon)
+      (end-of-line)
+      (self-insert-command 1 ?\;)
+      (newline-and-indent))
+     ((eq c 'curly)
+      (save-excursion (end-of-line) (unless (looking-back "\s") (insert " ")) (insert "{") (newline-and-indent) (insert "}") (c-indent-line))
+      (end-of-line)
+      (newline-and-indent))
+     ((eq c 'curly+semicolon)
+      (save-excursion (end-of-line) (unless (looking-back "\s") (insert " ")) (insert "{") (newline-and-indent) (insert "};") (c-indent-line))
+      (end-of-line)
+      (newline-and-indent)))))
+    
+(define-key c-mode-base-map (kbd "M-RET") (lambda () (interactive) (my-cc-mode-M-RET nil)))
+(define-key c-mode-base-map (kbd "<M-S-return>") (lambda () (interactive) (my-cc-mode-M-RET t)))
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_kdgv43/comment/t1_gfxbwgy)
@@ -3608,9 +3874,7 @@ Registers: in Emacs from the beginning, so simple you forget how insanely useful
 
 **Votes** 8
 
-Found / c for M-x ibuffer.  It filters buffers by content.
-It looks like  'grep -c' .   Very helpful to locate a file quickly for which you remember any word from content
-Until now I had only used filters for filenames or modes only. .
+Found / c for M-x ibuffer. It filters buffers by content. It looks like 'grep -c' . Very helpful to locate a file quickly for which you remember any word from content Until now I had only used filters for filenames or modes only. .
 
 
 # u/hairlesscaveman [🔗](https://www.reddit.com/r/emacs/comments/t3_gmkg4g/comment/t1_fr4gdm6)
@@ -3621,14 +3885,16 @@ I follow the format of \`{ticketnumber}-{short-description}\` when creating bran
 
 The advice below quiets this warning, and inserts a dash whenever space is pressed.
 
-    (advice-add 'magit-whitespace-disallowed :around (lambda (orig-fun &rest args) (interactive) (insert "-")))
+```elisp
+(advice-add 'magit-whitespace-disallowed :around (lambda (orig-fun &rest args) (interactive) (insert "-")))
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqczes1)
 
 **Votes** 8
 
-[A beginers guide to emacs 24 or later by sasha chua](![img](https://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large.png))  this helped me tremendously to get started with emacs.
+[A beginers guide to emacs 24 or later by sasha chua](![img](https://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large.png)) this helped me tremendously to get started with emacs.
 
 
 # u/ji99 [🔗](https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqcycvb)
@@ -3637,46 +3903,48 @@ The advice below quiets this warning, and inserts a dash whenever space is press
 
 A rudimentary interface for the fabulous [Links web browser](<http://links.twibright.com/user_en.html>):
 
-    (defun links-browser (&optional link new-window)
-      (interactive)
-      (unless link
-        (setq link (read-from-minibuffer "url: ")))
-      (make-process
-       :name "links-browser"
-       :connection-type 'pipe
-       :command (list "links" "-g" link)))
-        
-    (defun links-search (&optional query)
-      (interactive)
-      (unless query
-        (setq query (read-from-minibuffer "search query: ")))
-      (pcase query
-        ((pred (string-match "\\`d .*"))
-         (links-search--launch "dict" (substring query 2 nil)))
-        ((pred (string-match "\\`b .*"))
-         (links-search--launch "book" (substring query 2 nil)))
-        ((pred (string-match "\\`w .*"))
-         (links-search--launch "wiki" (substring query 2 nil)))
-        ((pred (string-match "\\`m .*"))
-         (links-search--launch "imdb" (substring query 2 nil)))
-        ((pred (string-match "\\`y .*"))
-         (links-search--launch "yout" (substring query 2 nil)))
-        ((pred (string-match "\\`t .*"))
-         (links-search--launch "thes" (substring query 2 nil)))
-        ((pred (string-match "\\`s .*"))
-         (links-search--launch "syno" (substring query 2 nil)))
-        (_ (links-search--launch "seax" query))))
-        
-    (defun links-search--launch (engine query)
-        (pcase engine
-          ("dict" (links-browser (format "https://en.wiktionary.org/wiki/Special:Search?search=%s" query)))
-          ("wiki" (links-browser (format "https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s&go=Go" query)))
-          ("imdb" (links-browser (format "https://www.imdb.com/find?s=all&q=%s" query)))
-          ("yout" (links-browser (format "https://www.youtube.com/results?search_query=%s" query)))
-          ("book" (links-browser (format "http://gen.lib.rus.ec/search.php?req=%s&res=100&sort=id&sortmode=DESC" query)))
-          ("thes" (links-browser (format "https://www.powerthesaurus.org/%s" query)))
-          ("syno" (links-browser (format "https://duckduckgo.com/lite/?q=%s site:macmillandictionary.com" query)))
-          ("seax" (links-browser (format "https://search.snopyta.org/?q=%s" query)))))
+```elisp
+(defun links-browser (&optional link new-window)
+  (interactive)
+  (unless link
+    (setq link (read-from-minibuffer "url: ")))
+  (make-process
+   :name "links-browser"
+   :connection-type 'pipe
+   :command (list "links" "-g" link)))
+    
+(defun links-search (&optional query)
+  (interactive)
+  (unless query
+    (setq query (read-from-minibuffer "search query: ")))
+  (pcase query
+    ((pred (string-match "\\`d .*"))
+     (links-search--launch "dict" (substring query 2 nil)))
+    ((pred (string-match "\\`b .*"))
+     (links-search--launch "book" (substring query 2 nil)))
+    ((pred (string-match "\\`w .*"))
+     (links-search--launch "wiki" (substring query 2 nil)))
+    ((pred (string-match "\\`m .*"))
+     (links-search--launch "imdb" (substring query 2 nil)))
+    ((pred (string-match "\\`y .*"))
+     (links-search--launch "yout" (substring query 2 nil)))
+    ((pred (string-match "\\`t .*"))
+     (links-search--launch "thes" (substring query 2 nil)))
+    ((pred (string-match "\\`s .*"))
+     (links-search--launch "syno" (substring query 2 nil)))
+    (_ (links-search--launch "seax" query))))
+    
+(defun links-search--launch (engine query)
+    (pcase engine
+      ("dict" (links-browser (format "https://en.wiktionary.org/wiki/Special:Search?search=%s" query)))
+      ("wiki" (links-browser (format "https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s&go=Go" query)))
+      ("imdb" (links-browser (format "https://www.imdb.com/find?s=all&q=%s" query)))
+      ("yout" (links-browser (format "https://www.youtube.com/results?search_query=%s" query)))
+      ("book" (links-browser (format "http://gen.lib.rus.ec/search.php?req=%s&res=100&sort=id&sortmode=DESC" query)))
+      ("thes" (links-browser (format "https://www.powerthesaurus.org/%s" query)))
+      ("syno" (links-browser (format "https://duckduckgo.com/lite/?q=%s site:macmillandictionary.com" query)))
+      ("seax" (links-browser (format "https://search.snopyta.org/?q=%s" query)))))
+```
 
 
 # u/Icy<sub>Thought</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1aw6xkc/comment/t1_kriu3ye)
@@ -3699,9 +3967,11 @@ The trick is that Emacs has built-in keybindings like \`C-x @ s\` that simulates
 
 Terminals like e.g. Kitty lets you bind super+a to do whatever you want, so you can simply map it to send the key sequences that Emacs expects. Just add this to e.g. \`kitty.conf\`:
 
-    map super+a send_key ctrl+x @ s a
-    map super+b send_key ctrl+x @ s b
-    ...
+```elisp
+map super+a send_key ctrl+x @ s a
+map super+b send_key ctrl+x @ s b
+...
+```
 
 And voila, super works fine in \`emacs -nw\`! Kitty translates \`s-a\` into normal terminal-supported control keybindings \`C-x @ s a\`, which Emacs then translates back into \`s-a\`.
 
@@ -3721,26 +3991,29 @@ I often do simple manuals with a lot of screenshots, now in \`org\`.
 
 So I came up with the \`org/insert-screenshot\` command that works in windows and linux (wayland with \`wl-paste\` available):
 
-    (defun org/insert-screenshot ()
-      (interactive)
-      (let* ((img-dir (concat "img-"
-                              (file-name-sans-extension (buffer-name))))
-             (img-name (concat (file-name-sans-extension (buffer-name))
-                               "-" (format-time-string "%Y%m%d-%H%M%S") ".png"))
-             (filename (concat img-dir "/" img-name)))
-        (make-directory img-dir :parents)
-        ;; Windows -- use powershell, other(implicit linux) -- use wl-paste
-        (shell-command
-         (if (eq system-type 'windows-nt)
-             (concat
-              "powershell -command \"Add-Type -AssemblyName System.Windows.Forms;"
-              "if ($([System.Windows.Forms.Clipboard]::ContainsImage()))"
-              "{$image = [System.Windows.Forms.Clipboard]::GetImage();"
-              "[System.Drawing.Bitmap]$image.Save('"
-              filename
-              "',[System.Drawing.Imaging.ImageFormat]::Png);}\"")
-           (concat "wl-paste > " filename)))
-        (insert (concat "[[file:" filename "]]"))))
+```elisp
+(defun org/insert-screenshot ()
+  (interactive)
+  (let* ((img-dir (concat "img-"
+                          (file-name-sans-extension (buffer-name))))
+         (img-name (concat (file-name-sans-extension (buffer-name))
+                           "-" (format-time-string "%Y%m%d-%H%M%S") ".png"))
+         (filename (concat img-dir "/" img-name)))
+    (make-directory img-dir :parents)
+    ;; Windows -- use powershell, other(implicit linux) -- use wl-paste
+    (shell-command
+     (if (eq system-type 'windows-nt)
+         (concat
+          "powershell -command \"Add-Type -AssemblyName System.Windows.Forms;"
+          "if ($([System.Windows.Forms.Clipboard]::ContainsImage()))"
+          "{$image = [System.Windows.Forms.Clipboard]::GetImage();"
+          "[System.Drawing.Bitmap]$image.Save('"
+          filename
+          "',[System.Drawing.Imaging.ImageFormat]::Png);}\"")
+       (concat "wl-paste > " filename)))
+    (insert (concat "[[file:" filename "]]"))))
+    
+```
 
 So the flow is:
 
@@ -3764,47 +4037,49 @@ recently started writing a report with a lot of numbers, many of which will chan
 
 In a presentation this morning, I wanted to show a file, but it contained sensitive information: IP addresses and passwords. The following code hides this secret in a buffer:
 
-    (defun sm/hide-ip-addresses ()
-      "Hide IP addresses in the buffer."
-      (interactive)
-      (let ((ipv4-regex "\\b\\(?:[0-9]\\{1,3\\}\\.\\)\\{3\\}[0-9]\\{1,3\\}\\b")
-    	(ipv6-regex "\\b\\(?:[0-9a-f]\\{1,4\\}:\\)\\{7\\}[0-9a-f]\\{1,4\\}\\b\\|\\b\\(?:[0-9a-f]\\{1,4\\}:\\)\\{1,6\\}\\(:[0-9a-f]\\{1,4\\}\\)\\{1,6\\}\\b"))
-    (save-excursion
-      (goto-char (point-min))
-      (while (re-search-forward ipv4-regex nil t)
-    	(let ((overlay (make-overlay (match-beginning 0) (match-end 0))))
-    	  (overlay-put overlay 'hidden-text t)
-    	  (overlay-put overlay 'display "***.***.***.***"))))
-    (save-excursion
-      (goto-char (point-min))
-      (while (re-search-forward ipv6-regex nil t)
-    	(let ((overlay (make-overlay (match-beginning 0) (match-end 0))))
-    	  (overlay-put overlay 'hidden-text t)
-    	  (overlay-put overlay 'display "****:****:****::****"))))))
-    
-    (defun sm/hide-passwords ()
-      "Hide passwords in buffer."
-      (interactive)
-      (let ((pwd-regex ".*passwor[dt]*:\\(.*\\)"))
-    (save-excursion
-      (goto-char (point-min))
-      (while (re-search-forward pwd-regex nil t)
-    	(let ((overlay (make-overlay (match-beginning 1) (match-end 1))))
-    	  (overlay-put overlay 'hidden-text t)
-    	  (overlay-put overlay 'display "******"))))))
-    
-    (defun sm/hide-secrets ()
-      "Hide IP addresses and passwords in the buffer."
-      (interactive)
-      (sm/hide-ip-addresses)
-      (sm/hide-passwords))
-    
-    (defun sm/remove-overlays ()
-      "Remove all overlays with the `hidden-text' property in the buffer."
-      (interactive)
-      (dolist (overlay (overlays-in (point-min) (point-max)))
-    (when (overlay-get overlay 'hidden-text)
-      (delete-overlay overlay))))
+```elisp
+(defun sm/hide-ip-addresses ()
+  "Hide IP addresses in the buffer."
+  (interactive)
+  (let ((ipv4-regex "\\b\\(?:[0-9]\\{1,3\\}\\.\\)\\{3\\}[0-9]\\{1,3\\}\\b")
+	(ipv6-regex "\\b\\(?:[0-9a-f]\\{1,4\\}:\\)\\{7\\}[0-9a-f]\\{1,4\\}\\b\\|\\b\\(?:[0-9a-f]\\{1,4\\}:\\)\\{1,6\\}\\(:[0-9a-f]\\{1,4\\}\\)\\{1,6\\}\\b"))
+(save-excursion
+  (goto-char (point-min))
+  (while (re-search-forward ipv4-regex nil t)
+	(let ((overlay (make-overlay (match-beginning 0) (match-end 0))))
+	  (overlay-put overlay 'hidden-text t)
+	  (overlay-put overlay 'display "***.***.***.***"))))
+(save-excursion
+  (goto-char (point-min))
+  (while (re-search-forward ipv6-regex nil t)
+	(let ((overlay (make-overlay (match-beginning 0) (match-end 0))))
+	  (overlay-put overlay 'hidden-text t)
+	  (overlay-put overlay 'display "****:****:****::****"))))))
+
+(defun sm/hide-passwords ()
+  "Hide passwords in buffer."
+  (interactive)
+  (let ((pwd-regex ".*passwor[dt]*:\\(.*\\)"))
+(save-excursion
+  (goto-char (point-min))
+  (while (re-search-forward pwd-regex nil t)
+	(let ((overlay (make-overlay (match-beginning 1) (match-end 1))))
+	  (overlay-put overlay 'hidden-text t)
+	  (overlay-put overlay 'display "******"))))))
+
+(defun sm/hide-secrets ()
+  "Hide IP addresses and passwords in the buffer."
+  (interactive)
+  (sm/hide-ip-addresses)
+  (sm/hide-passwords))
+
+(defun sm/remove-overlays ()
+  "Remove all overlays with the `hidden-text' property in the buffer."
+  (interactive)
+  (dolist (overlay (overlays-in (point-min) (point-max)))
+(when (overlay-get overlay 'hidden-text)
+  (delete-overlay overlay))))
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j9pr766)
@@ -3820,8 +4095,7 @@ In a presentation this morning, I wanted to show a file, but it contained sensit
 
 I found this one-liner yesterday, added it it to the \`:config\` section of ****Evil****.
 
-  \`(define-key evil-visual-state-map (kbd "u") 'undo)\`  
-Now I can undo in selected region. Like magic.
+\`(define-key evil-visual-state-map (kbd "u") 'undo)\` Now I can undo in selected region. Like magic.
 
 
 # u/slinchisl [🔗](https://www.reddit.com/r/emacs/comments/t3_x27yc9/comment/t1_imjs86m)
@@ -3835,7 +4109,7 @@ I don't think this is worth it as a top-level post, since it's more geared towar
 
 **Votes** 8
 
-Using [zotra](<https://github.com/mpedramfar/zotra>), [citar](<https://github.com/emacs-citar/citar>) and some parts of the Org-cite ecosystem I hacked together a highly experimental but pretty comfortable environment for working with "org-biblatex bibliographies" which are basically like [org-bibtex](<http://gewhere.github.io/org-bibtex>) but with biblatex entries represented as headings with suitable properties instead of bibtex. I have a function which retrieves a biblatex entry corresponding to an url using zotra and adds a corresponding Org heading with the biblatex fields as properties, and the entry becomes available in Citar as soon as I save the document. Citing these entries then works anywhere, even in the same document with a suitable \`#+bibliography: my-org-biblatex-file.org\` declaration. Exporting the citations also works with the CSL exporter, no conversion is necessary to a proper biblatex bibliography file (but can be easily done if one needs biblatex-based export). Since the bibliography is an Org document, tagging, agenda commands, column view etc. can all be used with the bibliography entries.  In a way it's frightening how much can be achieved building on already existing stuff and with a few lines of Emacs Lisp.
+Using [zotra](<https://github.com/mpedramfar/zotra>), [citar](<https://github.com/emacs-citar/citar>) and some parts of the Org-cite ecosystem I hacked together a highly experimental but pretty comfortable environment for working with "org-biblatex bibliographies" which are basically like [org-bibtex](<http://gewhere.github.io/org-bibtex>) but with biblatex entries represented as headings with suitable properties instead of bibtex. I have a function which retrieves a biblatex entry corresponding to an url using zotra and adds a corresponding Org heading with the biblatex fields as properties, and the entry becomes available in Citar as soon as I save the document. Citing these entries then works anywhere, even in the same document with a suitable \`#+bibliography: my-org-biblatex-file.org\` declaration. Exporting the citations also works with the CSL exporter, no conversion is necessary to a proper biblatex bibliography file (but can be easily done if one needs biblatex-based export). Since the bibliography is an Org document, tagging, agenda commands, column view etc. can all be used with the bibliography entries. In a way it's frightening how much can be achieved building on already existing stuff and with a few lines of Emacs Lisp.
 
 
 # u/poinkalum [🔗](https://www.reddit.com/r/emacs/comments/t3_p28rl5/comment/t1_h8rdjx9)
@@ -3851,11 +4125,13 @@ If you follow master, you can use the very useful command \`execute-extended-com
 
 Little quality of life improvement if you work with multiple eshell buffers:
 
-    (defun eshell-buffer-name ()
-      (rename-buffer (concat "*eshell*<" (eshell/pwd) ">") t))
-        
-    (add-hook 'eshell-directory-change-hook #'eshell-buffer-name)
-    (add-hook 'eshell-prompt-load-hook #'eshell-buffer-name)
+```elisp
+(defun eshell-buffer-name ()
+  (rename-buffer (concat "*eshell*<" (eshell/pwd) ">") t))
+    
+(add-hook 'eshell-directory-change-hook #'eshell-buffer-name)
+(add-hook 'eshell-prompt-load-hook #'eshell-buffer-name)
+```
 
 
 # u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/t3_jix6od/comment/t1_gaid3f4)
@@ -3868,12 +4144,15 @@ For example if you have the text "The quick brown fox jumps over the lazy dog" i
 
 This is already great, but I find the key sequence \`SPC M-/\` awkward to type so I wrote this little function which I bind to \`M-'\`:
 
-    (defun dabbrev-next (arg)
-      "Insert the next ARG words from where previous expansion was found."
-      (interactive "p")
-      (dotimes (_ arg)
-        (insert " ")
-        (dabbrev-expand 1)))
+```elisp
+(defun dabbrev-next (arg)
+  "Insert the next ARG words from where previous expansion was found."
+  (interactive "p")
+  (dotimes (_ arg)
+    (insert " ")
+    (dabbrev-expand 1)))
+    
+```
 
 Then for "quick grown fox" I can go \`qu M-/ M-' M-'\` which feels much easier to type (on my keyboard \`/\` and \`'\` are very close to each other).
 
@@ -3884,17 +4163,20 @@ Then for "quick grown fox" I can go \`qu M-/ M-' M-'\` which feels much easier t
 
 **Votes** 8
 
-TIL that I can disable \`\`company\`\` for some modes, I needed to do it because completion was really slow for the shell and eshell which have vanilla shell completion anyway. Thus 
+TIL that I can disable \`\`company\`\` for some modes, I needed to do it because completion was really slow for the shell and eshell which have vanilla shell completion anyway. Thus
 
-    (use-package company
-      :after ispell
-      :diminish
-      :config
-      .
-      .
-      .
-      (setq company-global-modes '(not eshell-mode shell-mode))
-      (global company-mode 1))
+```elisp
+(use-package company
+  :after ispell
+  :diminish
+  :config
+  .
+  .
+  .
+  (setq company-global-modes '(not eshell-mode shell-mode))
+  (global company-mode 1))
+  
+```
 
 works as intended
 
@@ -3910,38 +4192,43 @@ you can have an org-mode file in source block in an org file
 
 **Votes** 8
 
-I've been playing around with Emacs 28's [repeat-mode](<https://git.savannah.gnu.org/cgit/emacs.git/commit/lisp?id=12409c9064c386a496dcbdca76b790108f6c1cad>) a bit.  It allows for not having to press modifiers when executing several conceptually similar actions in a row.  Sadly, the ergonomics of defining these repeat maps are not quite there yet, so I wrote a small macro (my first one ever, actually!) to define the map and set the appropriate symbol property for the function:
+I've been playing around with Emacs 28's [repeat-mode](<https://git.savannah.gnu.org/cgit/emacs.git/commit/lisp?id=12409c9064c386a496dcbdca76b790108f6c1cad>) a bit. It allows for not having to press modifiers when executing several conceptually similar actions in a row. Sadly, the ergonomics of defining these repeat maps are not quite there yet, so I wrote a small macro (my first one ever, actually!) to define the map and set the appropriate symbol property for the function:
 
-    (defmacro defrepeatmap (symbol &optional pairs docstring)
-      "A macro for defining `repeat-map's.
-    Defines a new repeat-map called SYMBOL with the given DOCSTRING.
-    The keys are derived via the list PAIRS, whose elements are cons
-    cells of the form (KEY . DEF), where KEY and DEF must fulfill the
-    same requirements as if given to `define-key'."
-      `(progn
-         (defvar ,symbol
-           (let ((map (make-sparse-keymap)))
-             (--each ,pairs (define-key map (car it) (cdr it)))
-             map)
-           ,docstring)
-         ;; Tell the keys they are in a repeat map.
-         (--each (mapcar 'cdr (cdr ,symbol))
-           (put it 'repeat-map ',symbol))))
+```elisp
+(defmacro defrepeatmap (symbol &optional pairs docstring)
+  "A macro for defining `repeat-map's.
+Defines a new repeat-map called SYMBOL with the given DOCSTRING.
+The keys are derived via the list PAIRS, whose elements are cons
+cells of the form (KEY . DEF), where KEY and DEF must fulfill the
+same requirements as if given to `define-key'."
+  `(progn
+     (defvar ,symbol
+       (let ((map (make-sparse-keymap)))
+         (--each ,pairs (define-key map (car it) (cdr it)))
+         map)
+       ,docstring)
+     ;; Tell the keys they are in a repeat map.
+     (--each (mapcar 'cdr (cdr ,symbol))
+       (put it 'repeat-map ',symbol))))
+       
+```
 
-It can be used like 
+It can be used like
 
-    (defrepeatmap window-repeat-map
-      '(("}" . enlarge-window-horizontally)
-        ("{" . shrink-window-horizontally )
-        ("+" . balance-windows            )
-        ("o" . other-window               )
-        ("1" . delete-other-windows       )
-        ("2" . split-window-below         )
-        ("3" . split-window-right         )
-        ("0" . delete-window              )
-        ("s" . window-swap-states         )
-        ("f" . project-find-file          ))
-      "Keymap to repeat window key sequences.  Used in `repeat-mode'.")
+```elisp
+(defrepeatmap window-repeat-map
+  '(("}" . enlarge-window-horizontally)
+    ("{" . shrink-window-horizontally )
+    ("+" . balance-windows            )
+    ("o" . other-window               )
+    ("1" . delete-other-windows       )
+    ("2" . split-window-below         )
+    ("3" . split-window-right         )
+    ("0" . delete-window              )
+    ("s" . window-swap-states         )
+    ("f" . project-find-file          ))
+  "Keymap to repeat window key sequences.  Used in `repeat-mode'.")
+```
 
 
 # u/oantolin [🔗](https://www.reddit.com/r/emacs/comments/t3_oxo1xh/comment/t1_h88ph29)
@@ -3950,7 +4237,9 @@ It can be used like
 
 This isn't a tip or trick, so I guess it is covered by &c. The Init File section of the manual has this example of setting a user email address:
 
-    (setq user-mail-address "cheney@torture.gov")
+```elisp
+(setq user-mail-address "cheney@torture.gov")
+```
 
 
 # u/emacsomancer [🔗](https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_fs5sq09)
@@ -3961,9 +4250,9 @@ Preconfigured Emacs for collaborative writing (using a literate, self-generating
 
 <https://gitlab.com/emacsomancer/collaborative-writing-environment-emacs>
 
-Not a huge, lots-of-packages configuration, but with a focus on writing (org-mode, fountain), including version control (magit). 
+Not a huge, lots-of-packages configuration, but with a focus on writing (org-mode, fountain), including version control (magit).
 
-Each person gets a different colour to indicate the part of the file they’re editing: (Screenshot (from the alternative world in which Cory Doctorow  co-wrote <span class="underline">For the Win</span> in Emacs):)
+Each person gets a different colour to indicate the part of the file they’re editing: (Screenshot (from the alternative world in which Cory Doctorow co-wrote <span class="underline">For the Win</span> in Emacs):)
 
 <https://imgur.com/a/zvfLpdH>
 
@@ -3990,16 +4279,19 @@ A great functionality for calculating some schedule events is \`org-evaluate-tim
 
 **Votes** 8
 
-This might prove to be helpful for some.  xdragon is <https://github.com/mwh/dragon>
+This might prove to be helpful for some. xdragon is <https://github.com/mwh/dragon>
 
-    (defun vz/dired-popup-xdragon ()
-      "Open xdragon with the marked files or the file at point."
-      (interactive)
-      ;; xdragon rename is a nix thing, pretty sure.
-      (make-process
-       :name "xdragon"
-       :command (append '("xdragon") (dired-get-marked-files))
-       :noquery t))
+```elisp
+(defun vz/dired-popup-xdragon ()
+  "Open xdragon with the marked files or the file at point."
+  (interactive)
+  ;; xdragon rename is a nix thing, pretty sure.
+  (make-process
+   :name "xdragon"
+   :command (append '("xdragon") (dired-get-marked-files))
+   :noquery t))
+
+```
 
 When I searched for drag and drop support, I did not see anything that hinted at the ability of dragging things <span class="underline">from</span> Emacs hence the usage of (x)dragon.
 
@@ -4010,23 +4302,25 @@ When I searched for drag and drop support, I did not see anything that hinted at
 
 For some time I have wished I could color code the background colors of different buffers to make it easier to pick them out on a busy screen and to give myself visual cues about keybinding differences (like paging with the space bar in view-mode). I've finally done it, and it wasn't as complicated as I thought it might be.
 
-    (defun bespoke-background-color ()
-      "Color code background according to buffer type."
-      ;; called in after-change-major-mode-hook & view-mode-hook
-      (cond
-       ((member (buffer-name)
-                (list "*Backtrace*" "*Compile-Log*"
-                      "*Completions*" "*Messages*"))
-        (buffer-face-set :background "#1f1d1b"))  ; brown
-       ((member (buffer-name)
-                (list "*Colors*" "*Faces*")) nil) ; text gray (8)
-       ((derived-mode-p 'special-mode)
-        (buffer-face-set :background "#1c221c"))  ; green
-       ((or buffer-read-only view-mode)
-        (buffer-face-set :background "#111c22"))  ; blue
-       ((derived-mode-p 'prog-mode)
-        (buffer-face-set :background "gray5"))    ; prog gray (5)
-       (t nil)))                                  ; text gray (8)
+```elisp
+(defun bespoke-background-color ()
+  "Color code background according to buffer type."
+  ;; called in after-change-major-mode-hook & view-mode-hook
+  (cond
+   ((member (buffer-name)
+            (list "*Backtrace*" "*Compile-Log*"
+                  "*Completions*" "*Messages*"))
+    (buffer-face-set :background "#1f1d1b"))  ; brown
+   ((member (buffer-name)
+            (list "*Colors*" "*Faces*")) nil) ; text gray (8)
+   ((derived-mode-p 'special-mode)
+    (buffer-face-set :background "#1c221c"))  ; green
+   ((or buffer-read-only view-mode)
+    (buffer-face-set :background "#111c22"))  ; blue
+   ((derived-mode-p 'prog-mode)
+    (buffer-face-set :background "gray5"))    ; prog gray (5)
+   (t nil)))                                  ; text gray (8)
+```
 
 
 # u/meedstrom [🔗](https://www.reddit.com/r/emacs/comments/t3_ydsjfy/comment/t1_itwo67r)
@@ -4035,7 +4329,10 @@ For some time I have wished I could color code the background colors of differen
 
 I had the [defrepeater](<https://github.com/alphapapa/defrepeater.el>) package for a while, but didn't realize you could use it this elegantly!
 
-    (global-set-key [remap transpose-lines] (defrepeater #'transpose-lines))
+```elisp
+(global-set-key [remap transpose-lines] (defrepeater #'transpose-lines))
+
+```
 
 Something similar is actually in the readme, but I guess I glossed over it back then.
 
@@ -4070,31 +4367,37 @@ Now, onto my tip/trick. I wanted ibuffer to display the URL of each Firefox wind
 
 To do this, I found an extension that adds the current URL to Firefox's title (I used <https://addons.mozilla.org/en-US/firefox/addon/keepass-helper-url-in-title/>, but any would work), I then wrote the following function:
 
-    (defun b3n-exwm-set-buffer-name ()
-      (if (and exwm-title (string-match "\\`http[^ ]+" exwm-title))
-        (let ((url (match-string 0 exwm-title)))
-          (setq-local buffer-file-name url)
-          (setq-local exwm-title (replace-regexp-in-string
-                                  (concat (regexp-quote url) " - ")
-                                  ""
-                                  exwm-title))))
-    
-      (setq-local exwm-title
-                  (concat
-                   exwm-class-name
-                   "<"
-                   (if (<= (length exwm-title) 50)
-                       exwm-title
-                     (concat (substring exwm-title 0 50) "…"))
-                   ">"))
-    
-      (exwm-workspace-rename-buffer exwm-title))
+```elisp
+(defun b3n-exwm-set-buffer-name ()
+  (if (and exwm-title (string-match "\\`http[^ ]+" exwm-title))
+    (let ((url (match-string 0 exwm-title)))
+      (setq-local buffer-file-name url)
+      (setq-local exwm-title (replace-regexp-in-string
+                              (concat (regexp-quote url) " - ")
+                              ""
+                              exwm-title))))
+
+  (setq-local exwm-title
+              (concat
+               exwm-class-name
+               "<"
+               (if (<= (length exwm-title) 50)
+                   exwm-title
+                 (concat (substring exwm-title 0 50) "…"))
+               ">"))
+
+  (exwm-workspace-rename-buffer exwm-title))
+
+```
 
 I then added this function to the \`exwm-update-class-hook\` and \`exwm-update-title-hook\` hooks.
 
 Now, in ibuffer, it looks like this:
 
-    Firefox<Weekly tips/trick/etc/ thread : emacs — Mozilla Fi…> https://www.reddit.com/r/emacs/comments/mb8u1m/weekly_tipstricketc_thread/
+```elisp
+Firefox<Weekly tips/trick/etc/ thread : emacs — Mozilla Fi…> https://www.reddit.com/r/emacs/comments/mb8u1m/weekly_tipstricketc_thread/
+
+```
 
 With the buffer name on the left, and the file name (URL) on the right. Perfect :)
 
@@ -4116,16 +4419,22 @@ For a while, I've been thinking about a nice way to get arbitrary tooltips in or
 
 I don't care about the follow behavior, or export &#x2013; just showing the tooltip under the house, or in the help-echo area, so if I do something like
 
-    [[abbrev:this stands for Some Random Acronym][SRA]]
+```elisp
+[[abbrev:this stands for Some Random Acronym][SRA]]
+
+```
 
 the buffer shows "SRA" as an org link, and when point or the mouse is over it, I get the expected message. There's nothing special about "abbrev", except that it hasn't been defined as an org link type. If I try to follow the link, org tries to create a heading, but for such things, I'm not going to follow the link, or export it, so that behavior doesn't matter.
 
 Another use is for footnote-style things: say, in a table you want a cell where you can add some kind of note or comment, but don't want the cell to be very big. You can make your table like this:
 
-    | col A | notes |
-    |-------+-------|
-    |  1234 | [[whatever:this is a note or comment about this row in the table][note]]  |
-    |       |       |
+```elisp
+| col A | notes |
+|-------+-------|
+|  1234 | [[whatever:this is a note or comment about this row in the table][note]]  |
+|       |       |
+
+```
 
 and the cell just says "note", but I can see the rest when I hover.
 
@@ -4138,10 +4447,12 @@ To get the link target &#x2013; the note, the abbreviation, and so on &#x2013; t
 
 \\\*Embedded calc mode\* to insert a quick and dirty calculation in a buffer:
 
-    To enter Embedded mode, position the Emacs point (cursor) on a formula
-    in any buffer and press ‘C-x * e’ (‘calc-embedded’).  Note that ‘C-x *
-    e’ is not to be used in the Calc stack buffer like most Calc commands,
-    but rather in regular editing buffers that are visiting your own files.
+```elisp
+To enter Embedded mode, position the Emacs point (cursor) on a formula
+in any buffer and press ‘C-x * e’ (‘calc-embedded’).  Note that ‘C-x *
+e’ is not to be used in the Calc stack buffer like most Calc commands,
+but rather in regular editing buffers that are visiting your own files.
+```
 
 
 # u/nicholas<sub>hubbard</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_rr330u/comment/t1_hqlp0en)
@@ -4150,16 +4461,18 @@ To get the link target &#x2013; the note, the abbreviation, and so on &#x2013; t
 
 Here is a consult source for [perspective.el](<https://github.com/nex3/perspective-el>)
 
-    (defvar consult--source-perspective
-        `(:name "Perspective"
-                :narrow   ?p
-                :category buffer
-                :face     consult-buffer
-                :history  buffer-name-history
-                :state    ,#'consult--buffer-state
-                :default  t
-                :items    ,#'persp-get-buffer-names)
-        "Perspective candidate source for `consult-buffer'.")
+```elisp
+(defvar consult--source-perspective
+    `(:name "Perspective"
+            :narrow   ?p
+            :category buffer
+            :face     consult-buffer
+            :history  buffer-name-history
+            :state    ,#'consult--buffer-state
+            :default  t
+            :items    ,#'persp-get-buffer-names)
+    "Perspective candidate source for `consult-buffer'.")
+```
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvy3geb)
@@ -4168,16 +4481,7 @@ Here is a consult source for [perspective.el](<https://github.com/nex3/perspecti
 
 \`(setq visual-order-cursor-movement t)\`
 
-> If non-nil, moving cursor with arrow keys follows the visual order.
-> 
-> When this is non-nil, <right> will move to the character that is
-to the right of point on display, and <left> will move to the left,
-disregarding the surrounding bidirectional context.  Depending on the
-bidirectional context of the surrounding characters, this can move point
-many buffer positions away.
-> 
-> When the text is entirely left-to-right, logical-order and visual-order
-cursor movements produce identical results."
+> If non-nil, moving cursor with arrow keys follows the visual order. > > When this is non-nil, <right> will move to the character that is to the right of point on display, and <left> will move to the left, disregarding the surrounding bidirectional context. Depending on the bidirectional context of the surrounding characters, this can move point many buffer positions away. > > When the text is entirely left-to-right, logical-order and visual-order cursor movements produce identical results."
 
 I write in Arabic.
 
@@ -4188,31 +4492,33 @@ I write in Arabic.
 
 The [texdoc](<https://github.com/TeX-Live/texdoc/wiki/Tab-completion>) CLI program provided by TeXLive allows opening the documentation of LaTeX packages given a package name as its argument (requires having the documentation installed locally). It is available from AUCTeX via the \`TeX-documentation-texdoc\` command, which I find useful. However, it requires typing out the package name by hand (though it uses symbol-at-point as the default). Recently I found that the texdoc wiki contains a snippet how to add [tab-completion](<https://github.com/TeX-Live/texdoc/wiki/Tab-completion>), which showed me where to get a list of installed TeXLive package names. I ported this to emacs lisp, and combined with \`completing-read\` and \`call-process\` to call the terminal command I created my own \`my-texdoc\` command with interactive candidate selection. It's available as [github gist here](<https://gist.github.com/meliache/e645bf50c6aeac8e6e58b92c6bddac20>), but I can also paste the code:
 
-    (defun my-texdoc--get-package-list ()
-      (let ((tlpdb-fpath (file-name-concat
-                          (string-trim-right
-                           (shell-command-to-string "kpsewhich -var-value TEXMFROOT"))
-                          "tlpkg/texlive.tlpdb"))
-            (name-regex "^name \\([^ \n.]+\\)$"))
-        (with-current-buffer (find-file-noselect tlpdb-fpath 'nowarn 'rawfile)
-          (save-excursion
-            (goto-char (point-min))
-            (cl-loop
-             while (re-search-forward name-regex nil 'noerror)
-             collect (match-string-no-properties 1))))))
-        
-    (defun my-texdoc (pkg)
-      "Show TeX documentation for package PKG.
-    If called interactively, select package from TexLive with interactive completion."
-      (interactive
-       (list (completing-read
-              "texdoc: "
-              (my-texdoc--get-package-list)
-              nil nil nil
-              'my-texdoc-history)))
-        (call-process "texdoc" nil " *texdoc*" nil "--view" pkg))
+```elisp
+(defun my-texdoc--get-package-list ()
+  (let ((tlpdb-fpath (file-name-concat
+                      (string-trim-right
+                       (shell-command-to-string "kpsewhich -var-value TEXMFROOT"))
+                      "tlpkg/texlive.tlpdb"))
+        (name-regex "^name \\([^ \n.]+\\)$"))
+    (with-current-buffer (find-file-noselect tlpdb-fpath 'nowarn 'rawfile)
+      (save-excursion
+        (goto-char (point-min))
+        (cl-loop
+         while (re-search-forward name-regex nil 'noerror)
+         collect (match-string-no-properties 1))))))
+    
+(defun my-texdoc (pkg)
+  "Show TeX documentation for package PKG.
+If called interactively, select package from TexLive with interactive completion."
+  (interactive
+   (list (completing-read
+          "texdoc: "
+          (my-texdoc--get-package-list)
+          nil nil nil
+          'my-texdoc-history)))
+    (call-process "texdoc" nil " *texdoc*" nil "--view" pkg))
+
+```
 
 My biggest problem is that I'm not sure how to share it with the emacs community, it doesn't seem like it's big enough to be its own package, I might post it on some wiki or in some aggregating package like \`consult\`, but I thought I would start with this reddit thread. I also might try to merge this into \`AUCTeX\`, however I'm not sure if that's actively developed anymore and the \`TeX-documentation-texdoc\` source code is much more complex than what I have, that I'm a bit worried to break something.
 
 And to make this post a real tip: If you know some CLI program and can somehow get a list of possible arguments for that program, try writing your own emacs lisp command wrapper with \`completing-read\` support, it's fun and not that hard.
-
