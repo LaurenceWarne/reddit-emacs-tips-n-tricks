@@ -1,6 +1,9 @@
 # reddit-emacs-tips-n-tricks
 
-This repo contains tools for parsing top comments from the weekly r/emacs [Weekly Tips, Tricks & c. Thread](https://www.reddit.com/r/emacs/search?q=Weekly+tips&restrict_sr=on&sort=new&t=all).  You can check out all of the top comments [here](./out.md).
+This repo contains tools for parsing top comments from the weekly r/emacs [Weekly Tips, Tricks & c. Thread](https://www.reddit.com/r/emacs/search?q=Weekly+tips&restrict_sr=on&sort=new&t=all).  You can check out all of the top comments:
+
+- As an org mode file [here](./out.org).
+- As an md file [here](./out.md).
 
 ## Running Locally
 
