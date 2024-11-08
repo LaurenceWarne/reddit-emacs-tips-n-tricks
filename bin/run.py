@@ -6,7 +6,6 @@ https://www.reddit.com/dev/api/#GET_search
 import sys, itertools, json, logging, os, datetime, collections, re, html
 
 import requests
-from collections import namedtuple
 
 HANDLER = logging.StreamHandler()
 HANDLER.setFormatter(logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s"))
@@ -121,8 +120,8 @@ def comment_to_md(content, username, post_id, comment_id, upvotes, md_type=Githu
     split = (markdown + ("\n```" if quote_last_line else "")).split("```")
     code_it = itertools.cycle([md_type.code_start, md_type.code_end])
     md = "".join([a + b for a, b in zip(split[:-1], code_it)] + [split[-1]])
-    single_line_code_converted = re.sub(r"(?<!`)(`)(?!`)", md_type.single_line_code, md)
-    heading_escaped = re.sub(r"^(\*+)", r"\\\1", md, flags=re.M)
+    inline_code_converted = re.sub(r"(?<!`)(`)(?!`)", md_type.single_line_code, md)
+    heading_escaped = re.sub(r"^(\*+)", r"\\\1", inline_code_converted, flags=re.M)
     return title + html.unescape(heading_escaped)
 
 
