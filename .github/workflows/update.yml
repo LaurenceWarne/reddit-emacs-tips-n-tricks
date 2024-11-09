@@ -27,13 +27,15 @@ jobs:
       - uses: actions/checkout@v4
   
       - name: Find new posts
-        run: python3 bin/run.py --skip-pushing
+        run: python3 bin/run.py --output-ungrouped --output-grouped-by-year
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
   
       - name: Export org to markdown
-        run: emacs --batch -l bin/convert-to-md.el out.org
+        run: |
+          emacs --batch -l bin/convert-to-md.el out.org
+          emacs --batch -l bin/convert-to-md.el create-toc out_by_year.org
   
       - name: Commit files
         run: |

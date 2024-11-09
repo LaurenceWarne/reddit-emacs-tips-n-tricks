@@ -1,5 +1,5 @@
 """
-Usage: python3 bin/run.py [--all]
+Usage: python3 bin/run.py [--all] [--output-ungrouped] [--output-grouped-by-year]
 
 https://www.reddit.com/dev/api/#GET_search
 """
@@ -20,8 +20,8 @@ CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 AUTH_URL = "https://www.reddit.com/api/v1/access_token"
 BASE_EMACS_SUB_URL = "https://oauth.reddit.com/r/emacs"
 
-MarkdownType = collections.namedtuple("MarkdownType", "header code_start code_end link bold ext single_line_code bof")
-GithubMD = MarkdownType("##", "```", "```", lambda text, link: f"[{text}]({link})", lambda s: f"**{s}**", "md", "`", "")
+MarkdownType = collections.namedtuple("MarkdownType", "header code_start code_end link bold ext single_line_code")
+GithubMD = MarkdownType("##", "```", "```", lambda text, link: f"[{text}]({link})", lambda s: f"**{s}**", "md", "`")
 OrgMD = MarkdownType(
     header = "**",
     code_start = "#+BEGIN_SRC elisp",
@@ -30,7 +30,6 @@ OrgMD = MarkdownType(
     bold = lambda s: f"*{s}*",
     ext = "org",
     single_line_code = "~",
-    bof = "#+OPTIONS: toc:nil\n"
 )
 
 def get_headers(token=None):
@@ -142,6 +141,23 @@ def refine_comments(comments, md_type=GithubMD):
                 "created_datetime": str(parse_dt(comment["created_utc"]))
             }
     return valid
+
+
+def comments_str(comments):
+    return "\n\n".join(c["body"] for c in sorted(comments, key=lambda c: c["upvotes"], reverse=True))
+
+
+def md_grouped_by_year(comments):
+    parse_dt = lambda s: datetime.datetime.strptime(s, "%Y-%m-%d %H:%M:%S%z")
+    yearified = [(parse_dt(c["created_datetime"]).year, c) for c in comments.values()]
+    grouped = itertools.groupby(sorted(yearified, key=lambda t: -t[0]), key=lambda t: t[0])
+
+    doc = ""
+    for year, comments in grouped:
+        deyearified = [t[1] for t in comments]
+        doc += f"\n\n* {year}\n\n" + comments_str(deyearified)
+
+    return doc
     
 
 def persisted_comments():
@@ -152,7 +168,7 @@ def persisted_comments():
         return {}
 
 
-def run(all_posts, md_type=OrgMD):
+def run(all_posts, md_type=OrgMD, ungrouped=True, grouped_by_year=True):
     auth_response = requests.post(
         AUTH_URL,
         data={"grant_type": "client_credentials"},
@@ -172,16 +188,22 @@ def run(all_posts, md_type=OrgMD):
     for comment, attribs in comments.items(): existing_comments[comment] = attribs
     LOGGER.info("Giving a total of %d comments", len(existing_comments))
     with open(FILE, "w") as f:
-        f.write(json.dumps(existing_comments, default=str))
+        f.write(json.dumps(existing_comments, default=str, indent=4))
 
-    s = "\n\n".join(t[1]["body"] for t in sorted(existing_comments.items(), key=lambda t: t[1]["upvotes"], reverse=True))
-    with open(f"{OUT}.{md_type.ext}", "w") as f:
-        f.write(md_type.bof + s)
+    if ungrouped:
+        with open(f"{OUT}.{md_type.ext}", "w") as f:
+            f.write(comments_str(existing_comments.values()))
+
+    if grouped_by_year:
+        with open(f"{OUT}_by_year.{md_type.ext}", "w") as f:
+            f.write(md_grouped_by_year(existing_comments))
 
 
 def main():
     all_posts = "--all" in sys.argv
-    run(all_posts)
+    ungrouped = "--output-ungrouped" in sys.argv
+    grouped_by_year = "--output-grouped-by-year" in sys.argv
+    run(all_posts, md_type=OrgMD, ungrouped=ungrouped, grouped_by_year=grouped_by_year)
 
 
 if __name__ == "__main__":
