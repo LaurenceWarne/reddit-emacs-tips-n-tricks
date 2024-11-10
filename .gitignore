@@ -51,3 +51,5 @@ target/
 /.ammonite/
 **/.dir-locals.el
 /lambda/.bsp/
+/.ropeproject/
+/bin/__pycache__/
