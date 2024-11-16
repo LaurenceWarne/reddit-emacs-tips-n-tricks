@@ -25,5 +25,6 @@
       (org-map-region #'org-demote (region-beginning) (region-end)))
     (insert "* Years")
     (insert "\n:PROPERTIES:\n:TOC:      :include all :depth 1\n:END:\n\n:CONTENTS:\n\n:END:")
-    (org-make-toc))
+    (org-make-toc)
+    (save-buffer))
   (org-gfm-export-to-markdown))

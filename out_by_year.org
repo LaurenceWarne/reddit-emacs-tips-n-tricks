@@ -1,8 +1,25 @@
+#+OPTIONS: toc:nil broken-links:t
+* Years
+:PROPERTIES:
+:TOC:      :include all :depth 1
+:CUSTOM_ID: years
+:END:
 
+:CONTENTS:
+- [[#years][Years]]
+  - [[#2024][2024]]
+  - [[#2023][2023]]
+  - [[#2022][2022]]
+  - [[#2021][2021]]
+  - [[#2020][2020]]
+:END:
 
-* 2024
+** 2024
+:PROPERTIES:
+:CUSTOM_ID: 2024
+:END:
 
-** u/SlowMovingTarget [[https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr35bm5][🔗]] 
+*** u/SlowMovingTarget [[https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr35bm5][🔗]] 
 *Votes* 36
 
 Nothing revolutionary (and veterans will already know this), but a nice little function for splitting out text to a separate file:
@@ -14,7 +31,7 @@ It's in the manual, and a basic little feature, but really handy. https://www.gn
 
 I guess the other tip is to read the manual. :)
 
-** u/geza42 [[https://www.reddit.com/r/emacs/comments/t3_1c0gg7n/comment/t1_kywimnf][🔗]] 
+*** u/geza42 [[https://www.reddit.com/r/emacs/comments/t3_1c0gg7n/comment/t1_kywimnf][🔗]] 
 *Votes* 21
 
 Yasnippet has the capability of surrounding. For example, if you have this C++ namespace snippet:
@@ -33,7 +50,7 @@ Then if you bind ~(yas-expand-snippet (yas-lookup-snippet "namespace-surround"))
 
 https://i.redd.it/fbsbbr98smtc1.gif
 
-** u/vkazanov [[https://www.reddit.com/r/emacs/comments/t3_1bdm6mc/comment/t1_kuo1f9y][🔗]] 
+*** u/vkazanov [[https://www.reddit.com/r/emacs/comments/t3_1bdm6mc/comment/t1_kuo1f9y][🔗]] 
 *Votes* 17
 
 A dump of my Emacs-related principles after 18 years of tinkering:
@@ -50,7 +67,7 @@ A dump of my Emacs-related principles after 18 years of tinkering:
 
 I am a beginner though, things might change.
 
-** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1gktndf/comment/t1_lvojz57][🔗]] 
+*** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1gktndf/comment/t1_lvojz57][🔗]] 
 *Votes* 17
 
 ~use-package~ has an inbuilt feature that roughly reports the loading times of each package on startup ([~esup~](https://github.com/jschaf/esup) most likely does a better job, if you can get it to run; there are  [known issues](https://github.com/alexmurray/emacs-snap/issues/71) on Emacs snap):
@@ -61,7 +78,7 @@ I am a beginner though, things might change.
 
 Which package is your biggest time sink and why is it worth it?  Mine is [~pdf-tools~](https://github.com/vedang/pdf-tools), but to my knowledge there is simply no better alternative for working with pdfs in emacs.
 
-** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1fozctm/comment/t1_lpbqo0e][🔗]] 
+*** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1fozctm/comment/t1_lpbqo0e][🔗]] 
 *Votes* 13
 
 I recently got tired of constantly having to move my eyes to the bottom of Emacs, so I switched to posframes, [which moves the information in a central pop-up instead](https://blog.costan.ro/img/emacs-completion-system/switch-to.png).  For me, this meant using the packages:
@@ -84,7 +101,7 @@ But regardless what you are using, chances are there already is a suitable ~*-po
     (transient-posframe-mode))
 #+END_SRC
 
-** u/remillard [[https://www.reddit.com/r/emacs/comments/t3_1cbsvxd/comment/t1_l11l7he][🔗]] 
+*** u/remillard [[https://www.reddit.com/r/emacs/comments/t3_1cbsvxd/comment/t1_l11l7he][🔗]] 
 *Votes* 12
 
 I thought about making a whole post about this, but it's mostly ancillary appreciation so maybe this is a better place.  Anyhow, for anyone working with code projects, I'm finding that project.el is completely supplanting my previously heavy use of Treemacs.  I liked Treemacs because it's a very similar feel to the file/project sidebar in Sublime Text and VSCode (and others I'm sure).  It was kind of reassuring.  And dired is nice for many things, but navigating a lot of directories does get a little tedious compared to just opening nested directories in Treemacs. 
@@ -95,14 +112,14 @@ I suspect completion is doing a lot of heavy lifting here though too, so a perfe
 
 Anyway, I haven't popped open the Treemacs sidebar in weeks now, and just felt like I should write something in case someone was curious about how handy it was.
 
-** u/algor512 [[https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kg4ni5d][🔗]] 
+*** u/algor512 [[https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kg4ni5d][🔗]] 
 *Votes* 12
 
 Recently I discovered that ~C-h C-q~ (or ~M-x help-quick~) opens a small window showing \*Quick Help\* buffer with a nice overview of some basic keybindings. It seems that the content of this buffer is configurable via the variable ~help-quick-sections~.
 
 I intend to use it as a cheatsheet, reminding me about rare keybindings I always forget; I believe it is easy to make it context-dependent, just by changing the value of ~help-quick-sections~.
 
-** u/mlk [[https://www.reddit.com/r/emacs/comments/t3_1fjnqgy/comment/t1_lnqelw9][🔗]] 
+*** u/mlk [[https://www.reddit.com/r/emacs/comments/t3_1fjnqgy/comment/t1_lnqelw9][🔗]] 
 *Votes* 11
 
 I made my agenda collapsible (like org headings) by using outline-minor-mode. To make it work you need to name your agenda heading (~org-agenda-overriding-header~) with a starting asterisk, e.g "* Current Tasks", "* Today Agenda*" etc
@@ -129,7 +146,7 @@ I made my agenda collapsible (like org headings) by using outline-minor-mode. To
 (add-hook 'org-agenda-mode-hook 'my/org-agenda-fold)
 #+END_SRC
 
-** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_1djdync/comment/t1_l9cmdp9][🔗]] 
+*** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_1djdync/comment/t1_l9cmdp9][🔗]] 
 *Votes* 11
 
 I started using org-capture when I started my current job several years ago.  I recorded my daily activities using this template:
@@ -146,28 +163,28 @@ A minor annoyance was that an unwanted link to whatever file location I happened
       '(("d" "Done" entry (file+olp+datetree "~/org/done.org") "* %?")))
 #+END_SRC
 
-** u/saltwaterflyguy [[https://www.reddit.com/r/emacs/comments/t3_1bun8ky/comment/t1_kxur0j8][🔗]] 
+*** u/saltwaterflyguy [[https://www.reddit.com/r/emacs/comments/t3_1bun8ky/comment/t1_kxur0j8][🔗]] 
 *Votes* 11
 
 describe-\*. It is one of the most useful feature sets to access documentation for just about everything there is in Emacs. Not sure what key bindings are set for a given mode? M-x describe-mode or C-h m. Need to know what font is begin used for a certain piece of text? M-x describe-char. Need to know how a given command works? M-x describe-command or C-h x. Need to know the value of a given variable? M-x describe-variable or C-h v.
 
 If you are new to Emacs you will get so many answers to your questions by getting to know all of the describe functions.
 
-** u/geza42 [[https://www.reddit.com/r/emacs/comments/t3_1b20xgn/comment/t1_ksifwh1][🔗]] 
+*** u/geza42 [[https://www.reddit.com/r/emacs/comments/t3_1b20xgn/comment/t1_ksifwh1][🔗]] 
 *Votes* 11
 
 If you use an LSP server with semantic highlighting, it's worth checking out the value of ~font-lock-maximum-decoration~. For example, I use ~c++-mode~ with ~lsp-mode~ (with clangd), I decreased ~font-lock-maximum-decoration~ to ~2~, and I didn't notice any highlighting difference (because the lost highlighting by ~c++-mode~ gets highlighted by ~lsp-mode~), while ~c++-mode~ font-locking become faster (~c++-mode~ 's font-locking works well 99.9% of the time, but sometimes it can become slow in some circumstances, these slowdowns seems to be gone).
 
 I use:~(setq font-lock-maximum-decoration '((c-mode . 2) (c++-mode . 2) (t . t)))~
 
-** u/JDRiverRun [[https://www.reddit.com/r/emacs/comments/t3_1933co6/comment/t1_khe4dq6][🔗]] 
+*** u/JDRiverRun [[https://www.reddit.com/r/emacs/comments/t3_1933co6/comment/t1_khe4dq6][🔗]] 
 *Votes* 11
 
 I have long had convenience bindings for ~org-emphasize~ like ~super-i~ for /italic/, that match system bindings.  But I always wanted these to *be smarter*, i.e. do something useful when there is no text selected.  Something like intelligently toggling emphasis depending on whether you were already in the right kind of emphasized text, or just emphasize the word at point if not.
 
 [Check out my solution](https://gist.github.com/jdtsmith/55e6a660dd4c0779a600ac81bf9bfc23) (scroll down to see how it acts).  Will miss this behavior in other apps!
 
-** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1f8nxb5/comment/t1_llfyzu6][🔗]] 
+*** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1f8nxb5/comment/t1_llfyzu6][🔗]] 
 *Votes* 10
 
 I regularly work with different emacs frames on different monitors, and [~framemove~](https://github.com/emacsmirror/framemove) is great for switching between them.  It can hook into ~windmove~ (which means switching to an adjacent window becomes switching to an adjacent frame if no such window exists) and offers the functions:
@@ -193,7 +210,7 @@ It's not on any of the major package repositories, so you have to install it man
 #+END_SRC
 edit: The only thing I don't understand is why setting ~framemove-hook-into-windmove~ to ~t~ doesn't work in via ~:config~ or ~:custom~.  The package is loaded, ~C-h f~ confirms that ~fm-up-frame~ exists, but ~C-h v~ doesn't know ~framemove-hook-into-windmove~. ~framemove-hook-into-windmove~ exists after I run ~fm-up-frame~, but then it's set to ~nil~ and not ~t~.
 
-** u/fuzzbomb23 [[https://www.reddit.com/r/emacs/comments/t3_1f34tdh/comment/t1_lkrhqf7][🔗]] 
+*** u/fuzzbomb23 [[https://www.reddit.com/r/emacs/comments/t3_1f34tdh/comment/t1_lkrhqf7][🔗]] 
 *Votes* 10
 
 One of my favourite tips for managing my init file is the ~imenu~ support in ~use-package~. It's turned off by default, though:
@@ -204,7 +221,7 @@ One of my favourite tips for managing my init file is the ~imenu~ support in ~us
 
 Combined with a nice imenu UI (~consult-imenu~ and Vertico, say) you can navigate your init file really quickly.
 
-** u/winters_here [[https://www.reddit.com/r/emacs/comments/t3_1eaw1ia/comment/t1_leom8fv][🔗]] 
+*** u/winters_here [[https://www.reddit.com/r/emacs/comments/t3_1eaw1ia/comment/t1_leom8fv][🔗]] 
 *Votes* 10
 
 Simple hack to add attributes to the ~<html>~ tag of an exported org file by escaping the quote of the language header.
@@ -224,12 +241,12 @@ Useful when you include some classless css libraries which require you to add at
 
 Don't skip ~HTML_DOCTYPE~ else it will duplicate the attribute because one extra will be added due to ~xml:lang~
 
-** u/Usual_Office_1740 [[https://www.reddit.com/r/emacs/comments/t3_1d371oz/comment/t1_l687lg9][🔗]] 
+*** u/Usual_Office_1740 [[https://www.reddit.com/r/emacs/comments/t3_1d371oz/comment/t1_l687lg9][🔗]] 
 *Votes* 10
 
 I've just started to use macros. They are amazing. Here are my tips. C-x -( to start recording. C-x-) to stop recording. F4 to run last recorded macro. Always start at the beginning of a line. Always move by words or lines. If you go forward two chars and the next line needs you to go forward three chars, the macro won't work. Always return to the beginning of the line. For added awesome move down to the next line, positioning yourself to use the macro again.
 
-** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q][🔗]] 
+*** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q][🔗]] 
 *Votes* 10
 
 Not from me, but I just wanted to share /u/arthurno1 one-line tip to get ~which-key~ to work with ~dired~ (see screenshot in linked post):
@@ -238,7 +255,7 @@ https://www.reddit.com/r/emacs/comments/1clvkfe/announcing_casual_dired_an_opini
 
 I assume the same trick applies to other mode-maps as well.
 
-** u/bopboa [[https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kphrvz3][🔗]] 
+*** u/bopboa [[https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kphrvz3][🔗]] 
 *Votes* 10
 
 This is how to have a beacon without installing any packages.
@@ -249,7 +266,7 @@ This is how to have a beacon without installing any packages.
   (setq window-selection-change-functions '(pulse-line))
 #+END_SRC
 
-** u/camel_case_t [[https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kgce54q][🔗]] 
+*** u/camel_case_t [[https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kgce54q][🔗]] 
 *Votes* 10
 
 This is maybe more a macOS tip than an Emacs tip, but it always bothered me that ~C-f~, ~C-b~, etc worked in any text box, but not ~M-f~, etc -- turns out that you can easily change that throughout the OS!
@@ -274,29 +291,29 @@ I created this file and now Emacs keybindings work everywhere:
 #+END_SRC
 You can read more here: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
 
-** u/rego_b [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfskmro][🔗]] 
+*** u/rego_b [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfskmro][🔗]] 
 *Votes* 9
 
 ~C-x C-e~ to edit current command line in bash which opens the line in emacs (maybe not emacs related but I found this recently useful when working in the terminal)
 
-** u/thetemp_ [[https://www.reddit.com/r/emacs/comments/t3_1e5ctk2/comment/t1_ldsl3vy][🔗]] 
+*** u/thetemp_ [[https://www.reddit.com/r/emacs/comments/t3_1e5ctk2/comment/t1_ldsl3vy][🔗]] 
 *Votes* 9
 
 I recently discovered the [Dimmer](https://github.com/gonewest818/dimmer.el) package and can't believe I didn't try it until now.  It subtly dims  windows that aren't focused, just enough to draw your eyes to the window that *is* focused.  And of course, you can customize how much it dims and exclude certain buffers.
 
 I love things that reduce cognitive load like this.  You don't realize how much time you spent looking for little clues like a solid cursor, until you don't have to anymore.
 
-** u/JDRiverRun [[https://www.reddit.com/r/emacs/comments/t3_1de1hkf/comment/t1_l8d30q3][🔗]] 
+*** u/JDRiverRun [[https://www.reddit.com/r/emacs/comments/t3_1de1hkf/comment/t1_l8d30q3][🔗]] 
 *Votes* 9
 
 A few people have asked about my code to change cursor color when repeat-mode is active (i.e. while you are repeating a command).  I rely on it. See [this gist](https://gist.github.com/jdtsmith/a169362879388bc1bdf2bbb977782d4f) for the details.
 
-** u/demosthenex [[https://www.reddit.com/r/emacs/comments/t3_1b7uj43/comment/t1_ktogga6][🔗]] 
+*** u/demosthenex [[https://www.reddit.com/r/emacs/comments/t3_1b7uj43/comment/t1_ktogga6][🔗]] 
 *Votes* 9
 
 M-x ielm  Use the repl while learning elisp coding. I had no idea!
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kpct4cp][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kpct4cp][🔗]] 
 *Votes* 9
 
 Many of you probably know of this, but I found "indirect buffers" useful.
@@ -305,7 +322,7 @@ When I'm in Vim, I've found it useful to sometimes split a buffer into two windo
 
 Indirect buffers solve this. It makes two buffers for one file, and these buffers have separate settings for folding, narrowing, etc. But the buffer contents are still synced, so there's no risk of diverging file states. With default keybindings, I found that ~C-x 4 c C-x n s~ did what I wanted.
 
-** u/badmaxton [[https://www.reddit.com/r/emacs/comments/t3_19ec8v5/comment/t1_kjcu7vp][🔗]] 
+*** u/badmaxton [[https://www.reddit.com/r/emacs/comments/t3_19ec8v5/comment/t1_kjcu7vp][🔗]] 
 *Votes* 9
 
 Just added this to the ~:init~ section of my embark configuration:
@@ -316,7 +333,7 @@ Just added this to the ~:init~ section of my embark configuration:
 #+END_SRC
 This allows super-convenient marking of entries for later ~embark-all~ using control-tab, instead of having to go first through the ~embark~ menu. (By default, this key binding is mapped to ~file-cache-minibuffer-complete~, which I never use.)
 
-** u/lesliesrussell [[https://www.reddit.com/r/emacs/comments/t3_198rnkj/comment/t1_kibmgv2][🔗]] 
+*** u/lesliesrussell [[https://www.reddit.com/r/emacs/comments/t3_198rnkj/comment/t1_kibmgv2][🔗]] 
 *Votes* 9
 
 [transient map for movement](https://gist.github.com/lesliesrussell/46302d413fcf49e9717eeea57fdadcbf)
@@ -333,13 +350,13 @@ This is a neat way to create a custom, modal-like interface for movement within 
 
 I didn't want to drop code in the thread so i put it in a gist
 
-** u/LionyxML [[https://www.reddit.com/r/emacs/comments/t3_1b20xgn/comment/t1_kslwb72][🔗]] 
+*** u/LionyxML [[https://www.reddit.com/r/emacs/comments/t3_1b20xgn/comment/t1_kslwb72][🔗]] 
 *Votes* 9
 
 A blog post regarding my own Emacs config aiming to get the same user experience on both TUI and GUI.  
 [https://www.rahuljuliato.com/posts/lemacs](https://www.rahuljuliato.com/posts/lemacs)
 
-** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1gfhkdg/comment/t1_lui5ao9][🔗]] 
+*** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1gfhkdg/comment/t1_lui5ao9][🔗]] 
 *Votes* 8
 
 I've recently discovered [~org-pdftools~](https://github.com/fuxialexander/org-pdftools) and it offers everything I need for annotating pdfs in emacs.  I mainly use it to enhance the inbuilt function ~org-store-link~:
@@ -359,12 +376,12 @@ The only thing to keep in mind is that the highlights in the pdf are not automat
 
 It has less features than [~org-noter~](https://github.com/org-noter/org-noter), but it is more flexible, which is why it suits my use-case better.  Unfortunately, it has ~org-noter~ as a dependency, so you will end up loading it either way.
 
-** u/fv__ [[https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr5ceqe][🔗]] 
+*** u/fv__ [[https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr5ceqe][🔗]] 
 *Votes* 8
 
 C-x in a transient popup shows menu to save selected options e.g., it can be used to select ~ --force-with-lease~ by default while pushing in magit (P p)
 
-** u/ilemming [[https://www.reddit.com/r/emacs/comments/t3_1fjnqgy/comment/t1_ls4kmt1][🔗]] 
+*** u/ilemming [[https://www.reddit.com/r/emacs/comments/t3_1fjnqgy/comment/t1_ls4kmt1][🔗]] 
 *Votes* 8
 
 You know that you can use vars in org source blocks that inject some data, like:
@@ -416,7 +433,7 @@ Or previous-like example with dirs but without needing additional source block:
 #+end_src
 #+END_SRC
 
-** u/meedstrom [[https://www.reddit.com/r/emacs/comments/t3_1fe504e/comment/t1_lmzbyro][🔗]] 
+*** u/meedstrom [[https://www.reddit.com/r/emacs/comments/t3_1fe504e/comment/t1_lmzbyro][🔗]] 
 *Votes* 8
 
 Elisp list indentation has been fixed since over two years ago (https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21922).  A lot of people probably still use an initfile hack, to fix the following problem, that lists would indent like this:
@@ -435,22 +452,22 @@ But now you can just add a space after the opening paren ~'(~.  This is the new 
    :rab oof)
 #+END_SRC
 
-** u/525G7bKV [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfsffnb][🔗]] 
+*** u/525G7bKV [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfsffnb][🔗]] 
 *Votes* 8
 
 Highlight regexp or strings in your buffer with =M+s h= good for analyzing logfiles
 
-** u/Motor_Mouth_ [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lg6q2rq][🔗]] 
+*** u/Motor_Mouth_ [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lg6q2rq][🔗]] 
 *Votes* 8
 
 For users of [rg.el](https://github.com/dajva/rg.el) (emacs interface to ripgrep) there is [rga](https://github.com/phiresky/ripgrep-all) (ripgrep-all) a wrapper around ripgrep that "enables it to search in pdf, docx, sqlite, jpg, movie subtitles (mkv, mp4), etc." You can set the rg executable in the configuration of rg.el like so:    ~(setq rg-executable (executable-find "rga")~ to enable search in multiple document types.
 
-** u/AdjointFunctor [[https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l359pqx][🔗]] 
+*** u/AdjointFunctor [[https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l359pqx][🔗]] 
 *Votes* 8
 
 I (re) discovered rectangle mode recently. Very useful when deleting lots of indents. C-x spc then make the region. https://emacsredux.com/blog/2014/01/01/a-peek-at-emacs-24-dot-4-rectangular-selection/
 
-** u/pt-guzzardo [[https://www.reddit.com/r/emacs/comments/t3_1chgsxe/comment/t1_l2cv5cx][🔗]] 
+*** u/pt-guzzardo [[https://www.reddit.com/r/emacs/comments/t3_1chgsxe/comment/t1_l2cv5cx][🔗]] 
 *Votes* 8
 
 #+BEGIN_SRC elisp
@@ -467,7 +484,7 @@ I (re) discovered rectangle mode recently. Very useful when deleting lots of ind
 #+END_SRC
 A handy little snippet for exporting code to reddit markdown. Takes the region, prepends four spaces to each line, and then copies it to the kill ring to be pasted in your browser, without modifying the original buffer.
 
-** u/Icy_Thought [[https://www.reddit.com/r/emacs/comments/t3_1aw6xkc/comment/t1_kriu3ye][🔗]] 
+*** u/Icy_Thought [[https://www.reddit.com/r/emacs/comments/t3_1aw6xkc/comment/t1_kriu3ye][🔗]] 
 *Votes* 8
 
 Two tricks that helped me make my workflow a lot better:
@@ -475,7 +492,7 @@ Two tricks that helped me make my workflow a lot better:
 1. ~(setq process-adaptive-read-buffering nil)~ makes [EAT](https://codeberg.org/akib/emacs-eat) a lot quicker!
 2. ~(setq eglot-events-buffer-size 0)~, ~(fset #'jsonrpc--log-event #'ignore)~ and [eglot-booster](https://github.com/jdtsmith/eglot-booster) makes eglot A LOT quicker!
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1afd05g/comment/t1_kob6a5m][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1afd05g/comment/t1_kob6a5m][🔗]] 
 *Votes* 8
 
 One thing I found cool is that you can actually use modifiers like **Super and Hyper in terminal Emacs**. It even works over SSH. No changes needed to ~init.el~.
@@ -491,7 +508,7 @@ map super+b send_key ctrl+x @ s b
 #+END_SRC
 And voila, super works fine in ~emacs -nw~! Kitty translates ~s-a~ into normal terminal-supported control keybindings ~C-x @ s a~, which Emacs then translates back into ~s-a~.
 
-** u/jcubic [[https://www.reddit.com/r/emacs/comments/t3_1b20xgn/comment/t1_ksoij65][🔗]] 
+*** u/jcubic [[https://www.reddit.com/r/emacs/comments/t3_1b20xgn/comment/t1_ksoij65][🔗]] 
 *Votes* 8
 
 I use this often when working on large files. You can bookmark up to 9 places inside a file and jump to that position. The limitations is that if you add somehing above the bookmark the position is shifted a bit but it's not that hard to find the right place.
@@ -500,24 +517,27 @@ It works like this: ~C-c 0~ creates a bookmark and ~C-c <1-9>~ jumps into a book
 
 [Faster buffer bookmarking in Emacs](https://jcubic.wordpress.com/2012/01/25/faster-buffer-bookmarking-in-emacs/).
 
-** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1c64gcj/comment/t1_l01n03t][🔗]] 
+*** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1c64gcj/comment/t1_l01n03t][🔗]] 
 *Votes* 8
 
 Just found out about the variable ~confirm-kill-emacs~.  Never again will I quit emacs by accident, because auctex bound a frequently used function to ~C-c C-v~ (one key away from ~C-x C-c~).
 
-* 2023
+** 2023
+:PROPERTIES:
+:CUSTOM_ID: 2023
+:END:
 
-** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_10qo7vb/comment/t1_j6rmvvf][🔗]] 
+*** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_10qo7vb/comment/t1_j6rmvvf][🔗]] 
 *Votes* 32
 
 When you have an active region, ~undo~ will only undo changes in that region instead of the whole file.
 
-** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8m9rlj][🔗]] 
+*** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8m9rlj][🔗]] 
 *Votes* 21
 
 With an active region, you can freely toggle between rectangle mark mode and normal, you don't need to get rid of your active region to switch between the two.
 
-** u/AndreaSomePostfix [[https://www.reddit.com/r/emacs/comments/t3_12cd23k/comment/t1_jf167qh][🔗]] 
+*** u/AndreaSomePostfix [[https://www.reddit.com/r/emacs/comments/t3_12cd23k/comment/t1_jf167qh][🔗]] 
 *Votes* 19
 
 org-mode is amazing!
@@ -526,24 +546,24 @@ I discovered \~org-copy-visible\~ the other day, when I wanted to send somebody 
 
 That function (which is bound to C-c C-x v by default) let you copy just the outline for the selected region: very useful!
 
-** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_12rlq4a/comment/t1_jgwlxuw][🔗]] 
+*** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_12rlq4a/comment/t1_jgwlxuw][🔗]] 
 *Votes* 18
 
 Often when literate programming I want to split up a code block, maybe copy-pasted with multiple functions in it, into separate blocks so I can put some text in between them. The command, with cursor within a ~BEGIN_SRC~ block, is ~org-babel-demarcate-block~ ~(C-c C-v d)~.
 
-** u/alvarogonzalezs [[https://www.reddit.com/r/emacs/comments/t3_12jexep/comment/t1_jg34ody][🔗]] 
+*** u/alvarogonzalezs [[https://www.reddit.com/r/emacs/comments/t3_12jexep/comment/t1_jg34ody][🔗]] 
 *Votes* 18
 
 I'm a big user of ~ffap~. I use this function with ~M-x~ each time I want to open a file whose name is under the cursor.
 
 But this week I discovered ~ffap-bindings~. This function replaces some key bindings to use ~ffap~ when it makes sense. For example, it replaces ~find-file~ with ~find-file-at-point~, so the usual keybindings are enriched at no cost.
 
-** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_1758wua/comment/t1_k4g09iw][🔗]] 
+*** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_1758wua/comment/t1_k4g09iw][🔗]] 
 *Votes* 16
 
 ~(delete-blank-lines)~ ~(C-x C-o)~ is massively useful; I use it every day for text cleanup. Press it once and it deletes all but one blank line. Press it twice and it deletes that one, too.
 
-** u/alvarogonzalezs [[https://www.reddit.com/r/emacs/comments/t3_16tes2a/comment/t1_k2gb81l][🔗]] 
+*** u/alvarogonzalezs [[https://www.reddit.com/r/emacs/comments/t3_16tes2a/comment/t1_k2gb81l][🔗]] 
 *Votes* 14
 
 If you need to find all the occurrences of a string in the project files, but only **on some specific type of files**, you can use ~consult-ripgrep~ with ~-- -t~ in the search pattern.
@@ -558,7 +578,7 @@ From ~consult-grep~ documentation, command line options can be passed to grep, s
 #+END_SRC
 I have just discovered this, and it made my day.
 
-** u/leothrix [[https://www.reddit.com/r/emacs/comments/t3_13jvhp7/comment/t1_jl5zu6z][🔗]] 
+*** u/leothrix [[https://www.reddit.com/r/emacs/comments/t3_13jvhp7/comment/t1_jl5zu6z][🔗]] 
 *Votes* 14
 
 For ~use-package~ users (which I assume is many of us), did you know that profiling is easy to do? I'm not talking about ~esup~, but a built-in capability that makes it very straightforward to find places to optimize your ~init.el~ for significantly faster start times.
@@ -571,7 +591,7 @@ Enable ~use-package-compute-statistics~ right after you load ~use-package~:
 #+END_SRC
 Restart emacs, and then invoke ~use-package-report~. You'll get a table of the load times for each package that ~use-package~ manages. I discovered this and found an immediate way to cut my startup time in half by fixing a few packages that weren't deferred properly by adding the right ~:hook~ keyword.
 
-** u/geza42 [[https://www.reddit.com/r/emacs/comments/t3_11lqkbo/comment/t1_jbe06qv][🔗]] 
+*** u/geza42 [[https://www.reddit.com/r/emacs/comments/t3_11lqkbo/comment/t1_jbe06qv][🔗]] 
 *Votes* 14
 
 You can toggle vertico's height between 15 and "almost full frame" with this. When vertico is invoked, it will always have a height of 15. But if you have a lot of matches, and like to have a better overview, press the binding, and vertico will show a full frame of matches. This is useful for example when ~consult-buffer~ presents a lot of buffers.
@@ -609,12 +629,12 @@ Another useful feature is to kill buffers in ~consult-buffer~ without manually i
 #+END_SRC
 I'm not sure whether these two can be achieved out-of-the box, but I didn't find these functionalities, so I created them.
 
-** u/ayy_ess [[https://www.reddit.com/r/emacs/comments/t3_18hc301/comment/t1_kdobd72][🔗]] 
+*** u/ayy_ess [[https://www.reddit.com/r/emacs/comments/t3_18hc301/comment/t1_kdobd72][🔗]] 
 *Votes* 13
 
 I recently discovered ~(setq read-minibuffer-restore-windows nil)~ which resolves my frustration that quitting the minibuffer would discard any changes to the window layout while the minibuffer was open. For example, by default, ~M-x C-h k k C-g~ quits the just opened help buffer. I'm sure to have missed many more QOL improvements from NEWS.
 
-** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_11rq2gl/comment/t1_jc9t4tc][🔗]] 
+*** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_11rq2gl/comment/t1_jc9t4tc][🔗]] 
 *Votes* 13
 
 Plain old ~query-replace~ has many cool features, first of all it respects the active region (if it's active it will only query for replacements in the active region).  There are many useful keys in addition to plain ~y~/~n~:
@@ -627,7 +647,7 @@ Plain old ~query-replace~ has many cool features, first of all it respects the a
 
 And many more you can see using ~?~.
 
-** u/eleven_cupfuls [[https://www.reddit.com/r/emacs/comments/t3_10ktqj0/comment/t1_j5umed8][🔗]] 
+*** u/eleven_cupfuls [[https://www.reddit.com/r/emacs/comments/t3_10ktqj0/comment/t1_j5umed8][🔗]] 
 *Votes* 12
 
 I jump into the built-in Elisp files a lot to see how things work. The indentation there is GNU standard, which uses a mix of tabs and spaces for alignment. The tabs have to be rendered as 8 spaces wide for the alignment to work, and I don't actually want that setting anywhere else. Since the files on Mac are inside the application bundle, I don't want to just add a .dir-locals.el file next to them, either.
@@ -647,7 +667,7 @@ I jump into the built-in Elisp files a lot to see how things work. The indentati
 #+END_SRC
 And now when I visit one of those files, the alignment is always correct.
 
-** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_15sjm3k/comment/t1_jwff8bw][🔗]] 
+*** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_15sjm3k/comment/t1_jwff8bw][🔗]] 
 *Votes* 11
 
 I've been slowly accumulating cases for "flexing" the thing at point as a more general ~capitalize-word~ replacement:
@@ -684,7 +704,7 @@ E.g. capitalize or decapitalize the next word, increment number at point."
 #+END_SRC
 I bind it to ~M-c~.
 
-** u/leothrix [[https://www.reddit.com/r/emacs/comments/t3_17qh1hn/comment/t1_k8dlt4c][🔗]] 
+*** u/leothrix [[https://www.reddit.com/r/emacs/comments/t3_17qh1hn/comment/t1_k8dlt4c][🔗]] 
 *Votes* 10
 
 Need to remove an element from a list when you're tinkering with elisp?
@@ -697,7 +717,7 @@ M-x remove-hook
 #+END_SRC
 And you've got an interactive interface (using ~completing-read~) for removing arbitrary elements from any list-like variable. It's _technically_ for altering hooks, but you can abuse it to fool around with lists, too.
 
-** u/frosch03 [[https://www.reddit.com/r/emacs/comments/t3_15yxdz3/comment/t1_jxekm3a][🔗]] 
+*** u/frosch03 [[https://www.reddit.com/r/emacs/comments/t3_15yxdz3/comment/t1_jxekm3a][🔗]] 
 *Votes* 10
 
 Very useful, but I keep forgetting it:
@@ -706,14 +726,14 @@ If you have two buffers open in one frame, where one contains just a few lines a
 
 And if you want to balance these two buffers again just use ~C-x +~
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8mo1bz][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8mo1bz][🔗]] 
 *Votes* 10
 
 Put the control keys next to space, mimicking mac's command key (which is effectively used as the equivalent of ctrl yet next to the space it's easier to press)
 
 Win - Alt - Ctrl - Space - Ctrl - Alt - Win
 
-** u/AnugNef4 [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_ja41lso][🔗]] 
+*** u/AnugNef4 [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_ja41lso][🔗]] 
 *Votes* 10
 
 How I got my Info Directory node ~C-h i~ to display all my installed .info files living under ~/opt/homebrew~ on an M1 Mac. I run emacs-plus@29 from [d12frosted on github](https://github.com/d12frosted/homebrew-emacs-plus).
@@ -737,7 +757,7 @@ while read -r f; do
 done <<< $(find /opt/homebrew/Cellar -name \*.info)
 #+END_SRC
 
-** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_108zin2/comment/t1_j420ea0][🔗]] 
+*** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_108zin2/comment/t1_j420ea0][🔗]] 
 *Votes* 10
 
 Do you want a key binding to wrap the selection in some kind of delimiter? Here's a built-in solution:
@@ -753,17 +773,17 @@ Do you want a key binding to wrap the selection in some kind of delimiter? Here'
 #+END_SRC
 This setups up ~C-S-w~ to be a prefix map, ~insert-pair-map~. The only key binding in ~insert-pair-map~ is for ~[t]~, which means it is the default key binding and any key after the prefix will run the same command: ~insert-pair~. Now, ~insert-pair~ looks at which key was used to invoke it and if it is an opening delimiter it inserts both it and the corresponding closing delimiter (and if the region is active it insert the opening delimiter at the start and the closing delimiter at the end, wrapping the region).
 
-** u/Netherus [[https://www.reddit.com/r/emacs/comments/t3_17qh1hn/comment/t1_k8c4mz7][🔗]] 
+*** u/Netherus [[https://www.reddit.com/r/emacs/comments/t3_17qh1hn/comment/t1_k8c4mz7][🔗]] 
 *Votes* 9
 
 Just recently found out M-u makes the next word upper case, and the same for M-l for lower case. Maybe nothing fancy, but it's kinda handy for me.
 
-** u/gusbrs [[https://www.reddit.com/r/emacs/comments/t3_14l3jn8/comment/t1_jpwn2ts][🔗]] 
+*** u/gusbrs [[https://www.reddit.com/r/emacs/comments/t3_14l3jn8/comment/t1_jpwn2ts][🔗]] 
 *Votes* 9
 
 I was converting some old ~.odt~ notes files to ~.org~ today, and one of the things I wanted to do was to add two spaces after end of sentence periods for proper sentence navigation.  So there I was figuring out a general enough regexp for the nth time and, of course, I regretted not having taken note of this the last time. So I decided to do some searching for a good regexp and write it down this time, since this was obviously shared by someone somewhere. And it turns out Emacs has us covered, and I never knew: ~repunctuate-sentences~. I have no idea if this is new or has always been there. It is new to me. It uses ~query-replace-regexp~, so it's the same experience. And also can be configured for exclusions with ~repunctuate-sentences-filter~. Neat!
 
-** u/BunnyLushington [[https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhrzybp][🔗]] 
+*** u/BunnyLushington [[https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhrzybp][🔗]] 
 *Votes* 9
 
 I found myself debugging [JWTs](https://jwt.io) earlier this week and whomped up a little function to decode them from a region into a help buffer.
@@ -791,7 +811,7 @@ I'd forgotten about ~with-output-to-temp-buffer~ which is pretty handy.  The ~t~
 
 (This should be obvious but note that the JWT is not validated or verified.  This is intended for debugging only and the JWT should not be trusted.)
 
-** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_12cd23k/comment/t1_jf3ohpv][🔗]] 
+*** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_12cd23k/comment/t1_jf3ohpv][🔗]] 
 *Votes* 9
 
 I work with multiple Git repositories in my day job, but one in particular occupies 95% of my time.  I've often wished I could set up Projectile so that if I run one of its commands while not in any repo, it will behave as if I'd changed to that main repo first.  I couldn't find a built-in way to do that, but got the effect I wanted with some advice:
@@ -805,7 +825,7 @@ I work with multiple Git repositories in my day job, but one in particular occup
 #+END_SRC
 I lose some of the functionality of ~projectile-ensure-project~, but I never used it anyway.
 
-** u/slinchisl [[https://www.reddit.com/r/emacs/comments/t3_11rq2gl/comment/t1_jca66k0][🔗]] 
+*** u/slinchisl [[https://www.reddit.com/r/emacs/comments/t3_11rq2gl/comment/t1_jca66k0][🔗]] 
 *Votes* 9
 
 I'm once again reminded of the utility of ~read-key~ for small functions where one wants a nicer interface for choosing an alternative than universal arguments; taking an optional prompt, it simply reads a key from the keyboard and returns it.
@@ -830,14 +850,14 @@ For example, I recently wanted a function that prints a set of predefined dates 
          insert)))
 #+END_SRC
 
-** u/pathemata [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8mpo5y][🔗]] 
+*** u/pathemata [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8mpo5y][🔗]] 
 *Votes* 9
 
 Does anyone have an ~aspell~ setup with multiple dictionaries?
 
 When I try ~--extra-dict~ option I get an error: ~Expected language "en" but got "de"~.
 
-** u/SlowValue [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8u1ebf][🔗]] 
+*** u/SlowValue [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8u1ebf][🔗]] 
 *Votes* 9
 
 I put a couple of similar functions on my ~<f5>~ key (with all combinations of modifier keys) and tend to forget the meanings of those combinations.
@@ -884,7 +904,7 @@ Then calling the command ~my-show-help-on-some-keys~, shows following message in
 #+END_SRC
 Remark: I know that ~which-key~ exists, but I'm already above that level of knowledge and don't need ~which-key~ anymore.
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_18mplfa/comment/t1_ke5xr5j][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_18mplfa/comment/t1_ke5xr5j][🔗]] 
 *Votes* 8
 
 This makes stack-outputs of debug-buffers much more readable:
@@ -893,7 +913,7 @@ This makes stack-outputs of debug-buffers much more readable:
 (setopt debugger-stack-frame-as-list t)
 #+END_SRC
 
-** u/vjgoh [[https://www.reddit.com/r/emacs/comments/t3_18149ql/comment/t1_kahspwz][🔗]] 
+*** u/vjgoh [[https://www.reddit.com/r/emacs/comments/t3_18149ql/comment/t1_kahspwz][🔗]] 
 *Votes* 8
 
 I used to have a problem where eglot would decide that many mid-hierarchy directories were the project root and spin up a separate instance of clangd for each one (sometimes 10 or 12 total). This was almost certainly due to using emacs' built-in ~project~ to handle project discovery. At that point, I switched to lsp-mode because I generally find ~project~ to be impenetrable and poorly documented compared to projectile.
@@ -904,12 +924,12 @@ Long story short, here's how you force ~project~ to find the actual project root
 
 ~(setq project-vc-extra-root-markers '(".project.el" ".projectile" ".dir-locals.el"))~
 
-** u/AP145 [[https://www.reddit.com/r/emacs/comments/t3_16hh7u4/comment/t1_k1803gl][🔗]] 
+*** u/AP145 [[https://www.reddit.com/r/emacs/comments/t3_16hh7u4/comment/t1_k1803gl][🔗]] 
 *Votes* 8
 
 I used to always get confused why people say that the default Emacs key bindings hurt their pinky's, but then I realized that I don't touch type and thus I don't have to stretch my fingers anywhere for the default key bindings. Ironically my ineptitude at typing has saved me from repetitive stress injuries.
 
-** u/w0ntfix [[https://www.reddit.com/r/emacs/comments/t3_11ey9ft/comment/t1_jajfxc9][🔗]] 
+*** u/w0ntfix [[https://www.reddit.com/r/emacs/comments/t3_11ey9ft/comment/t1_jajfxc9][🔗]] 
 *Votes* 8
 
 turning off org-elements cache speeds up input latency for me (found from profiling):
@@ -921,14 +941,14 @@ turning off org-elements cache speeds up input latency for me (found from profil
 #+END_SRC
 it seems (at least on my org 9.6.1) to update the cache after calls to ~org-self-insert-command~ (so, a lot!)
 
-** u/Nondv [[https://www.reddit.com/r/emacs/comments/t3_108zin2/comment/t1_j4ct1y1][🔗]] 
+*** u/Nondv [[https://www.reddit.com/r/emacs/comments/t3_108zin2/comment/t1_j4ct1y1][🔗]] 
 *Votes* 8
 
 Maybe not new for anyone but I only recently found out that ~C-c <any letter>~ is conventionally reserved for user bindings. I was constantly afraid to define my own bindings bc of a potential clash so tended to use M-x instead. Now I finally bind my most used commands.
 
 With the above in mind, Im also afraid to forget my bindings. I use which-key package so I wrote a function "define-my-keybinding letter fn" which binds the letter to ~C-c <letter>~ and to "my-bindings" keyset (prefix) which itself is bound to ~C-c m~. Basically, if i forget what bindings I use, I just press C-c m and which-key shows me all of MY bindings (yes, it shows them with C-c too but it's mixed with mode bindings so not helpful)
 
-** u/hunajakettu [[https://www.reddit.com/r/emacs/comments/t3_16tes2a/comment/t1_k2f683f][🔗]] 
+*** u/hunajakettu [[https://www.reddit.com/r/emacs/comments/t3_16tes2a/comment/t1_k2f683f][🔗]] 
 *Votes* 8
 
 It is the only thing that keeps me sane in a Windows shop.
@@ -971,12 +991,12 @@ So the flow is:
 4. image file is saved under `./img-doc1/doc1-20230525-100621.png`
 5. link is inserted into org document
 
-** u/swhalemwo [[https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhtis87][🔗]] 
+*** u/swhalemwo [[https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhtis87][🔗]] 
 *Votes* 8
 
 recently started writing a report with a lot of numbers, many of which will change in later versions. I wanted to save myself the work of updating them all by hand, so I learned that I can [generate org macros from my ~R~ script](https://emacs.stackexchange.com/questions/14647/use-code-variable-in-org-mode-continuous-text), [display their values rather than the macro text](https://notes.alexkehayias.com/emacs-inline-macro-in-the-buffer/), and pass ~org-macro-templates~ to ~consult--read~ to select and insert them with a few keystrokes. took me a couple of hours but hopefully will save them later on!
 
-** u/sebasTEEan [[https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhwipv8][🔗]] 
+*** u/sebasTEEan [[https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhwipv8][🔗]] 
 *Votes* 8
 
 In a presentation this morning, I wanted to show a file, but it contained sensitive information: IP addresses and passwords. The following code hides this secret in a buffer:
@@ -1025,17 +1045,17 @@ In a presentation this morning, I wanted to show a file, but it contained sensit
   (delete-overlay overlay))))
 #+END_SRC
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j9pr766][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j9pr766][🔗]] 
 *Votes* 8
 
 [deleted]
 
-** u/AffectionateAd8985 [[https://www.reddit.com/r/emacs/comments/t3_17vp0o1/comment/t1_k9g3i9s][🔗]] 
+*** u/AffectionateAd8985 [[https://www.reddit.com/r/emacs/comments/t3_17vp0o1/comment/t1_k9g3i9s][🔗]] 
 *Votes* 8
 
 In eshell, ~cd =xxx~ behaves like ~z xxx~ in [zoxide](https://github.com/ajeetdsouza/zoxide), jump to recent directory matching ~xxx~ pattern.
 
-** u/desquared [[https://www.reddit.com/r/emacs/comments/t3_11ey9ft/comment/t1_janipaz][🔗]] 
+*** u/desquared [[https://www.reddit.com/r/emacs/comments/t3_11ey9ft/comment/t1_janipaz][🔗]] 
 *Votes* 8
 
 For a while, I've been thinking about a nice way to get arbitrary tooltips in org mode. I just figured out something pretty easy: just use a nonexistent link type.
@@ -1062,7 +1082,7 @@ and the cell just says "note", but I can see the rest when I hover.
 
 To get the link target -- the note, the abbreviation, and so on -- to display in the help-echo area, you'll need to set ~help-at-pt-display-when-idle~ suitably: see https://emacs.stackexchange.com/questions/54319/how-to-display-target-of-an-org-mode-link-in-the-echo-area-or-as-tooltip.
 
-** u/elimik31 [[https://www.reddit.com/r/emacs/comments/t3_118sowc/comment/t1_j9jgfhg][🔗]] 
+*** u/elimik31 [[https://www.reddit.com/r/emacs/comments/t3_118sowc/comment/t1_j9jgfhg][🔗]] 
 *Votes* 8
 
 The [texdoc](https://github.com/TeX-Live/texdoc/wiki/Tab-completion) CLI program provided by TeXLive allows opening the documentation of LaTeX packages given a package name as its argument (requires having the documentation installed locally). It is available from AUCTeX via the ~TeX-documentation-texdoc~ command, which I find useful. However, it requires typing out the package name by hand (though it uses symbol-at-point as the default). Recently I found that the texdoc wiki contains a snippet how to add [tab-completion](https://github.com/TeX-Live/texdoc/wiki/Tab-completion), which showed me where to get a list of installed TeXLive package names. I ported this to emacs lisp, and combined with ~completing-read~ and ~call-process~ to call the terminal command I created my own ~my-texdoc~ command with interactive candidate selection. It's available as [github gist here](https://gist.github.com/meliache/e645bf50c6aeac8e6e58b92c6bddac20), but I can also paste the code:
@@ -1097,7 +1117,7 @@ My biggest problem is that I'm not sure how to share it with the emacs community
 
 And to make this post a real tip: If you know some CLI program and can somehow get a list of possible arguments for that program, try writing your own emacs lisp command wrapper with ~completing-read~ support, it's fun and not that hard.
 
-** u/snippins1987 [[https://www.reddit.com/r/emacs/comments/t3_10ktqj0/comment/t1_j67y1pt][🔗]] 
+*** u/snippins1987 [[https://www.reddit.com/r/emacs/comments/t3_10ktqj0/comment/t1_j67y1pt][🔗]] 
 *Votes* 8
 
 Context: after finally getting into org-mode (org-roam specifically) and writing a bunch of elisp, I still dot not at all satisfy dealing with *org-table* or *table.el*, it just felt so out-of-place and clunky compare to the otherwise slick experiences that org-mode bring. So I basically gave up and have been linking spreadsheet files into my org files instead.
@@ -1177,9 +1197,12 @@ echo "[[file:${output_file}]]"
 rm -rf $tmp_dir/emacs_excel_to_png
 #+END_SRC
 
-* 2022
+** 2022
+:PROPERTIES:
+:CUSTOM_ID: 2022
+:END:
 
-** u/zupatol [[https://www.reddit.com/r/emacs/comments/t3_xdw6ok/comment/t1_iodig8c][🔗]] 
+*** u/zupatol [[https://www.reddit.com/r/emacs/comments/t3_xdw6ok/comment/t1_iodig8c][🔗]] 
 *Votes* 29
 
 After years of using emacs, I wrote my second ever elisp function to open on github the code I'm browsing in emacs.
@@ -1208,24 +1231,24 @@ After years of using emacs, I wrote my second ever elisp function to open on git
       ))))
 #+END_SRC
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3m1liu][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3m1liu][🔗]] 
 *Votes* 24
 
 [removed]
 
-** u/howardthegeek [[https://www.reddit.com/r/emacs/comments/t3_xdw6ok/comment/t1_ioeh1ly][🔗]] 
+*** u/howardthegeek [[https://www.reddit.com/r/emacs/comments/t3_xdw6ok/comment/t1_ioeh1ly][🔗]] 
 *Votes* 21
 
 I just learned that in eshell, $$ is replaced with the output from the last command.
 
-** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_x27yc9/comment/t1_imi3kzz][🔗]] 
+*** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_x27yc9/comment/t1_imi3kzz][🔗]] 
 *Votes* 20
 
 Update from a couple of weeks ago: after some grinding, I've set the parsing of past comments from this thread to auto update on a weekly basis here: [https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md](https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md)
 
 I've also fixed the broken highlighting of some code snippets, and hopefully parsed all past threads.  There's 200+ comments there (sorted by upvotes), so ctrl-f ing e.g. \~magit\~ may help you if you're looking for something specific
 
-** u/TeMPOraL_PL [[https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3ov7vq][🔗]] 
+*** u/TeMPOraL_PL [[https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3ov7vq][🔗]] 
 *Votes* 20
 
 ~shortdoc~ - one of the new things in Emacs 28.1 - is great for maintaining your own "cheat sheets" of Elisp functions as you discover them. For example, eval this in your Emacs session:
@@ -1255,7 +1278,7 @@ After this, the ~my-datetime~ group will show as an option in ~M-x shortdoc-disp
 
 The example used here is a cheatsheet I just started writing for myself, as I've been researching the built-in time functions. For additional instructions on use, see ~define-short-documentation-group~ macro. For use examples, jump to the source of ~define-short-documentation-group~ and scroll down a bit - the default shortdoc groups are defined there.
 
-** u/SamTheComputerSlayer [[https://www.reddit.com/r/emacs/comments/t3_sijcap/comment/t1_hvbbnjq][🔗]] 
+*** u/SamTheComputerSlayer [[https://www.reddit.com/r/emacs/comments/t3_sijcap/comment/t1_hvbbnjq][🔗]] 
 *Votes* 20
 
 Just figured this out, maybe a bit of a hack...
@@ -1264,7 +1287,7 @@ In flyspell, I was annoyed I had to use mouse-2 when I wanted to correct a word,
 
 But the fact you can attach keymaps to overlays just seems so useful, will definitely use in the future.
 
-** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_vnals8/comment/t1_ie7p6ja][🔗]] 
+*** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_vnals8/comment/t1_ie7p6ja][🔗]] 
 *Votes* 17
 
 I recently discovered ~thing-at-point-looking-at~, which seems much easier to use on its own than to fully define a new kind of "thing."
@@ -1281,26 +1304,26 @@ For a while I've been wanting to conveniently identify a Jira ticket identifier 
 #+END_SRC
 Easy peasy!
 
-** u/tryptych [[https://www.reddit.com/r/emacs/comments/t3_v2by7z/comment/t1_iauyzbl][🔗]] 
+*** u/tryptych [[https://www.reddit.com/r/emacs/comments/t3_v2by7z/comment/t1_iauyzbl][🔗]] 
 *Votes* 17
 
 It's not worth a separate post, but after spending some pleasant yak-shaving time optimising my startup using use-package, I wrote a [post about it](https://blog.markhepburn.com/posts/understanding-use-package-optimisations/).  There's a few posts around suggesting features of ~use-package~ to optimise startup, but none of them really explained how they tied back to ~autoload~, ~eval-after-load~, etc so I was trying to encourage people to dig out ~macroexpand~ and find out.
 
-** u/AffectionateAd8985 [[https://www.reddit.com/r/emacs/comments/t3_sd10q9/comment/t1_hu9xfed][🔗]] 
+*** u/AffectionateAd8985 [[https://www.reddit.com/r/emacs/comments/t3_sd10q9/comment/t1_hu9xfed][🔗]] 
 *Votes* 17
 
 ~(add-hook 'org-mode-hook (lambda () (org-next-visible-heading 1)))~
 
 Move to first heading when open org files, with ~org-use-speed-commands~, I can quick browse org file with only ~n/p~ keys.
 
-** u/slinchisl [[https://www.reddit.com/r/emacs/comments/t3_xw4muy/comment/t1_ir96qmu][🔗]] 
+*** u/slinchisl [[https://www.reddit.com/r/emacs/comments/t3_xw4muy/comment/t1_ir96qmu][🔗]] 
 *Votes* 16
 
 I finally got around to writing a small README for my Emacs config, highlighting some homegrown parts that I really like.  I reckon most of these things are pretty standard, but maybe some people here still find it useful: 
 
   https://gitlab.com/slotThe/dotfiles/-/tree/master/emacs/.config/emacs
 
-** u/meain [[https://www.reddit.com/r/emacs/comments/t3_wwdpju/comment/t1_ilotsc5][🔗]] 
+*** u/meain [[https://www.reddit.com/r/emacs/comments/t3_wwdpju/comment/t1_ilotsc5][🔗]] 
 *Votes* 16
 
 I use the following snippet to change background color of compilation buffer to a light red if the compilation failed. I use compilation buffer to run tests on a second monitor and this is pretty useful.
@@ -1313,7 +1336,7 @@ I use the following snippet to change background color of compilation buffer to 
 (add-to-list 'compilation-finish-functions 'meain/compilation-colorcode)
 #+END_SRC
 
-** u/agumonkey [[https://www.reddit.com/r/emacs/comments/t3_y7wrdn/comment/t1_isze25m][🔗]] 
+*** u/agumonkey [[https://www.reddit.com/r/emacs/comments/t3_y7wrdn/comment/t1_isze25m][🔗]] 
 *Votes* 15
 
 not emacs per se, but jack rusher did a talk about programming 'ux / ergonomics / pragmatics' with a lot of fun ideas about coding, past (lisp machines, smalltalk ... ) or more recent clojure based tools
@@ -1324,7 +1347,7 @@ hope you enjoy it
 
 warning: poop emoji
 
-** u/pathemata [[https://www.reddit.com/r/emacs/comments/t3_un4wf8/comment/t1_i86hwzi][🔗]] 
+*** u/pathemata [[https://www.reddit.com/r/emacs/comments/t3_un4wf8/comment/t1_i86hwzi][🔗]] 
 *Votes* 15
 
 Something amazin that I have been using recently is ~ripgrep-all~ as the ~consult-ripgrep~ command to search in pdfs. 
@@ -1336,7 +1359,7 @@ Also amazing with ~embark-collect~ which allows collapsing features.
 Or within the collect buffer use ~consult-line~ to further filter.
 And even open the pdf.
 
-** u/com4 [[https://www.reddit.com/r/emacs/comments/t3_xq6rpa/comment/t1_iqb2fci][🔗]] 
+*** u/com4 [[https://www.reddit.com/r/emacs/comments/t3_xq6rpa/comment/t1_iqb2fci][🔗]] 
 *Votes* 14
 
 In preparation for the inclusion of eglot into Emacs core I've switched away from lsp-mode. As a result I've also switched from flycheck and to flymake. One nice thing about flycheck is that it allowed for stacking checkers. When coding Python I liked to stack flake8 for styles and mypy for types (plus the LSP's since it's already there).
@@ -1384,12 +1407,12 @@ Now all that's left is mypy. Flymake originally used a ["Proc"](https://www.gnu.
 #+END_SRC
 After opening a Python buffer and executing ~M-x flymake-running-backends~ we are greeted with a list of stacked checkers: ~Running backends: eglot-flymake-backend, flymake-mypy--run, python-flymake~.
 
-** u/thr33body [[https://www.reddit.com/r/emacs/comments/t3_wqjare/comment/t1_ikqxn0r][🔗]] 
+*** u/thr33body [[https://www.reddit.com/r/emacs/comments/t3_wqjare/comment/t1_ikqxn0r][🔗]] 
 *Votes* 14
 
 I don’t have any specific tip but I just want to throw it out there that if you are tired of using spacemacs or doom it was much easier to set up my own install than I thought. It only took me a couple of days of active work and now diagnosing problems is so much simpler. Not to say that you should not use either one but I wanted to learn more about emacs and I’ve been really happy with the results.
 
-** u/gusbrs [[https://www.reddit.com/r/emacs/comments/t3_y1y0kq/comment/t1_is1ygyw][🔗]] 
+*** u/gusbrs [[https://www.reddit.com/r/emacs/comments/t3_y1y0kq/comment/t1_is1ygyw][🔗]] 
 *Votes* 13
 
 I've been using ~mu4e~ for some years now, and I really love it. However, I'm also a Gmail user, don't love it, but consider myself stuck with it (given budget constraints and it being my email for several years already). This makes me always weary of "the next Google shenanigan" which might break my workflow. One of the things I have learned to cherish about using ~mu4e~ is its integration with Org, with it's ~org-capture~ support, which enables me not to confuse my Inbox with my todo list, thus keeping my Inbox clean. So I came up with a preventive function, leveraging ~org-protocol~ to be able to capture a Gmail message from a bookmarklet on the browser.  Not particularly pretty code, but functional.
@@ -1567,7 +1590,7 @@ Not that it matters much, but the corresponding capture template is:
        :empty-lines 1)
 #+END_SRC
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_sd10q9/comment/t1_hubjy3j][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_sd10q9/comment/t1_hubjy3j][🔗]] 
 *Votes* 13
 
 I was reading through the org manual, and learnt about two variables ~org-agenda-category-icon-alist~ and ~org-agenda-prefix-format~, the first allows you to set icons for categories (~CATEGORY~ property), icons can be images or symbols, this is the code I came up with and the agenda already looks more colorful and clear
@@ -1594,7 +1617,7 @@ Of course for the emojis to show up correctly I use this:
 #+END_SRC
 I am sure a lot of you know about these, please share your customization
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_wf0t0d/comment/t1_iirl0ea][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_wf0t0d/comment/t1_iirl0ea][🔗]] 
 *Votes* 12
 
 Org mode - insert a complete set of export options:
@@ -1605,7 +1628,7 @@ This inserts all export keywords with default values at beginning of line.
 
 This command is not documented in ~info emacs~ (v27.1).
 
-** u/tryptych [[https://www.reddit.com/r/emacs/comments/t3_w3gx6o/comment/t1_ih6ievs][🔗]] 
+*** u/tryptych [[https://www.reddit.com/r/emacs/comments/t3_w3gx6o/comment/t1_ih6ievs][🔗]] 
 *Votes* 11
 
 Emacs has better long-lines support now??
@@ -1618,7 +1641,7 @@ That sounds like great news!  Does anyone know what went into it?
 
 (edit to add: this was added some time this week.  I rebuild from master weekly, and check out the NEWS diff each time)
 
-** u/andyjda [[https://www.reddit.com/r/emacs/comments/t3_yqciht/comment/t1_iw00xhx][🔗]] 
+*** u/andyjda [[https://www.reddit.com/r/emacs/comments/t3_yqciht/comment/t1_iw00xhx][🔗]] 
 *Votes* 10
 
 I started using ~god-mode~, but I found it hard to get used to it at first: there was no easy way to check what command would be triggered by what key-sequence. 
@@ -1627,12 +1650,12 @@ I wrote up a ~god-mode~\-specific ~describe-key~, which translates ~god-mode~ ke
 
 I also reached out to the package's maintainers, and this feature (after some tweaking) [just got added to the master branch](https://github.com/emacsorphanage/god-mode). It was a great way to get familiar with ~god-mode~ code and its behavior, and I'm happy to have made my first contribution to an Emacs package.
 
-** u/kickingvegas1 [[https://www.reddit.com/r/emacs/comments/t3_x7zfs2/comment/t1_innk62a][🔗]] 
+*** u/kickingvegas1 [[https://www.reddit.com/r/emacs/comments/t3_x7zfs2/comment/t1_innk62a][🔗]] 
 *Votes* 10
 
 TIL when working with an Org table that ~S-RET~ will fill the current cell value with the value above it. <https://lists.gnu.org/archive/html/emacs-orgmode/2010-03/msg00462.html>
 
-** u/ainstr [[https://www.reddit.com/r/emacs/comments/t3_vcpk6u/comment/t1_ichiccu][🔗]] 
+*** u/ainstr [[https://www.reddit.com/r/emacs/comments/t3_vcpk6u/comment/t1_ichiccu][🔗]] 
 *Votes* 10
 
 The other day I discovered that you can access Spotify through dbus. Most of my use-case for spotify is hitting shuffle on ~20 of my playlists; not much searching, discovering, charts, etc. So, I didn't need any of the existing packages that require an auth token or extra local server.
@@ -1683,7 +1706,7 @@ This basically wraps ~completing-read~ over the alist stored in spotify-playlist
     (0 (spotify--open-playlist))))
 #+END_SRC
 
-** u/char1zard4 [[https://www.reddit.com/r/emacs/comments/t3_v2by7z/comment/t1_iarzi1s][🔗]] 
+*** u/char1zard4 [[https://www.reddit.com/r/emacs/comments/t3_v2by7z/comment/t1_iarzi1s][🔗]] 
 *Votes* 10
 
 This week I learned that:
@@ -1696,12 +1719,12 @@ This week I learned that:
 -	Tab-stops in yas-snippet are very handy for filling out multiple parts of a template, didn’t even know these existed:
 https://joaotavora.github.io/yasnippet/snippet-development.html#org41a4ac7
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_us7zae/comment/t1_i92mn8w][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_us7zae/comment/t1_i92mn8w][🔗]] 
 *Votes* 10
 
 [deleted]
 
-** u/jimm [[https://www.reddit.com/r/emacs/comments/t3_tfcmcx/comment/t1_i0vtxte][🔗]] 
+*** u/jimm [[https://www.reddit.com/r/emacs/comments/t3_tfcmcx/comment/t1_i0vtxte][🔗]] 
 *Votes* 10
 
 The ~git grep~ git command is great for finding a regex (or a simple string) everywhere in a git repo. I define the following functions and bind the ~git-grep~ function to ~F2~. It will prompt for a regex and search for that in the repo or, if you give it a numeric prefix like ~C-u~ it will read the current symbol at point (the word under the cursor) and search for that. Results appear in a grep buffer, so you can use ~C-g C-n~ and ~C-g C-p~ to navigate from one result to the next.
@@ -1739,7 +1762,7 @@ at point."
     (grep-find cmd)))
 #+END_SRC
 
-** u/shitterwithaclitter [[https://www.reddit.com/r/emacs/comments/t3_s7lac1/comment/t1_htnz373][🔗]] 
+*** u/shitterwithaclitter [[https://www.reddit.com/r/emacs/comments/t3_s7lac1/comment/t1_htnz373][🔗]] 
 *Votes* 10
 
 I recently had the idea to start emacs in org-mode but have a src block at the top so I can still write elisp snippets easily. Here's the code for anyone interested:
@@ -1750,7 +1773,7 @@ I recently had the idea to start emacs in org-mode but have a src block at the t
       initial-scratch-message "#+begin_src emacs-lisp\n;; This block is for text that is not saved, and for Lisp evaluation.\n;; To create a file, visit it with \\[find-file] and enter text in its buffer.\n\n#+end_src\n\n")
 #+END_SRC
 
-** u/gusbrs [[https://www.reddit.com/r/emacs/comments/t3_ywnt6p/comment/t1_ix0a6ui][🔗]] 
+*** u/gusbrs [[https://www.reddit.com/r/emacs/comments/t3_ywnt6p/comment/t1_ix0a6ui][🔗]] 
 *Votes* 9
 
 Some weeks ago, u/paretoOptimalDev made an interesting post about using more ~next-buffer~ and ~previous-buffer~ instead of ~switch-to-buffer~ (https://redd.it/ybqp3m). I liked the post and had captured it for later and only now could process it properly.
@@ -1784,7 +1807,7 @@ I find it pretty useful (for debugging etc) to override the default projectile m
   (setq foo "bar"))
 #+END_SRC
 
-** u/hairlesscaveman [[https://www.reddit.com/r/emacs/comments/t3_wqjare/comment/t1_ikwhvfs][🔗]] 
+*** u/hairlesscaveman [[https://www.reddit.com/r/emacs/comments/t3_wqjare/comment/t1_ikwhvfs][🔗]] 
 *Votes* 9
 
 Question: I generally work with 3 vertical panes, with my preferred layout as left for code, middle for related test file, and right for test output or magit. However, keeping this layout is tricky; sometimes magit will open in the first pane, or the current pane when I'm focused in the middle, and deadgrep will open just anywhere… well, it's quite hectic and feels random.
@@ -1793,14 +1816,14 @@ Is there any way I can get files to open in panes 1 or 2, and always have things
 
 Any suggestions would be appreciated!
 
-** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_wqjare/comment/t1_ikrx30z][🔗]] 
+*** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_wqjare/comment/t1_ikrx30z][🔗]] 
 *Votes* 9
 
 I've parsed and prettified some of the comments (I think I'm missing some, but hopefully should be fixed soonish) from past weekly tips and tricks thread here: [https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md](https://github.com/LaurenceWarne/reddit-emacs-tips-n-tricks/blob/master/out.md)
 
 If you fancy procrastinating for a bit today...
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_s21457/comment/t1_hsgj7a6][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_s21457/comment/t1_hsgj7a6][🔗]] 
 *Votes* 9
 
 Prevent horizontal scrolling from going too far left.
@@ -1895,14 +1918,14 @@ Though it's not very accurate when using ~text-scale-adjust~, as line width is n
 
 Using [zotra](https://github.com/mpedramfar/zotra), [citar](https://github.com/emacs-citar/citar) and some parts of the Org-cite ecosystem I hacked together a highly experimental but pretty comfortable environment for working with "org-biblatex bibliographies" which are basically like [org-bibtex](http://gewhere.github.io/org-bibtex) but with biblatex entries represented as headings with suitable properties instead of bibtex. I have a function which retrieves a biblatex entry corresponding to an url using zotra and adds a corresponding Org heading with the biblatex fields as properties, and the entry becomes available in Citar as soon as I save the document. Citing these entries then works anywhere, even in the same document with a suitable ~#+bibliography: my-org-biblatex-file.org~ declaration. Exporting the citations also works with the CSL exporter, no conversion is necessary to a proper biblatex bibliography file (but can be easily done if one needs biblatex-based export). Since the bibliography is an Org document, tagging, agenda commands, column view etc. can all be used with the bibliography entries.  In a way it's frightening how much can be achieved building on already existing stuff and with a few lines of Emacs Lisp.
 
-** u/luiggi_oasis [[https://www.reddit.com/r/emacs/comments/t3_zred55/comment/t1_j14grej][🔗]] 
+*** u/luiggi_oasis [[https://www.reddit.com/r/emacs/comments/t3_zred55/comment/t1_j14grej][🔗]] 
 *Votes* 8
 
 What's the deal with all these completion framework I keep hearing about? Vertical elm ivy company and whatnot.
 
 I think I have company in my init.el but I'm not even sure I'm actually using it (maybe I am and I'm just unaware). But why are they everywhere? I see them mentioned in at least every any two emacs threads.
 
-** u/pedzsanReddit [[https://www.reddit.com/r/emacs/comments/t3_ydsjfy/comment/t1_itw7yp2][🔗]] 
+*** u/pedzsanReddit [[https://www.reddit.com/r/emacs/comments/t3_ydsjfy/comment/t1_itw7yp2][🔗]] 
 *Votes* 8
 
 I spent the past week cleaning up my Emacs init files and I bumped into this little gem.  I call it "ZSH man page search mode" because it was the place that I first needed it.
@@ -1934,17 +1957,17 @@ Is there a package/piece of code out there to:
 
 Kind of like [emacs-everywhere](https://github.com/tecosaur/emacs-everywhere/) but for arbitrary code.
 
-** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_x7zfs2/comment/t1_inqralq][🔗]] 
+*** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_x7zfs2/comment/t1_inqralq][🔗]] 
 *Votes* 8
 
 I use follow-mode (built-in to #emacs) to split reading buffers across modern wide screens to use all the real estate. The mode keeps the panes in sync with eachother. http://images.toryanderson.com/follow-mode.gif
 
-** u/HM0880 [[https://www.reddit.com/r/emacs/comments/t3_wwdpju/comment/t1_illuprk][🔗]] 
+*** u/HM0880 [[https://www.reddit.com/r/emacs/comments/t3_wwdpju/comment/t1_illuprk][🔗]] 
 *Votes* 8
 
 In Org Mode, what is the reason to use ~~~ for in-line code vs. ~=~ for monospace text?  I use ~=~ for both code and monospace since (afaict) Org renders both code and monospace the same way in LaTeX PDF and HTML output, and ~=~ does not require using shift (unlike ~~~).
 
-** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_w3gx6o/comment/t1_igyt3ff][🔗]] 
+*** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_w3gx6o/comment/t1_igyt3ff][🔗]] 
 *Votes* 8
 
 I sometimes want to pick a random choice from a long org-mode checkbox list from among those items not already checked.  I recently whipped up a little helper function for that:
@@ -1962,7 +1985,7 @@ I sometimes want to pick a random choice from a long org-mode checkbox list from
       (error "No unfinished choice found"))))
 #+END_SRC
 
-** u/isamert [[https://www.reddit.com/r/emacs/comments/t3_vskthv/comment/t1_if1ua6o][🔗]] 
+*** u/isamert [[https://www.reddit.com/r/emacs/comments/t3_vskthv/comment/t1_if1ua6o][🔗]] 
 *Votes* 8
 
 I sometimes clone stuff with https instead of ssh, so this fixes that:
@@ -1994,7 +2017,7 @@ Pure awesomeness, thanks a lot for Magit/ Magit forge !
 
 On that note, I've written a little bit about [calling Emacs from XMonad](https://tony-zorman.com/posts/2022-05-25-calling-emacs-from-xmonad.html).  The post itself isn't really Emacs related and so I don't think it warrants a crosspost in this subreddit, but I figured perhaps there was the odd XMonad user here who may find it helpful.
 
-** u/diamondnbond [[https://www.reddit.com/r/emacs/comments/t3_us7zae/comment/t1_i928gaj][🔗]] 
+*** u/diamondnbond [[https://www.reddit.com/r/emacs/comments/t3_us7zae/comment/t1_i928gaj][🔗]] 
 *Votes* 8
 
 [I Recently discovered engine-mode.](https://github.com/DiamondBond/emacs/blob/master/config.org#initialize-engine-mode)
@@ -2041,7 +2064,7 @@ A minor problem with a fairly simple solution, but it made me happy to stop and 
 
 I think I'll be using isearch now for a lot of things that I used to use Avy for.  But Avy is still great for a bunch of reasons. Not the least of which is the `avy-isearch` command which comes in handy when there are a lot of isearch results that would require too much typing to narrow down. (And it always puts point at the beginning of the result, never at the end).
 
-** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3mghuf][🔗]] 
+*** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3mghuf][🔗]] 
 *Votes* 8
 
 I wanted to be able to expand yasnippets within other yasnippets (so here tab would jump to the next position instead of trying to expand snippet), surprisingly all I had to do was:
@@ -2050,7 +2073,7 @@ I wanted to be able to expand yasnippets within other yasnippets (so here tab wo
 
 So C-<tab> expands a snippet within a snippet, and everything just worked as I'd hoped.  Once I'm done with the nested expansion <TAB> just moves on to the outer one. \*shrug\*
 
-** u/konrad1977 [[https://www.reddit.com/r/emacs/comments/t3_z2jgt5/comment/t1_ixpdxvf][🔗]] 
+*** u/konrad1977 [[https://www.reddit.com/r/emacs/comments/t3_z2jgt5/comment/t1_ixpdxvf][🔗]] 
 *Votes* 8
 
 I found this one-liner yesterday, added it it to the ~:config~ section of **Evil**.
@@ -2063,7 +2086,7 @@ Now I can undo in selected region. Like magic.
 
 I don't think this is worth it as a top-level post, since it's more geared towards XMonad users who also happen to use Emacs, but at least a few folks here might appreciate how easy it is to [rapidly capture ideas](https://tony-zorman.com/posts/orgmode-prompt/2022-08-27-xmonad-and-org-mode.html) by using XMonad's org-mode integration!
 
-** u/agumonkey [[https://www.reddit.com/r/emacs/comments/t3_w3gx6o/comment/t1_ih3s9fl][🔗]] 
+*** u/agumonkey [[https://www.reddit.com/r/emacs/comments/t3_w3gx6o/comment/t1_ih3s9fl][🔗]] 
 *Votes* 8
 
 you can have an org-mode file in source block in an org file
@@ -2073,7 +2096,7 @@ you can have an org-mode file in source block in an org file
 
 A great functionality for calculating some schedule events is `org-evaluate-time-range` (`C-c C-y`). When I need to propose an event of a particular length, I use this to get my length right between two dates.
 
-** u/meedstrom [[https://www.reddit.com/r/emacs/comments/t3_ydsjfy/comment/t1_itwo67r][🔗]] 
+*** u/meedstrom [[https://www.reddit.com/r/emacs/comments/t3_ydsjfy/comment/t1_itwo67r][🔗]] 
 *Votes* 8
 
 I had the [defrepeater](https://github.com/alphapapa/defrepeater.el) package for a while, but didn't realize you could use it this elegantly!
@@ -2084,7 +2107,7 @@ I had the [defrepeater](https://github.com/alphapapa/defrepeater.el) package for
 #+END_SRC
 Something similar is actually in the readme, but I guess I glossed over it back then.
 
-** u/khourhin [[https://www.reddit.com/r/emacs/comments/t3_x7zfs2/comment/t1_inp54pm][🔗]] 
+*** u/khourhin [[https://www.reddit.com/r/emacs/comments/t3_x7zfs2/comment/t1_inp54pm][🔗]] 
 *Votes* 8
 
 Just discovered 'desktop-environment-mode', really useful, particularly if you are using EXWM and want to get back functional standard keys. [https://github.com/DamienCassou/desktop-environment](https://github.com/DamienCassou/desktop-environment)
@@ -2126,7 +2149,7 @@ behavior of ~comment-dwim'."
       (call-interactively #'comment-line))))
 #+END_SRC
 
-** u/nicholas_hubbard [[https://www.reddit.com/r/emacs/comments/t3_sd10q9/comment/t1_hucv1fe][🔗]] 
+*** u/nicholas_hubbard [[https://www.reddit.com/r/emacs/comments/t3_sd10q9/comment/t1_hucv1fe][🔗]] 
 *Votes* 8
 
 This function clears a comint-mode buffer in a dwim fashion by preserving the current input line and working even if the cursor is above the input line. I have been using it with shell-mode and ielm bound to ~C-l~ and it works nicely.
@@ -2150,16 +2173,19 @@ This function clears a comint-mode buffer in a dwim fashion by preserving the cu
       (move-beginning-of-line nil))))
 #+END_SRC
 
-* 2021
+** 2021
+:PROPERTIES:
+:CUSTOM_ID: 2021
+:END:
 
-** u/TheDrownedKraken [[https://www.reddit.com/r/emacs/comments/t3_o68i0v/comment/t1_h2rdkkz][🔗]] 
+*** u/TheDrownedKraken [[https://www.reddit.com/r/emacs/comments/t3_o68i0v/comment/t1_h2rdkkz][🔗]] 
 *Votes* 37
 
 Do you think it might be good to make this a little less frequently refreshed? There are usually some great tips that get lost to Reddit’s ephemerality pretty quickly.
 
 I think monthly would be better, given the modest size of this subreddit.
 
-** u/Gangsir [[https://www.reddit.com/r/emacs/comments/t3_pxqvtm/comment/t1_hepqmq1][🔗]] 
+*** u/Gangsir [[https://www.reddit.com/r/emacs/comments/t3_pxqvtm/comment/t1_hepqmq1][🔗]] 
 *Votes* 22
 
 back-to-indentation. Before I found this function I would always do some awkward triple key combo like C-a M-f M-b.
@@ -2170,12 +2196,12 @@ It still works even on lines that aren't indented, same as C-a in that case.
 
 So useful, especially for resetting point during macros that need to start at the first char on the line.
 
-** u/github-alphapapa [[https://www.reddit.com/r/emacs/comments/t3_p6mwx2/comment/t1_h9e6uqq][🔗]] 
+*** u/github-alphapapa [[https://www.reddit.com/r/emacs/comments/t3_p6mwx2/comment/t1_h9e6uqq][🔗]] 
 *Votes* 18
 
 Here's a popular Emacs config I just rediscovered.  Some cool stuff here.  https://github.com/angrybacon/dotemacs
 
-** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_o68i0v/comment/t1_h2rizey][🔗]] 
+*** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_o68i0v/comment/t1_h2rizey][🔗]] 
 *Votes* 17
 
 I have two org mode link tips:
@@ -2222,7 +2248,7 @@ I have two org mode link tips:
    (add-hook 'org-mode-hook #'echo-area-tooltips)
 #+END_SRC
 
-** u/TeMPOraL_PL [[https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnx4z28][🔗]] 
+*** u/TeMPOraL_PL [[https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnx4z28][🔗]] 
 *Votes* 16
 
 If you're like me, and your day ends way past midnight, handling those last few tasks in your Org Mode agenda gets tricky. Fortunately, it turns out Org Mode has what I call "25th hour mode".
@@ -2237,13 +2263,13 @@ If you're like me, and your day ends way past midnight, handling those last few 
 #+END_SRC
 Combined, this allows to extend the day past midnight, with things like agenda views, scheduling commands, repeaters, etc. thinking the current time is 23:59 up until the ~org-extend-today-until~ limit. With this enabled, if I have a task that has a repeater of  and complete it at 01:00, I no longer have to then manually reschedule the task back one day.
 
-** u/rucci99 [[https://www.reddit.com/r/emacs/comments/t3_r69w7i/comment/t1_hmryv5o][🔗]] 
+*** u/rucci99 [[https://www.reddit.com/r/emacs/comments/t3_r69w7i/comment/t1_hmryv5o][🔗]] 
 *Votes* 16
 
 I just found out that Magit can backup changes of uncommitted files automatically. Here's the link to online manual:
 [Magit Wip Modes](https://magit.vc/manual/magit/Wip-Modes.html#Wip-Modes).
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_mujxm7/comment/t1_gv8jxz5][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_mujxm7/comment/t1_gv8jxz5][🔗]] 
 *Votes* 16
 
 I use, and love, [transient](https://github.com/magit/transient). I have a ton of commands set up, but the below command is for window manipulation. Personally, I bind it to ~s-w~. I use [buffer-move](https://github.com/lukhas/buffer-move) for rearranging windows in a frame.
@@ -2278,7 +2304,7 @@ I use, and love, [transient](https://github.com/magit/transient). I have a ton o
     ("s-Z" "Winner Redo" winner-redo :transient t)]])
 #+END_SRC
 
-** u/globalcandyamnesia [[https://www.reddit.com/r/emacs/comments/t3_ooldn6/comment/t1_h67qge6][🔗]] 
+*** u/globalcandyamnesia [[https://www.reddit.com/r/emacs/comments/t3_ooldn6/comment/t1_h67qge6][🔗]] 
 *Votes* 15
 
 I'm trying to feminize my voice and org mode has been invaluable.
@@ -2307,14 +2333,14 @@ I'm trying to feminize my voice and org mode has been invaluable.
 #+END_SRC
 This requires 'SoX' for linux. You can go into the record src block and press \~C-c C-c\~ to start recording and \~C-g\~ to end. To play back the recording, press \~C-c C-c\~ within the play src block. I imagine this might be useful beyond the trans community for basic voice journaling.
 
-** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_ofen99/comment/t1_h4dxjbz][🔗]] 
+*** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_ofen99/comment/t1_h4dxjbz][🔗]] 
 *Votes* 15
 
 If you want to search and replace but with preview for the matches, don't use ~query-replace-regexp~ directly. Instead start by searching for your regexp in ~isearch-forward-regexp~, which highlights the matches interactively, and once you have the correct regexp, run ~isearch-query-replace~ (bound to ~M-%~ in ~isearch-mode-map~).
 
 Note that there is also an ~isearch-query-replace-regexp~ command but you don't need it: ~isearch-query-replace~ will automatically detect if your isearch session was for regexps. The docstring for ~isearch-query-replace~ doesn't seem to mention this nice feature.
 
-** u/el_tuxo [[https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnp5rhn][🔗]] 
+*** u/el_tuxo [[https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnp5rhn][🔗]] 
 *Votes* 14
 
 Working on a remote server with Tramp in eshell it's so easy that I'm always worried that I could run by mistake a command on the wrong machine.
@@ -2335,7 +2361,7 @@ So I implemented a small function that makes me aware that I'm in a Tramp sessio
 #+END_SRC
 Do you have any suggestions on how I could improve this issue?
 
-** u/Stefan-Kangas [[https://www.reddit.com/r/emacs/comments/t3_q76kok/comment/t1_hgk3wik][🔗]] 
+*** u/Stefan-Kangas [[https://www.reddit.com/r/emacs/comments/t3_q76kok/comment/t1_hgk3wik][🔗]] 
 *Votes* 14
 
 This is pretty neat: scrolling up/down one line at a time while keeping the position of point:
@@ -2347,7 +2373,7 @@ This is pretty neat: scrolling up/down one line at a time while keeping the posi
 
 From: http://pragmaticemacs.com/emacs/scrolling-and-moving-by-line/
 
-** u/Tatrics [[https://www.reddit.com/r/emacs/comments/t3_n9q662/comment/t1_gxpeh9v][🔗]] 
+*** u/Tatrics [[https://www.reddit.com/r/emacs/comments/t3_n9q662/comment/t1_gxpeh9v][🔗]] 
 *Votes* 14
 
 I'm slowly working on an alternative shell: [https://github.com/TatriX/tshell](https://github.com/TatriX/tshell)
@@ -2358,22 +2384,22 @@ It's in a very early stage, but it already allows me to solve most tasks I usual
 
 Let me know what is your first impression, what can be improved and what  do you think in general!
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_mg98ki/comment/t1_gstteeo][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_mg98ki/comment/t1_gstteeo][🔗]] 
 *Votes* 14
 
 I just discovered the [selected](https://github.com/Kungsgeten/selected.el) package, which is brilliant. It creates a keymap that becomes active any time you have an active region. I have bindings for next-line, previous-line, rectangle-mark-mode, end-of-line, upcase-dwim, exchange-point-and-mark, etc. It makes editing and acting on the active region super easy. Sort of like god-mode or Vim's visual mode.
 
-** u/vatai [[https://www.reddit.com/r/emacs/comments/t3_ojzv53/comment/t1_h5584no][🔗]] 
+*** u/vatai [[https://www.reddit.com/r/emacs/comments/t3_ojzv53/comment/t1_h5584no][🔗]] 
 *Votes* 13
 
 The emacs lisp tutorial is the real tutorial for emacs ;)
 
-** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_lapujj/comment/t1_glr8pkr][🔗]] 
+*** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_lapujj/comment/t1_glr8pkr][🔗]] 
 *Votes* 13
 
 You can use EWW to bypass pay-walls on news sites, and other Javascript-enabled nastiness. Plus, eww can copy from what it sees into equivalent orgmode syntax, and it's also compatible with SPRAY for speed-reading. In otherwords, EWW is great for when you just need to READ the internet.
 
-** u/emacs-noob [[https://www.reddit.com/r/emacs/comments/t3_kvmmq3/comment/t1_gj1kn9i][🔗]] 
+*** u/emacs-noob [[https://www.reddit.com/r/emacs/comments/t3_kvmmq3/comment/t1_gj1kn9i][🔗]] 
 *Votes* 13
 
 I use Emacs for React development and it's usually great (rjsx-mode). We recently introduced styled components into our app and while they're very handy, not having proper css support inside rjsx-mode was pretty annoying. I was looking for solutions, maybe extending rjsx-mode, but I wasn't up to that task. I then realized the built-in emacs commands and buffers themselves could solve my problem! What I want is for css inside a styled component, which always looks something like this:
@@ -2414,7 +2440,7 @@ to *actually* use scss-mode when editing, and then return to rjsx-mode when fini
 #+END_SRC
 So now when I edit a styled component I just hit **, m s**, which narrows the region to whatever is enclosed by backticks (i.e. all the css) and actually treats it as a bona fide css buffer, with all my snippets, completion, etc. Then when I'm done I just got **, m s** again to widen back to the original (rjsx) buffer!
 
-** u/b3n [[https://www.reddit.com/r/emacs/comments/t3_lvw44q/comment/t1_gpeb8n3][🔗]] 
+*** u/b3n [[https://www.reddit.com/r/emacs/comments/t3_lvw44q/comment/t1_gpeb8n3][🔗]] 
 *Votes* 12
 
 Here's a nice eshell command:
@@ -2428,14 +2454,14 @@ Here's a nice eshell command:
 #+END_SRC
 It lets you use your normal completion framework to select an item from history. Suddenly fzf-like history!
 
-** u/yogsototh [[https://www.reddit.com/r/emacs/comments/t3_qgrpte/comment/t1_hi8crmc][🔗]] 
+*** u/yogsototh [[https://www.reddit.com/r/emacs/comments/t3_qgrpte/comment/t1_hi8crmc][🔗]] 
 *Votes* 11
 
 I just made this nice combination of emacs packages and personal theme to achieve the cool effect of iAWriter
 
 See here: https://her.esy.fun/posts/0021-ia-writer-clone-within-doom-emacs/index.html
 
-** u/PotentiallyAlice [[https://www.reddit.com/r/emacs/comments/t3_n9q662/comment/t1_gxx6frj][🔗]] 
+*** u/PotentiallyAlice [[https://www.reddit.com/r/emacs/comments/t3_n9q662/comment/t1_gxx6frj][🔗]] 
 *Votes* 11
 
 I thought it might be a fun project to make a package to expose org-capture templates as endpoints, so I can add reminders to my TODO list via any device on the network. Turns out, it was easy enough that a package would be kinda pointless:
@@ -2446,7 +2472,7 @@ I thought it might be a fun project to make a package to expose org-capture temp
 #+END_SRC
 Now I can hit "localhost:8080/capture/t/test reminder" and it'll put a "* TODO test reminder" line into my todo.org. Neat!
 
-** u/jumpUpHigh [[https://www.reddit.com/r/emacs/comments/t3_kvmmq3/comment/t1_gj33uht][🔗]] 
+*** u/jumpUpHigh [[https://www.reddit.com/r/emacs/comments/t3_kvmmq3/comment/t1_gj33uht][🔗]] 
 *Votes* 11
 
 AucTeX
@@ -2475,12 +2501,12 @@ Related docs are [here](https://www.gnu.org/software/auctex/manual/auctex/Error-
 
 This totally changes the way you can handle errors messages.
 
-** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_r69w7i/comment/t1_hmst3ih][🔗]] 
+*** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_r69w7i/comment/t1_hmst3ih][🔗]] 
 *Votes* 10
 
 macros in emacs are like a secret, forgotten art, but I use them with regexp search, orgmode commands to tweak repeating events (or any number of other uses). Learn macros; they gave emacs its name! One usage here: https://orys.us/ug
 
-** u/SamTheComputerSlayer [[https://www.reddit.com/r/emacs/comments/t3_qbvyza/comment/t1_hhinrm4][🔗]] 
+*** u/SamTheComputerSlayer [[https://www.reddit.com/r/emacs/comments/t3_qbvyza/comment/t1_hhinrm4][🔗]] 
 *Votes* 10
 
 I use a lot of toggles in my config. I used to do it ad-hoc every time, but the pattern ends up the same so I made this macro:
@@ -2520,12 +2546,12 @@ It's very similar to define-minor-mode, but with all the hooks, keymaps, and lig
      (load-theme 'dracula t)))
 #+END_SRC
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_q76kok/comment/t1_hghtyfo][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_q76kok/comment/t1_hghtyfo][🔗]] 
 *Votes* 10
 
 before you load evil ~(setq evil-want-minibuffer t)~ to use evil-mode in the minibuffer.
 
-** u/github-alphapapa [[https://www.reddit.com/r/emacs/comments/t3_q2g1gq/comment/t1_hfldw8n][🔗]] 
+*** u/github-alphapapa [[https://www.reddit.com/r/emacs/comments/t3_q2g1gq/comment/t1_hfldw8n][🔗]] 
 *Votes* 10
 
 One of the most useful bindings for me:
@@ -2535,19 +2561,19 @@ One of the most useful bindings for me:
   :bind* (("C-j" . avy-goto-char-timer)))
 #+END_SRC
 
-** u/Stefan-Kangas [[https://www.reddit.com/r/emacs/comments/t3_pxqvtm/comment/t1_hf1gzs2][🔗]] 
+*** u/Stefan-Kangas [[https://www.reddit.com/r/emacs/comments/t3_pxqvtm/comment/t1_hf1gzs2][🔗]] 
 *Votes* 10
 
 Read [SICP](https://mitpress.mit.edu/sites/default/files/sicp/index.html). Preferably in Info, installable through MELPA or: [https://github.com/webframp/sicp-info](https://github.com/webframp/sicp-info)
 
-** u/Stefan-Kangas [[https://www.reddit.com/r/emacs/comments/t3_pxqvtm/comment/t1_hexdfiq][🔗]] 
+*** u/Stefan-Kangas [[https://www.reddit.com/r/emacs/comments/t3_pxqvtm/comment/t1_hexdfiq][🔗]] 
 *Votes* 10
 
 Replace the binding for ~count-words-region~ with ~count-words~. The latter has better semantics: it only shows words in region if the region is active.
 
 ~(global-set-key (kbd "M-=") #'count-words)~
 
-** u/dmartincy [[https://www.reddit.com/r/emacs/comments/t3_polxft/comment/t1_hcxub77][🔗]] 
+*** u/dmartincy [[https://www.reddit.com/r/emacs/comments/t3_polxft/comment/t1_hcxub77][🔗]] 
 *Votes* 10
 
 If you write Lisp, there's a couple of old Emacs commands to help you write code while keeping parenthesis balanced: ~M-(~ (~insert-parenthesis~), and ~M-)~ (~move-past-close-and-reindent~). They used to be documented in old Emacs manuals, but presumably their description was removed to make room for other content.
@@ -2558,7 +2584,7 @@ With a prefix argument, ~M-(~ wraps in parenthesis that number of sexps. For exa
 
 There's more information in EmacsWiki: https://www.emacswiki.org/emacs/InsertPair
 
-** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_ojzv53/comment/t1_h55vkl6][🔗]] 
+*** u/PriorOutcome [[https://www.reddit.com/r/emacs/comments/t3_ojzv53/comment/t1_h55vkl6][🔗]] 
 *Votes* 10
 
 I often find myself wanting to be able to switch between ~master~ and a feature branch in magit quickly:
@@ -2573,7 +2599,7 @@ I often find myself wanting to be able to switch between ~master~ and a feature 
 #+END_SRC
 So that ~C-x g b -~ switches to the last branch I was on, similar to ~cd -~.
 
-** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_o0zvb5/comment/t1_h1znz1s][🔗]] 
+*** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_o0zvb5/comment/t1_h1znz1s][🔗]] 
 *Votes* 10
 
 I keep forgetting how useful the ~pcase~ macro is.  Recently I wrote a command that expected to find a single jar file in a certain directory and operate on it.  I started with a more "traditional" implementation:
@@ -2595,7 +2621,7 @@ Then I remembered ~pcase~:
 #+END_SRC
 Much more readable!
 
-** u/11fdriver [[https://www.reddit.com/r/emacs/comments/t3_mpwapo/comment/t1_gufsfeu][🔗]] 
+*** u/11fdriver [[https://www.reddit.com/r/emacs/comments/t3_mpwapo/comment/t1_gufsfeu][🔗]] 
 *Votes* 10
 
 Sometimes I'm working on programs with functions a few pages long, and ~follow-mode~ means that I can open two windows of the same buffer side-by-side and have the text flow like a book between them. I can double or even triple the amount of lines I can view at one time.
@@ -2606,7 +2632,7 @@ It will keep the text aligned as you move through the file, and pairs well with 
 
 If I'm studying/notetaking, I often end up with a few Emacs-windows arranged in a vertical stack. ~winner-mode~ or ~window-configuration-to-register~ are great, but if I want to quickly regain some vertical screen-real-estate without messing up the layout, then it's pretty intuitive to use ~follow-mode~ and just switch multiple windows to the same buffer, now they behave like one.
 
-** u/b3n [[https://www.reddit.com/r/emacs/comments/t3_ml4wql/comment/t1_gtkc524][🔗]] 
+*** u/b3n [[https://www.reddit.com/r/emacs/comments/t3_ml4wql/comment/t1_gtkc524][🔗]] 
 *Votes* 10
 
 Skeletons are one of Emacs' killer features, especially when combined with ~abbrev-mode~. Here's a macro I wrote to make them a little easier to handle:
@@ -2633,19 +2659,19 @@ Now (assuming you have ~abbrev-mode~ enabled), type ~dd ~ into your buffer (that
 
 This is just scratching the surface, skeletons are extremely powerful. Once you start using them they become a superpower and can take your Emacs usage to the next level.
 
-** u/Bodertz [[https://www.reddit.com/r/emacs/comments/t3_lfww57/comment/t1_gmtk79e][🔗]] 
+*** u/Bodertz [[https://www.reddit.com/r/emacs/comments/t3_lfww57/comment/t1_gmtk79e][🔗]] 
 *Votes* 10
 
 From the mailing list, I've just learned of ~generic-x.el~, which provides syntax highlighting for ~/etc/fstab~ or ~/etc/passwd~ and the like.  I appreciated that vim provided that out of the box and I was surprised that emacs also does, but it's just disabled.
 
 ~(require 'generic-x)~ to enable it.
 
-** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_kvmmq3/comment/t1_gj9ioly][🔗]] 
+*** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_kvmmq3/comment/t1_gj9ioly][🔗]] 
 *Votes* 10
 
 Just a cool concept: if you have a keypad on your keyboard which you rarely use, bind its nums to something useful. The results are numlock-sensitive and are NOT the same keycodes as regular numbers, so they're just free keys. For example, ~(define-key map (kbd "<kp-1>") 'winum-select-window-1)~
 
-** u/blankspruce [[https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnrdt9x][🔗]] 
+*** u/blankspruce [[https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnrdt9x][🔗]] 
 *Votes* 9
 
 Is there a package similar to wdired or wgrep that would work on magit diffs? 
@@ -2656,12 +2682,12 @@ Particular use cases I have in mind are:
 2. In C++ it happens sometimes that you want to separate declaration and definition and in your commit you forgot to move some definitions to .cpp.
 Usually I switch to ~foobar.hpp~, kill the necessary part, switch to ~foobar.cpp~, yank that part.
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_q76kok/comment/t1_hghp1e4][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_q76kok/comment/t1_hghp1e4][🔗]] 
 *Votes* 9
 
 Checkout [Topsy Mode](https://github.com/alphapapa/topsy.el), it creates a header at the top of your buffer to show the name of the first function outside of your visual range. It makes scrolling through code much easier because you get an additional visual queue of your location in the buffer. It's one of those things that you never knew you wanted. It takes about 15 seconds to setup.
 
-** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_p28rl5/comment/t1_h8utmh2][🔗]] 
+*** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_p28rl5/comment/t1_h8utmh2][🔗]] 
 *Votes* 9
 
 Imenu is pretty adictive and it's disappointing when some major mode doesn't support it. Luckily, it's fairly easy to cook up some regexps to provide imenu support in a new major mode. For example I recently noticed that customize buffers didn't have imenu support add I wrote this:
@@ -2677,14 +2703,14 @@ Imenu is pretty adictive and it's disappointing when some major mode doesn't sup
 #+END_SRC
 One subtlety with writing this is that the customize buffers show little triangles instead of the words "Show", "Hide" or "Show Value". To figure out what text is really in the buffer you can use ~C-u C-x =~ which tells you about any overlays at point.
 
-** u/globalcandyamnesia [[https://www.reddit.com/r/emacs/comments/t3_o68i0v/comment/t1_h31xz50][🔗]] 
+*** u/globalcandyamnesia [[https://www.reddit.com/r/emacs/comments/t3_o68i0v/comment/t1_h31xz50][🔗]] 
 *Votes* 9
 
 If you're using the mark setting commands to expand a selection like ~M-@~ (mark next word) or ~C-M-@~ (mark next sexp), you can swap the point and mark (~C-x C-x~) and the selection will be expanded to the left rather than the right.
 
 So if you're in the middle of a sentence, you can press ~M-@~ a few times to select some words to the right, press ~C-xx~, and press ~M-@~ a few more times to add words before the selection.
 
-** u/b3n [[https://www.reddit.com/r/emacs/comments/t3_oxo1xh/comment/t1_h85cv7f][🔗]] 
+*** u/b3n [[https://www.reddit.com/r/emacs/comments/t3_oxo1xh/comment/t1_h85cv7f][🔗]] 
 *Votes* 9
 
 Little quality of life improvement if you work with multiple eshell buffers:
@@ -2714,12 +2740,12 @@ You can also create a rectangular selection with the command ~rectangle-mark-mod
 
 Don't forget to bind ~replace-rectangle~ to something convenient for super easy editing.
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_rgu8dp/comment/t1_hoqrg9e][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_rgu8dp/comment/t1_hoqrg9e][🔗]] 
 *Votes* 8
 
 ~bs-show~ is an interesting command, it shows a pop-up-like buffer that you can use to quickly act on open buffers. There are a ton of customizations you can make and a bunch of convenient bindings. I've been trying it out instead of ~list-buffers~ and ~ibuffer~ and I like it so far, very fast.
 
-** u/rberaldo [[https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnvaab8][🔗]] 
+*** u/rberaldo [[https://www.reddit.com/r/emacs/comments/t3_rbmfwk/comment/t1_hnvaab8][🔗]] 
 *Votes* 8
 
 A tiny thing I just noticed: in ~tex-mode~, you can create a new environment with ~C-c C-e~. With the universal argument (~C-u C-c C-e~), however, you can easily change any environment into another.
@@ -2747,7 +2773,7 @@ Inserting all those forms is tedious, especially if the function comes from a pa
 #+END_SRC
 Call it with M-x, insert the name of the function you want to declare (with completion), and voilà.
 
-** u/tryptych [[https://www.reddit.com/r/emacs/comments/t3_qgrpte/comment/t1_hicheof][🔗]] 
+*** u/tryptych [[https://www.reddit.com/r/emacs/comments/t3_qgrpte/comment/t1_hicheof][🔗]] 
 *Votes* 8
 
 A colleague just showed me Intellij's "[compare with clipboard](https://www.jetbrains.com/help/idea/comparing-files-and-folders.html#clipboard)" feature: it's fairly neat, you select a region, invoke compare-with-clipboard and get a diff of the two selections.
@@ -2832,7 +2858,7 @@ is easily seen to be unique up to unique isomorphism.
 #+END_SRC
 I'm a bit surprised by my not finding any function to already insert some string into the simple `\[ \]`-based display math; everything I could find just inserted dollars instead.  I suppose one could insert a `displaymath` environment, but I've never like the look of that.  Oh well.
 
-** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_pb6w2z/comment/t1_haddtq6][🔗]] 
+*** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_pb6w2z/comment/t1_haddtq6][🔗]] 
 *Votes* 8
 
 This one is probably pretty niche but it was a noticeable improvement in my workflow, so I thought I'd share. I sometimes have to fill out forms I get in PDF but that aren't fillable PDFs, merely scans of paper forms. I guess a reasonable person would install The Gimp or something like that, but I fill them out in LaTeX, using ~\includegraphics~ for the PDF form, and the ~textpos~ package to place text on top of it. 
@@ -2851,7 +2877,7 @@ This is requires giving the coordinates you want the text placed at, which I use
            (format "(%.1fcm,%.1fcm)" (f (car pt)) (f (cdr pt)))))))))
 #+END_SRC
 
-** u/Bodertz [[https://www.reddit.com/r/emacs/comments/t3_p28rl5/comment/t1_h8iin6r][🔗]] 
+*** u/Bodertz [[https://www.reddit.com/r/emacs/comments/t3_p28rl5/comment/t1_h8iin6r][🔗]] 
 *Votes* 8
 
 Meta:
@@ -2891,12 +2917,12 @@ and my `~/.authinfo` file has an entry
 #+END_SRC
 Edit: Using GNU Emacs 27.1
 
-** u/a-k-n [[https://www.reddit.com/r/emacs/comments/t3_mg98ki/comment/t1_gsvlfku][🔗]] 
+*** u/a-k-n [[https://www.reddit.com/r/emacs/comments/t3_mg98ki/comment/t1_gsvlfku][🔗]] 
 *Votes* 8
 
 I just discovered that installing the Emacs macport homebrew formula with \~--with-mac-metal\~ will significantly increase the performance of Emacs. It's buttery smooth!
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_mb8u1m/comment/t1_gry6bfs][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_mb8u1m/comment/t1_gry6bfs][🔗]] 
 *Votes* 8
 
 If you want helpful mode to completely take over all help functions, and be able to use it with helm-apropos, then add this to your config:
@@ -2931,7 +2957,7 @@ It then took me a few more years to realise that that's my preferred mode, so I 
                                           (buffer-menu arg)))
 #+END_SRC
 
-** u/geza42 [[https://www.reddit.com/r/emacs/comments/t3_kqsw1k/comment/t1_gi66krb][🔗]] 
+*** u/geza42 [[https://www.reddit.com/r/emacs/comments/t3_kqsw1k/comment/t1_gi66krb][🔗]] 
 *Votes* 8
 
 I created a "smart" enter function for C/C++ mode. Here's what it does:
@@ -3087,7 +3113,7 @@ It can be used like
   "Keymap to repeat window key sequences.  Used in ~repeat-mode'.")
 #+END_SRC
 
-** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_oxo1xh/comment/t1_h88ph29][🔗]] 
+*** u/oantolin [[https://www.reddit.com/r/emacs/comments/t3_oxo1xh/comment/t1_h88ph29][🔗]] 
 *Votes* 8
 
 This isn't a tip or trick, so I guess it is covered by &c. The Init File section of the manual has this example of setting a user email address:
@@ -3179,9 +3205,12 @@ Here is a consult source for [perspective.el](https://github.com/nex3/perspectiv
     "Perspective candidate source for `consult-buffer'.")
 #+END_SRC
 
-* 2020
+** 2020
+:PROPERTIES:
+:CUSTOM_ID: 2020
+:END:
 
-** u/gopar [[https://www.reddit.com/r/emacs/comments/t3_k4gv0x/comment/t1_ge9det9][🔗]] 
+*** u/gopar [[https://www.reddit.com/r/emacs/comments/t3_k4gv0x/comment/t1_ge9det9][🔗]] 
 *Votes* 16
 
 A very simple thing I've done is remap ";" (semicolon) to to "\_" (underscore) in almost all modes. Since I work with mainly Python, this is so much easier than always doing SHIFT-DASH every couple of keystrokes. And if I want a regular semicolon, I just do "C-u ;" and insert a semicolon
@@ -3202,17 +3231,17 @@ int a = 10\*10;
 
 Pretty simple time saver \\o/
 
-** u/TheDrownedKraken [[https://www.reddit.com/r/emacs/comments/t3_jn6m14/comment/t1_gazzdyz][🔗]] 
+*** u/TheDrownedKraken [[https://www.reddit.com/r/emacs/comments/t3_jn6m14/comment/t1_gazzdyz][🔗]] 
 *Votes* 16
 
 It would be good to archive the questions and tips put in here. I feel like I always find cool stuff in here, but then it becomes very hard to find it later.
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_hqxm5v/comment/t1_fy1rq34][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_hqxm5v/comment/t1_fy1rq34][🔗]] 
 *Votes* 15
 
 Migrated to native compiled emacs branch this week. Some hiccups but everything seems to work out of box, including pdf-tools. Great performance improvement.
 
-** u/mullikine [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fwbtnte][🔗]] 
+*** u/mullikine [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fwbtnte][🔗]] 
 *Votes* 13
 
 ## Use chrome DOM for eww
@@ -3312,7 +3341,7 @@ Make these modifications to ~eww-display-html~.
 Demonstration:
 https://asciinema.org/a/UAAVfp5O8SofJZvKBusTOP8QQ
 
-** u/_hmenke [[https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_fruqs1k][🔗]] 
+*** u/_hmenke [[https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_fruqs1k][🔗]] 
 *Votes* 13
 
 Any **BibTeX** users here?
@@ -3355,12 +3384,12 @@ Here is how I bind it in ~bibtex-mode~ (plus my other bindings for good measure)
    bibtex-maintain-sorted-entries t))
 #+END_SRC
 
-** u/celeritasCelery [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqdnyhk][🔗]] 
+*** u/celeritasCelery [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqdnyhk][🔗]] 
 *Votes* 13
 
 Shells in emacs like ~shell-mode~ and ~eshell~ can write multi line input using ~comint-accumulate~. Normally bound to ~C-c SPC~.
 
-** u/rhmatthijs [[https://www.reddit.com/r/emacs/comments/t3_gzivu3/comment/t1_ftgqnbp][🔗]] 
+*** u/rhmatthijs [[https://www.reddit.com/r/emacs/comments/t3_gzivu3/comment/t1_ftgqnbp][🔗]] 
 *Votes* 12
 
 Working in education, I often find myself having to assign students into groups. This week I made a function in ELisp that helps me do this. Select a region in a buffer that contains a list of students (presumably), call this function, say how many students should be in each group and the function then randomly assigns groups.
@@ -3416,7 +3445,7 @@ Emacs by default. Uses Fisher-Yates shuffle.
     (insert newcontents)))
 #+END_SRC
 
-** u/hale314 [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqg7qys][🔗]] 
+*** u/hale314 [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqg7qys][🔗]] 
 *Votes* 12
 
 I tend to have a lot of function that is defined solely to be added to a hook. Turns out I can customize ~defun-declarations-alist~ to define a new ~hook~ property in the ~declare~ form. Now I can specify the hook that the function is intended for right inside the function definition.
@@ -3439,7 +3468,7 @@ I tend to have a lot of function that is defined solely to be added to a hook. T
 ;; (add-hook 'kill-emacs-query-functions #'ask-about-scratch-buffer)
 #+END_SRC
 
-** u/kastauyra [[https://www.reddit.com/r/emacs/comments/t3_ibwzcu/comment/t1_g1zlh2t][🔗]] 
+*** u/kastauyra [[https://www.reddit.com/r/emacs/comments/t3_ibwzcu/comment/t1_g1zlh2t][🔗]] 
 *Votes* 11
 
 # 27.1 do GC if no frame has focus
@@ -3459,7 +3488,7 @@ I am porting my [config](https://github.com/laurynas-biveinis/dotfiles) from 26.
           #'dotfiles--gc-on-last-frame-out-of-focus)
 #+END_SRC
 
-** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvrlu40][🔗]] 
+*** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvrlu40][🔗]] 
 *Votes* 11
 
 I've been using ~M-|~ (~shell-command-on-region~) frequently for years, and I only just stumbled on the fact that the region need not be active to use it.  If it isn't, the command operates on the text from point to the end of the buffer.  That's very reasonable and in line with various other commands, but the documentation doesn't mention it and so I never thought to try it.
@@ -3468,12 +3497,12 @@ That saves me a call to ~C-x h~ (~mark-whole-buffer~) whenever I want to process
 
 Edited to add:  Sorry folks, this doesn't work like I thought it did.  See the coments below for details.
 
-** u/jimm [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvqvedf][🔗]] 
+*** u/jimm [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvqvedf][🔗]] 
 *Votes* 11
 
 I can't say how often I use ~dabbrev-expand~ (~M-/~) to complete words. Saves me a ton of time.
 
-** u/Krautoni [[https://www.reddit.com/r/emacs/comments/t3_ja97xs/comment/t1_g8pgyy1][🔗]] 
+*** u/Krautoni [[https://www.reddit.com/r/emacs/comments/t3_ja97xs/comment/t1_g8pgyy1][🔗]] 
 *Votes* 10
 
 Since I find myself pair programming quite a bit, I made a small helper:
@@ -3520,7 +3549,7 @@ Additionally, line number mode is enabled."
 
 It sets up a co-authored-by for git commits, and enables line numbers.
 
-** u/Amonwilde [[https://www.reddit.com/r/emacs/comments/t3_j61aoh/comment/t1_g7wd5gj][🔗]] 
+*** u/Amonwilde [[https://www.reddit.com/r/emacs/comments/t3_j61aoh/comment/t1_g7wd5gj][🔗]] 
 *Votes* 10
 
 For some this will be obvious, but I'm sure there will be at least one person who will find this useful. One of the most amazing features of Emacs to me is dabbrev-expand, by default bound to M-/. 
@@ -3534,13 +3563,13 @@ considered.  If still no suitable word is found, then look in the
 
 This command is essentially omni-autocomplete. Chances are, the term you're trying to complete is in the buffer you're using or another buffer, and you can hit multiple times to cycle through different completions. I find the expander to be quicker and more deterministic than language autocomplete about 70% of the time. It's especially useful in writing, if you use Emacs for things other than programming, as you can complete proper names and specalized vocabulary quickly.
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_ikgfxd/comment/t1_g3zeprg][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_ikgfxd/comment/t1_g3zeprg][🔗]] 
 *Votes* 10
 
 \**Suggestion for moderators** - Consider putting a note in the weekly announcement for this thread that using 3 backquotes or tildes to make code blocks doesn't work for those of us using old reddit (so the code people post that way is almost unreadable) - and that indenting by 4 spaces is better for compatibility.
 (Am I the only one who still uses old reddit? :-)  )
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvqq7ck][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvqq7ck][🔗]] 
 *Votes* 10
 
 Undo-tree and kill-ring are two of the best features in Emacs / packages. Change your life today.
@@ -3562,7 +3591,7 @@ If you want to switch between two themes, depending on time of day (e.g. a light
 #+END_SRC
 This selects the correct theme when starting Emacs and automatically switch when the times come.
 
-** u/andrmuel [[https://www.reddit.com/r/emacs/comments/t3_jn6m14/comment/t1_gb502ps][🔗]] 
+*** u/andrmuel [[https://www.reddit.com/r/emacs/comments/t3_jn6m14/comment/t1_gb502ps][🔗]] 
 *Votes* 9
 
 This is something I'm not actively using anymore, but it was one of my I-love-emacs moments, so I wanted to share this for a while.
@@ -3648,7 +3677,7 @@ After a while I extended org-export to get a shortcut (~C-e C-s o M~) to automat
   (call-process "thunderbird" nil 0 nil "-compose" (format "to='%s',subject='%s',body='%s',attachment='%s'" recipient subject body attachment)))
 #+END_SRC
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_ixjcau/comment/t1_g69no38][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_ixjcau/comment/t1_g69no38][🔗]] 
 *Votes* 9
 
 org-variable-pitch.el users might want to give [~valign~](https://github.com/casouri/valign) a look. It aligns your tables nicely, even with pictures (e.g. LaTeX previews) and links. The significance in context of OVP specifically is that you don't need to add ~org-link~ to ~org-variable-pitch-fixed-faces~ because valign-mode handles variable pitch links neatly in tables.
@@ -3657,7 +3686,7 @@ If you don't use OVP but use e.g. latex fragments in tables or just pictures, th
 
 Kudos to the author, great little package.
 
-** u/Rotatop [[https://www.reddit.com/r/emacs/comments/t3_hij4ga/comment/t1_fwi4ikt][🔗]] 
+*** u/Rotatop [[https://www.reddit.com/r/emacs/comments/t3_hij4ga/comment/t1_fwi4ikt][🔗]] 
 *Votes* 9
 
 I've made it !
@@ -3736,7 +3765,7 @@ After 6 month of emacs, I m able to open a side buffer when I m on ivy without u
 
 Emacs is good
 
-** u/rhmatthijs [[https://www.reddit.com/r/emacs/comments/t3_h9zoy9/comment/t1_fuzucay][🔗]] 
+*** u/rhmatthijs [[https://www.reddit.com/r/emacs/comments/t3_h9zoy9/comment/t1_fuzucay][🔗]] 
 *Votes* 9
 
 On a Mac: make Emacs detect if you have light or dark mode enabled system wide.
@@ -3767,7 +3796,7 @@ tell application "System Events"
 end tell
 #+END_SRC
 
-** u/zackallison [[https://www.reddit.com/r/emacs/comments/t3_ki09cm/comment/t1_ggoehoo][🔗]] 
+*** u/zackallison [[https://www.reddit.com/r/emacs/comments/t3_ki09cm/comment/t1_ggoehoo][🔗]] 
 *Votes* 9
 
 I posted this in the emacsclient thread, but I think it deserves to live here as well:
@@ -3797,7 +3826,7 @@ See the repo for more examples and to download.  The notes of getting it working
 
 In case you can't tell I *really* like emacs and it's client server model.
 
-** u/emacsomancer [[https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_fs5sq09][🔗]] 
+*** u/emacsomancer [[https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_fs5sq09][🔗]] 
 *Votes* 9
 
 Preconfigured Emacs for collaborative writing (using a literate, self-generating init):
@@ -3815,7 +3844,7 @@ https://imgur.com/a/zvfLpdH
 
 I tried [marginalia](https://github.com/minad/marginalia) with light annotation and selectrum, it works well. It displays commands' keybindings in the minibuffer. It's especially useful for modes I don't use daily and for which I haven't memorized the keybindings.
 
-** u/martinslot [[https://www.reddit.com/r/emacs/comments/t3_kdgv43/comment/t1_gfwlm9q][🔗]] 
+*** u/martinslot [[https://www.reddit.com/r/emacs/comments/t3_kdgv43/comment/t1_gfwlm9q][🔗]] 
 *Votes* 8
 
 I need to try to do something custom to eshell so it feels more like home: http://www.modernemacs.com/post/custom-eshell/. Also set som aliases up.
@@ -3827,7 +3856,7 @@ How does your eshell look like?
 
 [deleted]
 
-** u/adt7799 [[https://www.reddit.com/r/emacs/comments/t3_ja97xs/comment/t1_g8op875][🔗]] 
+*** u/adt7799 [[https://www.reddit.com/r/emacs/comments/t3_ja97xs/comment/t1_g8op875][🔗]] 
 *Votes* 8
 
 I find this very useful.
@@ -3836,12 +3865,12 @@ When I have multiple buffers opened and I switch from another program to emacs I
 
 ~(global-set-key (kbd "M-l") 'beacon-blink)~
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_hv3kzf/comment/t1_fyrgnk7][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_hv3kzf/comment/t1_fyrgnk7][🔗]] 
 *Votes* 8
 
 [deleted]
 
-** u/ji99 [[https://www.reddit.com/r/emacs/comments/t3_hqxm5v/comment/t1_fy0xduj][🔗]] 
+*** u/ji99 [[https://www.reddit.com/r/emacs/comments/t3_hqxm5v/comment/t1_fy0xduj][🔗]] 
 *Votes* 8
 
 Hippie-expand google search suggestions. Completely inspired from [shell-parse.el](https://github.com/malloc47/shell-parse.el/blob/master/shell-parse.el).
@@ -3886,19 +3915,19 @@ I've added ~try-expand-google-completion~ to the bottom of my ~hippie-expand-try
     t))
 #+END_SRC
 
-** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_hij4ga/comment/t1_fwt1k27][🔗]] 
+*** u/WorldsEndless [[https://www.reddit.com/r/emacs/comments/t3_hij4ga/comment/t1_fwt1k27][🔗]] 
 *Votes* 8
 
 Registers: in Emacs from the beginning, so simple you forget how insanely useful they can be. I use them to save text, windows, and locations. https://orys.us/tv
 
-** u/aartist111 [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvrw4cu][🔗]] 
+*** u/aartist111 [[https://www.reddit.com/r/emacs/comments/t3_heaoiu/comment/t1_fvrw4cu][🔗]] 
 *Votes* 8
 
 Found / c for M-x ibuffer.  It filters buffers by content.
 It looks like  'grep -c' .   Very helpful to locate a file quickly for which you remember any word from content
 Until now I had only used filters for filenames or modes only. .
 
-** u/hairlesscaveman [[https://www.reddit.com/r/emacs/comments/t3_gmkg4g/comment/t1_fr4gdm6][🔗]] 
+*** u/hairlesscaveman [[https://www.reddit.com/r/emacs/comments/t3_gmkg4g/comment/t1_fr4gdm6][🔗]] 
 *Votes* 8
 
 I follow the format of ~{ticketnumber}-{short-description}~ when creating branches using Magit, but when typing the descriptive name for the branch I often type ~SPC~ between words instead of dash due to muscle memory when writing sentences. This causes a warning to be shown, because "Whitespace isn't allowed here", and breaks "flow" for me.
@@ -3909,7 +3938,7 @@ The advice below quiets this warning, and inserts a dash whenever space is press
 (advice-add 'magit-whitespace-disallowed :around (lambda (orig-fun &rest args) (interactive) (insert "-")))
 #+END_SRC
 
-** u/karthink [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqfc1wi][🔗]] 
+*** u/karthink [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqfc1wi][🔗]] 
 *Votes* 8
 
 AucTex users: You're missing out if you don't use [CDLatex](https://github.com/cdominik/cdlatex). It's primarily a fast input tool for LaTeX, sort of like snippet templates. The difference between setting up Yasnippet templates for LaTeX and CDLatex is that CDLaTeX's TAB key to jump past stuff is _always available_, not just during snippet entry. It's difficult to explain, so here are some demos:
@@ -3921,12 +3950,12 @@ I wrote a longer post explaining [how I set up AucTex](https://www.reddit.com/r/
 
 CDLaTeX was written by Carsten Dominik, the author of Org-mode and reftex. Thus Org ships with an ~org-cdlatex~ minor-mode that makes these features available in org-mode.
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqczes1][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqczes1][🔗]] 
 *Votes* 8
 
 [A beginers guide to emacs 24 or later by sasha chua](https://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large.png)  this helped me tremendously to get started with emacs.
 
-** u/ji99 [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqcycvb][🔗]] 
+*** u/ji99 [[https://www.reddit.com/r/emacs/comments/t3_gi70ye/comment/t1_fqcycvb][🔗]] 
 *Votes* 8
 
 A rudimentary interface for the fabulous [Links web browser](http://links.twibright.com/user_en.html):
@@ -3974,7 +4003,7 @@ A rudimentary interface for the fabulous [Links web browser](http://links.twibri
       ("seax" (links-browser (format "https://search.snopyta.org/?q=%s" query)))))
 #+END_SRC
 
-** u/ji99 [[https://www.reddit.com/r/emacs/comments/t3_k4gv0x/comment/t1_ge8si78][🔗]] 
+*** u/ji99 [[https://www.reddit.com/r/emacs/comments/t3_k4gv0x/comment/t1_ge8si78][🔗]] 
 *Votes* 8
 
 Here's all I need for completions:
@@ -4022,7 +4051,7 @@ Then for "quick grown fox" I can go `qu M-/ M-' M-'` which feels much easier to 
 
 (`M-'` is bound by default to `abbrev-prefix-mark` which I never use, so I didn't mind rebinding it.)
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_frynpvt][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_gqsz8u/comment/t1_frynpvt][🔗]] 
 *Votes* 8
 
 Make a little mode called ~my-minor-mode~ and enable it globally. Use it's keymap for your keybindings, without the prefix.  Then assign that keymap to a prefix. This way, you can disable most of your keybindings easily when needed, you can easily switch your prefix key (e.g. go from ~C-c~ to ~H-x~ or ~<menu>~, etc.), have those keybindings available on multiple prefixes, and you can easily restore a default keybinding via ~(define-key my-minor-mode-map <key> nil)~.  Here is how I define a minor mode for myself:
@@ -4118,7 +4147,7 @@ Then just enable it somewhere. I like to use the following setup for enabling gl
 
 Edit: fix ~gk-toggle-global-modes~.
 
-** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_gmkg4g/comment/t1_fr65b4d][🔗]] 
+*** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_gmkg4g/comment/t1_fr65b4d][🔗]] 
 *Votes* 8
 
 TIL that I can disable ``company`` for some modes, I needed to do it because completion was really slow for the shell and eshell which have vanilla shell completion anyway. Thus 
