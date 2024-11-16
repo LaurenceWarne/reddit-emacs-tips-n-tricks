@@ -20,8 +20,8 @@ CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 AUTH_URL = "https://www.reddit.com/api/v1/access_token"
 BASE_EMACS_SUB_URL = "https://oauth.reddit.com/r/emacs"
 
-MarkdownType = collections.namedtuple("MarkdownType", "header code_start code_end link bold ext single_line_code")
-GithubMD = MarkdownType("##", "```", "```", lambda text, link: f"[{text}]({link})", lambda s: f"**{s}**", "md", "`")
+MarkdownType = collections.namedtuple("MarkdownType", "header code_start code_end link bold ext single_line_code link_rx link_replacement")
+GithubMD = MarkdownType("##", "```", "```", lambda text, link: f"[{text}]({link})", lambda s: f"**{s}**", "md", "`", None, None)
 OrgMD = MarkdownType(
     header = "**",
     code_start = "#+BEGIN_SRC elisp",
@@ -30,6 +30,8 @@ OrgMD = MarkdownType(
     bold = lambda s: f"*{s}*",
     ext = "org",
     single_line_code = "~",
+    link_rx = r"\[([^\]]+)\]\(([^)]+)\)",
+    link_replacement = r"[[\2][\1]]"
 )
 
 def get_headers(token=None):
@@ -121,7 +123,11 @@ def comment_to_md(content, username, post_id, comment_id, upvotes, md_type=Githu
     md = "".join([a + b for a, b in zip(split[:-1], code_it)] + [split[-1]])
     inline_code_converted = re.sub(r"(?<!`)(`)(?!`)", md_type.single_line_code, md)
     heading_escaped = re.sub(r"^(\*+)", r"\\\1", inline_code_converted, flags=re.M)
-    return title + html.unescape(heading_escaped)
+    if md_type.link_rx:
+        links_converted = re.sub(md_type.link_rx, md_type.link_replacement, heading_escaped)
+    else:
+        links_converted = heading_escaped
+    return title + html.unescape(links_converted)
 
 
 def refine_comments(comments, md_type=GithubMD):
@@ -186,6 +192,9 @@ def run(all_posts, md_type=OrgMD, ungrouped=True, grouped_by_year=True):
     LOGGER.info("Of which %d are new", new_comments)
 
     for comment, attribs in comments.items(): existing_comments[comment] = attribs
+
+    for _, attribs in existing_comments.items():
+        attribs["body"] = re.sub(md_type.link_rx, md_type.link_replacement, attribs["body"])
     LOGGER.info("Giving a total of %d comments", len(existing_comments))
     with open(FILE, "w") as f:
         f.write(json.dumps(existing_comments, default=str, indent=4))
