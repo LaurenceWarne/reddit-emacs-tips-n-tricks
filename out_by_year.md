@@ -17,7 +17,7 @@
 
 ### u/SlowMovingTarget [🔗](https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr35bm5)
 
-**Votes** 37
+**Votes** 35
 
 Nothing revolutionary (and veterans will already know this), but a nice little function for splitting out text to a separate file:
 
@@ -51,9 +51,22 @@ Then if you bind `(yas-expand-snippet (yas-lookup-snippet "namespace-surround"))
 ![img](https://i.redd.it/fbsbbr98smtc1.gif)
 
 
-### u/vkazanov [🔗](https://www.reddit.com/r/emacs/comments/t3_1bdm6mc/comment/t1_kuo1f9y)
+### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gktndf/comment/t1_lvojz57)
 
 **Votes** 19
+
+`use-package` has an inbuilt feature that roughly reports the loading times of each package on startup ([`esup`](https://github.com/jschaf/esup) most likely does a better job, if you can get it to run; there are [known issues](https://github.com/alexmurray/emacs-snap/issues/71) on Emacs snap):
+
+1.  put `(setq use-package-compute-statistics t)` at the beginning of your `init.el`
+2.  restart Emacs
+3.  do `M-x use-package-report`
+
+Which package is your biggest time sink and why is it worth it? Mine is [`pdf-tools`](https://github.com/vedang/pdf-tools), but to my knowledge there is simply no better alternative for working with pdfs in emacs.
+
+
+### u/vkazanov [🔗](https://www.reddit.com/r/emacs/comments/t3_1bdm6mc/comment/t1_kuo1f9y)
+
+**Votes** 17
 
 A dump of my Emacs-related principles after 18 years of tinkering:
 
@@ -68,19 +81,6 @@ A dump of my Emacs-related principles after 18 years of tinkering:
 9.  Contribute to the core and favourite packages.
 
 I am a beginner though, things might change.
-
-
-### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gktndf/comment/t1_lvojz57)
-
-**Votes** 19
-
-`use-package` has an inbuilt feature that roughly reports the loading times of each package on startup ([`esup`](https://github.com/jschaf/esup) most likely does a better job, if you can get it to run; there are [known issues](https://github.com/alexmurray/emacs-snap/issues/71) on Emacs snap):
-
-1.  put `(setq use-package-compute-statistics t)` at the beginning of your `init.el`
-2.  restart Emacs
-3.  do `M-x use-package-report`
-
-Which package is your biggest time sink and why is it worth it? Mine is [`pdf-tools`](https://github.com/vedang/pdf-tools), but to my knowledge there is simply no better alternative for working with pdfs in emacs.
 
 
 ### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1fozctm/comment/t1_lpbqo0e)
@@ -134,20 +134,9 @@ I made my agenda collapsible (like org headings) by using outline-minor-mode. To
 ```
 
 
-### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q)
-
-**Votes** 12
-
-Not from me, but I just wanted to share /u/arthurno1 one-line tip to get `which-key` to work with `dired` (see screenshot in linked post):
-
-<https://www.reddit.com/r/emacs/comments/1clvkfe/announcing_casual_dired_an_opinionated_porcelain/l2yi5tn/>
-
-I assume the same trick applies to other mode-maps as well.
-
-
 ### u/remillard [🔗](https://www.reddit.com/r/emacs/comments/t3_1cbsvxd/comment/t1_l11l7he)
 
-**Votes** 12
+**Votes** 13
 
 I thought about making a whole post about this, but it's mostly ancillary appreciation so maybe this is a better place. Anyhow, for anyone working with code projects, I'm finding that project.el is completely supplanting my previously heavy use of Treemacs. I liked Treemacs because it's a very similar feel to the file/project sidebar in Sublime Text and VSCode (and others I'm sure). It was kind of reassuring. And dired is nice for many things, but navigating a lot of directories does get a little tedious compared to just opening nested directories in Treemacs.
 
@@ -160,20 +149,11 @@ Anyway, I haven't popped open the Treemacs sidebar in weeks now, and just felt l
 
 ### u/geza42 [🔗](https://www.reddit.com/r/emacs/comments/t3_1b20xgn/comment/t1_ksifwh1)
 
-**Votes** 12
+**Votes** 13
 
 If you use an LSP server with semantic highlighting, it's worth checking out the value of `font-lock-maximum-decoration`. For example, I use `c++-mode` with `lsp-mode` (with clangd), I decreased `font-lock-maximum-decoration` to `2`, and I didn't notice any highlighting difference (because the lost highlighting by `c++-mode` gets highlighted by `lsp-mode`), while `c++-mode` font-locking become faster (`c++-mode` 's font-locking works well 99.9% of the time, but sometimes it can become slow in some circumstances, these slowdowns seems to be gone).
 
 I use:~(setq font-lock-maximum-decoration '((c-mode . 2) (c++-mode . 2) (t . t)))~
-
-
-### u/Nice<sub>Elk</sub><sub>55</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1gvkske/comment/t1_lyc7kx9)
-
-**Votes** 12
-
-I used to use the which-key package to discover key bindings, but now have completely dropped it ever since learning about `C-h`. Say you want to use rectangle commands and remember they start with `C-x r`, but can't remember anything after. Just enter `C-x r`, followed by `C-h`. It will list all the keys under that prefix. Seems to work with any prefix key like `M-s`, `C-c`, etc.
-
-A related thing is that you can explore the keys for a major/minor mode with `C-h b`, `describe-bindings`. It used to be pretty useless because it would list every single possible keybinding and accent character, but in newer emacs it's way easier to navigate thanks to folding headings.
 
 
 ### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1f8nxb5/comment/t1_llfyzu6)
@@ -229,6 +209,24 @@ A minor annoyance was that an unwanted link to whatever file location I happened
 I've just started to use macros. They are amazing. Here are my tips. C-x -( to start recording. C-x-) to stop recording. F4 to run last recorded macro. Always start at the beginning of a line. Always move by words or lines. If you go forward two chars and the next line needs you to go forward three chars, the macro won't work. Always return to the beginning of the line. For added awesome move down to the next line, positioning yourself to use the macro again.
 
 
+### u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1933co6/comment/t1_khe4dq6)
+
+**Votes** 11
+
+I have long had convenience bindings for `org-emphasize` like `super-i` for *italic*, that match system bindings. But I always wanted these to **be smarter**, i.e. do something useful when there is no text selected. Something like intelligently toggling emphasis depending on whether you were already in the right kind of emphasized text, or just emphasize the word at point if not.
+
+[Check out my solution](https://gist.github.com/jdtsmith/55e6a660dd4c0779a600ac81bf9bfc23) (scroll down to see how it acts). Will miss this behavior in other apps!
+
+
+### u/algor512 [🔗](https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kg4ni5d)
+
+**Votes** 11
+
+Recently I discovered that `C-h C-q` (or `M-x help-quick`) opens a small window showing \\\*Quick Help\\\* buffer with a nice overview of some basic keybindings. It seems that the content of this buffer is configurable via the variable `help-quick-sections`.
+
+I intend to use it as a cheatsheet, reminding me about rare keybindings I always forget; I believe it is easy to make it context-dependent, just by changing the value of `help-quick-sections`.
+
+
 ### u/camel<sub>case</sub><sub>t</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kgce54q)
 
 **Votes** 11
@@ -257,26 +255,55 @@ I created this file and now Emacs keybindings work everywhere:
 You can read more here: <https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html>
 
 
-### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gfhkdg/comment/t1_lui5ao9)
+### u/Nice<sub>Elk</sub><sub>55</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1gvkske/comment/t1_lyc7kx9)
 
-**Votes** 10
+**Votes** 11
 
-I've recently discovered [`org-pdftools`](https://github.com/fuxialexander/org-pdftools) and it offers everything I need for annotating pdfs in emacs. I mainly use it to enhance the inbuilt function `org-store-link`:
+I used to use the which-key package to discover key bindings, but now have completely dropped it ever since learning about `C-h`. Say you want to use rectangle commands and remember they start with `C-x r`, but can't remember anything after. Just enter `C-x r`, followed by `C-h`. It will list all the keys under that prefix. Seems to work with any prefix key like `M-s`, `C-c`, etc.
 
-\\\* mark a passage in the pdf, run `M-x org-store-link`, and it creates a highlight in the pdf (technically an empty annotation) and copies a link to it. \\\* run `C-c C-l` in any org-buffer, and it pastes the link and prompts you for a name.
+A related thing is that you can explore the keys for a major/minor mode with `C-h b`, `describe-bindings`. It used to be pretty useless because it would list every single possible keybinding and accent character, but in newer emacs it's way easier to navigate thanks to folding headings.
 
-The installation is easy, you just need to hook it into `org-mode`:
+
+### u/cidra\_ [🔗](https://www.reddit.com/r/emacs/comments/t3_1h0zjvq/comment/t1_lzbam44)
+
+**Votes** 11
+
+TIL that you can style the GTK components of Emacs by means of simply overriding CSS styling. There's a cool package for that ([custom-css on GitHub](https://github.com/florommel/custom-css.git)) but I also discovered that you can easily tweak it "in real time" and without any additional package by invoking the GTK inspector using the following function:
 
 ```elisp
-(use-package org-pdftools
-  :after (org pdf-tools)
-  :hook (org-mode . org-pdftools-setup-link))
+(x-gtk-debug t)
 
 ```
 
-The only thing to keep in mind is that the highlights in the pdf are not automatically deleted, as you delete the link in the org buffer. You have to do that manually in the pdf (`C-c C-a l` to list all highlights, `D` to delete).
+One thing that I really wanted to achieve was to get rounded corners in the bottom edges of an Emacs frame using GNOME. To do that it is necessary for the client-side decorations to do so. I tried applying the `border-radius` attribute everywhere but it won't work on the main pane due to it not being a standard GTK component. What I did was putting the toolbar in the bottom position and then apply a `border-radius` styling on it. I also applied the `border-radius` styling on the main window and on the `decoration` component (which gives shadowing to the frame)
 
-It has less features than [`org-noter`](https://github.com/org-noter/org-noter), but it is more flexible, which is why it suits my use-case better. Unfortunately, it has `org-noter` as a dependency, so you will end up loading it either way.
+![img](https://preview.redd.it/fnf9sp6yoi3e1.png?width=1725&format=png&auto=webp&s=dca1b33886b72e32d445bb02830814357738c2f5)
+
+```elisp
+decoration {
+    border-radius:12px;
+}
+    
+window{
+    border-radius: 12px;
+}
+    
+menubar{
+/* 
+   For some reason the menu bar 
+   gets a border radius as well. 
+   Let's cover it 
+\*/
+    background-color: white;
+}
+    
+toolbar {
+    border-radius: 12px;
+}
+
+```
+
+Now I wonder if it's possible to remove the header bar but without removing the shadow behind the frame and behind the context menus. 🤔
 
 
 ### u/fuzzbomb23 [🔗](https://www.reddit.com/r/emacs/comments/t3_1f34tdh/comment/t1_lkrhqf7)
@@ -325,6 +352,17 @@ I recently discovered the [Dimmer](https://github.com/gonewest818/dimmer.el) pac
 I love things that reduce cognitive load like this. You don't realize how much time you spent looking for little clues like a solid cursor, until you don't have to anymore.
 
 
+### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q)
+
+**Votes** 10
+
+Not from me, but I just wanted to share /u/arthurno1 one-line tip to get `which-key` to work with `dired` (see screenshot in linked post):
+
+<https://www.reddit.com/r/emacs/comments/1clvkfe/announcing_casual_dired_an_opinionated_porcelain/l2yi5tn/>
+
+I assume the same trick applies to other mode-maps as well.
+
+
 ### u/saltwaterflyguy [🔗](https://www.reddit.com/r/emacs/comments/t3_1bun8ky/comment/t1_kxur0j8)
 
 **Votes** 10
@@ -332,6 +370,19 @@ I love things that reduce cognitive load like this. You don't realize how much t
 describe-\\\*. It is one of the most useful feature sets to access documentation for just about everything there is in Emacs. Not sure what key bindings are set for a given mode? M-x describe-mode or C-h m. Need to know what font is begin used for a certain piece of text? M-x describe-char. Need to know how a given command works? M-x describe-command or C-h x. Need to know the value of a given variable? M-x describe-variable or C-h v.
 
 If you are new to Emacs you will get so many answers to your questions by getting to know all of the describe functions.
+
+
+### u/bopboa [🔗](https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kphrvz3)
+
+**Votes** 10
+
+This is how to have a beacon without installing any packages.
+
+```elisp
+(defun pulse-line (_)
+  (pulse-momentary-highlight-one-line (point)))
+(setq window-selection-change-functions '(pulse-line))
+```
 
 
 ### u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kpct4cp)
@@ -359,36 +410,11 @@ Just added this to the `:init` section of my embark configuration:
 This allows super-convenient marking of entries for later `embark-all` using control-tab, instead of having to go first through the `embark` menu. (By default, this key binding is mapped to `file-cache-minibuffer-complete`, which I never use.)
 
 
-### u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1933co6/comment/t1_khe4dq6)
+### u/fv\_\_ [🔗](https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr5ceqe)
 
-**Votes** 10
+**Votes** 9
 
-I have long had convenience bindings for `org-emphasize` like `super-i` for *italic*, that match system bindings. But I always wanted these to **be smarter**, i.e. do something useful when there is no text selected. Something like intelligently toggling emphasis depending on whether you were already in the right kind of emphasized text, or just emphasize the word at point if not.
-
-[Check out my solution](https://gist.github.com/jdtsmith/55e6a660dd4c0779a600ac81bf9bfc23) (scroll down to see how it acts). Will miss this behavior in other apps!
-
-
-### u/algor512 [🔗](https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kg4ni5d)
-
-**Votes** 10
-
-Recently I discovered that `C-h C-q` (or `M-x help-quick`) opens a small window showing \\\*Quick Help\\\* buffer with a nice overview of some basic keybindings. It seems that the content of this buffer is configurable via the variable `help-quick-sections`.
-
-I intend to use it as a cheatsheet, reminding me about rare keybindings I always forget; I believe it is easy to make it context-dependent, just by changing the value of `help-quick-sections`.
-
-
-### u/konrad1977 [🔗](https://www.reddit.com/r/emacs/comments/t3_1gq86x9/comment/t1_lx7y88i)
-
-**Votes** 10
-
-I totally forgot about `use-package-compute-statistics t` and (M-x) `use-package-report`. This helped me optimizing my startup time from around 3 seconds to less than a second.
-
-
-### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gvkske/comment/t1_lyptzyu)
-
-**Votes** 10
-
-For people who need to do a quick calculations from time to time but struggle using `M-x calc`, try `M-x quick-calc`. You can enter expressions such as `2*3.4+5`, and the result will be shown and put into your clipboard.
+C-x in a transient popup shows menu to save selected options e.g., it can be used to select ~ &#x2013;force-with-lease~ by default while pushing in magit (P p)
 
 
 ### u/ilemming [🔗](https://www.reddit.com/r/emacs/comments/t3_1fjnqgy/comment/t1_ls4kmt1)
@@ -441,28 +467,6 @@ return data;
 \#+END<sub>SRC</sub>
 
 
-### u/meedstrom [🔗](https://www.reddit.com/r/emacs/comments/t3_1fe504e/comment/t1_lmzbyro)
-
-**Votes** 9
-
-Elisp list indentation has been fixed since over two years ago (<https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21922>). A lot of people probably still use an initfile hack, to fix the following problem, that lists would indent like this:
-
-```elisp
-'(:foo bar
-       :baz zab
-       :rab oof)
-
-```
-
-But now you can just add a space after the opening paren `'(`. This is the new convention.
-
-```elisp
-'( :foo bar
-   :baz zab
-   :rab oof)
-```
-
-
 ### u/rego<sub>b</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfskmro)
 
 **Votes** 9
@@ -470,31 +474,11 @@ But now you can just add a space after the opening paren `'(`. This is the new c
 `C-x C-e` to edit current command line in bash which opens the line in emacs (maybe not emacs related but I found this recently useful when working in the terminal)
 
 
-### u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1de1hkf/comment/t1_l8d30q3)
+### u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfsffnb)
 
 **Votes** 9
 
-A few people have asked about my code to change cursor color when repeat-mode is active (i.e. while you are repeating a command). I rely on it. See [this gist](https://gist.github.com/jdtsmith/a169362879388bc1bdf2bbb977782d4f) for the details.
-
-
-### u/pt-guzzardo [🔗](https://www.reddit.com/r/emacs/comments/t3_1chgsxe/comment/t1_l2cv5cx)
-
-**Votes** 9
-
-```elisp
-(defun copy-source-for-reddit ()
-  (interactive)
-  (let ((contents (buffer-substring (point) (mark))))
-    (with-temp-buffer
-      (insert contents)
-      (mark-whole-buffer)
-      (indent-rigidly (point) (mark) 4 t)
-      (mark-whole-buffer)
-      (kill-ring-save 0 0 t))))
-
-```
-
-A handy little snippet for exporting code to reddit markdown. Takes the region, prepends four spaces to each line, and then copies it to the kill ring to be pasted in your browser, without modifying the original buffer.
+[deleted]
 
 
 ### u/demosthenex [🔗](https://www.reddit.com/r/emacs/comments/t3_1b7uj43/comment/t1_ktogga6)
@@ -502,19 +486,6 @@ A handy little snippet for exporting code to reddit markdown. Takes the region, 
 **Votes** 9
 
 M-x ielm Use the repl while learning elisp coding. I had no idea!
-
-
-### u/bopboa [🔗](https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kphrvz3)
-
-**Votes** 9
-
-This is how to have a beacon without installing any packages.
-
-```elisp
-(defun pulse-line (_)
-  (pulse-momentary-highlight-one-line (point)))
-(setq window-selection-change-functions '(pulse-line))
-```
 
 
 ### u/lesliesrussell [🔗](https://www.reddit.com/r/emacs/comments/t3_198rnkj/comment/t1_kibmgv2)
@@ -543,60 +514,55 @@ I didn't want to drop code in the thread so i put it in a gist
 A blog post regarding my own Emacs config aiming to get the same user experience on both TUI and GUI. [https://www.rahuljuliato.com/posts/lemacs](https://www.rahuljuliato.com/posts/lemacs)
 
 
-### u/cidra\_ [🔗](https://www.reddit.com/r/emacs/comments/t3_1h0zjvq/comment/t1_lzbam44)
+### u/konrad1977 [🔗](https://www.reddit.com/r/emacs/comments/t3_1gq86x9/comment/t1_lx7y88i)
 
 **Votes** 9
 
-TIL that you can style the GTK components of Emacs by means of simply overriding CSS styling. There's a cool package for that ([custom-css on GitHub](https://github.com/florommel/custom-css.git)) but I also discovered that you can easily tweak it "in real time" and without any additional package by invoking the GTK inspector using the following function:
-
-```elisp
-(x-gtk-debug t)
-
-```
-
-One thing that I really wanted to achieve was to get rounded corners in the bottom edges of an Emacs frame using GNOME. To do that it is necessary for the client-side decorations to do so. I tried applying the `border-radius` attribute everywhere but it won't work on the main pane due to it not being a standard GTK component. What I did was putting the toolbar in the bottom position and then apply a `border-radius` styling on it. I also applied the `border-radius` styling on the main window and on the `decoration` component (which gives shadowing to the frame)
-
-![img](https://preview.redd.it/fnf9sp6yoi3e1.png?width=1725&format=png&auto=webp&s=dca1b33886b72e32d445bb02830814357738c2f5)
-
-```elisp
-decoration {
-    border-radius:12px;
-}
-    
-window{
-    border-radius: 12px;
-}
-    
-menubar{
-/* 
-   For some reason the menu bar 
-   gets a border radius as well. 
-   Let's cover it 
-\*/
-    background-color: white;
-}
-    
-toolbar {
-    border-radius: 12px;
-}
-
-```
-
-Now I wonder if it's possible to remove the header bar but without removing the shadow behind the frame and behind the context menus. 🤔
+I totally forgot about `use-package-compute-statistics t` and (M-x) `use-package-report`. This helped me optimizing my startup time from around 3 seconds to less than a second.
 
 
-### u/fv\_\_ [🔗](https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr5ceqe)
+### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gfhkdg/comment/t1_lui5ao9)
 
 **Votes** 8
 
-C-x in a transient popup shows menu to save selected options e.g., it can be used to select ~ &#x2013;force-with-lease~ by default while pushing in magit (P p)
+I've recently discovered [`org-pdftools`](https://github.com/fuxialexander/org-pdftools) and it offers everything I need for annotating pdfs in emacs. I mainly use it to enhance the inbuilt function `org-store-link`:
+
+\\\* mark a passage in the pdf, run `M-x org-store-link`, and it creates a highlight in the pdf (technically an empty annotation) and copies a link to it. \\\* run `C-c C-l` in any org-buffer, and it pastes the link and prompts you for a name.
+
+The installation is easy, you just need to hook it into `org-mode`:
+
+```elisp
+(use-package org-pdftools
+  :after (org pdf-tools)
+  :hook (org-mode . org-pdftools-setup-link))
+
+```
+
+The only thing to keep in mind is that the highlights in the pdf are not automatically deleted, as you delete the link in the org buffer. You have to do that manually in the pdf (`C-c C-a l` to list all highlights, `D` to delete).
+
+It has less features than [`org-noter`](https://github.com/org-noter/org-noter), but it is more flexible, which is why it suits my use-case better. Unfortunately, it has `org-noter` as a dependency, so you will end up loading it either way.
 
 
-### u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfsffnb)
+### u/meedstrom [🔗](https://www.reddit.com/r/emacs/comments/t3_1fe504e/comment/t1_lmzbyro)
 
 **Votes** 8
 
-[deleted]
+Elisp list indentation has been fixed since over two years ago (<https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21922>). A lot of people probably still use an initfile hack, to fix the following problem, that lists would indent like this:
+
+```elisp
+'(:foo bar
+       :baz zab
+       :rab oof)
+
+```
+
+But now you can just add a space after the opening paren `'(`. This is the new convention.
+
+```elisp
+'( :foo bar
+   :baz zab
+   :rab oof)
+```
 
 
 ### u/Motor<sub>Mouth</sub>\_ [🔗](https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lg6q2rq)
@@ -606,11 +572,38 @@ C-x in a transient popup shows menu to save selected options e.g., it can be use
 For users of [rg.el](https://github.com/dajva/rg.el) (emacs interface to ripgrep) there is [rga](https://github.com/phiresky/ripgrep-all) (ripgrep-all) a wrapper around ripgrep that "enables it to search in pdf, docx, sqlite, jpg, movie subtitles (mkv, mp4), etc." You can set the rg executable in the configuration of rg.el like so: `(setq rg-executable (executable-find "rga")` to enable search in multiple document types.
 
 
+### u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1de1hkf/comment/t1_l8d30q3)
+
+**Votes** 8
+
+A few people have asked about my code to change cursor color when repeat-mode is active (i.e. while you are repeating a command). I rely on it. See [this gist](https://gist.github.com/jdtsmith/a169362879388bc1bdf2bbb977782d4f) for the details.
+
+
 ### u/AdjointFunctor [🔗](https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l359pqx)
 
 **Votes** 8
 
 I (re) discovered rectangle mode recently. Very useful when deleting lots of indents. C-x spc then make the region. <https://emacsredux.com/blog/2014/01/01/a-peek-at-emacs-24-dot-4-rectangular-selection/>
+
+
+### u/pt-guzzardo [🔗](https://www.reddit.com/r/emacs/comments/t3_1chgsxe/comment/t1_l2cv5cx)
+
+**Votes** 8
+
+```elisp
+(defun copy-source-for-reddit ()
+  (interactive)
+  (let ((contents (buffer-substring (point) (mark))))
+    (with-temp-buffer
+      (insert contents)
+      (mark-whole-buffer)
+      (indent-rigidly (point) (mark) 4 t)
+      (mark-whole-buffer)
+      (kill-ring-save 0 0 t))))
+
+```
+
+A handy little snippet for exporting code to reddit markdown. Takes the region, prepends four spaces to each line, and then copies it to the kill ring to be pasted in your browser, without modifying the original buffer.
 
 
 ### u/Icy<sub>Thought</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1aw6xkc/comment/t1_kriu3ye)
@@ -660,6 +653,13 @@ It works like this: `C-c 0` creates a bookmark and `C-c <1-9>` jumps into a book
 Just found out about the variable `confirm-kill-emacs`. Never again will I quit emacs by accident, because auctex bound a frequently used function to `C-c C-v` (one key away from `C-x C-c`).
 
 
+### u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gvkske/comment/t1_lyptzyu)
+
+**Votes** 8
+
+For people who need to do a quick calculations from time to time but struggle using `M-x calc`, try `M-x quick-calc`. You can enter expressions such as `2*3.4+5`, and the result will be shown and put into your clipboard.
+
+
 <a id="2023"></a>
 
 ## 2023
@@ -690,13 +690,6 @@ I discovered \\~org-copy-visible\\~ the other day, when I wanted to send somebod
 That function (which is bound to C-c C-x v by default) let you copy just the outline for the selected region: very useful!
 
 
-### u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/t3_12rlq4a/comment/t1_jgwlxuw)
-
-**Votes** 18
-
-Often when literate programming I want to split up a code block, maybe copy-pasted with multiple functions in it, into separate blocks so I can put some text in between them. The command, with cursor within a `BEGIN_SRC` block, is `org-babel-demarcate-block` `(C-c C-v d)`.
-
-
 ### u/alvarogonzalezs [🔗](https://www.reddit.com/r/emacs/comments/t3_12jexep/comment/t1_jg34ody)
 
 **Votes** 18
@@ -706,11 +699,49 @@ I'm a big user of `ffap`. I use this function with `M-x` each time I want to ope
 But this week I discovered `ffap-bindings`. This function replaces some key bindings to use `ffap` when it makes sense. For example, it replaces `find-file` with `find-file-at-point`, so the usual keybindings are enriched at no cost.
 
 
-### u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/t3_1758wua/comment/t1_k4g09iw)
+### u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/t3_12rlq4a/comment/t1_jgwlxuw)
 
 **Votes** 17
 
+Often when literate programming I want to split up a code block, maybe copy-pasted with multiple functions in it, into separate blocks so I can put some text in between them. The command, with cursor within a `BEGIN_SRC` block, is `org-babel-demarcate-block` `(C-c C-v d)`.
+
+
+### u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/t3_1758wua/comment/t1_k4g09iw)
+
+**Votes** 16
+
 `(delete-blank-lines)` `(C-x C-o)` is massively useful; I use it every day for text cleanup. Press it once and it deletes all but one blank line. Press it twice and it deletes that one, too.
+
+
+### u/leothrix [🔗](https://www.reddit.com/r/emacs/comments/t3_13jvhp7/comment/t1_jl5zu6z)
+
+**Votes** 15
+
+For `use-package` users (which I assume is many of us), did you know that profiling is easy to do? I'm not talking about `esup`, but a built-in capability that makes it very straightforward to find places to optimize your `init.el` for significantly faster start times.
+
+Enable `use-package-compute-statistics` right after you load `use-package`:
+
+```elisp
+(setq use-package-compute-statistics t)
+
+```
+
+Restart emacs, and then invoke `use-package-report`. You'll get a table of the load times for each package that `use-package` manages. I discovered this and found an immediate way to cut my startup time in half by fixing a few packages that weren't deferred properly by adding the right `:hook` keyword.
+
+
+### u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/t3_11rq2gl/comment/t1_jc9t4tc)
+
+**Votes** 15
+
+Plain old `query-replace` has many cool features, first of all it respects the active region (if it's active it will only query for replacements in the active region). There are many useful keys in addition to plain `y~/~n`:
+
+`!`: replaces all remaning matches
+
+`u`: undo last replacement
+
+`E`: changes replacement string on the fly
+
+And many more you can see using `?`.
 
 
 ### u/alvarogonzalezs [🔗](https://www.reddit.com/r/emacs/comments/t3_16tes2a/comment/t1_k2gb81l)
@@ -729,37 +760,6 @@ From `consult-grep` documentation, command line options can be passed to grep, s
 ```
 
 I have just discovered this, and it made my day.
-
-
-### u/leothrix [🔗](https://www.reddit.com/r/emacs/comments/t3_13jvhp7/comment/t1_jl5zu6z)
-
-**Votes** 14
-
-For `use-package` users (which I assume is many of us), did you know that profiling is easy to do? I'm not talking about `esup`, but a built-in capability that makes it very straightforward to find places to optimize your `init.el` for significantly faster start times.
-
-Enable `use-package-compute-statistics` right after you load `use-package`:
-
-```elisp
-(setq use-package-compute-statistics t)
-
-```
-
-Restart emacs, and then invoke `use-package-report`. You'll get a table of the load times for each package that `use-package` manages. I discovered this and found an immediate way to cut my startup time in half by fixing a few packages that weren't deferred properly by adding the right `:hook` keyword.
-
-
-### u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/t3_11rq2gl/comment/t1_jc9t4tc)
-
-**Votes** 13
-
-Plain old `query-replace` has many cool features, first of all it respects the active region (if it's active it will only query for replacements in the active region). There are many useful keys in addition to plain `y~/~n`:
-
-`!`: replaces all remaning matches
-
-`u`: undo last replacement
-
-`E`: changes replacement string on the fly
-
-And many more you can see using `?`.
 
 
 ### u/geza42 [🔗](https://www.reddit.com/r/emacs/comments/t3_11lqkbo/comment/t1_jbe06qv)
@@ -836,7 +836,7 @@ And now when I visit one of those files, the alignment is always correct.
 
 ### u/leothrix [🔗](https://www.reddit.com/r/emacs/comments/t3_17qh1hn/comment/t1_k8dlt4c)
 
-**Votes** 11
+**Votes** 10
 
 Need to remove an element from a list when you're tinkering with elisp?
 
@@ -855,36 +855,6 @@ And you've got an interactive interface (using `completing-read`) for removing a
 **Votes** 10
 
 I was converting some old `.odt` notes files to `.org` today, and one of the things I wanted to do was to add two spaces after end of sentence periods for proper sentence navigation. So there I was figuring out a general enough regexp for the nth time and, of course, I regretted not having taken note of this the last time. So I decided to do some searching for a good regexp and write it down this time, since this was obviously shared by someone somewhere. And it turns out Emacs has us covered, and I never knew: `repunctuate-sentences`. I have no idea if this is new or has always been there. It is new to me. It uses `query-replace-regexp`, so it's the same experience. And also can be configured for exclusions with `repunctuate-sentences-filter`. Neat!
-
-
-### u/BunnyLushington [🔗](https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhrzybp)
-
-**Votes** 10
-
-I found myself debugging [JWTs](https://jwt.io) earlier this week and whomped up a little function to decode them from a region into a help buffer.
-
-```elisp
-(defun ii/decode-jwt (start end &optional jwt)
-  "Decode JWT in region and print to help buffer."
-  (interactive "r")
-  (let* ((tok (if jwt jwt
-            (buffer-substring start end)))
-     (data (s-split "\\." tok))
-     (header (car data))
-     (claims (cadr data)))
-(with-temp-buffer
-  (insert (format "%s\n\n%s"
-                  (base64-decode-string header t)
-                  (base64-decode-string claims t)))
-  (json-pretty-print-buffer)
-  (with-output-to-temp-buffer "*JWT*"
-    (princ (buffer-string)))))
-  t)
-```
-
-I'd forgotten about `with-output-to-temp-buffer` which is pretty handy. The `t` at the end is there just to suppress an overly large echo area message.
-
-(This should be obvious but note that the JWT is not validated or verified. This is intended for debugging only and the JWT should not be trusted.)
 
 
 ### u/slinchisl [🔗](https://www.reddit.com/r/emacs/comments/t3_11rq2gl/comment/t1_jca66k0)
@@ -969,6 +939,17 @@ Do you want a key binding to wrap the selection in some kind of delimiter? Here'
 This setups up `C-S-w` to be a prefix map, `insert-pair-map`. The only key binding in `insert-pair-map` is for `[t]`, which means it is the default key binding and any key after the prefix will run the same command: `insert-pair`. Now, `insert-pair` looks at which key was used to invoke it and if it is an opening delimiter it inserts both it and the corresponding closing delimiter (and if the region is active it insert the opening delimiter at the start and the closing delimiter at the end, wrapping the region).
 
 
+### u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_18mplfa/comment/t1_ke5xr5j)
+
+**Votes** 9
+
+This makes stack-outputs of debug-buffers much more readable:
+
+```elisp
+(setopt debugger-stack-frame-as-list t)
+```
+
+
 ### u/Netherus [🔗](https://www.reddit.com/r/emacs/comments/t3_17qh1hn/comment/t1_k8c4mz7)
 
 **Votes** 9
@@ -1027,6 +1008,23 @@ E.g. capitalize or decapitalize the next word, increment number at point."
 I bind it to `M-c`.
 
 
+### u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/t3_12cd23k/comment/t1_jf3ohpv)
+
+**Votes** 9
+
+I work with multiple Git repositories in my day job, but one in particular occupies 95% of my time. I've often wished I could set up Projectile so that if I run one of its commands while not in any repo, it will behave as if I'd changed to that main repo first. I couldn't find a built-in way to do that, but got the effect I wanted with some advice:
+
+```elisp
+(defun default-to-main-project (dir)
+  (or dir *main-project-dir*))
+
+(advice-add 'projectile-ensure-project :override #'default-to-main-project)
+
+```
+
+I lose some of the functionality of `projectile-ensure-project`, but I never used it anyway.
+
+
 ### u/pathemata [🔗](https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8mpo5y)
 
 **Votes** 9
@@ -1036,15 +1034,11 @@ Does anyone have an `aspell` setup with multiple dictionaries?
 When I try `--extra-dict` option I get an error: `Expected language "en" but got "de"`.
 
 
-### u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_18mplfa/comment/t1_ke5xr5j)
+### u/hunajakettu [🔗](https://www.reddit.com/r/emacs/comments/t3_16tes2a/comment/t1_k2f683f)
 
-**Votes** 8
+**Votes** 9
 
-This makes stack-outputs of debug-buffers much more readable:
-
-```elisp
-(setopt debugger-stack-frame-as-list t)
-```
+It is the only thing that keeps me sane in a Windows shop.
 
 
 ### u/vjgoh [🔗](https://www.reddit.com/r/emacs/comments/t3_18149ql/comment/t1_kahspwz)
@@ -1067,21 +1061,34 @@ Long story short, here's how you force `project` to find the actual project root
 I used to always get confused why people say that the default Emacs key bindings hurt their pinky's, but then I realized that I don't touch type and thus I don't have to stretch my fingers anywhere for the default key bindings. Ironically my ineptitude at typing has saved me from repetitive stress injuries.
 
 
-### u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/t3_12cd23k/comment/t1_jf3ohpv)
+### u/BunnyLushington [🔗](https://www.reddit.com/r/emacs/comments/t3_12zaqju/comment/t1_jhrzybp)
 
 **Votes** 8
 
-I work with multiple Git repositories in my day job, but one in particular occupies 95% of my time. I've often wished I could set up Projectile so that if I run one of its commands while not in any repo, it will behave as if I'd changed to that main repo first. I couldn't find a built-in way to do that, but got the effect I wanted with some advice:
+I found myself debugging [JWTs](https://jwt.io) earlier this week and whomped up a little function to decode them from a region into a help buffer.
 
 ```elisp
-(defun default-to-main-project (dir)
-  (or dir *main-project-dir*))
-
-(advice-add 'projectile-ensure-project :override #'default-to-main-project)
-
+(defun ii/decode-jwt (start end &optional jwt)
+  "Decode JWT in region and print to help buffer."
+  (interactive "r")
+  (let* ((tok (if jwt jwt
+            (buffer-substring start end)))
+     (data (s-split "\\." tok))
+     (header (car data))
+     (claims (cadr data)))
+(with-temp-buffer
+  (insert (format "%s\n\n%s"
+                  (base64-decode-string header t)
+                  (base64-decode-string claims t)))
+  (json-pretty-print-buffer)
+  (with-output-to-temp-buffer "*JWT*"
+    (princ (buffer-string)))))
+  t)
 ```
 
-I lose some of the functionality of `projectile-ensure-project`, but I never used it anyway.
+I'd forgotten about `with-output-to-temp-buffer` which is pretty handy. The `t` at the end is there just to suppress an overly large echo area message.
+
+(This should be obvious but note that the JWT is not validated or verified. This is intended for debugging only and the JWT should not be trusted.)
 
 
 ### u/w0ntfix [🔗](https://www.reddit.com/r/emacs/comments/t3_11ey9ft/comment/t1_jajfxc9)
@@ -1158,13 +1165,6 @@ Remark: I know that `which-key` exists, but I'm already above that level of know
 Maybe not new for anyone but I only recently found out that `C-c <any letter>` is conventionally reserved for user bindings. I was constantly afraid to define my own bindings bc of a potential clash so tended to use M-x instead. Now I finally bind my most used commands.
 
 With the above in mind, Im also afraid to forget my bindings. I use which-key package so I wrote a function "define-my-keybinding letter fn" which binds the letter to `C-c <letter>` and to "my-bindings" keyset (prefix) which itself is bound to `C-c m`. Basically, if i forget what bindings I use, I just press C-c m and which-key shows me all of MY bindings (yes, it shows them with C-c too but it's mixed with mode bindings so not helpful)
-
-
-### u/hunajakettu [🔗](https://www.reddit.com/r/emacs/comments/t3_16tes2a/comment/t1_k2f683f)
-
-**Votes** 8
-
-It is the only thing that keeps me sane in a Windows shop.
 
 
 ### u/habamax [🔗](https://www.reddit.com/r/emacs/comments/t3_13qfepf/comment/t1_jli02ld)
