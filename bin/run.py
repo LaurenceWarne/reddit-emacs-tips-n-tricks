@@ -58,11 +58,17 @@ def search_emacs_subreddit(headers, count, after=None):
     return posts, data["after"]
 
 
+def is_weekly_tip_n_tricks_post(title):
+    # Was first called 'Weekly tips/trick/etc/ thread' then 'Weekly Tips, Tricks, &c. Thread' and then 'Fortnightly Tips, Tricks, and Questions'
+    normalised = title.strip().lower()
+    return normalised.startswith("weekly tips") or normalised.startswith("fortnightly tips")
+
+
 def get_comments(token, read_all):
     headers = get_headers(token)
     comments_from_posts = lambda posts: [
         c for post in posts for c in post_comments(post["name"].removeprefix("t3_"), headers=headers)
-        if post["title"].strip().lower().startswith("weekly tips")  # Early were called 'Weekly tips/trick/etc/ thread'
+        if is_weekly_tip_n_tricks_post(post["title"])
     ]
     posts, after = search_emacs_subreddit(headers, 0)
     total_posts, calls = len(posts), 1
