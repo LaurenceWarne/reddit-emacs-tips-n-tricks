@@ -18,7 +18,7 @@ jobs:
       - name: Set up Emacs
         uses: purcell/setup-emacs@master
         with:
-          version: 29.4
+          version: 30.2
 
       - uses: actions/setup-python@v6
         with:
