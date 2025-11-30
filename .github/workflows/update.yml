@@ -5,6 +5,9 @@ on:
     - cron: "0 0 * * 0"
   workflow_dispatch:  
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -17,14 +20,14 @@ jobs:
         with:
           version: 29.4
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.12'
+          python-version: '3.13'
   
       - name: Install requests module
         run: pip3 install requests
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
   
       - name: Find new posts
         run: python3 bin/run.py --output-ungrouped --output-grouped-by-year
@@ -43,9 +46,6 @@ jobs:
           git config --local user.name "emacs-reddit-tips-n-tricks-bot"
           git add *.org *.md comments.json
           git commit -m "Weekly update from $(date +%Y-%m-%d)"
-          
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+  
+      - name: Push commit
+        run: git push
