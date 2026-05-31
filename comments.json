@@ -1,14 +1,14 @@
 {
     "t1_lui5ao9": {
         "author": "ImJustPassinBy",
-        "upvotes": 10,
-        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1gfhkdg/comment/t1_lui5ao9][\ud83d\udd17]] \n*Votes* 10\n\nI've recently discovered [[https://github.com/fuxialexander/org-pdftools][~org-pdftools~]] and it offers everything I need for annotating pdfs in emacs.  I mainly use it to enhance the inbuilt function ~org-store-link~:\n\n\\* mark a passage in the pdf, run ~M-x org-store-link~, and it creates a highlight in the pdf (technically an empty annotation) and copies a link to it.\n\\* run ~C-c C-l~ in any org-buffer, and it pastes the link and prompts you for a name.\n\nThe installation is easy, you just need to hook it into ~org-mode~:\n\n#+BEGIN_SRC elisp\n  (use-package org-pdftools\n    :after (org pdf-tools)\n    :hook (org-mode . org-pdftools-setup-link))\n\n#+END_SRC\nThe only thing to keep in mind is that the highlights in the pdf are not automatically deleted, as you delete the link in the org buffer.  You have to do that manually in the pdf (~C-c C-a l~ to list all highlights, ~D~ to delete).\n\nIt has less features than [[https://github.com/org-noter/org-noter][~org-noter~]], but it is more flexible, which is why it suits my use-case better.  Unfortunately, it has ~org-noter~ as a dependency, so you will end up loading it either way.",
+        "upvotes": 8,
+        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1gfhkdg/comment/t1_lui5ao9][\ud83d\udd17]] \n*Votes* 8\n\nI've recently discovered [[https://github.com/fuxialexander/org-pdftools][~org-pdftools~]] and it offers everything I need for annotating pdfs in emacs.  I mainly use it to enhance the inbuilt function ~org-store-link~:\n\n\\* mark a passage in the pdf, run ~M-x org-store-link~, and it creates a highlight in the pdf (technically an empty annotation) and copies a link to it.\n\\* run ~C-c C-l~ in any org-buffer, and it pastes the link and prompts you for a name.\n\nThe installation is easy, you just need to hook it into ~org-mode~:\n\n#+BEGIN_SRC elisp\n  (use-package org-pdftools\n    :after (org pdf-tools)\n    :hook (org-mode . org-pdftools-setup-link))\n\n#+END_SRC\nThe only thing to keep in mind is that the highlights in the pdf are not automatically deleted, as you delete the link in the org buffer.  You have to do that manually in the pdf (~C-c C-a l~ to list all highlights, ~D~ to delete).\n\nIt has less features than [[https://github.com/org-noter/org-noter][~org-noter~]], but it is more flexible, which is why it suits my use-case better.  Unfortunately, it has ~org-noter~ as a dependency, so you will end up loading it either way.",
         "created_datetime": "2024-10-30 11:21:28+00:00"
     },
     "t1_lr35bm5": {
         "author": "SlowMovingTarget",
-        "upvotes": 37,
-        "body": "** u/SlowMovingTarget [[https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr35bm5][\ud83d\udd17]] \n*Votes* 37\n\nNothing revolutionary (and veterans will already know this), but a nice little function for splitting out text to a separate file:\n\n1. Select the text (visual mode with Evil, or however you do it)\n2. ~M-x write-region~ and give it a file name to write out your selection to the named file. Nice and quick.\n\nIt's in the manual, and a basic little feature, but really handy. https://www.gnu.org/software/emacs/manual/html_node/emacs/Misc-File-Ops.html\n\nI guess the other tip is to read the manual. :)",
+        "upvotes": 35,
+        "body": "** u/SlowMovingTarget [[https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr35bm5][\ud83d\udd17]] \n*Votes* 35\n\nNothing revolutionary (and veterans will already know this), but a nice little function for splitting out text to a separate file:\n\n1. Select the text (visual mode with Evil, or however you do it)\n2. ~M-x write-region~ and give it a file name to write out your selection to the named file. Nice and quick.\n\nIt's in the manual, and a basic little feature, but really handy. https://www.gnu.org/software/emacs/manual/html_node/emacs/Misc-File-Ops.html\n\nI guess the other tip is to read the manual. :)",
         "created_datetime": "2024-10-09 13:20:00+00:00"
     },
     "t1_lr5ceqe": {
@@ -55,14 +55,14 @@
     },
     "t1_lfskmro": {
         "author": "rego_b",
-        "upvotes": 9,
-        "body": "** u/rego_b [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfskmro][\ud83d\udd17]] \n*Votes* 9\n\n~C-x C-e~ to edit current command line in bash which opens the line in emacs (maybe not emacs related but I found this recently useful when working in the terminal)",
+        "upvotes": 10,
+        "body": "** u/rego_b [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfskmro][\ud83d\udd17]] \n*Votes* 10\n\n~C-x C-e~ to edit current command line in bash which opens the line in emacs (maybe not emacs related but I found this recently useful when working in the terminal)",
         "created_datetime": "2024-07-31 10:46:29+00:00"
     },
     "t1_lfsffnb": {
         "author": "[deleted]",
-        "upvotes": 9,
-        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfsffnb][\ud83d\udd17]] \n*Votes* 9\n\n[deleted]",
+        "upvotes": 8,
+        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfsffnb][\ud83d\udd17]] \n*Votes* 8\n\n[deleted]",
         "created_datetime": "2024-07-31 09:52:36+00:00"
     },
     "t1_lg6q2rq": {
@@ -73,20 +73,20 @@
     },
     "t1_leom8fv": {
         "author": "[deleted]",
-        "upvotes": 10,
-        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1eaw1ia/comment/t1_leom8fv][\ud83d\udd17]] \n*Votes* 10\n\n[removed]",
+        "upvotes": 9,
+        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1eaw1ia/comment/t1_leom8fv][\ud83d\udd17]] \n*Votes* 9\n\n[removed]",
         "created_datetime": "2024-07-24 09:42:47+00:00"
     },
     "t1_ldsl3vy": {
         "author": "[deleted]",
-        "upvotes": 10,
-        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1e5ctk2/comment/t1_ldsl3vy][\ud83d\udd17]] \n*Votes* 10\n\nI recently discovered the [[https://github.com/gonewest818/dimmer.el][Dimmer]] package and can't believe I didn't try it until now.  It subtly dims  windows that aren't focused, just enough to draw your eyes to the window that *is* focused.  And of course, you can customize how much it dims and exclude certain buffers.\n\nI love things that reduce cognitive load like this.  You don't realize how much time you spent looking for little clues like a solid cursor, until you don't have to anymore.",
+        "upvotes": 9,
+        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1e5ctk2/comment/t1_ldsl3vy][\ud83d\udd17]] \n*Votes* 9\n\nI recently discovered the [[https://github.com/gonewest818/dimmer.el][Dimmer]] package and can't believe I didn't try it until now.  It subtly dims  windows that aren't focused, just enough to draw your eyes to the window that *is* focused.  And of course, you can customize how much it dims and exclude certain buffers.\n\nI love things that reduce cognitive load like this.  You don't realize how much time you spent looking for little clues like a solid cursor, until you don't have to anymore.",
         "created_datetime": "2024-07-18 16:34:00+00:00"
     },
     "t1_l9cmdp9": {
         "author": "sauntcartas",
-        "upvotes": 12,
-        "body": "** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_1djdync/comment/t1_l9cmdp9][\ud83d\udd17]] \n*Votes* 12\n\nI started using org-capture when I started my current job several years ago.  I recorded my daily activities using this template:\n\n#+BEGIN_SRC elisp\n(setq org-capture-templates\n      '((\"d\" \"Done\" entry (file+olp+datetree \"~/org/done.org\"))))\n\n#+END_SRC\nA minor annoyance was that an unwanted link to whatever file location I happened to be in when I invoked org-capture was stored along with my log entry.  I made occasional desultory efforts over the years to remove it, but I just couldn't figure it out.  I recently made a more concerted effort and _finally_ was able to work it out after poring over the documentation for the ~org-capture-templates~ variable.  It turns out the default \"template\" for the ~entry~ capture type is ~\"* %?\\n%a\"~, where the code ~%a~ means \"annotation,\" ie, a link to the file location.  So I just had to change my definition to this:\n\n#+BEGIN_SRC elisp\n(setq org-capture-templates\n      '((\"d\" \"Done\" entry (file+olp+datetree \"~/org/done.org\") \"* %?\")))\n#+END_SRC",
+        "upvotes": 11,
+        "body": "** u/sauntcartas [[https://www.reddit.com/r/emacs/comments/t3_1djdync/comment/t1_l9cmdp9][\ud83d\udd17]] \n*Votes* 11\n\nI started using org-capture when I started my current job several years ago.  I recorded my daily activities using this template:\n\n#+BEGIN_SRC elisp\n(setq org-capture-templates\n      '((\"d\" \"Done\" entry (file+olp+datetree \"~/org/done.org\"))))\n\n#+END_SRC\nA minor annoyance was that an unwanted link to whatever file location I happened to be in when I invoked org-capture was stored along with my log entry.  I made occasional desultory efforts over the years to remove it, but I just couldn't figure it out.  I recently made a more concerted effort and _finally_ was able to work it out after poring over the documentation for the ~org-capture-templates~ variable.  It turns out the default \"template\" for the ~entry~ capture type is ~\"* %?\\n%a\"~, where the code ~%a~ means \"annotation,\" ie, a link to the file location.  So I just had to change my definition to this:\n\n#+BEGIN_SRC elisp\n(setq org-capture-templates\n      '((\"d\" \"Done\" entry (file+olp+datetree \"~/org/done.org\") \"* %?\")))\n#+END_SRC",
         "created_datetime": "2024-06-19 19:02:38+00:00"
     },
     "t1_l8d30q3": {
@@ -103,8 +103,8 @@
     },
     "t1_l33y04q": {
         "author": "ImJustPassinBy",
-        "upvotes": 12,
-        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q][\ud83d\udd17]] \n*Votes* 12\n\nNot from me, but I just wanted to share /u/arthurno1 one-line tip to get ~which-key~ to work with ~dired~ (see screenshot in linked post):\n\nhttps://www.reddit.com/r/emacs/comments/1clvkfe/announcing_casual_dired_an_opinionated_porcelain/l2yi5tn/\n\nI assume the same trick applies to other mode-maps as well.",
+        "upvotes": 10,
+        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q][\ud83d\udd17]] \n*Votes* 10\n\nNot from me, but I just wanted to share /u/arthurno1 one-line tip to get ~which-key~ to work with ~dired~ (see screenshot in linked post):\n\nhttps://www.reddit.com/r/emacs/comments/1clvkfe/announcing_casual_dired_an_opinionated_porcelain/l2yi5tn/\n\nI assume the same trick applies to other mode-maps as well.",
         "created_datetime": "2024-05-08 10:04:15+00:00"
     },
     "t1_l359pqx": {
@@ -139,14 +139,14 @@
     },
     "t1_kuo1f9y": {
         "author": "vkazanov",
-        "upvotes": 22,
-        "body": "** u/vkazanov [[https://www.reddit.com/r/emacs/comments/t3_1bdm6mc/comment/t1_kuo1f9y][\ud83d\udd17]] \n*Votes* 22\n\nA dump of my Emacs-related principles after 18 years of tinkering:\n\n1. Don't try to replicate a static IDE setup, Emacs is fluid. \n2. Emacs Lisp is inevitable for Emacser to make this fluidity possible.\n3. Language-agnostic is better than language-specific. \n4. Embrace display-alist, fast window manipulation, winner-mode. \n5. .emacs.el reset every couple of years to accomodate innovation. \n6. Org-mode/org-roam for all documentation, projects, tips. The agenda is not set in stone. Use queries, filters, tweak, evolve things. \n7. A contextual dwim is always better than many keybindings. \n8. Use completion everywhere on everything (vertico is magic).  \n9. Contribute to the core and favourite packages.\n\nI am a beginner though, things might change.",
+        "upvotes": 21,
+        "body": "** u/vkazanov [[https://www.reddit.com/r/emacs/comments/t3_1bdm6mc/comment/t1_kuo1f9y][\ud83d\udd17]] \n*Votes* 21\n\nA dump of my Emacs-related principles after 18 years of tinkering:\n\n1. Don't try to replicate a static IDE setup, Emacs is fluid. \n2. Emacs Lisp is inevitable for Emacser to make this fluidity possible.\n3. Language-agnostic is better than language-specific. \n4. Embrace display-alist, fast window manipulation, winner-mode. \n5. .emacs.el reset every couple of years to accomodate innovation. \n6. Org-mode/org-roam for all documentation, projects, tips. The agenda is not set in stone. Use queries, filters, tweak, evolve things. \n7. A contextual dwim is always better than many keybindings. \n8. Use completion everywhere on everything (vertico is magic).  \n9. Contribute to the core and favourite packages.\n\nI am a beginner though, things might change.",
         "created_datetime": "2024-03-13 12:33:07+00:00"
     },
     "t1_ktogga6": {
         "author": "demosthenex",
-        "upvotes": 10,
-        "body": "** u/demosthenex [[https://www.reddit.com/r/emacs/comments/t3_1b7uj43/comment/t1_ktogga6][\ud83d\udd17]] \n*Votes* 10\n\nM-x ielm  Use the repl while learning elisp coding. I had no idea!",
+        "upvotes": 9,
+        "body": "** u/demosthenex [[https://www.reddit.com/r/emacs/comments/t3_1b7uj43/comment/t1_ktogga6][\ud83d\udd17]] \n*Votes* 9\n\nM-x ielm  Use the repl while learning elisp coding. I had no idea!",
         "created_datetime": "2024-03-06 22:30:32+00:00"
     },
     "t1_ksifwh1": {
@@ -157,20 +157,20 @@
     },
     "t1_kphrvz3": {
         "author": "[deleted]",
-        "upvotes": 9,
-        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kphrvz3][\ud83d\udd17]] \n*Votes* 9\n\n[removed]",
+        "upvotes": 11,
+        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kphrvz3][\ud83d\udd17]] \n*Votes* 11\n\n[removed]",
         "created_datetime": "2024-02-08 15:18:23+00:00"
     },
     "t1_kpct4cp": {
         "author": "[deleted]",
-        "upvotes": 11,
-        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kpct4cp][\ud83d\udd17]] \n*Votes* 11\n\nMany of you probably know of this, but I found \"indirect buffers\" useful.\n\nWhen I'm in Vim, I've found it useful to sometimes split a buffer into two windows, and use code folding to view different parts of the same file in the two windows. But this doesn't work in Emacs, because the \"folding\" and \"narrow\" states of the buffer are synced between the windows in contrast to Vim. One concrete use case I had: I have a huge Org file, and wanted to narrow ~C-x n s~ into different headings of the file in different windows.\n\nIndirect buffers solve this. It makes two buffers for one file, and these buffers have separate settings for folding, narrowing, etc. But the buffer contents are still synced, so there's no risk of diverging file states. With default keybindings, I found that ~C-x 4 c C-x n s~ did what I wanted.",
+        "upvotes": 9,
+        "body": "** u/[deleted] [[https://www.reddit.com/r/emacs/comments/t3_1aky57w/comment/t1_kpct4cp][\ud83d\udd17]] \n*Votes* 9\n\nMany of you probably know of this, but I found \"indirect buffers\" useful.\n\nWhen I'm in Vim, I've found it useful to sometimes split a buffer into two windows, and use code folding to view different parts of the same file in the two windows. But this doesn't work in Emacs, because the \"folding\" and \"narrow\" states of the buffer are synced between the windows in contrast to Vim. One concrete use case I had: I have a huge Org file, and wanted to narrow ~C-x n s~ into different headings of the file in different windows.\n\nIndirect buffers solve this. It makes two buffers for one file, and these buffers have separate settings for folding, narrowing, etc. But the buffer contents are still synced, so there's no risk of diverging file states. With default keybindings, I found that ~C-x 4 c C-x n s~ did what I wanted.",
         "created_datetime": "2024-02-07 17:14:26+00:00"
     },
     "t1_kjcu7vp": {
         "author": "badmaxton",
-        "upvotes": 9,
-        "body": "** u/badmaxton [[https://www.reddit.com/r/emacs/comments/t3_19ec8v5/comment/t1_kjcu7vp][\ud83d\udd17]] \n*Votes* 9\n\nJust added this to the ~:init~ section of my embark configuration:\n\n#+BEGIN_SRC elisp\n(define-key minibuffer-local-map [C-tab] 'embark-select)\n\n#+END_SRC\nThis allows super-convenient marking of entries for later ~embark-all~ using control-tab, instead of having to go first through the ~embark~ menu. (By default, this key binding is mapped to ~file-cache-minibuffer-complete~, which I never use.)",
+        "upvotes": 10,
+        "body": "** u/badmaxton [[https://www.reddit.com/r/emacs/comments/t3_19ec8v5/comment/t1_kjcu7vp][\ud83d\udd17]] \n*Votes* 10\n\nJust added this to the ~:init~ section of my embark configuration:\n\n#+BEGIN_SRC elisp\n(define-key minibuffer-local-map [C-tab] 'embark-select)\n\n#+END_SRC\nThis allows super-convenient marking of entries for later ~embark-all~ using control-tab, instead of having to go first through the ~embark~ menu. (By default, this key binding is mapped to ~file-cache-minibuffer-complete~, which I never use.)",
         "created_datetime": "2024-01-24 14:54:35+00:00"
     },
     "t1_kibmgv2": {
@@ -181,20 +181,20 @@
     },
     "t1_khe4dq6": {
         "author": "JDRiverRun",
-        "upvotes": 10,
-        "body": "** u/JDRiverRun [[https://www.reddit.com/r/emacs/comments/t3_1933co6/comment/t1_khe4dq6][\ud83d\udd17]] \n*Votes* 10\n\nI have long had convenience bindings for ~org-emphasize~ like ~super-i~ for /italic/, that match system bindings.  But I always wanted these to *be smarter*, i.e. do something useful when there is no text selected.  Something like intelligently toggling emphasis depending on whether you were already in the right kind of emphasized text, or just emphasize the word at point if not.\n\n[[https://gist.github.com/jdtsmith/55e6a660dd4c0779a600ac81bf9bfc23][Check out my solution]] (scroll down to see how it acts).  Will miss this behavior in other apps!",
+        "upvotes": 12,
+        "body": "** u/JDRiverRun [[https://www.reddit.com/r/emacs/comments/t3_1933co6/comment/t1_khe4dq6][\ud83d\udd17]] \n*Votes* 12\n\nI have long had convenience bindings for ~org-emphasize~ like ~super-i~ for /italic/, that match system bindings.  But I always wanted these to *be smarter*, i.e. do something useful when there is no text selected.  Something like intelligently toggling emphasis depending on whether you were already in the right kind of emphasized text, or just emphasize the word at point if not.\n\n[[https://gist.github.com/jdtsmith/55e6a660dd4c0779a600ac81bf9bfc23][Check out my solution]] (scroll down to see how it acts).  Will miss this behavior in other apps!",
         "created_datetime": "2024-01-11 17:47:10+00:00"
     },
     "t1_kg4ni5d": {
         "author": "algor512",
-        "upvotes": 12,
-        "body": "** u/algor512 [[https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kg4ni5d][\ud83d\udd17]] \n*Votes* 12\n\nRecently I discovered that ~C-h C-q~ (or ~M-x help-quick~) opens a small window showing \\*Quick Help\\* buffer with a nice overview of some basic keybindings. It seems that the content of this buffer is configurable via the variable ~help-quick-sections~.\n\nI intend to use it as a cheatsheet, reminding me about rare keybindings I always forget; I believe it is easy to make it context-dependent, just by changing the value of ~help-quick-sections~.",
+        "upvotes": 11,
+        "body": "** u/algor512 [[https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kg4ni5d][\ud83d\udd17]] \n*Votes* 11\n\nRecently I discovered that ~C-h C-q~ (or ~M-x help-quick~) opens a small window showing \\*Quick Help\\* buffer with a nice overview of some basic keybindings. It seems that the content of this buffer is configurable via the variable ~help-quick-sections~.\n\nI intend to use it as a cheatsheet, reminding me about rare keybindings I always forget; I believe it is easy to make it context-dependent, just by changing the value of ~help-quick-sections~.",
         "created_datetime": "2024-01-03 14:24:47+00:00"
     },
     "t1_kgce54q": {
         "author": "camel_case_t",
-        "upvotes": 9,
-        "body": "** u/camel_case_t [[https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kgce54q][\ud83d\udd17]] \n*Votes* 9\n\nThis is maybe more a macOS tip than an Emacs tip, but it always bothered me that ~C-f~, ~C-b~, etc worked in any text box, but not ~M-f~, etc -- turns out that you can easily change that throughout the OS!\n\nI created this file and now Emacs keybindings work everywhere:\n\n#+BEGIN_SRC elisp\n/* ~/Library/KeyBindings/DefaultKeyBinding.dict */\n{\n    /* Additional Emacs bindings */\n    \"~f\" = \"moveWordForward:\";\n    \"~b\" = \"moveWordBackward:\";\n    \"~<\" = \"moveToBeginningOfDocument:\";\n    \"~>\" = \"moveToEndOfDocument:\";\n    \"~v\" = \"pageUp:\";\n    \"~d\" = \"deleteWordForward:\";\n    \"~^h\" = \"deleteWordBackward:\";\n    \"~\\010\" = \"deleteWordBackward:\";  /* Option-backspace */\n    \"~\\177\" = \"deleteWordBackward:\";  /* Option-delete */\n}\n\n#+END_SRC\nYou can read more here: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html",
+        "upvotes": 10,
+        "body": "** u/camel_case_t [[https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kgce54q][\ud83d\udd17]] \n*Votes* 10\n\nThis is maybe more a macOS tip than an Emacs tip, but it always bothered me that ~C-f~, ~C-b~, etc worked in any text box, but not ~M-f~, etc -- turns out that you can easily change that throughout the OS!\n\nI created this file and now Emacs keybindings work everywhere:\n\n#+BEGIN_SRC elisp\n/* ~/Library/KeyBindings/DefaultKeyBinding.dict */\n{\n    /* Additional Emacs bindings */\n    \"~f\" = \"moveWordForward:\";\n    \"~b\" = \"moveWordBackward:\";\n    \"~<\" = \"moveToBeginningOfDocument:\";\n    \"~>\" = \"moveToEndOfDocument:\";\n    \"~v\" = \"pageUp:\";\n    \"~d\" = \"deleteWordForward:\";\n    \"~^h\" = \"deleteWordBackward:\";\n    \"~\\010\" = \"deleteWordBackward:\";  /* Option-backspace */\n    \"~\\177\" = \"deleteWordBackward:\";  /* Option-delete */\n}\n\n#+END_SRC\nYou can read more here: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html",
         "created_datetime": "2024-01-04 22:16:24+00:00"
     },
     "t1_ke5xr5j": {
@@ -1273,8 +1273,8 @@
     },
     "t1_lvojz57": {
         "author": "ImJustPassinBy",
-        "upvotes": 19,
-        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1gktndf/comment/t1_lvojz57][\ud83d\udd17]] \n*Votes* 19\n\n~use-package~ has an inbuilt feature that roughly reports the loading times of each package on startup ([[https://github.com/jschaf/esup][~esup~]] most likely does a better job, if you can get it to run; there are  [[https://github.com/alexmurray/emacs-snap/issues/71][known issues]] on Emacs snap):\n\n1. put ~(setq use-package-compute-statistics t)~ at the beginning of your ~init.el~\n2. restart Emacs\n3. do ~M-x use-package-report~\n\nWhich package is your biggest time sink and why is it worth it?  Mine is [[https://github.com/vedang/pdf-tools][~pdf-tools~]], but to my knowledge there is simply no better alternative for working with pdfs in emacs.",
+        "upvotes": 20,
+        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1gktndf/comment/t1_lvojz57][\ud83d\udd17]] \n*Votes* 20\n\n~use-package~ has an inbuilt feature that roughly reports the loading times of each package on startup ([[https://github.com/jschaf/esup][~esup~]] most likely does a better job, if you can get it to run; there are  [[https://github.com/alexmurray/emacs-snap/issues/71][known issues]] on Emacs snap):\n\n1. put ~(setq use-package-compute-statistics t)~ at the beginning of your ~init.el~\n2. restart Emacs\n3. do ~M-x use-package-report~\n\nWhich package is your biggest time sink and why is it worth it?  Mine is [[https://github.com/vedang/pdf-tools][~pdf-tools~]], but to my knowledge there is simply no better alternative for working with pdfs in emacs.",
         "created_datetime": "2024-11-06 09:43:57+00:00"
     },
     "t1_ksoij65": {
@@ -1387,8 +1387,8 @@
     },
     "t1_lx7y88i": {
         "author": "konrad1977",
-        "upvotes": 10,
-        "body": "** u/konrad1977 [[https://www.reddit.com/r/emacs/comments/t3_1gq86x9/comment/t1_lx7y88i][\ud83d\udd17]] \n*Votes* 10\n\nI totally forgot about ~use-package-compute-statistics t~ and  (M-x) ~use-package-report~. This helped me optimizing my startup time from around 3 seconds to less than a second.",
+        "upvotes": 9,
+        "body": "** u/konrad1977 [[https://www.reddit.com/r/emacs/comments/t3_1gq86x9/comment/t1_lx7y88i][\ud83d\udd17]] \n*Votes* 9\n\nI totally forgot about ~use-package-compute-statistics t~ and  (M-x) ~use-package-report~. This helped me optimizing my startup time from around 3 seconds to less than a second.",
         "created_datetime": "2024-11-15 05:56:01+00:00"
     },
     "t1_lyc7kx9": {
@@ -1423,14 +1423,14 @@
     },
     "t1_m63mddk": {
         "author": "sandinmyjoints",
-        "upvotes": 25,
-        "body": "** u/sandinmyjoints [[https://www.reddit.com/r/emacs/comments/t3_1hwf46n/comment/t1_m63mddk][\ud83d\udd17]] \n*Votes* 25\n\nFor years, I've figured I was using electric-pairs wrong, until I took some time recently to look into it. One case I regularly encounter whose behavior I don't like (pipe representing where point is when I type the quote key one time):\n\n#+BEGIN_SRC elisp\n\"\"|word\n\n#+END_SRC\nI never want two quotes in this case. \n\nThe behavior is mostly controlled by electric-pair-inhibit-predicate. I was using the default (electric-pair-default-inhibit), with electric-pair-preserve-balance set to t. Overall, I realized that electric-pair-preserve-balance is not very useful for me, and what I want is closer to electric-pair-conservative-inhibit, which is what electric-pair-default-inhibit uses when electric-pair-preserve-balance is nil. Turning off electric-pair-preserve-balance fixed the above case.\n\nHowever, electric-pair-conservative-inhibit still didn't handle well this case that I also often encounter:\n\n#+BEGIN_SRC elisp\nword|\"\"\n\n#+END_SRC\nSo I wrote my own, adding one additional condition to the ~or~ of the builtin electric-pair-conservative-inhibit, and now it finally works in a way that feels natural/correct!\n\n#+BEGIN_SRC elisp\n(defun my/electric-pair-conservative-inhibit (char)\n  (or\n   ;; I find it more often preferable not to pair when the\n   ;; same char is next.\n   (eq char (char-after))\n   ;; Don't pair up when we insert the second of \"\" or of ((.\n   (and (eq char (char-before))\n#+END_SRC\n  \t        (eq char (char-before (1- (point)))))\n#+BEGIN_SRC elisp\n   ;; I also find it often preferable not to pair next to a word.\n   (eq (char-syntax (following-char)) ?w)\n   ;; Don't pair at the end of a word, unless parens.\n   (and\n    (eq (char-syntax (char-before (1- (point)))) ?w)\n    (eq (preceding-char) char)\n    (not (eq (char-syntax (preceding-char)) 40) ;; 40 is open paren\n         ))))\n#+END_SRC",
+        "upvotes": 23,
+        "body": "** u/sandinmyjoints [[https://www.reddit.com/r/emacs/comments/t3_1hwf46n/comment/t1_m63mddk][\ud83d\udd17]] \n*Votes* 23\n\nFor years, I've figured I was using electric-pairs wrong, until I took some time recently to look into it. One case I regularly encounter whose behavior I don't like (pipe representing where point is when I type the quote key one time):\n\n#+BEGIN_SRC elisp\n\"\"|word\n\n#+END_SRC\nI never want two quotes in this case. \n\nThe behavior is mostly controlled by electric-pair-inhibit-predicate. I was using the default (electric-pair-default-inhibit), with electric-pair-preserve-balance set to t. Overall, I realized that electric-pair-preserve-balance is not very useful for me, and what I want is closer to electric-pair-conservative-inhibit, which is what electric-pair-default-inhibit uses when electric-pair-preserve-balance is nil. Turning off electric-pair-preserve-balance fixed the above case.\n\nHowever, electric-pair-conservative-inhibit still didn't handle well this case that I also often encounter:\n\n#+BEGIN_SRC elisp\nword|\"\"\n\n#+END_SRC\nSo I wrote my own, adding one additional condition to the ~or~ of the builtin electric-pair-conservative-inhibit, and now it finally works in a way that feels natural/correct!\n\n#+BEGIN_SRC elisp\n(defun my/electric-pair-conservative-inhibit (char)\n  (or\n   ;; I find it more often preferable not to pair when the\n   ;; same char is next.\n   (eq char (char-after))\n   ;; Don't pair up when we insert the second of \"\" or of ((.\n   (and (eq char (char-before))\n#+END_SRC\n  \t        (eq char (char-before (1- (point)))))\n#+BEGIN_SRC elisp\n   ;; I also find it often preferable not to pair next to a word.\n   (eq (char-syntax (following-char)) ?w)\n   ;; Don't pair at the end of a word, unless parens.\n   (and\n    (eq (char-syntax (char-before (1- (point)))) ?w)\n    (eq (preceding-char) char)\n    (not (eq (char-syntax (preceding-char)) 40) ;; 40 is open paren\n         ))))\n#+END_SRC",
         "created_datetime": "2025-01-08 19:37:20+00:00"
     },
     "t1_m60s6o9": {
         "author": "ImJustPassinBy",
-        "upvotes": 15,
-        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1hwf46n/comment/t1_m60s6o9][\ud83d\udd17]] \n*Votes* 15\n\nA universally useful package that I don't see mentioned enough is [[https://github.com/Wilfred/helpful][~helpful~]].  It improves help buffers (better highlighting, more information, etc; see GitHub for screenshots).  Just rebind the help keybindings, defer loading until they are called, and it won't even impact your starting time:\n\n#+BEGIN_SRC elisp\n  (use-package helpful\n    :bind\n    ((\"C-h f\" . helpful-function)\n     (\"C-h x\" . helpful-command)\n     (\"C-h k\" . helpful-key)\n     (\"C-h v\" . helpful-variable)))\n#+END_SRC",
+        "upvotes": 16,
+        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1hwf46n/comment/t1_m60s6o9][\ud83d\udd17]] \n*Votes* 16\n\nA universally useful package that I don't see mentioned enough is [[https://github.com/Wilfred/helpful][~helpful~]].  It improves help buffers (better highlighting, more information, etc; see GitHub for screenshots).  Just rebind the help keybindings, defer loading until they are called, and it won't even impact your starting time:\n\n#+BEGIN_SRC elisp\n  (use-package helpful\n    :bind\n    ((\"C-h f\" . helpful-function)\n     (\"C-h x\" . helpful-command)\n     (\"C-h k\" . helpful-key)\n     (\"C-h v\" . helpful-variable)))\n#+END_SRC",
         "created_datetime": "2025-01-08 08:45:26+00:00"
     },
     "t1_m7h4xwp": {
@@ -1447,20 +1447,20 @@
     },
     "t1_m9ttaio": {
         "author": "unduly-noted",
-        "upvotes": 13,
-        "body": "** u/unduly-noted [[https://www.reddit.com/r/emacs/comments/t3_1icp42g/comment/t1_m9ttaio][\ud83d\udd17]] \n*Votes* 13\n\nOn macOS, integrating with shortcuts (or osascript, I suppose) can be powerful. When I'm watching lectures I like to have video on the left, org-mode on the right for notes. However, I found I was often screenshotting the video player and pasting into org-mode. Or Anki.\n\nI was able to create a macOS shortcut which finds the video player regardless of window focus (important so I don't have to leave emacs) and screenshot to clipboard. This is called super easily from emacs: ~(call-process \"shortcuts\" nil nil nil \"run\" \"IINA Screenshot\")~.\n\nNow, I have a binding to easily paste a video screenshot (org-download) without pausing the video or even leaving org-mode at all. Or easily paste into Anki. It's a three line function that totally smoothed my workflow.\n\n#+BEGIN_SRC elisp\n(defun me/iina-screenshot ()\n  (interactive)\n  (call-process \"shortcuts\" nil nil nil \"run\" \"IINA Screenshot\")\n  (org-download-clipboard))\n#+END_SRC",
+        "upvotes": 12,
+        "body": "** u/unduly-noted [[https://www.reddit.com/r/emacs/comments/t3_1icp42g/comment/t1_m9ttaio][\ud83d\udd17]] \n*Votes* 12\n\nOn macOS, integrating with shortcuts (or osascript, I suppose) can be powerful. When I'm watching lectures I like to have video on the left, org-mode on the right for notes. However, I found I was often screenshotting the video player and pasting into org-mode. Or Anki.\n\nI was able to create a macOS shortcut which finds the video player regardless of window focus (important so I don't have to leave emacs) and screenshot to clipboard. This is called super easily from emacs: ~(call-process \"shortcuts\" nil nil nil \"run\" \"IINA Screenshot\")~.\n\nNow, I have a binding to easily paste a video screenshot (org-download) without pausing the video or even leaving org-mode at all. Or easily paste into Anki. It's a three line function that totally smoothed my workflow.\n\n#+BEGIN_SRC elisp\n(defun me/iina-screenshot ()\n  (interactive)\n  (call-process \"shortcuts\" nil nil nil \"run\" \"IINA Screenshot\")\n  (org-download-clipboard))\n#+END_SRC",
         "created_datetime": "2025-01-29 14:38:58+00:00"
     },
     "t1_m36rqzv": {
         "author": "pjhuxford",
-        "upvotes": 8,
-        "body": "** u/pjhuxford [[https://www.reddit.com/r/emacs/comments/t3_1hgx486/comment/t1_m36rqzv][\ud83d\udd17]] \n*Votes* 8\n\nIn a ~*Help*~ buffer, running ~help-view-source~ (e.g. by pressing ~s~) jumps to the source of the current help item. However, by default it opens the source buffer in a different window to the help buffer.\n\nPersonally, I find it much more intuitive for the source buffer window to replace the ~*Help*~ buffer window. I just found out that in Emacs 29+ this behavior can be achieved by setting the user option ~help-window-keep-selected~ to a non-nil value. It also re-uses the ~*Help*~ buffer window when running ~help-goto-info~ in it (e.g. by pressing ~i~).\n\nWhile reading the news also discovered the new command ~help-find-source~ in Emacs 30+, which is globally bound to ~C-h 4 s~. If a ~*Help*~ buffer exists (not necessarily in the selected window), then in the current window it jumps to the source file corresponding to the ~*Help*~ buffer, if one exists.",
+        "upvotes": 9,
+        "body": "** u/pjhuxford [[https://www.reddit.com/r/emacs/comments/t3_1hgx486/comment/t1_m36rqzv][\ud83d\udd17]] \n*Votes* 9\n\nIn a ~*Help*~ buffer, running ~help-view-source~ (e.g. by pressing ~s~) jumps to the source of the current help item. However, by default it opens the source buffer in a different window to the help buffer.\n\nPersonally, I find it much more intuitive for the source buffer window to replace the ~*Help*~ buffer window. I just found out that in Emacs 29+ this behavior can be achieved by setting the user option ~help-window-keep-selected~ to a non-nil value. It also re-uses the ~*Help*~ buffer window when running ~help-goto-info~ in it (e.g. by pressing ~i~).\n\nWhile reading the news also discovered the new command ~help-find-source~ in Emacs 30+, which is globally bound to ~C-h 4 s~. If a ~*Help*~ buffer exists (not necessarily in the selected window), then in the current window it jumps to the source file corresponding to the ~*Help*~ buffer, if one exists.",
         "created_datetime": "2024-12-21 20:38:44+00:00"
     },
     "t1_ma4bx1b": {
         "author": "druuuun",
-        "upvotes": 8,
-        "body": "** u/druuuun [[https://www.reddit.com/r/emacs/comments/t3_1icp42g/comment/t1_ma4bx1b][\ud83d\udd17]] \n*Votes* 8\n\nFound out about setting ~shift-select-mode~ to ~'permanent~ today and it's a game changer. I like to use [[https://github.com/casouri/expreg][expreg]] to expand and contract regions and it always bugged me that once a region has been selected, if I then used shift-translated motion key (e.g. ~C-S-f~, ~C-S-n~, etc) to change the region, the region would be deactivated. If you set ~shift-select-mode~ to ~'permanent~ then you can modify the active region regardless of whether it was created by a non-shift-translated command.",
+        "upvotes": 9,
+        "body": "** u/druuuun [[https://www.reddit.com/r/emacs/comments/t3_1icp42g/comment/t1_ma4bx1b][\ud83d\udd17]] \n*Votes* 9\n\nFound out about setting ~shift-select-mode~ to ~'permanent~ today and it's a game changer. I like to use [[https://github.com/casouri/expreg][expreg]] to expand and contract regions and it always bugged me that once a region has been selected, if I then used shift-translated motion key (e.g. ~C-S-f~, ~C-S-n~, etc) to change the region, the region would be deactivated. If you set ~shift-select-mode~ to ~'permanent~ then you can modify the active region regardless of whether it was created by a non-shift-translated command.",
         "created_datetime": "2025-01-31 01:32:43+00:00"
     },
     "t1_mczsy27": {
@@ -1477,8 +1477,8 @@
     },
     "t1_mhnx90t": {
         "author": "Hammar_Morty",
-        "upvotes": 9,
-        "body": "** u/Hammar_Morty [[https://www.reddit.com/r/emacs/comments/t3_1j8h5aw/comment/t1_mhnx90t][\ud83d\udd17]] \n*Votes* 9\n\nI like Prot's modeline and display-buffer-alist and wanted to try them out. Since he has done such a great job splitting his custom functions into library packages, you can use them without much effort to build your own. \n\nHere is the Elpaca recipe I am using so I don't have to copy the packages into my own config.\n\n#+BEGIN_SRC elisp\n(use-package prot-modeline\n  :ensure (:host gitlab\n:repo \"protesilaos/dotfiles\"\n:files (\"emacs/.emacs.d/prot-lisp/prot-modeline.el\" \n \"emacs/.emacs.d/prot-lisp/prot-common.el\")\n:main \"emacs/.emacs.d/prot-lisp/prot-modeline.el\")\n  :config ...)\n\n#+END_SRC\nhttps://preview.redd.it/wx10z7ngsjoe1.png?width=1155&format=png&auto=webp&s=ec963d86e0136b0af8863b00ccf3061ade123bfc\n\n#+BEGIN_SRC elisp\n(use-package prot-window\n  :ensure (:host gitlab\n:repo \"protesilaos/dotfiles\"\n:files (\"emacs/.emacs.d/prot-lisp/prot-window.el\"\n \"emacs/.emacs.d/prot-lisp/prot-common.el\")\n:main \"emacs/.emacs.d/prot-lisp/prot-window.el\")\n  :config ...)\n#+END_SRC",
+        "upvotes": 8,
+        "body": "** u/Hammar_Morty [[https://www.reddit.com/r/emacs/comments/t3_1j8h5aw/comment/t1_mhnx90t][\ud83d\udd17]] \n*Votes* 8\n\nI like Prot's modeline and display-buffer-alist and wanted to try them out. Since he has done such a great job splitting his custom functions into library packages, you can use them without much effort to build your own. \n\nHere is the Elpaca recipe I am using so I don't have to copy the packages into my own config.\n\n#+BEGIN_SRC elisp\n(use-package prot-modeline\n  :ensure (:host gitlab\n:repo \"protesilaos/dotfiles\"\n:files (\"emacs/.emacs.d/prot-lisp/prot-modeline.el\" \n \"emacs/.emacs.d/prot-lisp/prot-common.el\")\n:main \"emacs/.emacs.d/prot-lisp/prot-modeline.el\")\n  :config ...)\n\n#+END_SRC\nhttps://preview.redd.it/wx10z7ngsjoe1.png?width=1155&format=png&auto=webp&s=ec963d86e0136b0af8863b00ccf3061ade123bfc\n\n#+BEGIN_SRC elisp\n(use-package prot-window\n  :ensure (:host gitlab\n:repo \"protesilaos/dotfiles\"\n:files (\"emacs/.emacs.d/prot-lisp/prot-window.el\"\n \"emacs/.emacs.d/prot-lisp/prot-common.el\")\n:main \"emacs/.emacs.d/prot-lisp/prot-window.el\")\n  :config ...)\n#+END_SRC",
         "created_datetime": "2025-03-14 00:16:22+00:00"
     },
     "t1_mijndf0": {
@@ -1495,20 +1495,20 @@
     },
     "t1_mtmvwj2": {
         "author": "Argletrough",
-        "upvotes": 12,
-        "body": "** u/Argletrough [[https://www.reddit.com/r/emacs/comments/t3_1kqup1n/comment/t1_mtmvwj2][\ud83d\udd17]] \n*Votes* 12\n\nThere are some useful interactive help commands that aren't bound to keys by default; I find ~describe-char~ especially useful in Org documents with lots of Unicode characters. Here are my bindings:\n\n\n#+BEGIN_SRC elisp\n(use-package help\n  :bind\n  (:map help-map\n        (\"=\" . describe-char)\n        (\"j\" . describe-face)\n        (\"-\" . describe-keymap)))\n#+END_SRC",
+        "upvotes": 14,
+        "body": "** u/Argletrough [[https://www.reddit.com/r/emacs/comments/t3_1kqup1n/comment/t1_mtmvwj2][\ud83d\udd17]] \n*Votes* 14\n\nThere are some useful interactive help commands that aren't bound to keys by default; I find ~describe-char~ especially useful in Org documents with lots of Unicode characters. Here are my bindings:\n\n\n#+BEGIN_SRC elisp\n(use-package help\n  :bind\n  (:map help-map\n        (\"=\" . describe-char)\n        (\"j\" . describe-face)\n        (\"-\" . describe-keymap)))\n#+END_SRC",
         "created_datetime": "2025-05-22 11:11:31+00:00"
     },
     "t1_mtgfbwu": {
         "author": "captainflasmr",
-        "upvotes": 10,
-        "body": "** u/captainflasmr [[https://www.reddit.com/r/emacs/comments/t3_1kqup1n/comment/t1_mtgfbwu][\ud83d\udd17]] \n*Votes* 10\n\nI was catching up with one of System Crafters videos and there was talk around using built-in functionality and how it would be nice if there was an **orderless** implementation to allow minibuffer completion on an any word basis.\n\nWell I thought I would take up the challenge and came up with this:\n\n#+BEGIN_SRC elisp\n(defun simple-orderless-completion (string table pred point)\n  \"Enhanced orderless completion with better partial matching.\"\n  (let* ((words (split-string string \"[-, ]+\"))\n         (patterns (mapcar (lambda (word)\n                             (concat \"\\\\b.*\" (regexp-quote word) \".*\"))\n                           words))\n         (full-regexp (mapconcat 'identity patterns \"\")))\n    (if (string-empty-p string)\n        (all-completions \"\" table pred)\n      (cl-remove-if-not\n       (lambda (candidate)\n         (let ((case-fold-search completion-ignore-case))\n           (and (cl-every (lambda (word)\n                            (string-match-p\n                             (concat \"\\\\b.*\" (regexp-quote word))\n                             candidate))\n                          words)\n                t)))\n       (all-completions \"\" table pred)))))\n    \n;; Register the completion style\n(add-to-list 'completion-styles-alist\n             '(simple-orderless simple-orderless-completion\n                                simple-orderless-completion))\n    \n;; Set different completion styles for minibuffer vs other contexts\n(defun setup-minibuffer-completion-styles ()\n  \"Use orderless completion in minibuffer, regular completion elsewhere.\"\n  ;; For minibuffer: use orderless first, then fallback to flex and basic\n  (setq-local completion-styles '(simple-orderless flex basic substring)))\n    \n;; Hook into minibuffer setup\n(add-hook 'minibuffer-setup-hook #'setup-minibuffer-completion-styles)\n#+END_SRC",
+        "upvotes": 9,
+        "body": "** u/captainflasmr [[https://www.reddit.com/r/emacs/comments/t3_1kqup1n/comment/t1_mtgfbwu][\ud83d\udd17]] \n*Votes* 9\n\nI was catching up with one of System Crafters videos and there was talk around using built-in functionality and how it would be nice if there was an **orderless** implementation to allow minibuffer completion on an any word basis.\n\nWell I thought I would take up the challenge and came up with this:\n\n#+BEGIN_SRC elisp\n(defun simple-orderless-completion (string table pred point)\n  \"Enhanced orderless completion with better partial matching.\"\n  (let* ((words (split-string string \"[-, ]+\"))\n         (patterns (mapcar (lambda (word)\n                             (concat \"\\\\b.*\" (regexp-quote word) \".*\"))\n                           words))\n         (full-regexp (mapconcat 'identity patterns \"\")))\n    (if (string-empty-p string)\n        (all-completions \"\" table pred)\n      (cl-remove-if-not\n       (lambda (candidate)\n         (let ((case-fold-search completion-ignore-case))\n           (and (cl-every (lambda (word)\n                            (string-match-p\n                             (concat \"\\\\b.*\" (regexp-quote word))\n                             candidate))\n                          words)\n                t)))\n       (all-completions \"\" table pred)))))\n    \n;; Register the completion style\n(add-to-list 'completion-styles-alist\n             '(simple-orderless simple-orderless-completion\n                                simple-orderless-completion))\n    \n;; Set different completion styles for minibuffer vs other contexts\n(defun setup-minibuffer-completion-styles ()\n  \"Use orderless completion in minibuffer, regular completion elsewhere.\"\n  ;; For minibuffer: use orderless first, then fallback to flex and basic\n  (setq-local completion-styles '(simple-orderless flex basic substring)))\n    \n;; Hook into minibuffer setup\n(add-hook 'minibuffer-setup-hook #'setup-minibuffer-completion-styles)\n#+END_SRC",
         "created_datetime": "2025-05-21 11:33:31+00:00"
     },
     "t1_mvr341k": {
         "author": "ImJustPassinBy",
-        "upvotes": 17,
-        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1l21cgo/comment/t1_mvr341k][\ud83d\udd17]] \n*Votes* 17\n\nA universally useful package that I'd like to recommend is [[https://github.com/lewang/ws-butler][~ws-butler~]].  It automatically trims trailing whitespaces of the lines that were changed whenever you save a file:\n\n#+BEGIN_SRC elisp\n(use-package ws-butler\n  :hook\n#+END_SRC\n  \t  (prog-mode . ws-butler-mode)\n  \t  (text-mode . ws-butler-mode))\n\nThe native emacs way to achieve something similar is\n\n#+BEGIN_SRC elisp\n(add-hook 'before-save-hook 'delete-trailing-whitespace)\n\n#+END_SRC\nHowever, ~delete-trailing-whitespace~ does not distinguish between changed and unchanged lines, which can be problematic in collaborative projects because it may lead to many changes that you don't want to commit.\n\nedit: typo",
+        "upvotes": 18,
+        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1l21cgo/comment/t1_mvr341k][\ud83d\udd17]] \n*Votes* 18\n\nA universally useful package that I'd like to recommend is [[https://github.com/lewang/ws-butler][~ws-butler~]].  It automatically trims trailing whitespaces of the lines that were changed whenever you save a file:\n\n#+BEGIN_SRC elisp\n(use-package ws-butler\n  :hook\n#+END_SRC\n  \t  (prog-mode . ws-butler-mode)\n  \t  (text-mode . ws-butler-mode))\n\nThe native emacs way to achieve something similar is\n\n#+BEGIN_SRC elisp\n(add-hook 'before-save-hook 'delete-trailing-whitespace)\n\n#+END_SRC\nHowever, ~delete-trailing-whitespace~ does not distinguish between changed and unchanged lines, which can be problematic in collaborative projects because it may lead to many changes that you don't want to commit.\n\nedit: typo",
         "created_datetime": "2025-06-03 11:32:32+00:00"
     },
     "t1_modpcjd": {
@@ -1555,8 +1555,8 @@
     },
     "t1_n196ge3": {
         "author": "DevelopmentCool2449",
-        "upvotes": 12,
-        "body": "** u/DevelopmentCool2449 [[https://www.reddit.com/r/emacs/comments/t3_1loqznm/comment/t1_n196ge3][\ud83d\udd17]] \n*Votes* 12\n\nI wrote this little snippet for put custom icons in hl-todo keywords.\n\nThe ~use-package~ config here is optional, but you can use it in your existent ~use-package~ configuration:\n\n>!(NOTE: This requires the ~nerd-icons~ package installed and loaded)!<\n\n#+BEGIN_SRC elisp\n(use-package hl-todo\n  :defer t\n  :hook\n  (hl-todo-mode\n   . (lambda ()\n       (unless hl-todo-mode\n         (remove-overlays nil nil 'hl-todo t))))\n  :config\n  (add-to-list 'hl-todo--keywords ~(,(lambda (bound) (remove-overlays (point) bound 'hl-todo t) nil)))\n  :init\n  (define-advice hl-todo--get-face (:override () with-icons)\n    (let* ((keyword (match-string 2))\n           (ov (make-overlay (match-beginning 0) (match-end 0))))\n    \n      ;; Overlays only for the icons\n      (overlay-put ov 'hl-todo t)\n      (overlay-put ov 'evaporate t)\n      (overlay-put ov 'before-string\n                   (pcase keyword\n                     (\"TODO\" (nerd-icons-sucicon \"nf-seti-todo\"))\n                     (\"TEMP\" (nerd-icons-mdicon \"nf-md-timer\"))\n                     (\"BUG\" (nerd-icons-faicon \"nf-fa-bug\"))\n                     (\"FIXME\" (nerd-icons-faicon \"nf-fa-wrench\"))\n                     (\"WARNING\" (nerd-icons-faicon \"nf-fa-flag\"))\n                     (_ (nerd-icons-mdicon \"nf-md-content_paste\"))))\n    \n      ;; Return color for font-lock\n      (hl-todo--combine-face\n       (cdr (or\n             ;; Fast allocation free lookup for literal keywords.\n             (assoc keyword hl-todo-keyword-faces)\n             ;; Slower regexp lookup.\n             (compat-call assoc keyword hl-todo-keyword-faces\n                          (lambda (a b)\n                            (string-match-p (format \"\\\\~%s\\\\'\" a) b)))))))))\n\n#+END_SRC\nHere is how it will look:\n\nhttps://preview.redd.it/8if6ydxpfsaf1.png?width=379&format=png&auto=webp&s=dfd594118f43a2d1a11d301f1a9ec42748143a83",
+        "upvotes": 13,
+        "body": "** u/DevelopmentCool2449 [[https://www.reddit.com/r/emacs/comments/t3_1loqznm/comment/t1_n196ge3][\ud83d\udd17]] \n*Votes* 13\n\nI wrote this little snippet for put custom icons in hl-todo keywords.\n\nThe ~use-package~ config here is optional, but you can use it in your existent ~use-package~ configuration:\n\n>!(NOTE: This requires the ~nerd-icons~ package installed and loaded)!<\n\n#+BEGIN_SRC elisp\n(use-package hl-todo\n  :defer t\n  :hook\n  (hl-todo-mode\n   . (lambda ()\n       (unless hl-todo-mode\n         (remove-overlays nil nil 'hl-todo t))))\n  :config\n  (add-to-list 'hl-todo--keywords ~(,(lambda (bound) (remove-overlays (point) bound 'hl-todo t) nil)))\n  :init\n  (define-advice hl-todo--get-face (:override () with-icons)\n    (let* ((keyword (match-string 2))\n           (ov (make-overlay (match-beginning 0) (match-end 0))))\n    \n      ;; Overlays only for the icons\n      (overlay-put ov 'hl-todo t)\n      (overlay-put ov 'evaporate t)\n      (overlay-put ov 'before-string\n                   (pcase keyword\n                     (\"TODO\" (nerd-icons-sucicon \"nf-seti-todo\"))\n                     (\"TEMP\" (nerd-icons-mdicon \"nf-md-timer\"))\n                     (\"BUG\" (nerd-icons-faicon \"nf-fa-bug\"))\n                     (\"FIXME\" (nerd-icons-faicon \"nf-fa-wrench\"))\n                     (\"WARNING\" (nerd-icons-faicon \"nf-fa-flag\"))\n                     (_ (nerd-icons-mdicon \"nf-md-content_paste\"))))\n    \n      ;; Return color for font-lock\n      (hl-todo--combine-face\n       (cdr (or\n             ;; Fast allocation free lookup for literal keywords.\n             (assoc keyword hl-todo-keyword-faces)\n             ;; Slower regexp lookup.\n             (compat-call assoc keyword hl-todo-keyword-faces\n                          (lambda (a b)\n                            (string-match-p (format \"\\\\~%s\\\\'\" a) b)))))))))\n\n#+END_SRC\nHere is how it will look:\n\nhttps://preview.redd.it/8if6ydxpfsaf1.png?width=379&format=png&auto=webp&s=dfd594118f43a2d1a11d301f1a9ec42748143a83",
         "created_datetime": "2025-07-04 04:49:51+00:00"
     },
     "t1_n42glnr": {
@@ -1567,8 +1567,8 @@
     },
     "t1_n3u4k0o": {
         "author": "krisbalintona",
-        "upvotes": 8,
-        "body": "** u/krisbalintona [[https://www.reddit.com/r/emacs/comments/t3_1m06p9l/comment/t1_n3u4k0o][\ud83d\udd17]] \n*Votes* 8\n\nEveryone knows that ~M-n~ and ~M-p~ in the minibuffer cycles through the history of minibuffer candidates. But not everyone knows that just calling ~M-n~ without any later candidates also sometimes does something depending on the command---you cycle through the so-called \"future history.\" You can read about it in ~info \"(emacs) Minibuffer History\"~. An excerpt:\n\n> If you type \u2018M-n\u2019 in the minibuffer when there are no later entries in the minibuffer history (e.g., if you haven\u2019t previously typed \u2018M-p\u2019), Emacs tries fetching from a list of default arguments: values that you are likely to enter.  You can think of this as moving through the \u201cfuture history\u201d.\n\nFor example, ~C-x C-f M-n~ completes to the file of the current buffer.",
+        "upvotes": 9,
+        "body": "** u/krisbalintona [[https://www.reddit.com/r/emacs/comments/t3_1m06p9l/comment/t1_n3u4k0o][\ud83d\udd17]] \n*Votes* 9\n\nEveryone knows that ~M-n~ and ~M-p~ in the minibuffer cycles through the history of minibuffer candidates. But not everyone knows that just calling ~M-n~ without any later candidates also sometimes does something depending on the command---you cycle through the so-called \"future history.\" You can read about it in ~info \"(emacs) Minibuffer History\"~. An excerpt:\n\n> If you type \u2018M-n\u2019 in the minibuffer when there are no later entries in the minibuffer history (e.g., if you haven\u2019t previously typed \u2018M-p\u2019), Emacs tries fetching from a list of default arguments: values that you are likely to enter.  You can think of this as moving through the \u201cfuture history\u201d.\n\nFor example, ~C-x C-f M-n~ completes to the file of the current buffer.",
         "created_datetime": "2025-07-18 15:52:54+00:00"
     },
     "t1_n8hzgo2": {
@@ -1597,14 +1597,14 @@
     },
     "t1_neqx566": {
         "author": "therivercass",
-        "upvotes": 11,
-        "body": "** u/therivercass [[https://www.reddit.com/r/emacs/comments/t3_1nc7vm2/comment/t1_neqx566][\ud83d\udd17]] \n*Votes* 11\n\nthe [[https://lists.gnu.org/archive/html/bug-gnu-emacs/2025-09/msg00201.html][proposed eglot patch that adds semantic tokens]] is working amazingly. while it's based on the lsp-mode implementation for the same feature, it manages to work better than the original. lsp-mode is running into an issue on the current igc branch where it's exceeding the max lisp eval depth when semantic tokens are enabled (try jumping via xref to a symbol definition). the new eglot implementation just works.",
+        "upvotes": 10,
+        "body": "** u/therivercass [[https://www.reddit.com/r/emacs/comments/t3_1nc7vm2/comment/t1_neqx566][\ud83d\udd17]] \n*Votes* 10\n\nthe [[https://lists.gnu.org/archive/html/bug-gnu-emacs/2025-09/msg00201.html][proposed eglot patch that adds semantic tokens]] is working amazingly. while it's based on the lsp-mode implementation for the same feature, it manages to work better than the original. lsp-mode is running into an issue on the current igc branch where it's exceeding the max lisp eval depth when semantic tokens are enabled (try jumping via xref to a symbol definition). the new eglot implementation just works.",
         "created_datetime": "2025-09-17 18:15:43+00:00"
     },
     "t1_ndpf6em": {
         "author": "therivercass",
-        "upvotes": 9,
-        "body": "** u/therivercass [[https://www.reddit.com/r/emacs/comments/t3_1nc7vm2/comment/t1_ndpf6em][\ud83d\udd17]] \n*Votes* 9\n\nthe feature/igc branch is working fantastically right now. it eliminated all the minor pauses/stutters and doesn't crash. haven't noticed any major slowdowns, either. if you haven't tried it yet, give it a shot.",
+        "upvotes": 11,
+        "body": "** u/therivercass [[https://www.reddit.com/r/emacs/comments/t3_1nc7vm2/comment/t1_ndpf6em][\ud83d\udd17]] \n*Votes* 11\n\nthe feature/igc branch is working fantastically right now. it eliminated all the minor pauses/stutters and doesn't crash. haven't noticed any major slowdowns, either. if you haven't tried it yet, give it a shot.",
         "created_datetime": "2025-09-11 21:14:36+00:00"
     },
     "t1_nftqn9d": {
@@ -1615,8 +1615,8 @@
     },
     "t1_nh19e7d": {
         "author": "RaisinSecure",
-        "upvotes": 10,
-        "body": "** u/RaisinSecure [[https://www.reddit.com/r/emacs/comments/t3_1no6dq7/comment/t1_nh19e7d][\ud83d\udd17]] \n*Votes* 10\n\ncan we get post flair for LLM stuff so people can filter it out?",
+        "upvotes": 9,
+        "body": "** u/RaisinSecure [[https://www.reddit.com/r/emacs/comments/t3_1no6dq7/comment/t1_nh19e7d][\ud83d\udd17]] \n*Votes* 9\n\ncan we get post flair for LLM stuff so people can filter it out?",
         "created_datetime": "2025-09-30 16:47:23+00:00"
     },
     "t1_ktmhg6g": {
@@ -1639,20 +1639,20 @@
     },
     "t1_nub26o0": {
         "author": "ImJustPassinBy",
-        "upvotes": 11,
-        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1pnr45a/comment/t1_nub26o0][\ud83d\udd17]] \n*Votes* 11\n\nI regularly use org-mode for presentations, and preparing said presentations often requires inserting screenshots.  Here is a small function that I wrote to make that task easier (it just copies the newest file in the screenshot folder to a prompted location and inserts it at point in the org file):\n\n#+BEGIN_SRC elisp\n(defvar screenshot-source-directory\n  (expand-file-name \"~/Pictures/Screenshots/\")\n  \"Directory where screenshots are stored.\")\n  \n(defun copy-latest-screenshot-and-insert-org ()\n  \"Copy newest file in screenshot-source-directory and insert it as [[./...]] in the current buffer.\"\n  (interactive)\n  (let* ((files (directory-files-and-attributes\n                 screenshot-source-directory t\n                 directory-files-no-dot-files-regexp))\n         (latest (car (sort files\n                            (lambda (a b)\n                              (time-less-p (nth 6 b) (nth 6 a)))))))\n    (unless latest\n      (user-error \"No screenshots found\"))\n  \n    (let* ((src (car latest))\n           (fname (file-name-nondirectory src))\n           (default\n            (if (file-directory-p\n                 (expand-file-name \"images\" default-directory))\n                (concat \"images/\" fname)\n              fname))\n           (dest-rel\n            (read-string \"Copy screenshot to (relative path): \" default))\n           (dest (expand-file-name dest-rel default-directory))\n           (final\n            (if (directory-name-p dest)\n                (expand-file-name fname dest)\n              dest))\n           (rel (file-relative-name final default-directory)))\n  \n      (make-directory (file-name-directory final) t)\n      (copy-file src final t)\n  \n      (insert (format \"[[./%s]]\" rel))\n      (when (derived-mode-p 'org-mode)\n        (org-display-inline-images))\n  \n      (message \"Copied screenshot to %s\" final)\n      final)))\n\n#+END_SRC\nI also tried calling the screenshot function from within Emacs (and using the resulting image instead of always picking the newest file in the screenshot folder), but the code I had to write for that was ludicrous.  Gnome really makes it unreasonably hard to call its functions from the terminal.\n\nFortunately, separating screenshot taking from inserting into org file works better for my workflow anyways, since I often work on a laptop and have to take the screenshot on a different workspace.",
+        "upvotes": 10,
+        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1pnr45a/comment/t1_nub26o0][\ud83d\udd17]] \n*Votes* 10\n\nI regularly use org-mode for presentations, and preparing said presentations often requires inserting screenshots.  Here is a small function that I wrote to make that task easier (it just copies the newest file in the screenshot folder to a prompted location and inserts it at point in the org file):\n\n#+BEGIN_SRC elisp\n(defvar screenshot-source-directory\n  (expand-file-name \"~/Pictures/Screenshots/\")\n  \"Directory where screenshots are stored.\")\n  \n(defun copy-latest-screenshot-and-insert-org ()\n  \"Copy newest file in screenshot-source-directory and insert it as [[./...]] in the current buffer.\"\n  (interactive)\n  (let* ((files (directory-files-and-attributes\n                 screenshot-source-directory t\n                 directory-files-no-dot-files-regexp))\n         (latest (car (sort files\n                            (lambda (a b)\n                              (time-less-p (nth 6 b) (nth 6 a)))))))\n    (unless latest\n      (user-error \"No screenshots found\"))\n  \n    (let* ((src (car latest))\n           (fname (file-name-nondirectory src))\n           (default\n            (if (file-directory-p\n                 (expand-file-name \"images\" default-directory))\n                (concat \"images/\" fname)\n              fname))\n           (dest-rel\n            (read-string \"Copy screenshot to (relative path): \" default))\n           (dest (expand-file-name dest-rel default-directory))\n           (final\n            (if (directory-name-p dest)\n                (expand-file-name fname dest)\n              dest))\n           (rel (file-relative-name final default-directory)))\n  \n      (make-directory (file-name-directory final) t)\n      (copy-file src final t)\n  \n      (insert (format \"[[./%s]]\" rel))\n      (when (derived-mode-p 'org-mode)\n        (org-display-inline-images))\n  \n      (message \"Copied screenshot to %s\" final)\n      final)))\n\n#+END_SRC\nI also tried calling the screenshot function from within Emacs (and using the resulting image instead of always picking the newest file in the screenshot folder), but the code I had to write for that was ludicrous.  Gnome really makes it unreasonably hard to call its functions from the terminal.\n\nFortunately, separating screenshot taking from inserting into org file works better for my workflow anyways, since I often work on a laptop and have to take the screenshot on a different workspace.",
         "created_datetime": "2025-12-16 09:26:02+00:00"
     },
     "t1_ns4rz1e": {
         "author": "ImJustPassinBy",
-        "upvotes": 10,
-        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1pbx9fd/comment/t1_ns4rz1e][\ud83d\udd17]] \n*Votes* 10\n\nPersonal opinion only:  I don't like how some functions, that prompt users for some input, ignore active regions (e.g., ~M-x quick-calc~).  I find it more natural if the prompt starts with the content of the region, which is what the following code is for:\n\n#+BEGIN_SRC elisp\n(defun advice-minibuffer-seed-with-region (orig-fun &rest args)\n  \"Advice: when a command opens the minibuffer, if a region is active,\nreplace its contents with the region's text.  If no region active, leave\nthe minibuffer unchanged.  Empty region text is allowed and will clear\nthe minibuffer.\"\n  (let ((initial (when (use-region-p)\n                   (buffer-substring-no-properties\n                    (region-beginning) (region-end)))))\n    (if (use-region-p)\n        ;; region active: insert region contents\n        (minibuffer-with-setup-hook\n            (lambda ()\n              (delete-minibuffer-contents)\n              (insert initial))\n          (apply orig-fun args))\n      ;; region inactive: do nothing\n      (apply orig-fun args))))\n\n#+END_SRC\nYou can add it to a function like\n\n#+BEGIN_SRC elisp\n(advice-add 'quick-calc :around #'advice-minibuffer-seed-with-region)\n#+END_SRC",
+        "upvotes": 9,
+        "body": "** u/ImJustPassinBy [[https://www.reddit.com/r/emacs/comments/t3_1pbx9fd/comment/t1_ns4rz1e][\ud83d\udd17]] \n*Votes* 9\n\nPersonal opinion only:  I don't like how some functions, that prompt users for some input, ignore active regions (e.g., ~M-x quick-calc~).  I find it more natural if the prompt starts with the content of the region, which is what the following code is for:\n\n#+BEGIN_SRC elisp\n(defun advice-minibuffer-seed-with-region (orig-fun &rest args)\n  \"Advice: when a command opens the minibuffer, if a region is active,\nreplace its contents with the region's text.  If no region active, leave\nthe minibuffer unchanged.  Empty region text is allowed and will clear\nthe minibuffer.\"\n  (let ((initial (when (use-region-p)\n                   (buffer-substring-no-properties\n                    (region-beginning) (region-end)))))\n    (if (use-region-p)\n        ;; region active: insert region contents\n        (minibuffer-with-setup-hook\n            (lambda ()\n              (delete-minibuffer-contents)\n              (insert initial))\n          (apply orig-fun args))\n      ;; region inactive: do nothing\n      (apply orig-fun args))))\n\n#+END_SRC\nYou can add it to a function like\n\n#+BEGIN_SRC elisp\n(advice-add 'quick-calc :around #'advice-minibuffer-seed-with-region)\n#+END_SRC",
         "created_datetime": "2025-12-03 20:56:27+00:00"
     },
     "t1_nug5m6r": {
         "author": "krisbalintona",
-        "upvotes": 12,
-        "body": "** u/krisbalintona [[https://www.reddit.com/r/emacs/comments/t3_1pnr45a/comment/t1_nug5m6r][\ud83d\udd17]] \n*Votes* 12\n\nThe built-in ~Buffer-menu-mode~ lets you group buffers with ~Buffer-menu-group-by~. There are even good presets for grouping by project and by major mode! The grouping also integrates with ~outline-minor-mode~. Neat, lightweight, and built-in solution for buffer management.",
+        "upvotes": 13,
+        "body": "** u/krisbalintona [[https://www.reddit.com/r/emacs/comments/t3_1pnr45a/comment/t1_nug5m6r][\ud83d\udd17]] \n*Votes* 13\n\nThe built-in ~Buffer-menu-mode~ lets you group buffers with ~Buffer-menu-group-by~. There are even good presets for grouping by project and by major mode! The grouping also integrates with ~outline-minor-mode~. Neat, lightweight, and built-in solution for buffer management.",
         "created_datetime": "2025-12-17 03:00:43+00:00"
     },
     "t1_mpzixm9": {
@@ -1663,14 +1663,14 @@
     },
     "t1_o2po2jp": {
         "author": "mmarshall540",
-        "upvotes": 9,
-        "body": "** u/mmarshall540 [[https://www.reddit.com/r/emacs/comments/t3_1qo1vc3/comment/t1_o2po2jp][\ud83d\udd17]] \n*Votes* 9\n\nI was looking around for a package that would let me use Image-dired to set my desktop's wallpaper. Found a couple that haven't been updated in several years. Installed one of them but couldn't get it to work easily. Checked the keybindings in Image-dired.\n\nDerp!\n\nOf course, Emacs has had this built-in since 2022.  You just customize ~wallpaper-command~ and ~wallpaper-command-args~, and then you can press ~W~ in an \\*image-dired\\* buffer to set your wallpaper!",
+        "upvotes": 10,
+        "body": "** u/mmarshall540 [[https://www.reddit.com/r/emacs/comments/t3_1qo1vc3/comment/t1_o2po2jp][\ud83d\udd17]] \n*Votes* 10\n\nI was looking around for a package that would let me use Image-dired to set my desktop's wallpaper. Found a couple that haven't been updated in several years. Installed one of them but couldn't get it to work easily. Checked the keybindings in Image-dired.\n\nDerp!\n\nOf course, Emacs has had this built-in since 2022.  You just customize ~wallpaper-command~ and ~wallpaper-command-args~, and then you can press ~W~ in an \\*image-dired\\* buffer to set your wallpaper!",
         "created_datetime": "2026-01-31 01:18:38+00:00"
     },
     "t1_o4ur8ho": {
         "author": "krisbalintona",
-        "upvotes": 11,
-        "body": "** u/krisbalintona [[https://www.reddit.com/r/emacs/comments/t3_1r0p7th/comment/t1_o4ur8ho][\ud83d\udd17]] \n*Votes* 11\n\nThe built-in ~bind-keys~ macro (which use-package uses for its ~:bind~ section) has a ~:filter~ keyword that permits on-the-fly whether a keybonding is bound. (The equivalent for ~bind-key~ would be its final argument, ~PREDICATE~.) For example, evaluating this:\n\n#+BEGIN_SRC elisp\n(bind-keys :filter vertico-mode (\"C-c v r\" . vertico-repeat))\n\n#+END_SRC\nPressing ~C-c v r~ with the ~vertico-mode~ variable non-nil calls ~vertico-repeat~. However, disabling ~vertico-mode~ (which sets that variable to nil) results in ~C-c v r~ doing nothing (the keybind is undefined) **without changing the keymap**. Very useful! I've now been experimenting with it to bind my commands conditionally, without having to worry about unbinding them if e.g. I disable a mode later. However, it should be noted that the docstring of ~bind-key~ warns:\n\n>Emacs can evaluate this form at any time that it does redisplay or operates on menu data structures, so you should write it so it can safely be called at any time.\n\n  \nFor some reading on how this works, see the ~:filter~ property description in ~(elisp) Extended Menu Items~. Turns out, this is built-in behavior of ~define-key~ that isn't obvious unless you dig through the manual; which makes sense, since ~bind-key~ is just a layer of syntactic sugar.",
+        "upvotes": 10,
+        "body": "** u/krisbalintona [[https://www.reddit.com/r/emacs/comments/t3_1r0p7th/comment/t1_o4ur8ho][\ud83d\udd17]] \n*Votes* 10\n\nThe built-in ~bind-keys~ macro (which use-package uses for its ~:bind~ section) has a ~:filter~ keyword that permits on-the-fly whether a keybonding is bound. (The equivalent for ~bind-key~ would be its final argument, ~PREDICATE~.) For example, evaluating this:\n\n#+BEGIN_SRC elisp\n(bind-keys :filter vertico-mode (\"C-c v r\" . vertico-repeat))\n\n#+END_SRC\nPressing ~C-c v r~ with the ~vertico-mode~ variable non-nil calls ~vertico-repeat~. However, disabling ~vertico-mode~ (which sets that variable to nil) results in ~C-c v r~ doing nothing (the keybind is undefined) **without changing the keymap**. Very useful! I've now been experimenting with it to bind my commands conditionally, without having to worry about unbinding them if e.g. I disable a mode later. However, it should be noted that the docstring of ~bind-key~ warns:\n\n>Emacs can evaluate this form at any time that it does redisplay or operates on menu data structures, so you should write it so it can safely be called at any time.\n\n  \nFor some reading on how this works, see the ~:filter~ property description in ~(elisp) Extended Menu Items~. Turns out, this is built-in behavior of ~define-key~ that isn't obvious unless you dig through the manual; which makes sense, since ~bind-key~ is just a layer of syntactic sugar.",
         "created_datetime": "2026-02-11 19:36:21+00:00"
     },
     "t1_o7b2mnx": {
@@ -1687,8 +1687,8 @@
     },
     "t1_nx040x6": {
         "author": "Stewmat",
-        "upvotes": 8,
-        "body": "** u/Stewmat [[https://www.reddit.com/r/emacs/comments/t3_1pz6ly1/comment/t1_nx040x6][\ud83d\udd17]] \n*Votes* 8\n\nThe [[https://github.com/jdtsmith/ultra-scroll][ultra-scroll]] package fixes a problem I wasn't even fully conscious of before - jerky scrolling. I had been using pixel-scroll-precision-mode before, which helped with trackpad scrolling, but it wasn't perfect. With ultra-scroll it's buttery smooth now!",
+        "upvotes": 9,
+        "body": "** u/Stewmat [[https://www.reddit.com/r/emacs/comments/t3_1pz6ly1/comment/t1_nx040x6][\ud83d\udd17]] \n*Votes* 9\n\nThe [[https://github.com/jdtsmith/ultra-scroll][ultra-scroll]] package fixes a problem I wasn't even fully conscious of before - jerky scrolling. I had been using pixel-scroll-precision-mode before, which helped with trackpad scrolling, but it wasn't perfect. With ultra-scroll it's buttery smooth now!",
         "created_datetime": "2026-01-01 00:11:24+00:00"
     },
     "t1_oc9a3yv": {
@@ -1723,14 +1723,14 @@
     },
     "t1_ohl044o": {
         "author": "8c000f_11_DL8",
-        "upvotes": 9,
-        "body": "** u/8c000f_11_DL8 [[https://www.reddit.com/r/emacs/comments/t3_1srbipy/comment/t1_ohl044o][\ud83d\udd17]] \n*Votes* 9\n\ndescribe-personal-keybindings",
+        "upvotes": 10,
+        "body": "** u/8c000f_11_DL8 [[https://www.reddit.com/r/emacs/comments/t3_1srbipy/comment/t1_ohl044o][\ud83d\udd17]] \n*Votes* 10\n\ndescribe-personal-keybindings",
         "created_datetime": "2026-04-22 05:54:03+00:00"
     },
     "t1_omqi1c6": {
         "author": "krisbalintona",
-        "upvotes": 10,
-        "body": "** u/krisbalintona [[https://www.reddit.com/r/emacs/comments/t3_1tha5v9/comment/t1_omqi1c6][\ud83d\udd17]] \n*Votes* 10\n\nYou can set ~project-compilation-buffer-name-function~ to ~project-prefixed-buffer-name~ to ensure that each project.el project uses its own compilation buffer.",
+        "upvotes": 12,
+        "body": "** u/krisbalintona [[https://www.reddit.com/r/emacs/comments/t3_1tha5v9/comment/t1_omqi1c6][\ud83d\udd17]] \n*Votes* 12\n\nYou can set ~project-compilation-buffer-name-function~ to ~project-prefixed-buffer-name~ to ensure that each project.el project uses its own compilation buffer.",
         "created_datetime": "2026-05-19 20:08:36+00:00"
     }
 }
