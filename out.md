@@ -1,6 +1,6 @@
 # u/SlowMovingTarget [🔗](https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr35bm5)
 
-**Votes** 38
+**Votes** 37
 
 Nothing revolutionary (and veterans will already know this), but a nice little function for splitting out text to a separate file:
 
@@ -59,16 +59,9 @@ After years of using emacs, I wrote my second ever elisp function to open on git
 ```
 
 
-# u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3m1liu)
-
-**Votes** 24
-
-[removed]
-
-
 # u/sandinmyjoints [🔗](https://www.reddit.com/r/emacs/comments/t3_1hwf46n/comment/t1_m63mddk)
 
-**Votes** 23
+**Votes** 25
 
 For years, I've figured I was using electric-pairs wrong, until I took some time recently to look into it. One case I regularly encounter whose behavior I don't like (pipe representing where point is when I type the quote key one time):
 
@@ -114,6 +107,13 @@ So I wrote my own, adding one additional condition to the `or` of the builtin el
 ```
 
 
+# u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_txh85s/comment/t1_i3m1liu)
+
+**Votes** 24
+
+[removed]
+
+
 # u/Gangsir [🔗](https://www.reddit.com/r/emacs/comments/t3_pxqvtm/comment/t1_hepqmq1)
 
 **Votes** 22
@@ -125,13 +125,6 @@ It's just bound to M-m. Jumps you right to the first non-white space character o
 It still works even on lines that aren't indented, same as C-a in that case.
 
 So useful, especially for resetting point during macros that need to start at the first char on the line.
-
-
-# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1s229ve/comment/t1_oc9a3yv)
-
-**Votes** 22
-
-For the elisp programmers/tinkerers out there: here is a really neat built-in function: `ngettext`. This function lets you use the singular or plural version of strings depending on a given N. This is especially useful for maintaining grammar in messages, errors, and so on. For example: `(ngettext "mouse" "mice" 3)` evaluates to `"mice"` whereas `(ngettext "mouse" "mice" 1)` evaluates to `"mouse"`.
 
 
 # u/geza42 [🔗](https://www.reddit.com/r/emacs/comments/t3_1c0gg7n/comment/t1_kywimnf)
@@ -194,6 +187,13 @@ The built-in `mode-local` package lets you set the values of variables based on 
 ```
 
 See also: [pre-selecting relevant devdocs with `mode-local`](https://gitlab.com/aidanhall/emacs.d/-/blob/aaf1c1a26adc1376630801a011dce8b42b937fee/init.el#L506).
+
+
+# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1s229ve/comment/t1_oc9a3yv)
+
+**Votes** 21
+
+For the elisp programmers/tinkerers out there: here is a really neat built-in function: `ngettext`. This function lets you use the singular or plural version of strings depending on a given N. This is especially useful for maintaining grammar in messages, errors, and so on. For example: `(ngettext "mouse" "mice" 3)` evaluates to `"mice"` whereas `(ngettext "mouse" "mice" 1)` evaluates to `"mouse"`.
 
 
 # u/PriorOutcome [🔗](https://www.reddit.com/r/emacs/comments/t3_112t0uo/comment/t1_j8m9rlj)
@@ -296,31 +296,6 @@ But this week I discovered `ffap-bindings`. This function replaces some key bind
 Here's a popular Emacs config I just rediscovered. Some cool stuff here. <https://github.com/angrybacon/dotemacs>
 
 
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1l21cgo/comment/t1_mvr341k)
-
-**Votes** 18
-
-A universally useful package that I'd like to recommend is [`ws-butler`](https://github.com/lewang/ws-butler). It automatically trims trailing whitespaces of the lines that were changed whenever you save a file:
-
-```elisp
-(use-package ws-butler
-  :hook
-```
-
-(prog-mode . ws-butler-mode) (text-mode . ws-butler-mode))
-
-The native emacs way to achieve something similar is
-
-```elisp
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-```
-
-However, `delete-trailing-whitespace` does not distinguish between changed and unchanged lines, which can be problematic in collaborative projects because it may lead to many changes that you don't want to commit.
-
-edit: typo
-
-
 # u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1loqznm/comment/t1_n0rbpgy)
 
 **Votes** 18
@@ -405,6 +380,31 @@ Now, these `help-at-pt` variables aren't specifically for org links, they contro
 
 (add-hook 'org-mode-hook #'echo-area-tooltips)
 ```
+
+
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1l21cgo/comment/t1_mvr341k)
+
+**Votes** 17
+
+A universally useful package that I'd like to recommend is [`ws-butler`](https://github.com/lewang/ws-butler). It automatically trims trailing whitespaces of the lines that were changed whenever you save a file:
+
+```elisp
+(use-package ws-butler
+  :hook
+```
+
+(prog-mode . ws-butler-mode) (text-mode . ws-butler-mode))
+
+The native emacs way to achieve something similar is
+
+```elisp
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+```
+
+However, `delete-trailing-whitespace` does not distinguish between changed and unchanged lines, which can be problematic in collaborative projects because it may lead to many changes that you don't want to commit.
+
+edit: typo
 
 
 # u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/t3_12rlq4a/comment/t1_jgwlxuw)
@@ -532,22 +532,6 @@ Pretty simple time saver \\\o/
 It would be good to archive the questions and tips put in here. I feel like I always find cool stuff in here, but then it becomes very hard to find it later.
 
 
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1hwf46n/comment/t1_m60s6o9)
-
-**Votes** 16
-
-A universally useful package that I don't see mentioned enough is [`helpful`](https://github.com/Wilfred/helpful). It improves help buffers (better highlighting, more information, etc; see GitHub for screenshots). Just rebind the help keybindings, defer loading until they are called, and it won't even impact your starting time:
-
-```elisp
-(use-package helpful
-  :bind
-  (("C-h f" . helpful-function)
-   ("C-h x" . helpful-command)
-   ("C-h k" . helpful-key)
-   ("C-h v" . helpful-variable)))
-```
-
-
 # u/WorldsEndless [🔗](https://www.reddit.com/r/emacs/comments/t3_1758wua/comment/t1_k4g09iw)
 
 **Votes** 15
@@ -642,11 +626,43 @@ Note that there is also an `isearch-query-replace-regexp` command but you don't 
 Migrated to native compiled emacs branch this week. Some hiccups but everything seems to work out of box, including pdf-tools. Great performance improvement.
 
 
-# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1p00sah/comment/t1_nplvrk8)
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1hwf46n/comment/t1_m60s6o9)
 
 **Votes** 15
 
-Isearch searches "incrementally." But there is also non-incremental search (see `(info "(emacs) Nonincremental Search")`): invoke `isearch` (with `C-s` or `C-r` and similar) and press RET on an empty input. This lets you input the entire search string first. I've found this handy at times.
+A universally useful package that I don't see mentioned enough is [`helpful`](https://github.com/Wilfred/helpful). It improves help buffers (better highlighting, more information, etc; see GitHub for screenshots). Just rebind the help keybindings, defer loading until they are called, and it won't even impact your starting time:
+
+```elisp
+(use-package helpful
+  :bind
+  (("C-h f" . helpful-function)
+   ("C-h x" . helpful-command)
+   ("C-h k" . helpful-key)
+   ("C-h v" . helpful-variable)))
+```
+
+
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1fozctm/comment/t1_lpbqo0e)
+
+**Votes** 14
+
+I recently got tired of constantly having to move my eyes to the bottom of Emacs, so I switched to posframes, [which moves the information in a central pop-up instead](https://blog.costan.ro/img/emacs-completion-system/switch-to.png). For me, this meant using the packages:
+
+\\\* [`vertico-posframe`](https://github.com/tumashu/vertico-posframe) - for [`vertico`](https://github.com/minad/vertico) \\\* [`which-key-posframe`](https://github.com/yanghaoxie/which-key-posframe) - for [`which-key`](https://github.com/justbur/emacs-which-key) \\\* [`transient-posframe`](https://github.com/yanghaoxie/transient-posframe) - for all transient commands, e.g., in [`magit`](https://github.com/magit/magit) or in [`casual-suite`](https://github.com/kickingvegas/casual-suite)
+
+But regardless what you are using, chances are there already is a suitable `*-posframe` package for it. Installing these packages is easy:
+
+```elisp
+(use-package vertico-posframe
+  :init
+  (vertico-posframe-mode))
+(use-package which-key-posframe
+  :init
+  (which-key-posframe-mode))
+(use-package transient-posframe
+  :init
+  (transient-posframe-mode))
+```
 
 
 # u/alvarogonzalezs [🔗](https://www.reddit.com/r/emacs/comments/t3_16tes2a/comment/t1_k2gb81l)
@@ -828,27 +844,11 @@ I use EMMS to listen to very long MP3 files, often over several login sessions. 
 One of these days I'll write a command to automatically resume playing the last file I paused at the right position.
 
 
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1fozctm/comment/t1_lpbqo0e)
+# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1p00sah/comment/t1_nplvrk8)
 
-**Votes** 13
+**Votes** 14
 
-I recently got tired of constantly having to move my eyes to the bottom of Emacs, so I switched to posframes, [which moves the information in a central pop-up instead](https://blog.costan.ro/img/emacs-completion-system/switch-to.png). For me, this meant using the packages:
-
-\\\* [`vertico-posframe`](https://github.com/tumashu/vertico-posframe) - for [`vertico`](https://github.com/minad/vertico) \\\* [`which-key-posframe`](https://github.com/yanghaoxie/which-key-posframe) - for [`which-key`](https://github.com/justbur/emacs-which-key) \\\* [`transient-posframe`](https://github.com/yanghaoxie/transient-posframe) - for all transient commands, e.g., in [`magit`](https://github.com/magit/magit) or in [`casual-suite`](https://github.com/kickingvegas/casual-suite)
-
-But regardless what you are using, chances are there already is a suitable `*-posframe` package for it. Installing these packages is easy:
-
-```elisp
-(use-package vertico-posframe
-  :init
-  (vertico-posframe-mode))
-(use-package which-key-posframe
-  :init
-  (which-key-posframe-mode))
-(use-package transient-posframe
-  :init
-  (transient-posframe-mode))
-```
+Isearch searches "incrementally." But there is also non-incremental search (see `(info "(emacs) Nonincremental Search")`): invoke `isearch` (with `C-s` or `C-r` and similar) and press RET on an empty input. This lets you input the entire search string first. I've found this handy at times.
 
 
 # u/mlk [🔗](https://www.reddit.com/r/emacs/comments/t3_1fjnqgy/comment/t1_lnqelw9)
@@ -1404,52 +1404,6 @@ The built-in `Buffer-menu-mode` lets you group buffers with `Buffer-menu-group-b
 You can set `project-compilation-buffer-name-function` to `project-prefixed-buffer-name` to ensure that each project.el project uses its own compilation buffer.
 
 
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1f8nxb5/comment/t1_llfyzu6)
-
-**Votes** 12
-
-I regularly work with different emacs frames on different monitors, and [`framemove`](https://github.com/emacsmirror/framemove) is great for switching between them. It can hook into `windmove` (which means switching to an adjacent window becomes switching to an adjacent frame if no such window exists) and offers the functions:
-
-\\\* `fm-up-frame`: move to the frame over the current frame \\\* `fm-down-frame`: move to the frame below the current frame \\\* `fm-left-frame`: move to the frame left of the current frame \\\* `fm-right-frame`: move to the frame right of the current frame
-
-It's not on any of the major package repositories, so you have to install it manually. Thanks to [`emacsmirror`](https://github.com/emacsmirror), this can for example be done as follows using `use-package` and `straight` (adjust bindings to your liking):
-
-```elisp
-(use-package framemove
-  :straight (:host github :repo "emacsmirror/framemove")
-  :init
-  (setq framemove-hook-into-windmove t) ;; doesn't work as :config or :custom
-  :bind
-  (("C-x 5 <up>" . fm-up-frame)
-   ("C-x 5 <down>" . fm-down-frame)
-   ("C-x 5 <left>" . fm-left-frame)
-   ("C-x 5 <right>" . fm-right-frame)))
-
-```
-
-edit: The only thing I don't understand is why setting `framemove-hook-into-windmove` to `t` doesn't work in via `:config` or `:custom`. The package is loaded, `C-h f` confirms that `fm-up-frame` exists, but `C-h v` doesn't know `framemove-hook-into-windmove`. `framemove-hook-into-windmove` exists after I run `fm-up-frame`, but then it's set to `nil` and not `t`.
-
-
-# u/Usual<sub>Office</sub><sub>1740</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1d371oz/comment/t1_l687lg9)
-
-**Votes** 12
-
-I've just started to use macros. They are amazing. Here are my tips. C-x -( to start recording. C-x-) to stop recording. F4 to run last recorded macro. Always start at the beginning of a line. Always move by words or lines. If you go forward two chars and the next line needs you to go forward three chars, the macro won't work. Always return to the beginning of the line. For added awesome move down to the next line, positioning yourself to use the macro again.
-
-
-# u/remillard [🔗](https://www.reddit.com/r/emacs/comments/t3_1cbsvxd/comment/t1_l11l7he)
-
-**Votes** 12
-
-I thought about making a whole post about this, but it's mostly ancillary appreciation so maybe this is a better place. Anyhow, for anyone working with code projects, I'm finding that project.el is completely supplanting my previously heavy use of Treemacs. I liked Treemacs because it's a very similar feel to the file/project sidebar in Sublime Text and VSCode (and others I'm sure). It was kind of reassuring. And dired is nice for many things, but navigating a lot of directories does get a little tedious compared to just opening nested directories in Treemacs.
-
-Well, I don't even remember why I started tinkering with project.el. I think I read a post where someone described switching projects, so I set it up, figured couldn't hurt. Man, definitely a good idea. The "project goto file" (`C-x p f`) is insanely convenient. I also have ctags support setup so a quick keybind will let me switch files based on definition, and between the two, I get through files across the project seamlessly. The project find directory is a faster way to direct dired to a place where I do want to see where things are stored.
-
-I suspect completion is doing a lot of heavy lifting here though too, so a perfectly pristine project.el use might have a different experience, but those are quite common anymore.
-
-Anyway, I haven't popped open the Treemacs sidebar in weeks now, and just felt like I should write something in case someone was curious about how handy it was.
-
-
 # u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1933co6/comment/t1_khe4dq6)
 
 **Votes** 12
@@ -1707,26 +1661,30 @@ You can crop imgs in emacs. Open image in buffer and press i c: Crop the image. 
 For more details look at this [artical ](https://lucidmanager.org/productivity/using-emacs-image-dired/)
 
 
-# u/meedstrom [🔗](https://www.reddit.com/r/emacs/comments/t3_1fe504e/comment/t1_lmzbyro)
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1f8nxb5/comment/t1_llfyzu6)
 
 **Votes** 11
 
-Elisp list indentation has been fixed since over two years ago (<https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21922>). A lot of people probably still use an initfile hack, to fix the following problem, that lists would indent like this:
+I regularly work with different emacs frames on different monitors, and [`framemove`](https://github.com/emacsmirror/framemove) is great for switching between them. It can hook into `windmove` (which means switching to an adjacent window becomes switching to an adjacent frame if no such window exists) and offers the functions:
+
+\\\* `fm-up-frame`: move to the frame over the current frame \\\* `fm-down-frame`: move to the frame below the current frame \\\* `fm-left-frame`: move to the frame left of the current frame \\\* `fm-right-frame`: move to the frame right of the current frame
+
+It's not on any of the major package repositories, so you have to install it manually. Thanks to [`emacsmirror`](https://github.com/emacsmirror), this can for example be done as follows using `use-package` and `straight` (adjust bindings to your liking):
 
 ```elisp
-'(:foo bar
-       :baz zab
-       :rab oof)
+(use-package framemove
+  :straight (:host github :repo "emacsmirror/framemove")
+  :init
+  (setq framemove-hook-into-windmove t) ;; doesn't work as :config or :custom
+  :bind
+  (("C-x 5 <up>" . fm-up-frame)
+   ("C-x 5 <down>" . fm-down-frame)
+   ("C-x 5 <left>" . fm-left-frame)
+   ("C-x 5 <right>" . fm-right-frame)))
 
 ```
 
-But now you can just add a space after the opening paren `'(`. This is the new convention.
-
-```elisp
-'( :foo bar
-   :baz zab
-   :rab oof)
-```
+edit: The only thing I don't understand is why setting `framemove-hook-into-windmove` to `t` doesn't work in via `:config` or `:custom`. The package is loaded, `C-h f` confirms that `fm-up-frame` exists, but `C-h v` doesn't know `framemove-hook-into-windmove`. `framemove-hook-into-windmove` exists after I run `fm-up-frame`, but then it's set to `nil` and not `t`.
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1eaw1ia/comment/t1_leom8fv)
@@ -1754,6 +1712,30 @@ A minor annoyance was that an unwanted link to whatever file location I happened
 (setq org-capture-templates
       '(("d" "Done" entry (file+olp+datetree "~/org/done.org") "* %?")))
 ```
+
+
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q)
+
+**Votes** 11
+
+Not from me, but I just wanted to share /u/arthurno1 one-line tip to get `which-key` to work with `dired` (see screenshot in linked post):
+
+<https://www.reddit.com/r/emacs/comments/1clvkfe/announcing_casual_dired_an_opinionated_porcelain/l2yi5tn/>
+
+I assume the same trick applies to other mode-maps as well.
+
+
+# u/remillard [🔗](https://www.reddit.com/r/emacs/comments/t3_1cbsvxd/comment/t1_l11l7he)
+
+**Votes** 11
+
+I thought about making a whole post about this, but it's mostly ancillary appreciation so maybe this is a better place. Anyhow, for anyone working with code projects, I'm finding that project.el is completely supplanting my previously heavy use of Treemacs. I liked Treemacs because it's a very similar feel to the file/project sidebar in Sublime Text and VSCode (and others I'm sure). It was kind of reassuring. And dired is nice for many things, but navigating a lot of directories does get a little tedious compared to just opening nested directories in Treemacs.
+
+Well, I don't even remember why I started tinkering with project.el. I think I read a post where someone described switching projects, so I set it up, figured couldn't hurt. Man, definitely a good idea. The "project goto file" (`C-x p f`) is insanely convenient. I also have ctags support setup so a quick keybind will let me switch files based on definition, and between the two, I get through files across the project seamlessly. The project find directory is a faster way to direct dired to a place where I do want to see where things are stored.
+
+I suspect completion is doing a lot of heavy lifting here though too, so a perfectly pristine project.el use might have a different experience, but those are quite common anymore.
+
+Anyway, I haven't popped open the Treemacs sidebar in weeks now, and just felt like I should write something in case someone was curious about how handy it was.
 
 
 # u/algor512 [🔗](https://www.reddit.com/r/emacs/comments/t3_18xebux/comment/t1_kg4ni5d)
@@ -1894,25 +1876,25 @@ Edited to add: Sorry folks, this doesn't work like I thought it did. See the com
 I can't say how often I use `dabbrev-expand` (`M-/`) to complete words. Saves me a ton of time.
 
 
-# u/konrad1977 [🔗](https://www.reddit.com/r/emacs/comments/t3_1gq86x9/comment/t1_lx7y88i)
-
-**Votes** 11
-
-I totally forgot about `use-package-compute-statistics t` and (M-x) `use-package-report`. This helped me optimizing my startup time from around 3 seconds to less than a second.
-
-
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gvkske/comment/t1_lyptzyu)
-
-**Votes** 11
-
-For people who need to do a quick calculations from time to time but struggle using `M-x calc`, try `M-x quick-calc`. You can enter expressions such as `2*3.4+5`, and the result will be shown and put into your clipboard.
-
-
 # u/alex-iam [🔗](https://www.reddit.com/r/emacs/comments/t3_1mnxffy/comment/t1_n8hzgo2)
 
 **Votes** 11
 
 I've created this hledger-ts-mode: [https://codeberg.org/alex-iam/hledger-ts-mode](https://codeberg.org/alex-iam/hledger-ts-mode) . Hledger is a plain text accounting tool. The mode is not very developed, right now only syntax highlighting and indentation work, so I decided not to create a post. I'm not sure if I will ever develop it much further, as it is enough for my usage. Also, for this to make sense I had to develop a grammar: [https://codeberg.org/alex-iam/tree-sitter-hledger](https://codeberg.org/alex-iam/tree-sitter-hledger)
+
+
+# u/therivercass [🔗](https://www.reddit.com/r/emacs/comments/t3_1nc7vm2/comment/t1_neqx566)
+
+**Votes** 11
+
+the [proposed eglot patch that adds semantic tokens](https://lists.gnu.org/archive/html/bug-gnu-emacs/2025-09/msg00201.html) is working amazingly. while it's based on the lsp-mode implementation for the same feature, it manages to work better than the original. lsp-mode is running into an issue on the current igc branch where it's exceeding the max lisp eval depth when semantic tokens are enabled (try jumping via xref to a symbol definition). the new eglot implementation just works.
+
+
+# u/therivercass [🔗](https://www.reddit.com/r/emacs/comments/t3_1nc7vm2/comment/t1_ndpf6em)
+
+**Votes** 11
+
+the feature/igc branch is working fantastically right now. it eliminated all the minor pauses/stutters and doesn't crash. haven't noticed any major slowdowns, either. if you haven't tried it yet, give it a shot.
 
 
 # u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1r0p7th/comment/t1_o4ur8ho)
@@ -1933,6 +1915,100 @@ Pressing `C-c v r` with the `vertico-mode` variable non-nil calls `vertico-repea
 For some reading on how this works, see the `:filter` property description in `(elisp) Extended Menu Items`. Turns out, this is built-in behavior of `define-key` that isn't obvious unless you dig through the manual; which makes sense, since `bind-key` is just a layer of syntactic sugar.
 
 
+# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1rd3260/comment/t1_o7b2mnx)
+
+**Votes** 11
+
+Org-mode has its own escape character. It isn't backslash, it's a zero width space! The `(org) Escape Character` page reads:
+
+```elisp
+You may sometimes want to write text that looks like Org syntax, but
+should really read as plain text.  Org may use a specific escape
+character in some situations, i.e., a backslash in macros (see \*note
+Macro Replacement::) and links (see \*note Link Format::), or a comma in
+source and example blocks (see \*note Literal Examples::).  In the
+general case, however, we suggest using the zero width space.  You can
+insert one with any of the following:
+    
+  C-x 8 <RET> zero width space <RET>
+  C-x 8 <RET> 200B <RET>
+    
+   For example, in order to write ‘1,2’ as-is in your document, you
+may write instead
+    
+  [X[1,2]]
+    
+where ‘X’ denotes the zero width space character.
+
+```
+
+You can enter such characters in Emacs with `C-x 8 RET ZERO WIDTH SPACE RET`.
+
+
+# u/dfboyd [🔗](https://www.reddit.com/r/emacs/comments/t3_1wyrv9u/comment/t1_peaiiia)
+
+**Votes** 11
+
+If you're using magit, check out the "Z" prefix: worktrees. Instead of switching branches in your main clone of the repo, put each branch on a worktree, and add this to `init.el`:
+
+```elisp
+(magit-add-section-hook 'magit-status-sections-hook #'magit-insert-worktrees nil t)
+```
+
+All your worktrees and their branches are listed in the magit-status buffer, and you can pick one and switch to it.
+
+
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gfhkdg/comment/t1_lui5ao9)
+
+**Votes** 10
+
+I've recently discovered [`org-pdftools`](https://github.com/fuxialexander/org-pdftools) and it offers everything I need for annotating pdfs in emacs. I mainly use it to enhance the inbuilt function `org-store-link`:
+
+\\\* mark a passage in the pdf, run `M-x org-store-link`, and it creates a highlight in the pdf (technically an empty annotation) and copies a link to it. \\\* run `C-c C-l` in any org-buffer, and it pastes the link and prompts you for a name.
+
+The installation is easy, you just need to hook it into `org-mode`:
+
+```elisp
+(use-package org-pdftools
+  :after (org pdf-tools)
+  :hook (org-mode . org-pdftools-setup-link))
+
+```
+
+The only thing to keep in mind is that the highlights in the pdf are not automatically deleted, as you delete the link in the org buffer. You have to do that manually in the pdf (`C-c C-a l` to list all highlights, `D` to delete).
+
+It has less features than [`org-noter`](https://github.com/org-noter/org-noter), but it is more flexible, which is why it suits my use-case better. Unfortunately, it has `org-noter` as a dependency, so you will end up loading it either way.
+
+
+# u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1fjnqgy/comment/t1_ls4kmt1)
+
+**Votes** 10
+
+[removed]
+
+
+# u/meedstrom [🔗](https://www.reddit.com/r/emacs/comments/t3_1fe504e/comment/t1_lmzbyro)
+
+**Votes** 10
+
+Elisp list indentation has been fixed since over two years ago (<https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21922>). A lot of people probably still use an initfile hack, to fix the following problem, that lists would indent like this:
+
+```elisp
+'(:foo bar
+       :baz zab
+       :rab oof)
+
+```
+
+But now you can just add a space after the opening paren `'(`. This is the new convention.
+
+```elisp
+'( :foo bar
+   :baz zab
+   :rab oof)
+```
+
+
 # u/fuzzbomb23 [🔗](https://www.reddit.com/r/emacs/comments/t3_1f34tdh/comment/t1_lkrhqf7)
 
 **Votes** 10
@@ -1946,15 +2022,11 @@ One of my favourite tips for managing my init file is the `imenu` support in `us
 Combined with a nice imenu UI (`consult-imenu` and Vertico, say) you can navigate your init file really quickly.
 
 
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1cmzd47/comment/t1_l33y04q)
+# u/Usual<sub>Office</sub><sub>1740</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1d371oz/comment/t1_l687lg9)
 
 **Votes** 10
 
-Not from me, but I just wanted to share /u/arthurno1 one-line tip to get `which-key` to work with `dired` (see screenshot in linked post):
-
-<https://www.reddit.com/r/emacs/comments/1clvkfe/announcing_casual_dired_an_opinionated_porcelain/l2yi5tn/>
-
-I assume the same trick applies to other mode-maps as well.
+I've just started to use macros. They are amazing. Here are my tips. C-x -( to start recording. C-x-) to stop recording. F4 to run last recorded macro. Always start at the beginning of a line. Always move by words or lines. If you go forward two chars and the next line needs you to go forward three chars, the macro won't work. Always return to the beginning of the line. For added awesome move down to the next line, positioning yourself to use the macro again.
 
 
 # u/saltwaterflyguy [🔗](https://www.reddit.com/r/emacs/comments/t3_1bun8ky/comment/t1_kxur0j8)
@@ -2629,6 +2701,20 @@ toolbar {
 Now I wonder if it's possible to remove the header bar but without removing the shadow behind the frame and behind the context menus. 🤔
 
 
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gvkske/comment/t1_lyptzyu)
+
+**Votes** 10
+
+For people who need to do a quick calculations from time to time but struggle using `M-x calc`, try `M-x quick-calc`. You can enter expressions such as `2*3.4+5`, and the result will be shown and put into your clipboard.
+
+
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1hgx486/comment/t1_m2mx3xd)
+
+**Votes** 10
+
+I just found out that `M-x make-frame` creates the frame on the monitor where the mouse cursor is. So for people who use multiple monitors, one alternative to `M-x make-frame-on-monitor` and selecting the monitor is to simply have the mouse on the monitor you want.
+
+
 # u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1m06p9l/comment/t1_n42glnr)
 
 **Votes** 10
@@ -2646,29 +2732,11 @@ Quick shoutout to [`move-text`](https://github.com/emacsfodder/move-text), a tin
 Great for people who have grown accustomed to moving items up and down with `M-up` and `M-down` in org-mode, and are looking to replicate that behaviour outside of org-mode.
 
 
-# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1m06p9l/comment/t1_n3u4k0o)
-
-**Votes** 10
-
-Everyone knows that `M-n` and `M-p` in the minibuffer cycles through the history of minibuffer candidates. But not everyone knows that just calling `M-n` without any later candidates also sometimes does something depending on the command&#x2014;you cycle through the so-called "future history." You can read about it in `info "(emacs) Minibuffer History"`. An excerpt:
-
-> If you type ‘M-n’ in the minibuffer when there are no later entries in the minibuffer history (e.g., if you haven’t previously typed ‘M-p’), Emacs tries fetching from a list of default arguments: values that you are likely to enter. You can think of this as moving through the “future history”.
-
-For example, `C-x C-f M-n` completes to the file of the current buffer.
-
-
 # u/chaozprizm [🔗](https://www.reddit.com/r/emacs/comments/t3_1n0as0m/comment/t1_nbd2w4c)
 
 **Votes** 10
 
 No tip or trick, just want to share that I've been using Emacs extensively for 5 years, and just realized you can undo with "C-/" instead of "C-x u". I've been suffering stupidly for years.
-
-
-# u/therivercass [🔗](https://www.reddit.com/r/emacs/comments/t3_1nc7vm2/comment/t1_neqx566)
-
-**Votes** 10
-
-the [proposed eglot patch that adds semantic tokens](https://lists.gnu.org/archive/html/bug-gnu-emacs/2025-09/msg00201.html) is working amazingly. while it's based on the lsp-mode implementation for the same feature, it manages to work better than the original. lsp-mode is running into an issue on the current igc branch where it's exceeding the max lisp eval depth when semantic tokens are enabled (try jumping via xref to a symbol definition). the new eglot implementation just works.
 
 
 # u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1pnr45a/comment/t1_nub26o0)
@@ -2727,41 +2795,45 @@ I also tried calling the screenshot function from within Emacs (and using the re
 Fortunately, separating screenshot taking from inserting into org file works better for my workflow anyways, since I often work on a laptop and have to take the screenshot on a different workspace.
 
 
-# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1rd3260/comment/t1_o7b2mnx)
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1pbx9fd/comment/t1_ns4rz1e)
 
 **Votes** 10
 
-Org-mode has its own escape character. It isn't backslash, it's a zero width space! The `(org) Escape Character` page reads:
+Personal opinion only: I don't like how some functions, that prompt users for some input, ignore active regions (e.g., `M-x quick-calc`). I find it more natural if the prompt starts with the content of the region, which is what the following code is for:
 
 ```elisp
-You may sometimes want to write text that looks like Org syntax, but
-should really read as plain text.  Org may use a specific escape
-character in some situations, i.e., a backslash in macros (see \*note
-Macro Replacement::) and links (see \*note Link Format::), or a comma in
-source and example blocks (see \*note Literal Examples::).  In the
-general case, however, we suggest using the zero width space.  You can
-insert one with any of the following:
-    
-  C-x 8 <RET> zero width space <RET>
-  C-x 8 <RET> 200B <RET>
-    
-   For example, in order to write ‘1,2’ as-is in your document, you
-may write instead
-    
-  [X[1,2]]
-    
-where ‘X’ denotes the zero width space character.
+(defun advice-minibuffer-seed-with-region (orig-fun &rest args)
+  "Advice: when a command opens the minibuffer, if a region is active,
+replace its contents with the region's text.  If no region active, leave
+the minibuffer unchanged.  Empty region text is allowed and will clear
+the minibuffer."
+  (let ((initial (when (use-region-p)
+                   (buffer-substring-no-properties
+                    (region-beginning) (region-end)))))
+    (if (use-region-p)
+        ;; region active: insert region contents
+        (minibuffer-with-setup-hook
+            (lambda ()
+              (delete-minibuffer-contents)
+              (insert initial))
+          (apply orig-fun args))
+      ;; region inactive: do nothing
+      (apply orig-fun args))))
 
 ```
 
-You can enter such characters in Emacs with `C-x 8 RET ZERO WIDTH SPACE RET`.
+You can add it to a function like
+
+```elisp
+(advice-add 'quick-calc :around #'advice-minibuffer-seed-with-region)
+```
 
 
-# u/8c000f<sub>11</sub><sub>DL8</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1srbipy/comment/t1_ohl044o)
+# u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1s229ve/comment/t1_od7lfsy)
 
 **Votes** 10
 
-describe-personal-keybindings
+A while back I shared how to edit the left and right boundaries of **emphasized** text in org precisely, even when emphasis markers are hidden. I found a better way to achieve this without binding new move commands, and it has a nice visible indicator: cursor changes from box to bar when "on the inside". Check [this gist](https://gist.github.com/jdtsmith/87ce361830466dd9ab2e304d17ddc2e4) and a little [video demo](https://private-user-images.githubusercontent.com/93749/573551126-807d7b89-8ce7-45a1-81c5-e27a69118c79.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUyMjcwNzcsIm5iZiI6MTc3NTIyNjc3NywicGF0aCI6Ii85Mzc0OS81NzM1NTExMjYtODA3ZDdiODktOGNlNy00NWExLTgxYzUtZTI3YTY5MTE4Yzc5Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA0MDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNDAzVDE0MzI1N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTU5ODQ3MWQ4NjdmYWJiMTA2NzFmZDkwNmMxNjQ2NGJiYmJiZDc1OTEyN2ZlOTI0NDQyOWU5ZjNmM2Q2NDJlNzEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.9WlouNdw6zwFJdZQzFoft34QL8nBd9ETdjRrPFraO24).
 
 
 # u/sauntcartas [🔗](https://www.reddit.com/r/emacs/comments/t3_1tueedh/comment/t1_opf2l08)
@@ -2796,27 +2868,6 @@ Well, dang. I've been living in Emacs for twenty years and I didn't know about a
 tl;dr: I had entirely nonfunctional frame-positioning code in my init file for ages.
 
 
-# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1u71nm1/comment/t1_os784j7)
-
-**Votes** 10
-
-Most users know about `subword-mode`, some people know about `super-word-mode~&mdash;which redefines word boundaries to include symbols, so &ldquo;this\_is\_a\_symbol&rdquo; counts as a single world (see ~(emacs) Misc for Programs`)&mdash;but do you know about `glasses-mode`? This minor mode displays underscores **between** camel cased words. So wordsLikeThis appear (only visually) as words\\<sub>Like</sub>\\<sub>This</sub> (see `(emacs) MixedCase Words` for more information). Pretty neat!
-
-
-# u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1fjnqgy/comment/t1_ls4kmt1)
-
-**Votes** 9
-
-[removed]
-
-
-# u/rego<sub>b</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfskmro)
-
-**Votes** 9
-
-`C-x C-e` to edit current command line in bash which opens the line in emacs (maybe not emacs related but I found this recently useful when working in the terminal)
-
-
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1e5ctk2/comment/t1_ldsl3vy)
 
 **Votes** 9
@@ -2824,6 +2875,26 @@ Most users know about `subword-mode`, some people know about `super-word-mode~&m
 I recently discovered the [Dimmer](https://github.com/gonewest818/dimmer.el) package and can't believe I didn't try it until now. It subtly dims windows that aren't focused, just enough to draw your eyes to the window that **is** focused. And of course, you can customize how much it dims and exclude certain buffers.
 
 I love things that reduce cognitive load like this. You don't realize how much time you spent looking for little clues like a solid cursor, until you don't have to anymore.
+
+
+# u/pt-guzzardo [🔗](https://www.reddit.com/r/emacs/comments/t3_1chgsxe/comment/t1_l2cv5cx)
+
+**Votes** 9
+
+```elisp
+(defun copy-source-for-reddit ()
+  (interactive)
+  (let ((contents (buffer-substring (point) (mark))))
+    (with-temp-buffer
+      (insert contents)
+      (mark-whole-buffer)
+      (indent-rigidly (point) (mark) 4 t)
+      (mark-whole-buffer)
+      (kill-ring-save 0 0 t))))
+
+```
+
+A handy little snippet for exporting code to reddit markdown. Takes the region, prepends four spaces to each line, and then copies it to the kill ring to be pasted in your browser, without modifying the original buffer.
 
 
 # u/demosthenex [🔗](https://www.reddit.com/r/emacs/comments/t3_1b7uj43/comment/t1_ktogga6)
@@ -3422,11 +3493,11 @@ Each person gets a different colour to indicate the part of the file they’re e
 <https://imgur.com/a/zvfLpdH>
 
 
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1hgx486/comment/t1_m2mx3xd)
+# u/konrad1977 [🔗](https://www.reddit.com/r/emacs/comments/t3_1gq86x9/comment/t1_lx7y88i)
 
 **Votes** 9
 
-I just found out that `M-x make-frame` creates the frame on the monitor where the mouse cursor is. So for people who use multiple monitors, one alternative to `M-x make-frame-on-monitor` and selecting the monitor is to simply have the mouse on the monitor you want.
+I totally forgot about `use-package-compute-statistics t` and (M-x) `use-package-report`. This helped me optimizing my startup time from around 3 seconds to less than a second.
 
 
 # u/pjhuxford [🔗](https://www.reddit.com/r/emacs/comments/t3_1hgx486/comment/t1_m36rqzv)
@@ -3440,11 +3511,50 @@ Personally, I find it much more intuitive for the source buffer window to replac
 While reading the news also discovered the new command `help-find-source` in Emacs 30+, which is globally bound to `C-h 4 s`. If a `*Help*` buffer exists (not necessarily in the selected window), then in the current window it jumps to the source file corresponding to the `*Help*` buffer, if one exists.
 
 
+# u/druuuun [🔗](https://www.reddit.com/r/emacs/comments/t3_1icp42g/comment/t1_ma4bx1b)
+
+**Votes** 9
+
+Found out about setting `shift-select-mode` to `'permanent` today and it's a game changer. I like to use [expreg](https://github.com/casouri/expreg) to expand and contract regions and it always bugged me that once a region has been selected, if I then used shift-translated motion key (e.g. `C-S-f`, `C-S-n`, etc) to change the region, the region would be deactivated. If you set `shift-select-mode` to `'permanent` then you can modify the active region regardless of whether it was created by a non-shift-translated command.
+
+
 # u/mindgitrwx [🔗](https://www.reddit.com/r/emacs/comments/t3_1icp42g/comment/t1_mczsy27)
 
 **Votes** 9
 
 Isn't this thread usually updated periodically?
+
+
+# u/Hammar<sub>Morty</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1j8h5aw/comment/t1_mhnx90t)
+
+**Votes** 9
+
+I like Prot's modeline and display-buffer-alist and wanted to try them out. Since he has done such a great job splitting his custom functions into library packages, you can use them without much effort to build your own.
+
+Here is the Elpaca recipe I am using so I don't have to copy the packages into my own config.
+
+```elisp
+(use-package prot-modeline
+  :ensure (:host gitlab
+:repo "protesilaos/dotfiles"
+:files ("emacs/.emacs.d/prot-lisp/prot-modeline.el" 
+ "emacs/.emacs.d/prot-lisp/prot-common.el")
+:main "emacs/.emacs.d/prot-lisp/prot-modeline.el")
+  :config ...)
+
+```
+
+![img](https://preview.redd.it/wx10z7ngsjoe1.png?width=1155&format=png&auto=webp&s=ec963d86e0136b0af8863b00ccf3061ade123bfc)
+
+```elisp
+(use-package prot-window
+  :ensure (:host gitlab
+:repo "protesilaos/dotfiles"
+:files ("emacs/.emacs.d/prot-lisp/prot-window.el"
+ "emacs/.emacs.d/prot-lisp/prot-common.el")
+:main "emacs/.emacs.d/prot-lisp/prot-window.el")
+  :config ...)
+```
 
 
 # u/captainflasmr [🔗](https://www.reddit.com/r/emacs/comments/t3_1kqup1n/comment/t1_mtgfbwu)
@@ -3508,30 +3618,11 @@ I'm not sure in which version this was added, but I've been setting the tab-bar 
 You can read about it in the docstring of `display-buffer-in-tab`. (Strangely, I there is no mention of "tab-group" in the Emacs Info manual.)
 
 
-# u/DevelopmentCool2449 [🔗](https://www.reddit.com/r/emacs/comments/t3_1loqznm/comment/t1_n1kp1o6)
+# u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1m06p9l/comment/t1_n3bmu9f)
 
 **Votes** 9
 
-In emacs 31 there is a new variable `load-path-filter-function` that improves emacs startup time.
-
-Accoding to the commit ([e5218df](https://github.com/emacs-mirror/emacs/commit/e5218df144203ff1b5da3d46b7579b6455008ee7)) where this was implemented:
-
->Add load-path-filter-function and use it to optimize loading
-
->When there are many directories on load-path, the part of load which searches load-path can become very slow. By filtering load-path up front to only contain directories which are likely to contain the searched-for file, load becomes much faster.
-
->This can be set in early-init.el for maximum effect.
-
-I've set it in my `early-init.el` `(setq load-path-filter-function #'load-path-filter-cache-directory-files)` and i've noticed a good improvement in my startup time, from 1.36s to 1.02s, this may be different but the difference is noticeable.
-
-This feature is experimental, but it is worth trying it
-
-
-# u/therivercass [🔗](https://www.reddit.com/r/emacs/comments/t3_1nc7vm2/comment/t1_ndpf6em)
-
-**Votes** 9
-
-the feature/igc branch is working fantastically right now. it eliminated all the minor pauses/stutters and doesn't crash. haven't noticed any major slowdowns, either. if you haven't tried it yet, give it a shot.
+If you compile your own emacs, you might prefer `xref` (`M-.`) to visit elisp symbols in the original source directory, **not** the install directory. [This small function](https://gist.github.com/jdtsmith/57c9c94bc916b58c0e4ebfc01d300bf1) enables that.
 
 
 # u/RaisinSecure [🔗](https://www.reddit.com/r/emacs/comments/t3_1no6dq7/comment/t1_nh19e7d)
@@ -3539,51 +3630,6 @@ the feature/igc branch is working fantastically right now. it eliminated all the
 **Votes** 9
 
 can we get post flair for LLM stuff so people can filter it out?
-
-
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1pbx9fd/comment/t1_ns4rz1e)
-
-**Votes** 9
-
-Personal opinion only: I don't like how some functions, that prompt users for some input, ignore active regions (e.g., `M-x quick-calc`). I find it more natural if the prompt starts with the content of the region, which is what the following code is for:
-
-```elisp
-(defun advice-minibuffer-seed-with-region (orig-fun &rest args)
-  "Advice: when a command opens the minibuffer, if a region is active,
-replace its contents with the region's text.  If no region active, leave
-the minibuffer unchanged.  Empty region text is allowed and will clear
-the minibuffer."
-  (let ((initial (when (use-region-p)
-                   (buffer-substring-no-properties
-                    (region-beginning) (region-end)))))
-    (if (use-region-p)
-        ;; region active: insert region contents
-        (minibuffer-with-setup-hook
-            (lambda ()
-              (delete-minibuffer-contents)
-              (insert initial))
-          (apply orig-fun args))
-      ;; region inactive: do nothing
-      (apply orig-fun args))))
-
-```
-
-You can add it to a function like
-
-```elisp
-(advice-add 'quick-calc :around #'advice-minibuffer-seed-with-region)
-```
-
-
-# u/mmarshall540 [🔗](https://www.reddit.com/r/emacs/comments/t3_1qo1vc3/comment/t1_o2po2jp)
-
-**Votes** 9
-
-I was looking around for a package that would let me use Image-dired to set my desktop's wallpaper. Found a couple that haven't been updated in several years. Installed one of them but couldn't get it to work easily. Checked the keybindings in Image-dired.
-
-Derp!
-
-Of course, Emacs has had this built-in since 2022. You just customize `wallpaper-command` and `wallpaper-command-args`, and then you can press `W` in an \\\*image-dired\\\* buffer to set your wallpaper!
 
 
 # u/<sub>0</sub>-<span class="underline">\_-0</span> [🔗](https://www.reddit.com/r/emacs/comments/t3_1r0p7th/comment/t1_o691j0z)
@@ -3604,11 +3650,88 @@ I first ran `M-x org-ql-sparse-tree` to experiment with the query and check that
 to archive them all in one go.
 
 
-# u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1s229ve/comment/t1_od7lfsy)
+# u/torusJKL [🔗](https://www.reddit.com/r/emacs/comments/t3_1rplhb1/comment/t1_o9mkevf)
 
 **Votes** 9
 
-A while back I shared how to edit the left and right boundaries of **emphasized** text in org precisely, even when emphasis markers are hidden. I found a better way to achieve this without binding new move commands, and it has a nice visible indicator: cursor changes from box to bar when "on the inside". Check [this gist](https://gist.github.com/jdtsmith/87ce361830466dd9ab2e304d17ddc2e4) and a little [video demo](https://private-user-images.githubusercontent.com/93749/573551126-807d7b89-8ce7-45a1-81c5-e27a69118c79.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUyMjcwNzcsIm5iZiI6MTc3NTIyNjc3NywicGF0aCI6Ii85Mzc0OS81NzM1NTExMjYtODA3ZDdiODktOGNlNy00NWExLTgxYzUtZTI3YTY5MTE4Yzc5Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA0MDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNDAzVDE0MzI1N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTU5ODQ3MWQ4NjdmYWJiMTA2NzFmZDkwNmMxNjQ2NGJiYmJiZDc1OTEyN2ZlOTI0NDQyOWU5ZjNmM2Q2NDJlNzEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.9WlouNdw6zwFJdZQzFoft34QL8nBd9ETdjRrPFraO24).
+I have started to use org code blocks for shell commands and executing them using org-babel. What I didn't like was having the results directly in the same document.
+
+Instead I created a function that will kill the results from the org file (using org-babel-remove-result) and changes the new buffer so that I can check the result and quickly close with `q`.
+
+Since I don't want this behavior for all results the function will check if there is a `:results buffer` attribute:
+
+```elisp
+#+begin_src sh :results output buffer
+  date
+```
+
+\#+END<sub>SRC</sub> babel-to-buffer:
+
+```elisp
+(defun my/babel-to-buffer ()
+  "Open org-babel result in unique buffer, remove from org."
+  (interactive)
+  (org-open-at-point)
+  (org-babel-remove-result)
+  (let ((buf (window-buffer)))
+    (with-current-buffer buf
+      (rename-buffer (format "*babel-result-%s*"
+                             (format-time-string "%H%M%S")) t)
+      (compilation-mode)
+      (setq buffer-read-only t)
+      (local-set-key (kbd "q") #'quit-window))))
+    
+(defun my/babel-maybe-to-buffer ()
+  "Conditionally call my/babel-to-buffer based on header."
+  (let* ((info (org-babel-get-src-block-info))
+         (params (nth 2 info))
+         (results-params (cdr (assq :results params))))
+    (when (and results-params
+               (string-match-p "\\<buffer\\>" (if (listp results-params)
+                                                  (mapconcat #'identity results-params " ")
+                                                results-params)))
+      (my/babel-to-buffer))))
+    
+(add-hook 'org-babel-after-execute-hook #'my/babel-maybe-to-buffer)
+
+```
+
+Since `q` doesn't kill the buffer there might be a long list of result buffers after some time, which is why I have a small function that will kill all those buffers on demand:
+
+```elisp
+(defun my/babel-kill-all-result-buffers ()
+  "Kill all babel-result-* buffers."
+  (interactive)
+  (dolist (buf (buffer-list))
+    (when (string-match-p "^\\*babel-result-" (buffer-name buf))
+      (kill-buffer buf))))
+```
+
+
+# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1s229ve/comment/t1_ocempyc)
+
+**Votes** 9
+
+Shoutout to [`org-appear`](https://github.com/awth13/org-appear), a package that I strongly recommend to org-mode users who have `org-hide-emphasis-markers` set to `t` (which makes org-mode hide emphasis markers like `*` in `*foo*`). [`org-appear`](https://github.com/awth13/org-appear) automatically unhides those markers when your point hovers over the text.
+
+The package [`org-fragtog`](https://github.com/io12/org-fragtog) does something similar for latex previews, it automatically shows the latex code when your point hovers over the latex preview image.
+
+You can try it out yourself:
+
+```elisp
+(use-package org-appear
+  :ensure t
+  :after org
+  :hook
+  (org-mode . org-appear-mode)
+  :custom
+  (org-appear-autolinks t))
+
+(use-package org-fragtog
+  :ensure t
+  :after org
+  :hook (org-mode . org-fragtog-mode))
+```
 
 
 # u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1vl5lkv/comment/t1_p35pmmk)
@@ -3632,33 +3755,18 @@ some text
 Very useful! This enforcement applies both to the parser when inserting new list items with e.g. `M-RET` as well as on export.
 
 
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1gfhkdg/comment/t1_lui5ao9)
-
-**Votes** 8
-
-I've recently discovered [`org-pdftools`](https://github.com/fuxialexander/org-pdftools) and it offers everything I need for annotating pdfs in emacs. I mainly use it to enhance the inbuilt function `org-store-link`:
-
-\\\* mark a passage in the pdf, run `M-x org-store-link`, and it creates a highlight in the pdf (technically an empty annotation) and copies a link to it. \\\* run `C-c C-l` in any org-buffer, and it pastes the link and prompts you for a name.
-
-The installation is easy, you just need to hook it into `org-mode`:
-
-```elisp
-(use-package org-pdftools
-  :after (org pdf-tools)
-  :hook (org-mode . org-pdftools-setup-link))
-
-```
-
-The only thing to keep in mind is that the highlights in the pdf are not automatically deleted, as you delete the link in the org buffer. You have to do that manually in the pdf (`C-c C-a l` to list all highlights, `D` to delete).
-
-It has less features than [`org-noter`](https://github.com/org-noter/org-noter), but it is more flexible, which is why it suits my use-case better. Unfortunately, it has `org-noter` as a dependency, so you will end up loading it either way.
-
-
 # u/fv\_\_ [🔗](https://www.reddit.com/r/emacs/comments/t3_1fzmgwb/comment/t1_lr5ceqe)
 
 **Votes** 8
 
 C-x in a transient popup shows menu to save selected options e.g., it can be used to select ~ &#x2013;force-with-lease~ by default while pushing in magit (P p)
+
+
+# u/rego<sub>b</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfskmro)
+
+**Votes** 8
+
+`C-x C-e` to edit current command line in bash which opens the line in emacs (maybe not emacs related but I found this recently useful when working in the terminal)
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1eghspj/comment/t1_lfsffnb)
@@ -3687,26 +3795,6 @@ A few people have asked about my code to change cursor color when repeat-mode is
 **Votes** 8
 
 I (re) discovered rectangle mode recently. Very useful when deleting lots of indents. C-x spc then make the region. <https://emacsredux.com/blog/2014/01/01/a-peek-at-emacs-24-dot-4-rectangular-selection/>
-
-
-# u/pt-guzzardo [🔗](https://www.reddit.com/r/emacs/comments/t3_1chgsxe/comment/t1_l2cv5cx)
-
-**Votes** 8
-
-```elisp
-(defun copy-source-for-reddit ()
-  (interactive)
-  (let ((contents (buffer-substring (point) (mark))))
-    (with-temp-buffer
-      (insert contents)
-      (mark-whole-buffer)
-      (indent-rigidly (point) (mark) 4 t)
-      (mark-whole-buffer)
-      (kill-ring-save 0 0 t))))
-
-```
-
-A handy little snippet for exporting code to reddit markdown. Takes the region, prepends four spaces to each line, and then copies it to the kill ring to be pasted in your browser, without modifying the original buffer.
 
 
 # u/vjgoh [🔗](https://www.reddit.com/r/emacs/comments/t3_18149ql/comment/t1_kahspwz)
@@ -5353,13 +5441,6 @@ fmt.inter.name = { x }
 ```
 
 
-# u/druuuun [🔗](https://www.reddit.com/r/emacs/comments/t3_1icp42g/comment/t1_ma4bx1b)
-
-**Votes** 8
-
-Found out about setting `shift-select-mode` to `'permanent` today and it's a game changer. I like to use [expreg](https://github.com/casouri/expreg) to expand and contract regions and it always bugged me that once a region has been selected, if I then used shift-translated motion key (e.g. `C-S-f`, `C-S-n`, etc) to change the region, the region would be deactivated. If you set `shift-select-mode` to `'permanent` then you can modify the active region regardless of whether it was created by a non-shift-translated command.
-
-
 # u/80286 [🔗](https://www.reddit.com/r/emacs/comments/t3_1icp42g/comment/t1_ma5ri3n)
 
 **Votes** 8
@@ -5403,38 +5484,6 @@ My personal setup:
             ))
     (history-mode +1)
     )
-```
-
-
-# u/Hammar<sub>Morty</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1j8h5aw/comment/t1_mhnx90t)
-
-**Votes** 8
-
-I like Prot's modeline and display-buffer-alist and wanted to try them out. Since he has done such a great job splitting his custom functions into library packages, you can use them without much effort to build your own.
-
-Here is the Elpaca recipe I am using so I don't have to copy the packages into my own config.
-
-```elisp
-(use-package prot-modeline
-  :ensure (:host gitlab
-:repo "protesilaos/dotfiles"
-:files ("emacs/.emacs.d/prot-lisp/prot-modeline.el" 
- "emacs/.emacs.d/prot-lisp/prot-common.el")
-:main "emacs/.emacs.d/prot-lisp/prot-modeline.el")
-  :config ...)
-
-```
-
-![img](https://preview.redd.it/wx10z7ngsjoe1.png?width=1155&format=png&auto=webp&s=ec963d86e0136b0af8863b00ccf3061ade123bfc)
-
-```elisp
-(use-package prot-window
-  :ensure (:host gitlab
-:repo "protesilaos/dotfiles"
-:files ("emacs/.emacs.d/prot-lisp/prot-window.el"
- "emacs/.emacs.d/prot-lisp/prot-common.el")
-:main "emacs/.emacs.d/prot-lisp/prot-window.el")
-  :config ...)
 ```
 
 
@@ -5499,13 +5548,6 @@ C-c b - switches to full-window \\\*Ibuffer\\\*, if already in \\\*Ibuffer\\\* g
 ```
 
 
-# u/JDRiverRun [🔗](https://www.reddit.com/r/emacs/comments/t3_1m06p9l/comment/t1_n3bmu9f)
-
-**Votes** 8
-
-If you compile your own emacs, you might prefer `xref` (`M-.`) to visit elisp symbols in the original source directory, **not** the install directory. [This small function](https://gist.github.com/jdtsmith/57c9c94bc916b58c0e4ebfc01d300bf1) enables that.
-
-
 # u/skyler544 [🔗](https://www.reddit.com/r/emacs/comments/t3_1loqznm/comment/t1_n1m3kh6)
 
 **Votes** 8
@@ -5522,6 +5564,36 @@ TIL: Using `completing-read` is quite simple. Here's a command that will let you
      (args (if prefix (read-string "Arguments: " ""))))
 (start-process "flatpak-run" nil "flatpak" "run" selected-app args)))
 ```
+
+
+# u/DevelopmentCool2449 [🔗](https://www.reddit.com/r/emacs/comments/t3_1loqznm/comment/t1_n1kp1o6)
+
+**Votes** 8
+
+In emacs 31 there is a new variable `load-path-filter-function` that improves emacs startup time.
+
+Accoding to the commit ([e5218df](https://github.com/emacs-mirror/emacs/commit/e5218df144203ff1b5da3d46b7579b6455008ee7)) where this was implemented:
+
+>Add load-path-filter-function and use it to optimize loading
+
+>When there are many directories on load-path, the part of load which searches load-path can become very slow. By filtering load-path up front to only contain directories which are likely to contain the searched-for file, load becomes much faster.
+
+>This can be set in early-init.el for maximum effect.
+
+I've set it in my `early-init.el` `(setq load-path-filter-function #'load-path-filter-cache-directory-files)` and i've noticed a good improvement in my startup time, from 1.36s to 1.02s, this may be different but the difference is noticeable.
+
+This feature is experimental, but it is worth trying it
+
+
+# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1m06p9l/comment/t1_n3u4k0o)
+
+**Votes** 8
+
+Everyone knows that `M-n` and `M-p` in the minibuffer cycles through the history of minibuffer candidates. But not everyone knows that just calling `M-n` without any later candidates also sometimes does something depending on the command&#x2014;you cycle through the so-called "future history." You can read about it in `info "(emacs) Minibuffer History"`. An excerpt:
+
+> If you type ‘M-n’ in the minibuffer when there are no later entries in the minibuffer history (e.g., if you haven’t previously typed ‘M-p’), Emacs tries fetching from a list of default arguments: values that you are likely to enter. You can think of this as moving through the “future history”.
+
+For example, `C-x C-f M-n` completes to the file of the current buffer.
 
 
 # u/[deleted] [🔗](https://www.reddit.com/r/emacs/comments/t3_1m06p9l/comment/t1_n3cylz1)
@@ -5560,6 +5632,17 @@ then, use 'widen' to show all of the buffer again. it's bound to 'C-x n w' by de
 i just like it a lot when things are clean so i'm very happy i found these commands lmao
 
 
+# u/mmarshall540 [🔗](https://www.reddit.com/r/emacs/comments/t3_1qo1vc3/comment/t1_o2po2jp)
+
+**Votes** 8
+
+I was looking around for a package that would let me use Image-dired to set my desktop's wallpaper. Found a couple that haven't been updated in several years. Installed one of them but couldn't get it to work easily. Checked the keybindings in Image-dired.
+
+Derp!
+
+Of course, Emacs has had this built-in since 2022. You just customize `wallpaper-command` and `wallpaper-command-args`, and then you can press `W` in an \\\*image-dired\\\* buffer to set your wallpaper!
+
+
 # u/Stewmat [🔗](https://www.reddit.com/r/emacs/comments/t3_1pz6ly1/comment/t1_nx040x6)
 
 **Votes** 8
@@ -5567,95 +5650,25 @@ i just like it a lot when things are clean so i'm very happy i found these comma
 The [ultra-scroll](https://github.com/jdtsmith/ultra-scroll) package fixes a problem I wasn't even fully conscious of before - jerky scrolling. I had been using pixel-scroll-precision-mode before, which helped with trackpad scrolling, but it wasn't perfect. With ultra-scroll it's buttery smooth now!
 
 
-# u/torusJKL [🔗](https://www.reddit.com/r/emacs/comments/t3_1rplhb1/comment/t1_o9mkevf)
-
-**Votes** 8
-
-I have started to use org code blocks for shell commands and executing them using org-babel. What I didn't like was having the results directly in the same document.
-
-Instead I created a function that will kill the results from the org file (using org-babel-remove-result) and changes the new buffer so that I can check the result and quickly close with `q`.
-
-Since I don't want this behavior for all results the function will check if there is a `:results buffer` attribute:
-
-```elisp
-#+begin_src sh :results output buffer
-  date
-```
-
-\#+END<sub>SRC</sub> babel-to-buffer:
-
-```elisp
-(defun my/babel-to-buffer ()
-  "Open org-babel result in unique buffer, remove from org."
-  (interactive)
-  (org-open-at-point)
-  (org-babel-remove-result)
-  (let ((buf (window-buffer)))
-    (with-current-buffer buf
-      (rename-buffer (format "*babel-result-%s*"
-                             (format-time-string "%H%M%S")) t)
-      (compilation-mode)
-      (setq buffer-read-only t)
-      (local-set-key (kbd "q") #'quit-window))))
-    
-(defun my/babel-maybe-to-buffer ()
-  "Conditionally call my/babel-to-buffer based on header."
-  (let* ((info (org-babel-get-src-block-info))
-         (params (nth 2 info))
-         (results-params (cdr (assq :results params))))
-    (when (and results-params
-               (string-match-p "\\<buffer\\>" (if (listp results-params)
-                                                  (mapconcat #'identity results-params " ")
-                                                results-params)))
-      (my/babel-to-buffer))))
-    
-(add-hook 'org-babel-after-execute-hook #'my/babel-maybe-to-buffer)
-
-```
-
-Since `q` doesn't kill the buffer there might be a long list of result buffers after some time, which is why I have a small function that will kill all those buffers on demand:
-
-```elisp
-(defun my/babel-kill-all-result-buffers ()
-  "Kill all babel-result-* buffers."
-  (interactive)
-  (dolist (buf (buffer-list))
-    (when (string-match-p "^\\*babel-result-" (buffer-name buf))
-      (kill-buffer buf))))
-```
-
-
-# u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1s229ve/comment/t1_ocempyc)
-
-**Votes** 8
-
-Shoutout to [`org-appear`](https://github.com/awth13/org-appear), a package that I strongly recommend to org-mode users who have `org-hide-emphasis-markers` set to `t` (which makes org-mode hide emphasis markers like `*` in `*foo*`). [`org-appear`](https://github.com/awth13/org-appear) automatically unhides those markers when your point hovers over the text.
-
-The package [`org-fragtog`](https://github.com/io12/org-fragtog) does something similar for latex previews, it automatically shows the latex code when your point hovers over the latex preview image.
-
-You can try it out yourself:
-
-```elisp
-(use-package org-appear
-  :ensure t
-  :after org
-  :hook
-  (org-mode . org-appear-mode)
-  :custom
-  (org-appear-autolinks t))
-
-(use-package org-fragtog
-  :ensure t
-  :after org
-  :hook (org-mode . org-fragtog-mode))
-```
-
-
 # u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1rplhb1/comment/t1_o9wja7v)
 
 **Votes** 8
 
 Did you know about `C-x r t`, or `string-rectangle`? When you `C-x SPC`, or `rectangle-mark-mode`, which creates a rectangular active region as opposed to a continuous active region (another command not everyone is aware of!), you can replace every line's active region with a string via `C-x r t` (it prompts you for which one). In this way, you can both select a rectangular region and replace its content. So its kind of like a mini/situational, but built-in, version of multi-cursors.
+
+
+# u/8c000f<sub>11</sub><sub>DL8</sub> [🔗](https://www.reddit.com/r/emacs/comments/t3_1srbipy/comment/t1_ohl044o)
+
+**Votes** 8
+
+describe-personal-keybindings
+
+
+# u/krisbalintona [🔗](https://www.reddit.com/r/emacs/comments/t3_1u71nm1/comment/t1_os784j7)
+
+**Votes** 8
+
+Most users know about `subword-mode`, some people know about `super-word-mode~&mdash;which redefines word boundaries to include symbols, so &ldquo;this\_is\_a\_symbol&rdquo; counts as a single world (see ~(emacs) Misc for Programs`)&mdash;but do you know about `glasses-mode`? This minor mode displays underscores **between** camel cased words. So wordsLikeThis appear (only visually) as words\\<sub>Like</sub>\\<sub>This</sub> (see `(emacs) MixedCase Words` for more information). Pretty neat!
 
 
 # u/ImJustPassinBy [🔗](https://www.reddit.com/r/emacs/comments/t3_1vl5lkv/comment/t1_p2zvlwd)
@@ -5809,3 +5822,53 @@ I use a lot `downcase/upcase/capitalize-word` when I forget to press shift or ca
 (advice-add 'downcase-word :around 'neg-first-or-prefix-arg)  
 (advice-add 'capitalize-word :around 'neg-first-or-prefix-arg)
 ```
+
+
+# u/<sub>0</sub>-<span class="underline">\_-0</span> [🔗](https://www.reddit.com/r/emacs/comments/t3_1vl5lkv/comment/t1_p38mf7p)
+
+**Votes** 8
+
+I like grouping lists like
+
+```elisp
+- main1
+  - sub1
+  - sub2
+    
+- main2
+  - sub3
+  - sub4
+
+```
+
+but org-mode seems to want it completely consistent between extra-line-break
+
+```elisp
+- main1
+    
+  - sub1
+    
+  - sub2
+    
+- main2
+    
+  - sub3
+    
+  - sub4
+
+
+```
+
+or no line-break
+
+```elisp
+- main1
+  - sub1
+  - sub2
+- main2
+  - sub3
+  - sub4
+
+```
+
+is there a way to keep only the consistency check within that list level?
